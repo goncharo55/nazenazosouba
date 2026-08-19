@@ -118,14 +118,14 @@
   .ticker-section { margin: 40px 0; }
   .section-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--ink-faint); margin:0 0 12px; }
-  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap:10px; }
+  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap:10px; }
   .ticker-card { background: var(--surface); border:1px solid var(--line);
     border-radius:8px; padding:12px 14px; }
-  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:2px; }
+  .ticker-card .t-name { font-size:15px; font-weight:600; color: var(--ink); margin-bottom:2px; }
   .ticker-card .t-asof { font-size:10.5px; color: var(--ink-faint); margin-bottom:6px; }
-  .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:18px;
-    font-weight:500; color: var(--ink); margin-bottom:4px; }
-  .ticker-card .t-value .t-unit { font-family:'IBM Plex Sans',sans-serif; font-size:11.5px; font-weight:400;
+  .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:22px;
+    font-weight:600; color: var(--ink); margin-bottom:4px; }
+  .ticker-card .t-value .t-unit { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; font-weight:400;
     color: var(--ink-soft); margin-left:3px; white-space:nowrap; }
   .ticker-card .t-change { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:12.5px;
     display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
@@ -285,20 +285,20 @@
       <div class="ticker-card">
         <div class="t-name">S&amp;P500</div>
         <div class="t-asof">8/18 NY市場引け時点</div>
-        <div class="t-value">7,691.76<span class="t-unit">ポイント</span></div>
-        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -53.30ポイント (-0.69%)</div>
+        <div class="t-value">7,691.76<span class="t-unit"></span></div>
+        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -53.30 (-0.69%)</div>
       </div>
       <div class="ticker-card">
         <div class="t-name">Nasdaq総合</div>
         <div class="t-asof">8/18 NY市場引け時点</div>
-        <div class="t-value">26,289.71<span class="t-unit">ポイント</span></div>
-        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -355.20ポイント (-1.33%)</div>
+        <div class="t-value">26,289.71<span class="t-unit"></span></div>
+        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -355.20 (-1.33%)</div>
       </div>
       <div class="ticker-card">
         <div class="t-name">NYダウ</div>
         <div class="t-asof">8/18 NY市場引け時点</div>
-        <div class="t-value">53,343.40<span class="t-unit">ポイント</span></div>
-        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -116.38ポイント (-0.22%)</div>
+        <div class="t-value">53,343.40<span class="t-unit"></span></div>
+        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -116.38 (-0.22%)</div>
       </div>
       <div class="ticker-card">
         <div class="t-name">ドル円</div>
@@ -309,8 +309,8 @@
       <div class="ticker-card">
         <div class="t-name">VIX恐怖指数</div>
         <div class="t-asof">8/18 NY市場引け時点</div>
-        <div class="t-value">15.84<span class="t-unit">ポイント</span></div>
-        <div class="t-change up"><span class="t-change-label">前日比</span>▲ +0.65ポイント (+4.28%)</div>
+        <div class="t-value">15.84<span class="t-unit"></span></div>
+        <div class="t-change up"><span class="t-change-label">前日比</span>▲ +0.65 (+4.28%)</div>
       </div>
       <div class="ticker-card">
         <div class="t-name">米10年金利</div>
@@ -327,8 +327,8 @@
       <div class="ticker-card">
         <div class="t-name">SOX半導体指数</div>
         <div class="t-asof">8/18 NY市場引け時点</div>
-        <div class="t-value">11,992.46<span class="t-unit">ポイント</span></div>
-        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -628.54ポイント (-4.98%)</div>
+        <div class="t-value">11,992.46<span class="t-unit"></span></div>
+        <div class="t-change down"><span class="t-change-label">前日比</span>▼ -628.54 (-4.98%)</div>
       </div>
       <div class="ticker-card">
         <div class="t-name">原油(WTI)</div>

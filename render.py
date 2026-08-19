@@ -153,14 +153,14 @@ BASE_CSS = """
   .ticker-section { margin: 40px 0; }
   .section-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--ink-faint); margin:0 0 12px; }
-  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap:10px; }
+  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap:10px; }
   .ticker-card { background: var(--surface); border:1px solid var(--line);
     border-radius:8px; padding:12px 14px; }
-  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:2px; }
+  .ticker-card .t-name { font-size:15px; font-weight:600; color: var(--ink); margin-bottom:2px; }
   .ticker-card .t-asof { font-size:10.5px; color: var(--ink-faint); margin-bottom:6px; }
-  .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:18px;
-    font-weight:500; color: var(--ink); margin-bottom:4px; }
-  .ticker-card .t-value .t-unit { font-family:'IBM Plex Sans',sans-serif; font-size:11.5px; font-weight:400;
+  .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:22px;
+    font-weight:600; color: var(--ink); margin-bottom:4px; }
+  .ticker-card .t-value .t-unit { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; font-weight:400;
     color: var(--ink-soft); margin-left:3px; white-space:nowrap; }
   .ticker-card .t-change { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:12.5px;
     display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
