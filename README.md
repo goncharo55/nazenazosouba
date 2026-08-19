@@ -5,9 +5,12 @@
 
 ## 全体の流れ（この順で実行する）
 
-0. **リポジトリの取得**：クラウド実行の場合、まず https://github.com/goncharo55/nazenazosouba を
+0. **リポジトリの取得と依存パッケージ**：クラウド実行の場合、まず https://github.com/goncharo55/nazenazosouba を
    clone（またはpull）する。このリポジトリが `data/archive.db` を含む唯一の永続化先。
    作業はこのリポジトリのルート（＝このREADMEがあるディレクトリ）で行う。
+   フレッシュな環境では `pandas` / `numpy` / `scipy` / `yfinance` / `requests` が入っていない可能性が高いので、
+   最初に `pip install -r requirements.txt`（数十秒〜1分程度）を実行してから次に進むこと。
+   `python scan_movers.py` 等がImportErrorで落ちる場合はまずこれを疑う。
 
 1. **スキャン**：`python scan_movers.py` （引数なし＝今日の日付で実行）
    - S&P500・日経225の全銘柄の当日騰落率と、24時間動く資産（BTC, ETH, ドル円, 原油, 金, 米株価指数先物）を取得
