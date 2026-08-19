@@ -20,6 +20,26 @@ SITE_NAME_A = "なぜなぞ"
 SITE_NAME_B = "相場"
 TAGLINE = "むずかしい値動きを、やさしい言葉で。"
 
+# GitHub Pages のプロジェクトサイトのベースパス。
+# https://goncharo55.github.io/nazenazosouba/ で公開する前提。
+SITE_ROOT = "/nazenazosouba"
+
+
+def home_url() -> str:
+    return f"{SITE_ROOT}/"
+
+
+def archive_url() -> str:
+    return f"{SITE_ROOT}/archive.html"
+
+
+def glossary_url() -> str:
+    return f"{SITE_ROOT}/glossary.html"
+
+
+def edition_url(edition_date: str) -> str:
+    return f"{SITE_ROOT}/editions/{edition_date}.html"
+
 
 def _b64(name):
     return (FONTS / name).read_text(encoding="utf-8")
@@ -220,8 +240,12 @@ def esc(s):
     return htmlmod.escape(str(s), quote=False)
 
 
-def page_shell(title: str, body: str) -> str:
-    return f"""<title>{esc(title)}</title>
+def page_shell(title: str, body: str, description: str = "", standalone: bool = False) -> str:
+    """standalone=True で完全なHTMLドキュメント(<!doctype html>から)を出力する。
+    GitHub Pagesなど、Artifactラッパーを経由しない配信先ではこちらを使う。"""
+    head_extra = f'<meta name="description" content="{esc(description)}">\n  ' if description else ""
+    if not standalone:
+        return f"""<title>{esc(title)}</title>
 <style>
 {FONT_CSS}
 {BASE_CSS}
@@ -229,6 +253,24 @@ def page_shell(title: str, body: str) -> str:
 <div class="wrap">
 {body}
 </div>
+"""
+    return f"""<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(title)}</title>
+  {head_extra}<style>
+{FONT_CSS}
+{BASE_CSS}
+  </style>
+</head>
+<body>
+<div class="wrap">
+{body}
+</div>
+</body>
+</html>
 """
 
 
@@ -336,7 +378,8 @@ def render_movers_panel(panel: dict) -> str:
       </div>"""
 
 
-def build_edition_html(edition: dict, archive_url: str | None = None, glossary_url: str | None = None) -> str:
+def build_edition_html(edition: dict, standalone: bool = True) -> str:
+    a_url, g_url = archive_url(), glossary_url()
     date_label = edition["edition_date"] + "分"
     tags_html = "\n      ".join(f'<span class="tag">{esc(t)}</span>' for t in edition.get("tags", []))
     summary_html = "\n        ".join(f'<li>{esc(s)}</li>' for s in edition.get("summary", []))
@@ -346,7 +389,7 @@ def build_edition_html(edition: dict, archive_url: str | None = None, glossary_u
     movers_html = "\n      ".join(render_movers_panel(p) for p in movers_panels.values())
 
     body = f"""
-  {masthead(date_label, archive_url, glossary_url, page="edition")}
+  {masthead(date_label, a_url, g_url, page="edition")}
 
   <section class="hero">
     <p class="eyebrow">{esc(edition.get('eyebrow', "Today's Market"))}</p>
@@ -390,19 +433,22 @@ def build_edition_html(edition: dict, archive_url: str | None = None, glossary_u
     <p class="sources">{edition.get('sources_note','')}</p>
     <p>本ページはAI（Claude）が公開データと報道をもとに自動作成した市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>
     <p>{SITE_NAME_A}{SITE_NAME_B} ／ 生成日時: {esc(edition.get('generated_at',''))}
-      {' ／ <a href="' + esc(archive_url) + '">過去の記事一覧</a>' if archive_url else ''}
-      {' ／ <a href="' + esc(glossary_url) + '">金融用語辞典</a>' if glossary_url else ''}</p>
+      ／ <a href="{esc(a_url)}">過去の記事一覧</a>
+      ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
   </footer>
 """
-    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — {edition['edition_date']}", body)
+    description = edition.get("summary", [""])[0] if edition.get("summary") else edition.get("headline", "")
+    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — {edition['edition_date']}", body,
+                       description=description, standalone=standalone)
 
 
-def build_archive_html(editions: list[dict], self_url: str | None = None, glossary_url: str | None = None) -> str:
+def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
+    g_url = glossary_url()
     items = []
     for e in editions:
         d = e["edition_date"]
         headline = e["headline"]
-        url = e.get("artifact_url") or "#"
+        url = edition_url(d)
         items.append(f"""<div class="archive-item">
         <span class="archive-date">{esc(d)}</span>
         <span class="archive-title"><a href="{esc(url)}">{esc(headline)}</a></span>
@@ -410,7 +456,7 @@ def build_archive_html(editions: list[dict], self_url: str | None = None, glossa
     list_html = "\n      ".join(items) if items else '<p class="archive-empty">まだ記事がありません。</p>'
 
     body = f"""
-  {masthead("バックナンバー", self_url, glossary_url, page="archive")}
+  {masthead("バックナンバー", archive_url(), g_url, page="archive")}
 
   <section class="hero">
     <p class="eyebrow">Archive</p>
@@ -424,13 +470,15 @@ def build_archive_html(editions: list[dict], self_url: str | None = None, glossa
 
   <footer class="footer">
     <p>{SITE_NAME_A}{SITE_NAME_B}は、AI（Claude）が公開データと報道をもとに毎営業日自動作成している市場概況です。特定の銘柄の売買を推奨するものではありません。
-      {' ／ <a href="' + esc(glossary_url) + '">金融用語辞典</a>' if glossary_url else ''}</p>
+      ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
   </footer>
 """
-    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — バックナンバー", body)
+    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — バックナンバー", body,
+                       description=f"{SITE_NAME_A}{SITE_NAME_B}のこれまでの配信一覧。日々の市場の動きをやさしい言葉で振り返れます。",
+                       standalone=standalone)
 
 
-def build_glossary_html(terms: list[dict], archive_url: str | None = None, self_url: str | None = None) -> str:
+def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
     """terms: [{term, reading, category, definition}, ...] （db.list_glossary()の出力そのまま渡せる）
     クライアントサイドJSで検索フィルタする(サーバー不要、Artifact上で完結)。"""
     items = []
@@ -451,7 +499,7 @@ def build_glossary_html(terms: list[dict], archive_url: str | None = None, self_
     list_html = "\n      ".join(items)
 
     body = f"""
-  {masthead("金融用語辞典", archive_url, self_url, page="glossary")}
+  {masthead("金融用語辞典", archive_url(), glossary_url(), page="glossary")}
 
   <section class="hero">
     <p class="eyebrow">Glossary</p>
@@ -493,4 +541,6 @@ def build_glossary_html(terms: list[dict], archive_url: str | None = None, self_
     }})();
   </script>
 """
-    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — 金融用語辞典", body)
+    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — 金融用語辞典", body,
+                       description=f"{SITE_NAME_A}{SITE_NAME_B}の記事に出てくる金融用語や投資の基礎知識をまとめた検索可能な用語辞典。",
+                       standalone=standalone)

@@ -1,4 +1,6 @@
-# そうばノート — 日次マーケット概況の自動生成パイプライン
+# なぜなぞ相場 — 日次マーケット概況の自動生成パイプライン
+
+公開サイト: **https://goncharo55.github.io/nazenazosouba/** （GitHub Pages）
 
 毎営業日、日本の引け直後（15:30 JST目安）に実行する。米国は前営業日分（まだ確定していないため）、
 日本は当日分のデータを使う。特定銘柄の売買は推奨しない。分からない値動きは「不明」でよい。
@@ -58,50 +60,45 @@
 4. **DBに保存**：`python db.py save --json data/edition_YYYY-MM-DD.json`
    （SQLite: `data/archive.db`。同じ日付で再実行すると上書きされる）
 
-5. **HTML生成**：`python publish_prep.py --date YYYY-MM-DD`
-   - `edition_YYYY-MM-DD.html`（当日記事）と `archive.html`（バックナンバー一覧）を生成
-   - `config.json` の `archive_url` を自動で読み込んでクロスリンクする
+5. **サイトを再生成**：`python build_site.py`
+   - DBの全editionから `docs/` フォルダを丸ごと再生成する（Artifactツールは使わない）
+   - `docs/index.html`（最新記事のミラー＝トップページ）、`docs/archive.html`（バックナンバー一覧）、
+     `docs/glossary.html`（用語辞典）、`docs/editions/YYYY-MM-DD.html`（各日の固定リンク）を出力
+   - URLの組み立ては `render.py` の `SITE_ROOT`（`/nazenazosouba`）を基準にした関数
+     （`home_url()` / `archive_url()` / `glossary_url()` / `edition_url(date)`）が担当するので、
+     手作業でリンクを書く必要はない
+   - **公開は「pushするだけ」**：GitHub Pagesがリポジトリの `main` ブランチの `docs/` フォルダを
+     配信するよう設定済みなので、以下の手順6でpushが通れば、数十秒〜数分で
+     https://goncharo55.github.io/nazenazosouba/ に反映される。手動でpublishする操作は不要。
 
-6. **公開**：Artifactツールで2つ publish する
-   - `edition_YYYY-MM-DD.html` → 新規publish（file_pathが毎回変わるので必ず新しいURLになる）
-   - 公開後に返ってきたURLを `python db.py set-url --date YYYY-MM-DD --url "https://..."` でDBに保存
-   - `python publish_prep.py --date YYYY-MM-DD` を再実行して archive.html を作り直す
-     （これで今日の記事がバックナンバー一覧に載る）
-   - `archive.html` を Artifactツールで publish する。**2回目以降は同じ `archive.html` の file_path で
-     publishすれば同じURLが維持される（`config.json` に保存済みのURLと一致するはず）**
-   - 当日記事も、archive_urlが確定した後にもう一度 `publish_prep.py` → publish し直すと、
-     記事側からバックナンバーへのリンクも正しく入る（初回セットアップ時のみ必要な手順。
-     2日目以降は既に `config.json` にarchive_urlがあるので1回のpublishで済む）
-   - **Artifactツールが使えない実行環境だった場合**：無理に公開しようとせず、生成したHTMLファイルを
-     そのままリポジトリにcommitする（下記手順7）。次にこのリポジトリを開いた人（またはインタラクティブな
-     Claude Codeセッション）が手動でpublishできるようにしておけばよい。
-
-7. **用語辞典の更新（任意）**：その日の「きょうの用語解説」で新しい用語を扱った場合、
+6. **用語辞典の更新（任意）**：その日の「きょうの用語解説」で新しい用語を扱った場合、
    `data/glossary_add_YYYY-MM-DD.json`（seed_glossary.jsonと同じ形式の配列）を作り、
-   `python db.py add-glossary --json data/glossary_add_YYYY-MM-DD.json` で追加する。
+   `python db.py add-glossary --json data/glossary_add_YYYY-MM-DD.json` で追加してから、
+   もう一度 `python build_site.py` を実行する（`docs/glossary.html` に反映される）。
    既存の用語と同じtermは上書きされない（初出の説明を尊重する）ので、表現を変えたいだけなら
-   このステップは不要。`publish_prep.py` を再実行すれば glossary.html にも反映される。
+   このステップは不要。
 
-8. **リポジトリへの保存**：作業後、必ず以下を実行してリポジトリに変更を残す。
+7. **リポジトリへの保存＝公開**：作業後、必ず以下を実行する。
    ```
    git add -A
    git commit -m "YYYY-MM-DD分の記事を追加"
    git push
    ```
-   これを忘れると、次回実行時に過去の記事やDBの内容が失われる（cloneし直した時点のコミットに戻る）。
+   これを忘れると、次回実行時に過去の記事やDBの内容が失われるだけでなく、**サイトも更新されない**
+   （GitHub Pagesはpush済みの内容しか配信できないため）。
 
-   **⚠ `git push` が `403` で失敗する場合（クラウド実行で確認済みの既知の問題）**：
-   このクラウド環境ではgit read（clone/fetch/ls-remote）は通るのに、生の`git push`だけ
-   `unable to access ... 403` で失敗することがある（原因は環境のリポジトリ接続設定と実際のclone先
-   ディレクトリのパスの不一致など、こちらでは直せない環境側の問題と思われる）。
-   その場合は無理に`git push`を繰り返さず、代わりに **GitHub連携のMCPツール**
-   （`mcp__github__push_files` または `mcp__github__create_or_update_file`。ToolSearchで
-   `select:mcp__github__push_files,mcp__github__create_or_update_file` を検索すると使える）
-   を使って、変更したファイル（`data/archive.db`, `data/edition_YYYY-MM-DD.json`,
-   `edition_YYYY-MM-DD.html`, `archive.html`, `glossary.html`, 必要なら
-   `data/glossary_add_YYYY-MM-DD.json`）を直接コミットする。
-   `mcp__github__get_me` で認証中のGitHubユーザーを確認できる。
-   それでも失敗する場合のみ、生成済みファイルをローカルに残したまま終了し、次回人間が介入できるようにする。
+   **⚠ `git push` が失敗する場合**：2種類の失敗パターンが実測で確認されている。
+   - `unable to access ... 403`（生の`git push`）：まず**GitHub連携のMCPツール**
+     （`mcp__github__push_files` または `mcp__github__create_or_update_file`。ToolSearchで
+     `select:mcp__github__push_files,mcp__github__create_or_update_file` を検索すると使える）
+     を試す。`mcp__github__get_me` で認証中のGitHubユーザーを確認できる。
+   - `mcp__github__push_files` でも `403 Resource not accessible by integration` になる場合：
+     これは**このクラウド環境に接続されているGitHub連携（GitHub App）自体が、このリポジトリへの
+     書き込み権限を持っていない**ことを意味する（2026-08-19に実測・確認済み）。README上の工夫では
+     解決できない、claude.ai側の連携設定の問題。この場合は無理に何度も再試行せず、
+     **PushNotificationツールでユーザーに「GitHub連携の書き込み権限を claude.ai の
+     設定 → Connectors で確認してください」と通知した上で、生成済みファイルはローカルの
+     working directoryに残したまま終了する**（次に人間が介入した際にpushできる状態にしておく）。
 
 ## edition JSONの形
 
@@ -152,10 +149,13 @@
 
 ## 既知の注意点・今後の課題
 
-- **これはSEO対策にはまだならない**：Artifactはデフォルトで非公開（作者以外は見えない）で、
-  Googleなどの検索エンジンにクロールされない。本当にSEOを狙うなら、将来的に静的サイト（例：GitHub Pages,
-  Vercel等）に配信する仕組みに切り替える必要がある。今の仕組みは「毎日自動でコンテンツを溜める土台」
-  として割り切っている。
+- **公開場所はGitHub Pages**（2026-08-19〜）。以前はArtifactツールでclaude.ai上に非公開publishして
+  いたが、外部から検索・アクセスできないため、GitHub Pages配信に切り替えた。`docs/`フォルダの内容が
+  そのままURLに対応する（例：`docs/editions/2026-08-19.html` → `/nazenazosouba/editions/2026-08-19.html`）。
+  Pages自体の設定（Settings → Pages → Source: main branch, /docs）は初回のみ人間側で行う必要がある。
+- **本当の意味でのSEO（検索エンジンに見つけてもらうこと）はまだこれから**。公開URLが存在するだけでは
+  Googleにインデックスされるまで時間がかかる。Google Search Consoleへのサイトマップ登録などは
+  今後の課題。
 - `scan_movers.py` / `sp500_list.csv` / `nikkei225_list.csv` / `requirements.txt` は、
   ネットワーク制限のないローカル環境（このリポジトリを手元にcloneしたインタラクティブなClaude Code
   セッションなど）で使うための、より精密なオプションのツール一式。クラウド自動実行では使われない

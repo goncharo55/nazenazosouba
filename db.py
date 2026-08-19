@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS editions (
     lesson_title TEXT,
     lesson_body TEXT,
     sources_note TEXT,
-    artifact_url TEXT,
+    artifact_url TEXT,  -- 実体は公開URL(GitHub Pages: render.edition_url()の値)。列名は歴史的経緯で旧名のまま
     generated_at TEXT
 );
 CREATE TABLE IF NOT EXISTS indices (
