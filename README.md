@@ -90,6 +90,19 @@
    ```
    これを忘れると、次回実行時に過去の記事やDBの内容が失われる（cloneし直した時点のコミットに戻る）。
 
+   **⚠ `git push` が `403` で失敗する場合（クラウド実行で確認済みの既知の問題）**：
+   このクラウド環境ではgit read（clone/fetch/ls-remote）は通るのに、生の`git push`だけ
+   `unable to access ... 403` で失敗することがある（原因は環境のリポジトリ接続設定と実際のclone先
+   ディレクトリのパスの不一致など、こちらでは直せない環境側の問題と思われる）。
+   その場合は無理に`git push`を繰り返さず、代わりに **GitHub連携のMCPツール**
+   （`mcp__github__push_files` または `mcp__github__create_or_update_file`。ToolSearchで
+   `select:mcp__github__push_files,mcp__github__create_or_update_file` を検索すると使える）
+   を使って、変更したファイル（`data/archive.db`, `data/edition_YYYY-MM-DD.json`,
+   `edition_YYYY-MM-DD.html`, `archive.html`, `glossary.html`, 必要なら
+   `data/glossary_add_YYYY-MM-DD.json`）を直接コミットする。
+   `mcp__github__get_me` で認証中のGitHubユーザーを確認できる。
+   それでも失敗する場合のみ、生成済みファイルをローカルに残したまま終了し、次回人間が介入できるようにする。
+
 ## edition JSONの形
 
 ```json
