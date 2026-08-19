@@ -192,6 +192,22 @@ BASE_CSS = """
   .lesson p { margin:0 0 12px; max-width:66ch; color: var(--ink); }
   .lesson p:last-child { margin-bottom:0; }
 
+  .quiz { margin:32px 0 48px; background: var(--surface); border:1px dashed var(--line); border-radius:10px; padding:26px 28px; }
+  .quiz-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color: var(--brand); margin:0 0 10px; }
+  .quiz h3 { font-family:'Newsreader','Yu Mincho','Hiragino Mincho ProN',serif; font-weight:600; font-style:italic;
+    font-size:20px; margin:0 0 16px; color: var(--ink); }
+  .quiz-choices { display:flex; flex-direction:column; gap:8px; margin:0 0 14px; padding:0; list-style:none; }
+  .quiz-choice { text-align:left; width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:8px;
+    background: var(--surface); color: var(--ink); font-size:15px; font-family:inherit; cursor:pointer; transition:border-color .15s,background .15s; }
+  .quiz-choice:hover { border-color: var(--brand); }
+  .quiz-choice.is-correct { border-color: var(--up); background: color-mix(in srgb, var(--up) 12%, var(--surface)); font-weight:600; }
+  .quiz-choice.is-wrong { border-color: var(--down); background: color-mix(in srgb, var(--down) 10%, var(--surface)); }
+  .quiz-choice:disabled { cursor:default; }
+  .quiz-result { display:none; font-size:14px; color: var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:4px; }
+  .quiz-result p { margin:0 0 6px; max-width:66ch; }
+  .quiz-result .quiz-verdict { font-weight:600; color: var(--ink); }
+
   .footer { margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color: var(--ink-faint); line-height:1.8; }
   .footer p { margin:0 0 8px; max-width:70ch; }
   .footer .sources { color: var(--ink-soft); }
@@ -407,6 +423,54 @@ def render_movers_panel(panel: dict) -> str:
       </div>"""
 
 
+def render_quiz(quiz: dict | None) -> str:
+    """quiz: {"question": str, "choices": list[str], "answer_index": int, "explanation": str}
+    未設定(None)なら空文字を返し、記事にクイズコーナー自体を出さない。
+    クリックした選択肢を正解/不正解の色で示し、正解と解説を表示するだけのシンプルなJS。"""
+    if not quiz or not quiz.get("question") or not quiz.get("choices"):
+        return ""
+    question = esc(quiz["question"])
+    answer_index = quiz.get("answer_index", 0)
+    explanation = esc(quiz.get("explanation", ""))
+    choices_html = "\n        ".join(
+        f'<li><button type="button" class="quiz-choice" data-index="{i}">{esc(c)}</button></li>'
+        for i, c in enumerate(quiz["choices"])
+    )
+    return f"""
+  <section class="quiz" id="quiz">
+    <p class="quiz-label">きょうのなぞなぞクイズ</p>
+    <h3>{question}</h3>
+    <ul class="quiz-choices" id="quizChoices">
+        {choices_html}
+    </ul>
+    <div class="quiz-result" id="quizResult">
+      <p class="quiz-verdict" id="quizVerdict"></p>
+      <p>{explanation}</p>
+    </div>
+  </section>
+  <script>
+    (function() {{
+      var answerIndex = {answer_index};
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('#quizChoices .quiz-choice'));
+      var result = document.getElementById('quizResult');
+      var verdict = document.getElementById('quizVerdict');
+      buttons.forEach(function(btn) {{
+        btn.addEventListener('click', function() {{
+          var picked = parseInt(btn.getAttribute('data-index'), 10);
+          buttons.forEach(function(b, i) {{
+            b.disabled = true;
+            if (i === answerIndex) b.classList.add('is-correct');
+            else if (i === picked) b.classList.add('is-wrong');
+          }});
+          verdict.textContent = picked === answerIndex ? '正解！' : '不正解…正解は「' + buttons[answerIndex].textContent + '」でした。';
+          result.style.display = 'block';
+        }});
+      }});
+    }})();
+  </script>
+"""
+
+
 def build_edition_html(edition: dict, standalone: bool = True) -> str:
     a_url, g_url = archive_url(), glossary_url()
     date_label = edition["edition_date"] + "分"
@@ -416,6 +480,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
     narrative_html = render_narrative(edition.get("narrative", []))
     movers_panels = group_movers(edition.get("movers", []))
     movers_html = "\n      ".join(render_movers_panel(p) for p in movers_panels.values())
+    quiz_html = render_quiz(edition.get("quiz"))
 
     body = f"""
   {masthead(date_label, a_url, g_url, page="edition")}
@@ -457,7 +522,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
     <h3>{esc(edition.get('lesson_title',''))}</h3>
     {"".join(f'<p>{p}</p>' for p in edition.get('lesson_body_paragraphs', [edition.get('lesson_body','')]))}
   </section>
-
+  {quiz_html}
   <footer class="footer">
     <p class="sources">{edition.get('sources_note','')}</p>
     <p>本ページは公開データと報道をもとに自動でまとめた市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>

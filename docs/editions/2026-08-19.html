@@ -163,6 +163,22 @@
   .lesson p { margin:0 0 12px; max-width:66ch; color: var(--ink); }
   .lesson p:last-child { margin-bottom:0; }
 
+  .quiz { margin:32px 0 48px; background: var(--surface); border:1px dashed var(--line); border-radius:10px; padding:26px 28px; }
+  .quiz-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color: var(--brand); margin:0 0 10px; }
+  .quiz h3 { font-family:'Newsreader','Yu Mincho','Hiragino Mincho ProN',serif; font-weight:600; font-style:italic;
+    font-size:20px; margin:0 0 16px; color: var(--ink); }
+  .quiz-choices { display:flex; flex-direction:column; gap:8px; margin:0 0 14px; padding:0; list-style:none; }
+  .quiz-choice { text-align:left; width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:8px;
+    background: var(--surface); color: var(--ink); font-size:15px; font-family:inherit; cursor:pointer; transition:border-color .15s,background .15s; }
+  .quiz-choice:hover { border-color: var(--brand); }
+  .quiz-choice.is-correct { border-color: var(--up); background: color-mix(in srgb, var(--up) 12%, var(--surface)); font-weight:600; }
+  .quiz-choice.is-wrong { border-color: var(--down); background: color-mix(in srgb, var(--down) 10%, var(--surface)); }
+  .quiz-choice:disabled { cursor:default; }
+  .quiz-result { display:none; font-size:14px; color: var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:4px; }
+  .quiz-result p { margin:0 0 6px; max-width:66ch; }
+  .quiz-result .quiz-verdict { font-weight:600; color: var(--ink); }
+
   .footer { margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color: var(--ink-faint); line-height:1.8; }
   .footer p { margin:0 0 8px; max-width:70ch; }
   .footer .sources { color: var(--ink-soft); }
@@ -447,6 +463,41 @@
     <h3>なぜ「テーマ株」はまとめて上がって、まとめて下がるの？</h3>
     <p>今日は電線株3社とソフトバンクグループが同時に大きく下げましたが、これは3社の業績が急に悪化したわけではなく、「AI関連株」という同じ物語（テーマ）でくくられて買われてきた銘柄群だからです。市場ではこうした銘柄を「テーマ株」「材料株」と呼びます。</p><p>テーマ株は、テーマそのものへの期待が盛り上がっているときはまとめて買われ、期待が後退すると業績と関係なくまとめて売られる、という値動きをしやすいのが特徴です。個別企業の実力よりも「物語」の勢いで株価が動きやすいため、値動きが実際の業績より大きくブレやすく、上がるときも下がるときも勢いがつきやすい、と覚えておくとよいでしょう。</p>
   </section>
+  
+  <section class="quiz" id="quiz">
+    <p class="quiz-label">きょうのなぞなぞクイズ</p>
+    <h3>きょうの用語解説に出てきた「テーマ株」について、正しい説明はどれ？</h3>
+    <ul class="quiz-choices" id="quizChoices">
+        <li><button type="button" class="quiz-choice" data-index="0">同じ業種やテーマへの期待でまとめて値動きしやすい銘柄群のこと</button></li>
+        <li><button type="button" class="quiz-choice" data-index="1">上場したばかりの新興企業の株のこと</button></li>
+        <li><button type="button" class="quiz-choice" data-index="2">配当利回りが特に高い株のこと</button></li>
+        <li><button type="button" class="quiz-choice" data-index="3">国が発行している債券の一種</button></li>
+    </ul>
+    <div class="quiz-result" id="quizResult">
+      <p class="quiz-verdict" id="quizVerdict"></p>
+      <p>「テーマ株」は業績そのものよりも、同じ期待(テーマ)でまとめて買われたり売られたりしやすい銘柄群を指す言葉です。個別のニュースが薄い日でも、テーマ全体の地合いにつられて動くことがあります。</p>
+    </div>
+  </section>
+  <script>
+    (function() {
+      var answerIndex = 0;
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('#quizChoices .quiz-choice'));
+      var result = document.getElementById('quizResult');
+      var verdict = document.getElementById('quizVerdict');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var picked = parseInt(btn.getAttribute('data-index'), 10);
+          buttons.forEach(function(b, i) {
+            b.disabled = true;
+            if (i === answerIndex) b.classList.add('is-correct');
+            else if (i === picked) b.classList.add('is-wrong');
+          });
+          verdict.textContent = picked === answerIndex ? '正解！' : '不正解…正解は「' + buttons[answerIndex].textContent + '」でした。';
+          result.style.display = 'block';
+        });
+      });
+    })();
+  </script>
 
   <footer class="footer">
     <p class="sources">データ出典：株価・指数はYahoo! Finance、金利・生産指標はFRED（セントルイス連銀）。個別銘柄の値動きの背景は各社報道（日本経済新聞、東洋経済オンライン、TipRanks、Benzinga ほか）を参照し、AIが要約しています。</p>

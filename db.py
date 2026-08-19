@@ -3,8 +3,9 @@
 
 スキーマ:
   editions(edition_date PK, headline, eyebrow, summary_json, tags_json,
-           narrative_json, lesson_title, lesson_body, sources_note,
-           artifact_url, generated_at)
+           narrative_json, lesson_title, lesson_body, quiz_question,
+           quiz_choices_json, quiz_answer_index, quiz_explanation,
+           sources_note, artifact_url, generated_at)
   indices(edition_date, ticker, name, value_text, delta, pct)
   movers(edition_date, market, ticker, name, pct, reason, kind)
 
@@ -33,6 +34,10 @@ CREATE TABLE IF NOT EXISTS editions (
     lesson_title TEXT,
     lesson_body TEXT,        -- 未使用(過去の互換用)。本文は lesson_body_json に入る
     lesson_body_json TEXT,   -- 段落のリスト(JSON配列)。edition["lesson_body_paragraphs"]の実体
+    quiz_question TEXT,      -- きょうのクイズコーナー(一問一答)。未設定ならNULLで、記事にセクション自体を出さない
+    quiz_choices_json TEXT,  -- 選択肢のリスト(JSON配列、2〜4件)
+    quiz_answer_index INTEGER, -- 正解のインデックス(0始まり)
+    quiz_explanation TEXT,   -- 正解発表時に出す解説
     sources_note TEXT,
     artifact_url TEXT,  -- 実体は公開URL(GitHub Pages: render.edition_url()の値)。列名は歴史的経緯で旧名のまま
     generated_at TEXT
@@ -84,6 +89,12 @@ def init_db():
     cols = {row["name"] for row in conn.execute("PRAGMA table_info(editions)")}
     if "lesson_body_json" not in cols:
         conn.execute("ALTER TABLE editions ADD COLUMN lesson_body_json TEXT")
+    for col, coltype in (
+        ("quiz_question", "TEXT"), ("quiz_choices_json", "TEXT"),
+        ("quiz_answer_index", "INTEGER"), ("quiz_explanation", "TEXT"),
+    ):
+        if col not in cols:
+            conn.execute(f"ALTER TABLE editions ADD COLUMN {col} {coltype}")
     conn.commit()
     conn.close()
     print(f"initialized {DB_PATH}")
@@ -108,11 +119,19 @@ def save_edition(edition: dict):
         lesson_paragraphs = [edition["lesson_body"]]
     lesson_paragraphs = lesson_paragraphs or []
 
+    # quiz は任意(未設定なら記事にクイズコーナーを出さない)。
+    quiz = edition.get("quiz") or {}
+    quiz_question = quiz.get("question") or None
+    quiz_choices_json = json.dumps(quiz["choices"], ensure_ascii=False) if quiz.get("choices") else None
+    quiz_answer_index = quiz.get("answer_index") if quiz.get("choices") else None
+    quiz_explanation = quiz.get("explanation") or None
+
     conn.execute(
         """INSERT INTO editions
            (edition_date, headline, eyebrow, summary_json, tags_json, narrative_json,
-            lesson_title, lesson_body_json, sources_note, artifact_url, generated_at)
-           VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            lesson_title, lesson_body_json, quiz_question, quiz_choices_json,
+            quiz_answer_index, quiz_explanation, sources_note, artifact_url, generated_at)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
         (
             edition["edition_date"], edition["headline"], edition.get("eyebrow", ""),
             json.dumps(edition.get("summary", []), ensure_ascii=False),
@@ -120,6 +139,7 @@ def save_edition(edition: dict):
             json.dumps(edition.get("narrative", {}), ensure_ascii=False),
             edition.get("lesson_title", ""),
             json.dumps(lesson_paragraphs, ensure_ascii=False),
+            quiz_question, quiz_choices_json, quiz_answer_index, quiz_explanation,
             edition.get("sources_note", ""), edition.get("artifact_url", ""),
             edition.get("generated_at", ""),
         ),
@@ -162,6 +182,19 @@ def get_edition(edition_date: str):
     e["tags"] = json.loads(e.pop("tags_json") or "[]")
     e["narrative"] = json.loads(e.pop("narrative_json") or "{}")
     e["lesson_body_paragraphs"] = json.loads(e.pop("lesson_body_json", None) or "[]")
+    quiz_question = e.pop("quiz_question", None)
+    quiz_choices_json = e.pop("quiz_choices_json", None)
+    quiz_answer_index = e.pop("quiz_answer_index", None)
+    quiz_explanation = e.pop("quiz_explanation", None)
+    if quiz_question and quiz_choices_json:
+        e["quiz"] = {
+            "question": quiz_question,
+            "choices": json.loads(quiz_choices_json),
+            "answer_index": quiz_answer_index,
+            "explanation": quiz_explanation or "",
+        }
+    else:
+        e["quiz"] = None
     e["indices"] = [dict(r) for r in conn.execute(
         "SELECT ticker, name, value_text, delta, pct FROM indices WHERE edition_date = ?", (edition_date,))]
     e["movers"] = [dict(r) for r in conn.execute(
