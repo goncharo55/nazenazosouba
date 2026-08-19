@@ -6,7 +6,7 @@
            narrative_json, lesson_title, lesson_body, quiz_question,
            quiz_choices_json, quiz_answer_index, quiz_explanation,
            sources_note, artifact_url, generated_at)
-  indices(edition_date, ticker, name, value_text, delta, pct)
+  indices(edition_date, ticker, name, value_text, unit, asof, delta, pct)
   movers(edition_date, market, ticker, name, pct, reason, kind)
 
 使い方(CLI):
@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS indices (
     ticker TEXT,
     name TEXT,
     value_text TEXT,
+    unit TEXT,   -- 表示単位。例: "円" "ポイント" "%" "ドル"
+    asof TEXT,   -- 値の時点を示す短いラベル。例: "8/19 東証引け時点" "8/18 NY市場引け時点"
     delta REAL,
     pct REAL,
     FOREIGN KEY(edition_date) REFERENCES editions(edition_date)
@@ -95,6 +97,10 @@ def init_db():
     ):
         if col not in cols:
             conn.execute(f"ALTER TABLE editions ADD COLUMN {col} {coltype}")
+    idx_cols = {row["name"] for row in conn.execute("PRAGMA table_info(indices)")}
+    for col in ("unit", "asof"):
+        if col not in idx_cols:
+            conn.execute(f"ALTER TABLE indices ADD COLUMN {col} TEXT")
     conn.commit()
     conn.close()
     print(f"initialized {DB_PATH}")
@@ -154,9 +160,9 @@ def save_edition(edition: dict):
     )
     for r in edition.get("indices", []):
         conn.execute(
-            "INSERT INTO indices (edition_date, ticker, name, value_text, delta, pct) VALUES (?,?,?,?,?,?)",
+            "INSERT INTO indices (edition_date, ticker, name, value_text, unit, asof, delta, pct) VALUES (?,?,?,?,?,?,?,?)",
             (edition["edition_date"], r.get("ticker"), r.get("name"), r.get("value_text"),
-             r.get("delta"), r.get("pct")),
+             r.get("unit", ""), r.get("asof", ""), r.get("delta"), r.get("pct")),
         )
     for r in edition.get("movers", []):
         conn.execute(
@@ -208,7 +214,7 @@ def get_edition(edition_date: str):
     else:
         e["quiz"] = None
     e["indices"] = [dict(r) for r in conn.execute(
-        "SELECT ticker, name, value_text, delta, pct FROM indices WHERE edition_date = ?", (edition_date,))]
+        "SELECT ticker, name, value_text, unit, asof, delta, pct FROM indices WHERE edition_date = ?", (edition_date,))]
     e["movers"] = [dict(r) for r in conn.execute(
         "SELECT market, ticker, name, pct, reason, kind FROM movers WHERE edition_date = ?", (edition_date,))]
     conn.close()

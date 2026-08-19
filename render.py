@@ -153,14 +153,19 @@ BASE_CSS = """
   .ticker-section { margin: 40px 0; }
   .section-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--ink-faint); margin:0 0 12px; }
-  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); gap:10px; }
+  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap:10px; }
   .ticker-card { background: var(--surface); border:1px solid var(--line);
     border-radius:8px; padding:12px 14px; }
-  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; }
+  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:2px; }
+  .ticker-card .t-asof { font-size:10.5px; color: var(--ink-faint); margin-bottom:6px; }
   .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:18px;
     font-weight:500; color: var(--ink); margin-bottom:4px; }
+  .ticker-card .t-value .t-unit { font-family:'IBM Plex Sans',sans-serif; font-size:11.5px; font-weight:400;
+    color: var(--ink-soft); margin-left:3px; white-space:nowrap; }
   .ticker-card .t-change { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:12.5px;
-    display:flex; align-items:center; gap:4px; }
+    display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+  .ticker-card .t-change-label { font-family:'IBM Plex Sans',sans-serif; font-size:11px; color: var(--ink-faint);
+    margin-right:2px; }
   .t-change.up { color: var(--up); } .t-change.down { color: var(--down); }
 
   .article { margin: 44px 0; }
@@ -265,6 +270,12 @@ def esc(s):
     return htmlmod.escape(str(s), quote=False)
 
 
+def format_jp_date(iso_date: str) -> str:
+    """"2026-08-19" -> "2026年8月19日"。マストヘッドの日付表記用(ISO表記に和文の接尾辞を直接足すと読みにくいため)。"""
+    y, m, d = (int(x) for x in iso_date.split("-"))
+    return f"{y}年{m}月{d}日"
+
+
 SITE_PUBLIC_URL = "https://goncharo55.github.io"  # SITE_ROOT("/nazenazosouba")と連結してcanonical URLを作る
 
 
@@ -365,10 +376,13 @@ def render_ticker_cards(indices: list[dict]) -> str:
         arrow = "▲" if delta >= 0 else "▼"
         sign = "+" if delta >= 0 else ""
         psign = "+" if pct >= 0 else ""
+        unit = r.get("unit", "")
+        asof = r.get("asof", "")
         cards.append(f"""<div class="ticker-card">
         <div class="t-name">{esc(r['name'])}</div>
-        <div class="t-value">{esc(r['value_text'])}</div>
-        <div class="t-change {direction}">{arrow} {sign}{delta:,.2f} ({psign}{pct:.2f}%)</div>
+        {f'<div class="t-asof">{esc(asof)}時点</div>' if asof else ''}
+        <div class="t-value">{esc(r['value_text'])}<span class="t-unit">{esc(unit)}</span></div>
+        <div class="t-change {direction}"><span class="t-change-label">前日比</span>{arrow} {sign}{delta:,.2f}{esc(unit)} ({psign}{pct:.2f}%)</div>
       </div>""")
     return "\n      ".join(cards)
 
@@ -505,7 +519,7 @@ def render_quiz(quiz: dict | None) -> str:
 
 def build_edition_html(edition: dict, standalone: bool = True) -> str:
     a_url, g_url = archive_url(), glossary_url()
-    date_label = edition["edition_date"] + "分"
+    date_label = format_jp_date(edition["edition_date"]) + "号"
     tags_html = "\n      ".join(
         f'<a class="tag" href="{esc(tag_archive_url(t))}">{esc(t)}</a>' for t in edition.get("tags", [])
     )
