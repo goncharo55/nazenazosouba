@@ -25,6 +25,9 @@ TAGLINE = "むずかしい値動きを、やさしい言葉で。"
 # https://goncharo55.github.io/nazenazosouba/ で公開する前提。
 SITE_ROOT = "/nazenazosouba"
 
+# Google タグ(GA4)の測定ID。Google Search Console/アナリティクスの管理画面で発行されたもの。
+GA_MEASUREMENT_ID = "G-MW5Y5HWBET"
+
 
 def home_url() -> str:
     return f"{SITE_ROOT}/"
@@ -322,10 +325,18 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
                 '"publisher":{"@type":"Organization","name":' + json.dumps(SITE_NAME_A + SITE_NAME_B, ensure_ascii=False) + '}}'
             )
             seo_tags += f'  <script type="application/ld+json">{json_ld}</script>\n'
+    ga_tag = f"""<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{GA_MEASUREMENT_ID}');
+  </script>
+  """
     return f"""<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
+  {ga_tag}<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   {head_extra}{seo_tags}<style>
