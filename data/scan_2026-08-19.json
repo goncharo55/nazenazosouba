@@ -1,0 +1,304 @@
+{
+  "target_date": "2026-08-19",
+  "us_market_open": false,
+  "jp_market_open": true,
+  "indices": [
+    {
+      "ticker": "^GSPC",
+      "name": "S&P500",
+      "last_close": 7691.759765625,
+      "prev_close": 7745.06005859375,
+      "pct_change": -0.6881843725615733,
+      "last_date": "2026-08-18",
+      "volume": 4602700000.0
+    },
+    {
+      "ticker": "^IXIC",
+      "name": "Nasdaq総合",
+      "last_close": 26289.7109375,
+      "prev_close": 26644.91015625,
+      "pct_change": -1.3330846929753393,
+      "last_date": "2026-08-18",
+      "volume": 7360790000.0
+    },
+    {
+      "ticker": "^DJI",
+      "name": "NYダウ",
+      "last_close": 53343.3984375,
+      "prev_close": 53459.78125,
+      "pct_change": -0.21770162499495926,
+      "last_date": "2026-08-18",
+      "volume": 427990000.0
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX(半導体)",
+      "last_close": 11992.4599609375,
+      "prev_close": 12621.0,
+      "pct_change": -4.980112820398541,
+      "last_date": "2026-08-18",
+      "volume": 0.0
+    },
+    {
+      "ticker": "^N225",
+      "name": "日経平均",
+      "last_close": 65229.28125,
+      "prev_close": 67460.7265625,
+      "pct_change": -3.307769462625998,
+      "last_date": "2026-08-19",
+      "volume": 0.0
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "last_close": 417.8999938964844,
+      "prev_close": 431.0,
+      "pct_change": -3.039444571581351,
+      "last_date": "2026-08-19",
+      "volume": 15593230.0
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX(恐怖指数)",
+      "last_close": 15.84000015258789,
+      "prev_close": 15.1899995803833,
+      "pct_change": 4.279134892432879,
+      "last_date": "2026-08-18",
+      "volume": 0.0
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "last_close": 4.706000328063965,
+      "prev_close": 4.723999977111816,
+      "pct_change": -0.38102559557707805,
+      "last_date": "2026-08-18",
+      "volume": 0.0
+    }
+  ],
+  "us_movers": [],
+  "jp_movers": [
+    {
+      "ticker": "4385",
+      "name": "メルカリ",
+      "pct_change": 5.54,
+      "last_close": 4721.0,
+      "volume": 3144700.0
+    },
+    {
+      "ticker": "2413",
+      "name": "エムスリー",
+      "pct_change": 2.01,
+      "last_close": 1729.5,
+      "volume": 4133400.0
+    },
+    {
+      "ticker": "3697",
+      "name": "SHIFT",
+      "pct_change": 1.84,
+      "last_close": 895.7,
+      "volume": 2439800.0
+    },
+    {
+      "ticker": "2801",
+      "name": "キッコーマン",
+      "pct_change": 1.72,
+      "last_close": 1800.5,
+      "volume": 1876500.0
+    },
+    {
+      "ticker": "4151",
+      "name": "協和キリン",
+      "pct_change": 1.25,
+      "last_close": 2596.0,
+      "volume": 641700.0
+    },
+    {
+      "ticker": "4911",
+      "name": "資生堂",
+      "pct_change": 1.22,
+      "last_close": 3478.0,
+      "volume": 1697800.0
+    },
+    {
+      "ticker": "3092",
+      "name": "ZOZO",
+      "pct_change": 1.22,
+      "last_close": 1118.5,
+      "volume": 1539300.0
+    },
+    {
+      "ticker": "4568",
+      "name": "第一三共",
+      "pct_change": 1.19,
+      "last_close": 2732.0,
+      "volume": 3187700.0
+    },
+    {
+      "ticker": "9602",
+      "name": "東宝",
+      "pct_change": 1.12,
+      "last_close": 1537.5,
+      "volume": 1950200.0
+    },
+    {
+      "ticker": "4751",
+      "name": "サイバーエージェント",
+      "pct_change": 0.96,
+      "last_close": 1268.5,
+      "volume": 5512700.0
+    },
+    {
+      "ticker": "5801",
+      "name": "古河電気工業",
+      "pct_change": -13.53,
+      "last_close": 3777.0,
+      "volume": 29971400.0
+    },
+    {
+      "ticker": "7532",
+      "name": "パン・パシフィック・インターナショナルホールディングス",
+      "pct_change": -11.03,
+      "last_close": 814.5,
+      "volume": 22354400.0
+    },
+    {
+      "ticker": "9984",
+      "name": "ソフトバンクグループ",
+      "pct_change": -10.43,
+      "last_close": 5222.0,
+      "volume": 34985200.0
+    },
+    {
+      "ticker": "5803",
+      "name": "フジクラ",
+      "pct_change": -10.15,
+      "last_close": 5303.0,
+      "volume": 57202200.0
+    },
+    {
+      "ticker": "5802",
+      "name": "住友電気工業",
+      "pct_change": -9.36,
+      "last_close": 2193.0,
+      "volume": 16318400.0
+    },
+    {
+      "ticker": "6723",
+      "name": "ルネサスエレクトロニクス",
+      "pct_change": -9.3,
+      "last_close": 3453.0,
+      "volume": 10397700.0
+    },
+    {
+      "ticker": "5706",
+      "name": "三井金属鉱業",
+      "pct_change": -9.2,
+      "last_close": 27295.0,
+      "volume": 1483400.0
+    },
+    {
+      "ticker": "7004",
+      "name": "カナデビア",
+      "pct_change": -8.47,
+      "last_close": 1157.0,
+      "volume": 1103400.0
+    },
+    {
+      "ticker": "4004",
+      "name": "レゾナック・ホールディングス",
+      "pct_change": -8.31,
+      "last_close": 15565.0,
+      "volume": 1332100.0
+    },
+    {
+      "ticker": "6302",
+      "name": "住友重機械工業",
+      "pct_change": -8.11,
+      "last_close": 5439.0,
+      "volume": 426400.0
+    }
+  ],
+  "always_on": [
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "kind": "crypto",
+      "last_close": 64246.37890625,
+      "prev_close": 64506.25390625,
+      "pct_change": -0.40286791475705463,
+      "last_date": "2026-08-19",
+      "volume": 17831993344.0
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "イーサリアム",
+      "kind": "crypto",
+      "last_close": 1908.5899658203125,
+      "prev_close": 1912.2021484375,
+      "pct_change": -0.18890171314466242,
+      "last_date": "2026-08-19",
+      "volume": 6642265600.0
+    },
+    {
+      "ticker": "JPY=X",
+      "name": "ドル円",
+      "kind": "fx",
+      "last_close": 159.2989959716797,
+      "prev_close": 159.33999633789062,
+      "pct_change": -0.025731371377712975,
+      "last_date": "2026-08-19",
+      "volume": 0.0
+    },
+    {
+      "ticker": "EURUSD=X",
+      "name": "ユーロドル",
+      "kind": "fx",
+      "last_close": 1.1587486267089844,
+      "prev_close": 1.1582788228988647,
+      "pct_change": 0.04056051106449132,
+      "last_date": "2026-08-19",
+      "volume": 0.0
+    },
+    {
+      "ticker": "CL=F",
+      "name": "WTI原油先物",
+      "kind": "commodity",
+      "last_close": 84.69000244140625,
+      "prev_close": 84.94000244140625,
+      "pct_change": -0.2943253977093496,
+      "last_date": "2026-08-19",
+      "volume": 12818.0
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金先物",
+      "kind": "commodity",
+      "last_close": 4399.7001953125,
+      "prev_close": 4366.0,
+      "pct_change": 0.7718780419720517,
+      "last_date": "2026-08-19",
+      "volume": 29029.0
+    },
+    {
+      "ticker": "ES=F",
+      "name": "S&P500先物",
+      "kind": "future",
+      "last_close": 7704.0,
+      "prev_close": 7714.0,
+      "pct_change": -0.12963443090484583,
+      "last_date": "2026-08-19",
+      "volume": 57034.0
+    },
+    {
+      "ticker": "NQ=F",
+      "name": "Nasdaq100先物",
+      "kind": "future",
+      "last_close": 29499.5,
+      "prev_close": 29586.0,
+      "pct_change": -0.2923680118975147,
+      "last_date": "2026-08-19",
+      "volume": 57529.0
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "target_date": "2026-08-18",
+  "us_market_open": true,
+  "jp_market_open": false,
+  "indices": [
+    {
+      "ticker": "^GSPC",
+      "name": "S&P500",
+      "last_close": 7691.759765625,
+      "prev_close": 7745.06005859375,
+      "pct_change": -0.6881843725615733,
+      "last_date": "2026-08-18",
+      "volume": 4602700000.0
+    },
+    {
+      "ticker": "^IXIC",
+      "name": "Nasdaq総合",
+      "last_close": 26289.7109375,
+      "prev_close": 26644.91015625,
+      "pct_change": -1.3330846929753393,
+      "last_date": "2026-08-18",
+      "volume": 7360790000.0
+    },
+    {
+      "ticker": "^DJI",
+      "name": "NYダウ",
+      "last_close": 53343.3984375,
+      "prev_close": 53459.78125,
+      "pct_change": -0.21770162499495926,
+      "last_date": "2026-08-18",
+      "volume": 427990000.0
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX(半導体)",
+      "last_close": 11992.4599609375,
+      "prev_close": 12621.0,
+      "pct_change": -4.980112820398541,
+      "last_date": "2026-08-18",
+      "volume": 0.0
+    },
+    {
+      "ticker": "^N225",
+      "name": "日経平均",
+      "last_close": 65205.6015625,
+      "prev_close": 67460.7265625,
+      "pct_change": -3.342870904170747,
+      "last_date": "2026-08-19",
+      "volume": 0.0
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "last_close": 417.8999938964844,
+      "prev_close": 431.0,
+      "pct_change": -3.039444571581351,
+      "last_date": "2026-08-19",
+      "volume": 15577950.0
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX(恐怖指数)",
+      "last_close": 15.84000015258789,
+      "prev_close": 15.1899995803833,
+      "pct_change": 4.279134892432879,
+      "last_date": "2026-08-18",
+      "volume": 0.0
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "last_close": 4.706000328063965,
+      "prev_close": 4.723999977111816,
+      "pct_change": -0.38102559557707805,
+      "last_date": "2026-08-18",
+      "volume": 0.0
+    }
+  ],
+  "us_movers": [
+    {
+      "ticker": "TRGP",
+      "name": "Targa Resources",
+      "pct_change": 7.13,
+      "last_close": 297.77,
+      "volume": 2486900.0
+    },
+    {
+      "ticker": "PODD",
+      "name": "Insulet Corporation",
+      "pct_change": 5.96,
+      "last_close": 148.03,
+      "volume": 1622300.0
+    },
+    {
+      "ticker": "ULTA",
+      "name": "Ulta Beauty",
+      "pct_change": 4.75,
+      "last_close": 516.74,
+      "volume": 773000.0
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit",
+      "pct_change": 4.41,
+      "last_close": 350.41,
+      "volume": 3892800.0
+    },
+    {
+      "ticker": "MNST",
+      "name": "Monster Beverage",
+      "pct_change": 4.09,
+      "last_close": 47.38,
+      "volume": 16316700.0
+    },
+    {
+      "ticker": "ERIE",
+      "name": "Erie Indemnity",
+      "pct_change": 3.71,
+      "last_close": 256.95,
+      "volume": 167100.0
+    },
+    {
+      "ticker": "GDDY",
+      "name": "GoDaddy",
+      "pct_change": 3.71,
+      "last_close": 95.8,
+      "volume": 1464000.0
+    },
+    {
+      "ticker": "TYL",
+      "name": "Tyler Technologies",
+      "pct_change": 3.66,
+      "last_close": 332.21,
+      "volume": 630600.0
+    },
+    {
+      "ticker": "LLY",
+      "name": "Lilly (Eli)",
+      "pct_change": 3.6,
+      "last_close": 1225.73,
+      "volume": 2506500.0
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "pct_change": 3.58,
+      "last_close": 263.14,
+      "volume": 4771700.0
+    },
+    {
+      "ticker": "COHR",
+      "name": "Coherent Corp.",
+      "pct_change": -12.75,
+      "last_close": 306.43,
+      "volume": 9575700.0
+    },
+    {
+      "ticker": "LITE",
+      "name": "Lumentum",
+      "pct_change": -9.87,
+      "last_close": 873.31,
+      "volume": 5993800.0
+    },
+    {
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "pct_change": -9.16,
+      "last_close": 903.68,
+      "volume": 4594700.0
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "pct_change": -9.01,
+      "last_close": 1625.78,
+      "volume": 18385900.0
+    },
+    {
+      "ticker": "CIEN",
+      "name": "Ciena",
+      "pct_change": -8.9,
+      "last_close": 405.54,
+      "volume": 3050300.0
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "pct_change": -8.77,
+      "last_close": 404.29,
+      "volume": 4288600.0
+    },
+    {
+      "ticker": "JBL",
+      "name": "Jabil",
+      "pct_change": -8.45,
+      "last_close": 338.62,
+      "volume": 1182200.0
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "pct_change": -7.82,
+      "last_close": 216.0,
+      "volume": 25737800.0
+    },
+    {
+      "ticker": "GLW",
+      "name": "Corning Inc.",
+      "pct_change": -7.68,
+      "last_close": 159.9,
+      "volume": 11004300.0
+    },
+    {
+      "ticker": "FIX",
+      "name": "Comfort Systems USA",
+      "pct_change": -7.55,
+      "last_close": 1739.08,
+      "volume": 475600.0
+    }
+  ],
+  "jp_movers": [],
+  "always_on": [
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "kind": "crypto",
+      "last_close": 64246.37890625,
+      "prev_close": 64506.25390625,
+      "pct_change": -0.40286791475705463,
+      "last_date": "2026-08-19",
+      "volume": 17831993344.0
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "イーサリアム",
+      "kind": "crypto",
+      "last_close": 1908.5999755859375,
+      "prev_close": 1912.2021484375,
+      "pct_change": -0.18837824518217472,
+      "last_date": "2026-08-19",
+      "volume": 6642265600.0
+    },
+    {
+      "ticker": "JPY=X",
+      "name": "ドル円",
+      "kind": "fx",
+      "last_close": 159.30999755859375,
+      "prev_close": 159.33999633789062,
+      "pct_change": -0.018826898447554807,
+      "last_date": "2026-08-19",
+      "volume": 0.0
+    },
+    {
+      "ticker": "EURUSD=X",
+      "name": "ユーロドル",
+      "kind": "fx",
+      "last_close": 1.1587486267089844,
+      "prev_close": 1.1582788228988647,
+      "pct_change": 0.04056051106449132,
+      "last_date": "2026-08-19",
+      "volume": 0.0
+    },
+    {
+      "ticker": "CL=F",
+      "name": "WTI原油先物",
+      "kind": "commodity",
+      "last_close": 84.69000244140625,
+      "prev_close": 84.94000244140625,
+      "pct_change": -0.2943253977093496,
+      "last_date": "2026-08-19",
+      "volume": 12818.0
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金先物",
+      "kind": "commodity",
+      "last_close": 4399.39990234375,
+      "prev_close": 4366.0,
+      "pct_change": 0.7650000536818524,
+      "last_date": "2026-08-19",
+      "volume": 29023.0
+    },
+    {
+      "ticker": "ES=F",
+      "name": "S&P500先物",
+      "kind": "future",
+      "last_close": 7704.5,
+      "prev_close": 7714.0,
+      "pct_change": -0.12315270935960854,
+      "last_date": "2026-08-19",
+      "volume": 56986.0
+    },
+    {
+      "ticker": "NQ=F",
+      "name": "Nasdaq100先物",
+      "kind": "future",
+      "last_close": 29503.25,
+      "prev_close": 29586.0,
+      "pct_change": -0.27969309808693055,
+      "last_date": "2026-08-19",
+      "volume": 57491.0
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "archive_url": "https://claude.ai/code/artifact/44efd266-b24d-47f0-a4fb-010f199a039a",
+  "archive_file_path": "C:/Users/gonta/pokeai/Sample Submission/market_wrap/archive.html",
+  "glossary_url": "https://claude.ai/code/artifact/5949e874-9385-4b5f-8a29-1c0ea709119a",
+  "glossary_file_path": "C:/Users/gonta/pokeai/Sample Submission/market_wrap/glossary.html",
+  "site_name": "なぜなぞ相場",
+  "repo_url": "https://github.com/goncharo55/nazenazosouba",
+  "notes": "archive_url / glossary_url は毎日のedition publish後にmasthead/footerからのリンク元として使う。archiveページ・glossaryページはeditionをpublishしてartifact_urlをDBに保存した後に再生成・再publishすること。glossary_urlが未設定(null)の場合は先にglossary.htmlを新規publishしてURLを取得し、ここに保存すること。"
+}
