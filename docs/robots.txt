@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://goncharo55.github.io/nazenazosouba/sitemap.xml

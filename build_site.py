@@ -9,16 +9,20 @@
   docs/archive.html          … バックナンバー一覧
   docs/glossary.html         … 用語辞典
   docs/editions/YYYY-MM-DD.html … 各日の記事の固定リンク
+  docs/sitemap.xml           … 検索エンジン向けサイトマップ
+  docs/robots.txt            … クロール許可 + サイトマップの場所
 
 Artifactツールは使わない。生成後は git add / commit / push するだけで
 GitHub Pages(mainブランチのdocs/を配信するよう設定済み)が自動的に反映する。
 """
 import db
 import render
+from datetime import date as _date
 from pathlib import Path
 
 BASE = Path(__file__).parent
 DOCS = BASE / "docs"
+SITE = render.SITE_PUBLIC_URL + render.SITE_ROOT
 
 
 def main():
@@ -59,6 +63,43 @@ def main():
     for meta in editions_meta:
         d = meta["edition_date"]
         db.update_artifact_url(d, render.edition_url(d))
+
+    build_sitemap(editions_meta, latest_date)
+    build_robots()
+
+
+def build_sitemap(editions_meta, latest_date):
+    today = _date.today().isoformat()
+    urls = [
+        (f"{SITE}/", today, "daily", "1.0"),
+        (f"{SITE}/archive.html", today, "daily", "0.6"),
+        (f"{SITE}/glossary.html", today, "weekly", "0.5"),
+    ]
+    for meta in editions_meta:
+        d = meta["edition_date"]
+        urls.append((render.SITE_PUBLIC_URL + render.edition_url(d), d, "monthly", "0.8"))
+
+    entries = "\n".join(
+        f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod>"
+        f"<changefreq>{freq}</changefreq><priority>{pri}</priority></url>"
+        for loc, lastmod, freq, pri in urls
+    )
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{entries}\n"
+        "</urlset>\n"
+    )
+    out = DOCS / "sitemap.xml"
+    out.write_text(xml, encoding="utf-8")
+    print("wrote", out)
+
+
+def build_robots():
+    text = f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n"
+    out = DOCS / "robots.txt"
+    out.write_text(text, encoding="utf-8")
+    print("wrote", out)
 
 
 if __name__ == "__main__":

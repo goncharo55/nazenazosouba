@@ -240,9 +240,16 @@ def esc(s):
     return htmlmod.escape(str(s), quote=False)
 
 
-def page_shell(title: str, body: str, description: str = "", standalone: bool = False) -> str:
+SITE_PUBLIC_URL = "https://goncharo55.github.io"  # SITE_ROOT("/nazenazosouba")と連結してcanonical URLを作る
+
+
+def page_shell(title: str, body: str, description: str = "", standalone: bool = False,
+                canonical_path: str | None = None, page_type: str = "website",
+                published_date: str | None = None) -> str:
     """standalone=True で完全なHTMLドキュメント(<!doctype html>から)を出力する。
-    GitHub Pagesなど、Artifactラッパーを経由しない配信先ではこちらを使う。"""
+    GitHub Pagesなど、Artifactラッパーを経由しない配信先ではこちらを使う。
+    canonical_path はSITE_ROOTからの絶対パス(例: "/", "/archive.html", "/editions/2026-08-19.html")。
+    指定するとcanonical link・OGP・JSON-LDを出力する(SEO用)。"""
     head_extra = f'<meta name="description" content="{esc(description)}">\n  ' if description else ""
     if not standalone:
         return f"""<title>{esc(title)}</title>
@@ -254,13 +261,38 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
 {body}
 </div>
 """
+    seo_tags = ""
+    if canonical_path:
+        canonical_url = SITE_PUBLIC_URL + canonical_path
+        seo_tags = f"""<link rel="canonical" href="{esc(canonical_url)}">
+  <meta property="og:type" content="{'article' if page_type == 'article' else 'website'}">
+  <meta property="og:site_name" content="{esc(SITE_NAME_A + SITE_NAME_B)}">
+  <meta property="og:title" content="{esc(title)}">
+  <meta property="og:description" content="{esc(description)}">
+  <meta property="og:url" content="{esc(canonical_url)}">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{esc(title)}">
+  <meta name="twitter:description" content="{esc(description)}">
+"""
+        if page_type == "article" and published_date:
+            json_ld = (
+                '{"@context":"https://schema.org","@type":"NewsArticle",'
+                f'"headline":{json.dumps(title, ensure_ascii=False)},'
+                f'"description":{json.dumps(description, ensure_ascii=False)},'
+                f'"datePublished":{json.dumps(published_date, ensure_ascii=False)},'
+                f'"url":{json.dumps(canonical_url, ensure_ascii=False)},'
+                '"author":{"@type":"Organization","name":' + json.dumps(SITE_NAME_A + SITE_NAME_B, ensure_ascii=False) + '},'
+                '"publisher":{"@type":"Organization","name":' + json.dumps(SITE_NAME_A + SITE_NAME_B, ensure_ascii=False) + '}}'
+            )
+            seo_tags += f'  <script type="application/ld+json">{json_ld}</script>\n'
     return f"""<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
-  {head_extra}<style>
+  {head_extra}{seo_tags}<style>
 {FONT_CSS}
 {BASE_CSS}
   </style>
@@ -438,8 +470,10 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
   </footer>
 """
     description = edition.get("summary", [""])[0] if edition.get("summary") else edition.get("headline", "")
-    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — {edition['edition_date']}", body,
-                       description=description, standalone=standalone)
+    return page_shell(f"{edition['headline']} — {SITE_NAME_A}{SITE_NAME_B}", body,
+                       description=description, standalone=standalone,
+                       canonical_path=edition_url(edition["edition_date"]), page_type="article",
+                       published_date=edition.get("generated_at", edition["edition_date"]))
 
 
 def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
@@ -475,7 +509,7 @@ def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
 """
     return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — バックナンバー", body,
                        description=f"{SITE_NAME_A}{SITE_NAME_B}のこれまでの配信一覧。日々の市場の動きをやさしい言葉で振り返れます。",
-                       standalone=standalone)
+                       standalone=standalone, canonical_path=archive_url())
 
 
 def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
@@ -543,4 +577,4 @@ def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
 """
     return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — 金融用語辞典", body,
                        description=f"{SITE_NAME_A}{SITE_NAME_B}の記事に出てくる金融用語や投資の基礎知識をまとめた検索可能な用語辞典。",
-                       standalone=standalone)
+                       standalone=standalone, canonical_path=glossary_url())
