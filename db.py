@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS editions (
     tags_json TEXT,
     narrative_json TEXT,
     lesson_title TEXT,
-    lesson_body TEXT,
+    lesson_body TEXT,        -- 未使用(過去の互換用)。本文は lesson_body_json に入る
+    lesson_body_json TEXT,   -- 段落のリスト(JSON配列)。edition["lesson_body_paragraphs"]の実体
     sources_note TEXT,
     artifact_url TEXT,  -- 実体は公開URL(GitHub Pages: render.edition_url()の値)。列名は歴史的経緯で旧名のまま
     generated_at TEXT
@@ -79,6 +80,10 @@ def get_conn():
 def init_db():
     conn = get_conn()
     conn.executescript(SCHEMA)
+    # 既存DBへの後方互換マイグレーション(列が無ければ足す)
+    cols = {row["name"] for row in conn.execute("PRAGMA table_info(editions)")}
+    if "lesson_body_json" not in cols:
+        conn.execute("ALTER TABLE editions ADD COLUMN lesson_body_json TEXT")
     conn.commit()
     conn.close()
     print(f"initialized {DB_PATH}")
@@ -96,17 +101,25 @@ def save_edition(edition: dict):
     conn.execute("DELETE FROM editions WHERE edition_date = ?", (edition["edition_date"],))
     conn.execute("DELETE FROM indices WHERE edition_date = ?", (edition["edition_date"],))
     conn.execute("DELETE FROM movers WHERE edition_date = ?", (edition["edition_date"],))
+    # lesson本文は "lesson_body_paragraphs"(リスト)が正。旧来の "lesson_body"(単一文字列)
+    # しか無い場合もそれを1段落として受け付ける(後方互換)。
+    lesson_paragraphs = edition.get("lesson_body_paragraphs")
+    if not lesson_paragraphs and edition.get("lesson_body"):
+        lesson_paragraphs = [edition["lesson_body"]]
+    lesson_paragraphs = lesson_paragraphs or []
+
     conn.execute(
         """INSERT INTO editions
            (edition_date, headline, eyebrow, summary_json, tags_json, narrative_json,
-            lesson_title, lesson_body, sources_note, artifact_url, generated_at)
+            lesson_title, lesson_body_json, sources_note, artifact_url, generated_at)
            VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
         (
             edition["edition_date"], edition["headline"], edition.get("eyebrow", ""),
             json.dumps(edition.get("summary", []), ensure_ascii=False),
             json.dumps(edition.get("tags", []), ensure_ascii=False),
             json.dumps(edition.get("narrative", {}), ensure_ascii=False),
-            edition.get("lesson_title", ""), edition.get("lesson_body", ""),
+            edition.get("lesson_title", ""),
+            json.dumps(lesson_paragraphs, ensure_ascii=False),
             edition.get("sources_note", ""), edition.get("artifact_url", ""),
             edition.get("generated_at", ""),
         ),
@@ -148,6 +161,7 @@ def get_edition(edition_date: str):
     e["summary"] = json.loads(e.pop("summary_json") or "[]")
     e["tags"] = json.loads(e.pop("tags_json") or "[]")
     e["narrative"] = json.loads(e.pop("narrative_json") or "{}")
+    e["lesson_body_paragraphs"] = json.loads(e.pop("lesson_body_json", None) or "[]")
     e["indices"] = [dict(r) for r in conn.execute(
         "SELECT ticker, name, value_text, delta, pct FROM indices WHERE edition_date = ?", (edition_date,))]
     e["movers"] = [dict(r) for r in conn.execute(
