@@ -125,8 +125,6 @@ BASE_CSS = """
   .nameplate a { color: inherit; text-decoration: none; }
   .tagline { font-size:13.5px; color: var(--ink-soft); margin:6px 0 0; }
   .masthead-meta { text-align:right; font-family:'IBM Plex Mono',monospace; font-size:13px; color: var(--ink-faint); line-height:1.6; }
-  .ai-badge { display:inline-block; margin-top:4px; font-family:'IBM Plex Sans',sans-serif; font-size:11px;
-    letter-spacing:0.06em; color: var(--brand); background: var(--brand-soft); border-radius:3px; padding:3px 8px; }
   .archive-link { font-size: 12.5px; margin-top: 6px; }
 
   .hero { margin-bottom: 36px; }
@@ -323,8 +321,7 @@ def masthead(date_label: str, archive_url: str | None = None, glossary_url: str 
         <p class="tagline">{esc(TAGLINE)}</p>
       </div>
       <div class="masthead-meta">
-        {esc(date_label)}<br>
-        <span class="ai-badge">AIによる自動生成</span>
+        {esc(date_label)}
         {nav_line}
       </div>
     </div>
@@ -463,7 +460,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
 
   <footer class="footer">
     <p class="sources">{edition.get('sources_note','')}</p>
-    <p>本ページはAI（Claude）が公開データと報道をもとに自動作成した市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>
+    <p>本ページは公開データと報道をもとに自動でまとめた市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>
     <p>{SITE_NAME_A}{SITE_NAME_B} ／ 生成日時: {esc(edition.get('generated_at',''))}
       ／ <a href="{esc(a_url)}">過去の記事一覧</a>
       ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
@@ -503,7 +500,7 @@ def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
   </section>
 
   <footer class="footer">
-    <p>{SITE_NAME_A}{SITE_NAME_B}は、AI（Claude）が公開データと報道をもとに毎営業日自動作成している市場概況です。特定の銘柄の売買を推奨するものではありません。
+    <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。特定の銘柄の売買を推奨するものではありません。
       ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
   </footer>
 """
@@ -552,7 +549,7 @@ def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
   </section>
 
   <footer class="footer">
-    <p>{SITE_NAME_A}{SITE_NAME_B}は、AI（Claude）が公開データと報道をもとに毎営業日自動作成している市場概況です。用語辞典は日々の記事をきっかけに少しずつ追加しています。</p>
+    <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。用語辞典は日々の記事をきっかけに少しずつ追加しています。</p>
   </footer>
 
   <script>
