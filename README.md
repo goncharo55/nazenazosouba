@@ -5,25 +5,38 @@
 
 ## 全体の流れ（この順で実行する）
 
-0. **リポジトリの取得と依存パッケージ**：クラウド実行の場合、まず https://github.com/goncharo55/nazenazosouba を
+0. **リポジトリの取得**：クラウド実行の場合、まず https://github.com/goncharo55/nazenazosouba を
    clone（またはpull）する。このリポジトリが `data/archive.db` を含む唯一の永続化先。
    作業はこのリポジトリのルート（＝このREADMEがあるディレクトリ）で行う。
-   フレッシュな環境では `pandas` / `numpy` / `scipy` / `yfinance` / `requests` が入っていない可能性が高いので、
-   最初に `pip install -r requirements.txt`（数十秒〜1分程度）を実行してから次に進むこと。
-   `python scan_movers.py` 等がImportErrorで落ちる場合はまずこれを疑う。
+   `db.py` / `render.py` / `publish_prep.py` は標準ライブラリのみで動くので、pip installは不要。
 
-1. **スキャン**：`python scan_movers.py` （引数なし＝今日の日付で実行）
-   - S&P500・日経225の全銘柄の当日騰落率と、24時間動く資産（BTC, ETH, ドル円, 原油, 金, 米株価指数先物）を取得
-   - `data/scan_YYYY-MM-DD.json` に出力。標準出力にファイルパスが出る
-   - `us_market_open` / `jp_market_open` を見て、その市場が休場だったかを判定できる
-   - 休場だった市場は `*_movers` が空配列になる → その日はその市場の個別銘柄セクションを書かず、
-     `always_on`（24時間資産）から話題を拾う。**動きが小さい資産を無理に取り上げるくらいなら
-     「今日は目立った動きはなかった」と書いてよいが、記事全体がスカスカにならないよう、
-     必ずどこかの市場・資産に材料を見つけること。**
+   **⚠ ネットワーク制約（重要・実測済み）**：このリポジトリを実行するクラウドサンドボックスは、
+   外部ネットワークアクセスがごく一部のドメインに限定されている（実測：`github.com` と `pypi.org` は
+   到達可能、`finance.yahoo.com` / `fred.stlouisfed.org` / `stooq.com` / `google.com` 等は
+   Bashからの生のcurlも、**WebFetchツールでの直接取得も**403でブロックされる。日付: 2026-08-19に確認）。
+   したがって **市場データの取得は必ずWebSearchツールで行うこと**。`scan_movers.py`
+   （yfinance依存）やBashでのAPI直叩き、WebFetchでの金融サイト取得は、クラウド実行では機能しない
+   （ローカルのインタラクティブなClaude Codeセッションなど、ネットワーク制限のない環境でのみ動く。
+   その場合は `pip install -r requirements.txt` の上で使ってよい）。
 
-2. **値動きの理由を調べる**（ここはAIが自分でやる：WebSearchツールを使う）
-   - `scan_movers.py` が出す候補（上位10＋下位10）の中から、実際に記事化する銘柄を選ぶ
-     （目安：各市場4〜9銘柄。値動きの大きさ・話題性・「他の銘柄と同じテーマで動いているか」で選ぶ）
+1. **WebSearchで当日の市場データを調べる**
+   - 指数・レートのスナップショット（それぞれ1クエリ程度）：
+     "S&P 500 close today", "NASDAQ composite close today", "Dow Jones close today",
+     "Philadelphia semiconductor index SOX today", "日経平均株価 終値 本日", "TOPIX 終値 本日",
+     "VIX index today", "10 year treasury yield today", "ドル円 為替レート 本日",
+     "ビットコイン 価格 本日" など、必要な指標を都度検索する。
+   - 値上がり/値下がりランキング：
+     "S&P 500 today gainers losers", "日経225 値上がり率 値下がり率 ランキング 本日" 等。
+     SlickCharts（slickcharts.com/market-movers）、Yahoo Financeのスクリーナー、株探（kabutan.jp）
+     などの結果が拾えることを確認済み。ここから実際に記事化する銘柄を選ぶ
+     （目安：各市場4〜9銘柄。値動きの大きさ・話題性・「他の銘柄と同じテーマで動いているか」で選ぶ）。
+   - 米国・日本どちらかの市場が休場の日は、個別銘柄ランキングのクエリで有効な当日結果が出ない
+     （前営業日のデータしか出てこない）ことで判別できる。休場ならその市場の個別銘柄セクションは書かず、
+     24時間資産（BTC, ETH, ドル円, 原油, 金, 株価指数先物など）や前営業日のデータで記事を補う。
+     **動きが小さい資産を無理に取り上げるくらいなら「今日は目立った動きはなかった」と書いてよいが、
+     記事全体がスカスカにならないよう、必ずどこかの市場・資産に材料を見つけること。**
+
+2. **値動きの理由を調べる**（引き続きWebSearchツールを使う。手順1と統合してもよい）
    - 各銘柄について `"<銘柄名> 株価 <理由 or 急落/急騰> <日付>"` のようなクエリでWebSearchする
    - 明確な材料が見つからない場合は無理に理由を作らない。
      `reason` には「明確な材料は確認できず」「〇〇株全体の値動きに連れ安（連れ高）」のように正直に書く。
@@ -31,9 +44,11 @@
    - 複数銘柄が同じ理由（例：金利上昇、AI相場の調整、決算シーズン）で動いている場合は、
      その「共通テーマ」を記事の見出し・3行まとめ・きょうの用語解説のネタにする（読み応えが出る）。
 
-3. **記事データを組み立てる**：`data/scan_YYYY-MM-DD.json` の数値と、手順2で調べた理由を使って
-   edition dict を作り、`data/edition_YYYY-MM-DD.json` に保存する。
-   スキーマは下記「edition JSONの形」を参照。過去の `build_edition_20260819.py` が実例。
+3. **記事データを組み立てる**：手順1・2でWebSearchから調べた数値・理由を使って edition dict を作り、
+   `data/edition_YYYY-MM-DD.json` に保存する。
+   スキーマは下記「edition JSONの形」を参照。過去の `build_edition_20260819.py` が実例
+   （ただしこれは初回セットアップ時にローカルで手作業で作った例で、`data/scan_*.json` を読んでいるのは
+   ローカル実行時の名残。クラウド実行ではWebSearchの結果から直接dictを組み立てればよい）。
 
 4. **DBに保存**：`python db.py save --json data/edition_YYYY-MM-DD.json`
    （SQLite: `data/archive.db`。同じ日付で再実行すると上書きされる）
@@ -123,10 +138,11 @@
   Googleなどの検索エンジンにクロールされない。本当にSEOを狙うなら、将来的に静的サイト（例：GitHub Pages,
   Vercel等）に配信する仕組みに切り替える必要がある。今の仕組みは「毎日自動でコンテンツを溜める土台」
   として割り切っている。
-- ウォッチリストの銘柄名・ticker対応表は `sp500_list.csv`（英語Wikipedia）と `nikkei225_list.csv`
-  （日本語Wikipedia）から一度だけ生成したもの。銘柄の入れ替え（S&P500の構成変更など）に追従するには
-  定期的に再生成が必要（`generate_universe.py` は未作成、必要になったら `scan_movers.py` の
-  `load_universe()` と同じロジックで作る）。
+- `scan_movers.py` / `sp500_list.csv` / `nikkei225_list.csv` / `requirements.txt` は、
+  ネットワーク制限のないローカル環境（このリポジトリを手元にcloneしたインタラクティブなClaude Code
+  セッションなど）で使うための、より精密なオプションのツール一式。クラウド自動実行では使われない
+  （上記「⚠ ネットワーク制約」を参照）。ローカルで検証したい場合は
+  `pip install -r requirements.txt && python scan_movers.py` で実行できる。
 - 米国が休場（祝日）の日は `us_market_open=False` になるが、これは「前営業日のデータしかない」ことの
   検知でもあるので、平常運転でも米国分は基本的に「前日」の扱いになる（このプロジェクトの想定通り）。
 - フォントは `fonts/*.b64.txt` にBase64化済み（Newsreader, IBM Plex Sans, IBM Plex Mono）。
