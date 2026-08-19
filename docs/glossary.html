@@ -95,8 +95,6 @@
   .nameplate a { color: inherit; text-decoration: none; }
   .tagline { font-size:13.5px; color: var(--ink-soft); margin:6px 0 0; }
   .masthead-meta { text-align:right; font-family:'IBM Plex Mono',monospace; font-size:13px; color: var(--ink-faint); line-height:1.6; }
-  .ai-badge { display:inline-block; margin-top:4px; font-family:'IBM Plex Sans',sans-serif; font-size:11px;
-    letter-spacing:0.06em; color: var(--brand); background: var(--brand-soft); border-radius:3px; padding:3px 8px; }
   .archive-link { font-size: 12.5px; margin-top: 6px; }
 
   .hero { margin-bottom: 36px; }
@@ -216,8 +214,7 @@
         <p class="tagline">むずかしい値動きを、やさしい言葉で。</p>
       </div>
       <div class="masthead-meta">
-        金融用語辞典<br>
-        <span class="ai-badge">AIによる自動生成</span>
+        金融用語辞典
         <div class="archive-link"><a href="/nazenazosouba/archive.html">過去の記事一覧</a></div>
       </div>
     </div>
@@ -231,17 +228,105 @@
 
   <div class="glossary-search-wrap">
     <input type="text" class="glossary-search" id="gsearch" placeholder="用語を検索（例：金利、決算、PER）" autocomplete="off">
-    <p class="glossary-count" id="gcount">19件の用語</p>
+    <p class="glossary-count" id="gcount">55件の用語</p>
   </div>
 
   <section class="glossary-list" id="glist">
-    <div class="glossary-item" data-search="per（株価収益率） かぶかしゅうえきりつ 株価が1株あたり利益の何倍まで買われているかを示す指標。数字が大きいほど「将来の成長への期待」が強く織り込まれている状態で、金利が上がると割高に見えやすくなります。">
+    <div class="glossary-item" data-search="アナリスト予想（コンセンサス） あなりすとよそう 証券会社などのアナリストが予想する、その企業の業績や株価目標の平均値。決算が発表されたとき、実際の数字がこのコンセンサスを上回ったか下回ったかで株価の反応が大きく変わります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">アナリスト予想（コンセンサス）</span>
+          <span class="glossary-reading">あなりすとよそう</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">証券会社などのアナリストが予想する、その企業の業績や株価目標の平均値。決算が発表されたとき、実際の数字がこのコンセンサスを上回ったか下回ったかで株価の反応が大きく変わります。</p>
+      </div>
+      <div class="glossary-item" data-search="roe（自己資本利益率） あーるおーいー 株主が出したお金（自己資本）に対して、企業がどれだけ効率よく利益を生み出しているかを示す指標。高いほど資本効率がよいとされ、投資家が企業の「稼ぐ力」を比較する際によく使われます。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">ROE（自己資本利益率）</span>
+          <span class="glossary-reading">あーるおーいー</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">株主が出したお金（自己資本）に対して、企業がどれだけ効率よく利益を生み出しているかを示す指標。高いほど資本効率がよいとされ、投資家が企業の「稼ぐ力」を比較する際によく使われます。</p>
+      </div>
+      <div class="glossary-item" data-search="移動平均線 いどうへいきんせん 一定期間（5日・25日・75日など）の株価の平均値をつなげて折れ線にしたもの。日々の細かい値動きをならして、相場のおおまかな方向性（トレンド）を見るために使われます。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">移動平均線</span>
+          <span class="glossary-reading">いどうへいきんせん</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">一定期間（5日・25日・75日など）の株価の平均値をつなげて折れ線にしたもの。日々の細かい値動きをならして、相場のおおまかな方向性（トレンド）を見るために使われます。</p>
+      </div>
+      <div class="glossary-item" data-search="インサイダー取引 いんさいだーとりひき 企業の未公表の重要情報を知る立場の人が、その情報をもとに株を売買すること。一般の投資家との公平性を損なうため法律で禁止されています。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">インサイダー取引</span>
+          <span class="glossary-reading">いんさいだーとりひき</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">企業の未公表の重要情報を知る立場の人が、その情報をもとに株を売買すること。一般の投資家との公平性を損なうため法律で禁止されています。</p>
+      </div>
+      <div class="glossary-item" data-search="インデックスファンド いんでっくすふぁんど 特定の指数（日経平均やs&amp;p500など）に連動する運用成績を目指す投資信託。個別銘柄を選ぶ手間がなく、コストも比較的低いため、長期の資産形成でよく使われます。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">インデックスファンド</span>
+          <span class="glossary-reading">いんでっくすふぁんど</span>
+          <span class="glossary-category">投資商品</span>
+        </div>
+        <p class="glossary-def">特定の指数（日経平均やS&amp;P500など）に連動する運用成績を目指す投資信託。個別銘柄を選ぶ手間がなく、コストも比較的低いため、長期の資産形成でよく使われます。</p>
+      </div>
+      <div class="glossary-item" data-search="etf（上場投資信託） いーてぃーえふ 日経平均やs&amp;p500のような指数に連動するように作られた、証券取引所で株のように売買できる投資信託。1つ買うだけで多くの銘柄に分散投資したのと同じ効果が得られます。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">ETF（上場投資信託）</span>
+          <span class="glossary-reading">いーてぃーえふ</span>
+          <span class="glossary-category">投資商品</span>
+        </div>
+        <p class="glossary-def">日経平均やS&amp;P500のような指数に連動するように作られた、証券取引所で株のように売買できる投資信託。1つ買うだけで多くの銘柄に分散投資したのと同じ効果が得られます。</p>
+      </div>
+      <div class="glossary-item" data-search="eps（1株当たり利益） いーぴーえす 企業の純利益を発行済株式数で割った数値。perを計算する元になる数字で、決算発表でepsが市場予想を上回ると「好決算」、下回ると「悪材料」と受け止められやすくなります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">EPS（1株当たり利益）</span>
+          <span class="glossary-reading">いーぴーえす</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">企業の純利益を発行済株式数で割った数値。PERを計算する元になる数字で、決算発表でEPSが市場予想を上回ると「好決算」、下回ると「悪材料」と受け止められやすくなります。</p>
+      </div>
+      <div class="glossary-item" data-search="fomc（米連邦公開市場委員会） えふおーえむしー アメリカの中央銀行にあたるfrb（連邦準備制度理事会）が金融政策（利上げ・利下げなど）を決定する会合。世界中の市場が結果と発言（議事要旨・記者会見）を注視する、最重要イベントの一つです。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">FOMC（米連邦公開市場委員会）</span>
+          <span class="glossary-reading">えふおーえむしー</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">アメリカの中央銀行にあたるFRB（連邦準備制度理事会）が金融政策（利上げ・利下げなど）を決定する会合。世界中の市場が結果と発言（議事要旨・記者会見）を注視する、最重要イベントの一つです。</p>
+      </div>
+      <div class="glossary-item" data-search="織り込み済み おりこみずみ これから起こると多くの投資家が予想している出来事が、すでに株価に反映されていること。予想通りの結果が出ても株価があまり動かなかったり、逆に下がったりするのは「材料が織り込み済みだったから」と説明されることがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">織り込み済み</span>
+          <span class="glossary-reading">おりこみずみ</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">これから起こると多くの投資家が予想している出来事が、すでに株価に反映されていること。予想通りの結果が出ても株価があまり動かなかったり、逆に下がったりするのは「材料が織り込み済みだったから」と説明されることがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="per（株価収益率） かぶかしゅうえきりつ 株価が1株あたり利益の何倍まで買われているかを示す指標。数字が大きいほど「将来の成長への期待」が強く織り込まれている状態で、金利が上がると割高に見えやすくなります。">
         <div class="glossary-item-head">
           <span class="glossary-term">PER（株価収益率）</span>
           <span class="glossary-reading">かぶかしゅうえきりつ</span>
           <span class="glossary-category">指標</span>
         </div>
         <p class="glossary-def">株価が1株あたり利益の何倍まで買われているかを示す指標。数字が大きいほど「将来の成長への期待」が強く織り込まれている状態で、金利が上がると割高に見えやすくなります。</p>
+      </div>
+      <div class="glossary-item" data-search="株式分割 かぶしきぶんかつ 1株を複数株に分けること（例：1株を2株に分割）。会社全体の価値は変わりませんが、1株あたりの価格が下がって買いやすくなるため、個人投資家の参加が増えて株価が上昇しやすいと言われることがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">株式分割</span>
+          <span class="glossary-reading">かぶしきぶんかつ</span>
+          <span class="glossary-category">企業行動</span>
+        </div>
+        <p class="glossary-def">1株を複数株に分けること（例：1株を2株に分割）。会社全体の価値は変わりませんが、1株あたりの価格が下がって買いやすくなるため、個人投資家の参加が増えて株価が上昇しやすいと言われることがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="空売り からうり 株を借りて先に売り、値下がりしたところで買い戻して差額を利益にする取引手法。株価が下がると利益が出る、通常の売買とは逆方向のポジションです。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">空売り</span>
+          <span class="glossary-reading">からうり</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">株を借りて先に売り、値下がりしたところで買い戻して差額を利益にする取引手法。株価が下がると利益が出る、通常の売買とは逆方向のポジションです。</p>
       </div>
       <div class="glossary-item" data-search="希薄化（増資） きはくか 企業が新しく株を発行してお金を調達すること（増資）で、1株あたりの利益や価値が薄まってしまう現象。資金調達自体はプラスでも、株数が増える分だけ既存株主の取り分が小さくなるため株価が下がりやすい要因になります。">
         <div class="glossary-item-head">
@@ -250,6 +335,30 @@
           <span class="glossary-category">企業行動</span>
         </div>
         <p class="glossary-def">企業が新しく株を発行してお金を調達すること（増資）で、1株あたりの利益や価値が薄まってしまう現象。資金調達自体はプラスでも、株数が増える分だけ既存株主の取り分が小さくなるため株価が下がりやすい要因になります。</p>
+      </div>
+      <div class="glossary-item" data-search="キャリートレード きゃりーとれーど 金利の低い通貨（例：円）でお金を借りて、金利の高い通貨や資産で運用し、その金利差で利益を狙う取引。この取引が急に巻き戻されると、為替や株式市場が大きく動くことがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">キャリートレード</span>
+          <span class="glossary-reading">きゃりーとれーど</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">金利の低い通貨（例：円）でお金を借りて、金利の高い通貨や資産で運用し、その金利差で利益を狙う取引。この取引が急に巻き戻されると、為替や株式市場が大きく動くことがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="金融相場・業績相場 きんゆうそうば・ぎょうせきそうば 低金利によるお金の余剰を背景に、企業業績以上に株価が上がる局面を金融相場、企業の実際の業績拡大を背景に株価が上がる局面を業績相場と呼びます。景気循環のサイクルを説明する際によく使われる分類です。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">金融相場・業績相場</span>
+          <span class="glossary-reading">きんゆうそうば・ぎょうせきそうば</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">低金利によるお金の余剰を背景に、企業業績以上に株価が上がる局面を金融相場、企業の実際の業績拡大を背景に株価が上がる局面を業績相場と呼びます。景気循環のサイクルを説明する際によく使われる分類です。</p>
+      </div>
+      <div class="glossary-item" data-search="逆イールド ぎゃくいーるど 通常は長期の国債の方が短期より金利が高くなりますが、これが逆転して短期金利の方が高くなる状態。過去、景気後退の前触れとして注目されることが多い現象です。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">逆イールド</span>
+          <span class="glossary-reading">ぎゃくいーるど</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">通常は長期の国債の方が短期より金利が高くなりますが、これが逆転して短期金利の方が高くなる状態。過去、景気後退の前触れとして注目されることが多い現象です。</p>
       </div>
       <div class="glossary-item" data-search="業績見通し（ガイダンス） ぎょうせきみとおし 企業が自ら発表する「これから先の業績はこうなりそうだ」という予測。今の決算そのものより、この先の見通しが良いか悪いかの方が株価への影響が大きいことがよくあります。">
         <div class="glossary-item-head">
@@ -267,6 +376,22 @@
         </div>
         <p class="glossary-def">企業が一定期間（四半期・通期など）の売上や利益を集計して発表すること。市場の事前予想と比べて良いか悪いかで、株価が大きく動くきっかけになります。</p>
       </div>
+      <div class="glossary-item" data-search="決算発表シーズン けっさんはっぴょうしーずん 多くの上場企業が四半期ごとの決算を発表する時期（日本は主に2・5・8・11月）。この期間は個別銘柄の値動きが決算内容に大きく左右され、相場全体のボラティリティも高まりやすくなります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">決算発表シーズン</span>
+          <span class="glossary-reading">けっさんはっぴょうしーずん</span>
+          <span class="glossary-category">企業行動</span>
+        </div>
+        <p class="glossary-def">多くの上場企業が四半期ごとの決算を発表する時期（日本は主に2・5・8・11月）。この期間は個別銘柄の値動きが決算内容に大きく左右され、相場全体のボラティリティも高まりやすくなります。</p>
+      </div>
+      <div class="glossary-item" data-search="ゴールデンクロス・デッドクロス ごーるでんくろす・でっどくろす 短期の移動平均線が長期の移動平均線を下から上に抜けることをゴールデンクロス（上昇のサインとされる）、逆に上から下に抜けることをデッドクロス（下落のサインとされる）と呼びます。あくまで過去の値動きに基づく経験則です。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">ゴールデンクロス・デッドクロス</span>
+          <span class="glossary-reading">ごーるでんくろす・でっどくろす</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">短期の移動平均線が長期の移動平均線を下から上に抜けることをゴールデンクロス（上昇のサインとされる）、逆に上から下に抜けることをデッドクロス（下落のサインとされる）と呼びます。あくまで過去の値動きに基づく経験則です。</p>
+      </div>
       <div class="glossary-item" data-search="先物（さきもの） さきもの 将来のある時点で、あらかじめ決めた価格で売買することを約束する取引。株式市場が閉まっている時間帯でも取引されているため、翌日の株式市場の値動きを予想する手がかりとしてよく参照されます。">
         <div class="glossary-item-head">
           <span class="glossary-term">先物（さきもの）</span>
@@ -274,6 +399,54 @@
           <span class="glossary-category">取引の基礎</span>
         </div>
         <p class="glossary-def">将来のある時点で、あらかじめ決めた価格で売買することを約束する取引。株式市場が閉まっている時間帯でも取引されているため、翌日の株式市場の値動きを予想する手がかりとしてよく参照されます。</p>
+      </div>
+      <div class="glossary-item" data-search="サプライズ決算 さぷらいずけっさん 市場のコンセンサス予想から大きく外れた決算内容のこと。良い方向のサプライズは株価急騰、悪い方向のサプライズは株価急落につながりやすくなります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">サプライズ決算</span>
+          <span class="glossary-reading">さぷらいずけっさん</span>
+          <span class="glossary-category">企業行動</span>
+        </div>
+        <p class="glossary-def">市場のコンセンサス予想から大きく外れた決算内容のこと。良い方向のサプライズは株価急騰、悪い方向のサプライズは株価急落につながりやすくなります。</p>
+      </div>
+      <div class="glossary-item" data-search="サポートライン・レジスタンスライン さぽーとらいん・れじすたんすらいん 過去に何度も株価が反発してきた価格帯を支持線（サポートライン）、何度も跳ね返されてきた価格帯を抵抗線（レジスタンスライン）と呼びます。多くの投資家が意識する価格帯として、実際に値動きの節目になりやすいとされています。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">サポートライン・レジスタンスライン</span>
+          <span class="glossary-reading">さぽーとらいん・れじすたんすらいん</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">過去に何度も株価が反発してきた価格帯を支持線（サポートライン）、何度も跳ね返されてきた価格帯を抵抗線（レジスタンスライン）と呼びます。多くの投資家が意識する価格帯として、実際に値動きの節目になりやすいとされています。</p>
+      </div>
+      <div class="glossary-item" data-search="信用取引 しんようとりひき 証券会社からお金や株を借りて行う、自己資金以上の金額の売買。手持ち資金より大きな利益を狙える一方、損失も大きくなりやすく、株価下落時に強制的に決済（追証・ロスカット）される仕組みがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">信用取引</span>
+          <span class="glossary-reading">しんようとりひき</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">証券会社からお金や株を借りて行う、自己資金以上の金額の売買。手持ち資金より大きな利益を狙える一方、損失も大きくなりやすく、株価下落時に強制的に決済（追証・ロスカット）される仕組みがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="cpi（消費者物価指数） しーぴーあい モノやサービスの価格がどれだけ上がった・下がったかを示す指標で、いわゆる「インフレ率」の元になる数字。この数字が予想より高いと、中央銀行が利上げに動くとの見方が強まりやすくなります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">CPI（消費者物価指数）</span>
+          <span class="glossary-reading">しーぴーあい</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">モノやサービスの価格がどれだけ上がった・下がったかを示す指標で、いわゆる「インフレ率」の元になる数字。この数字が予想より高いと、中央銀行が利上げに動くとの見方が強まりやすくなります。</p>
+      </div>
+      <div class="glossary-item" data-search="地合い じあい 個別銘柄の材料とは関係なく、市場全体が買われやすいか売られやすいかという雰囲気・地力のこと。「地合いが悪い」日は良い決算を出した銘柄まで一緒に売られてしまう、ということがよく起こります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">地合い</span>
+          <span class="glossary-reading">じあい</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">個別銘柄の材料とは関係なく、市場全体が買われやすいか売られやすいかという雰囲気・地力のこと。「地合いが悪い」日は良い決算を出した銘柄まで一緒に売られてしまう、ということがよく起こります。</p>
+      </div>
+      <div class="glossary-item" data-search="時価総額 じかそうがく 株価×発行済株式数で計算する、その企業全体の市場価値。株価そのものの高い安いより、時価総額の大きさの方が「企業の規模」を比較するには適しています。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">時価総額</span>
+          <span class="glossary-reading">じかそうがく</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">株価×発行済株式数で計算する、その企業全体の市場価値。株価そのものの高い安いより、時価総額の大きさの方が「企業の規模」を比較するには適しています。</p>
       </div>
       <div class="glossary-item" data-search="自社株買い じしゃかぶがい 企業が自社の株を市場で買い戻すこと。市場に出回る株の数が減るため1株あたりの価値が上がりやすく、また「経営陣が自社の株価を割安と考えている」というポジティブなサインとして受け止められることが多いです。">
         <div class="glossary-item-head">
@@ -283,6 +456,14 @@
         </div>
         <p class="glossary-def">企業が自社の株を市場で買い戻すこと。市場に出回る株の数が減るため1株あたりの価値が上がりやすく、また「経営陣が自社の株価を割安と考えている」というポジティブなサインとして受け止められることが多いです。</p>
       </div>
+      <div class="glossary-item" data-search="ストップ高・ストップ安 すとっぷだか・すとっぷやす 1日の値動きには取引所が定めた上限・下限があり、そこに到達すること。買いが殺到して上限に張り付くのがストップ高、売りが殺到して下限に張り付くのがストップ安で、需給の偏りが極端に強いサインです。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">ストップ高・ストップ安</span>
+          <span class="glossary-reading">すとっぷだか・すとっぷやす</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">1日の値動きには取引所が定めた上限・下限があり、そこに到達すること。買いが殺到して上限に張り付くのがストップ高、売りが殺到して下限に張り付くのがストップ安で、需給の偏りが極端に強いサインです。</p>
+      </div>
       <div class="glossary-item" data-search="sox指数（フィラデルフィア半導体指数） そっくすしすう 米国に上場する主要な半導体関連企業で構成される株価指数。半導体業界全体の勢いを見る代表的な指標として使われます。">
         <div class="glossary-item-head">
           <span class="glossary-term">SOX指数（フィラデルフィア半導体指数）</span>
@@ -290,6 +471,14 @@
           <span class="glossary-category">指標</span>
         </div>
         <p class="glossary-def">米国に上場する主要な半導体関連企業で構成される株価指数。半導体業界全体の勢いを見る代表的な指標として使われます。</p>
+      </div>
+      <div class="glossary-item" data-search="増配・減配 ぞうはい・げんぱい 企業が配当金を増やすことを増配、減らすことを減配と呼びます。増配は「業績に自信がある」というポジティブなサインとして、減配は逆にネガティブなサインとして受け止められやすい傾向があります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">増配・減配</span>
+          <span class="glossary-reading">ぞうはい・げんぱい</span>
+          <span class="glossary-category">企業行動</span>
+        </div>
+        <p class="glossary-def">企業が配当金を増やすことを増配、減らすことを減配と呼びます。増配は「業績に自信がある」というポジティブなサインとして、減配は逆にネガティブなサインとして受け止められやすい傾向があります。</p>
       </div>
       <div class="glossary-item" data-search="長期金利（10年国債利回り） ちょうききんり 国がお金を10年間借りるときの金利で、住宅ローン金利や企業の資金調達コストの目安になります。この金利が上がると、将来の利益をあてにして買われている成長株ほど株価が下がりやすくなります。">
         <div class="glossary-item-head">
@@ -306,6 +495,22 @@
           <span class="glossary-category">取引の基礎</span>
         </div>
         <p class="glossary-def">ある銘柄や指数が動いたことにつられて、直接の関係が薄い他の銘柄も同じ方向に動くこと。同じ業種・同じテーマの銘柄どうしでよく見られます。</p>
+      </div>
+      <div class="glossary-item" data-search="tob（株式公開買い付け） てぃーおーびー ある企業の株式を、期間・価格・株数をあらかじめ公表したうえで市場外で買い集めること。買収や完全子会社化の手段としてよく使われ、通常は市場価格にプレミアム（上乗せ）をつけた価格で提示されます。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">TOB（株式公開買い付け）</span>
+          <span class="glossary-reading">てぃーおーびー</span>
+          <span class="glossary-category">企業行動</span>
+        </div>
+        <p class="glossary-def">ある企業の株式を、期間・価格・株数をあらかじめ公表したうえで市場外で買い集めること。買収や完全子会社化の手段としてよく使われ、通常は市場価格にプレミアム（上乗せ）をつけた価格で提示されます。</p>
+      </div>
+      <div class="glossary-item" data-search="適時開示 てきじかいじ 上場企業が投資判断に影響を与える重要な情報（業績修正や大型契約など）を、証券取引所のルールに従って速やかに公表する制度。株価が急変する前後には、この適時開示が出ていることが多くあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">適時開示</span>
+          <span class="glossary-reading">てきじかいじ</span>
+          <span class="glossary-category">企業行動</span>
+        </div>
+        <p class="glossary-def">上場企業が投資判断に影響を与える重要な情報（業績修正や大型契約など）を、証券取引所のルールに従って速やかに公表する制度。株価が急変する前後には、この適時開示が出ていることが多くあります。</p>
       </div>
       <div class="glossary-item" data-search="テーマ株 てーまかぶ 「ai」「半導体」のような共通の物語（テーマ）でくくられて売買される銘柄群。個別の業績よりもテーマへの期待の強弱で株価が動きやすく、上がるときも下がるときもまとめて勢いがつきやすい特徴があります。">
         <div class="glossary-item-head">
@@ -339,6 +544,30 @@
         </div>
         <p class="glossary-def">東京証券取引所プライム市場に上場する企業全体の値動きを示す指数。日経平均が225銘柄の平均値であるのに対し、TOPIXはより広い銘柄群の時価総額をもとに算出するため、市場全体の実感に近いとされます。</p>
       </div>
+      <div class="glossary-item" data-search="ドルコスト平均法 どるこすとへいきんほう 値動きのあるものを一度に買わず、一定額を定期的に買い続ける投資手法。価格が高いときは少なく、安いときは多く買うことになるため、平均購入単価をならす効果があります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">ドルコスト平均法</span>
+          <span class="glossary-reading">どるこすとへいきんほう</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">値動きのあるものを一度に買わず、一定額を定期的に買い続ける投資手法。価格が高いときは少なく、安いときは多く買うことになるため、平均購入単価をならす効果があります。</p>
+      </div>
+      <div class="glossary-item" data-search="成行注文・指値注文 なりゆきちゅうもん・さしねちゅうもん 成行注文は「今の価格でいくらでもいいから売買する」注文、指値注文は「この価格になったら売買する」と価格を指定する注文。成行は約定しやすい代わりに想定外の価格で売買されるリスクがあり、指値は価格を守れる代わりに約定しない可能性があります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">成行注文・指値注文</span>
+          <span class="glossary-reading">なりゆきちゅうもん・さしねちゅうもん</span>
+          <span class="glossary-category">取引の基礎</span>
+        </div>
+        <p class="glossary-def">成行注文は「今の価格でいくらでもいいから売買する」注文、指値注文は「この価格になったら売買する」と価格を指定する注文。成行は約定しやすい代わりに想定外の価格で売買されるリスクがあり、指値は価格を守れる代わりに約定しない可能性があります。</p>
+      </div>
+      <div class="glossary-item" data-search="日銀短観 にちぎんたんかん 日本銀行が年4回、全国の企業に景況感などを聞いて発表する調査。企業自身の「今の景気をどう感じているか」を数値化したもので、日本経済の実感を測る代表的な指標です。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">日銀短観</span>
+          <span class="glossary-reading">にちぎんたんかん</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">日本銀行が年4回、全国の企業に景況感などを聞いて発表する調査。企業自身の「今の景気をどう感じているか」を数値化したもので、日本経済の実感を測る代表的な指標です。</p>
+      </div>
       <div class="glossary-item" data-search="日経平均株価 にっけいへいきんかぶか 日本経済新聞社が算出する、東証プライム市場の代表的な225銘柄から計算する株価指数。値がさ株（1株の値段が高い銘柄）の影響を受けやすい特徴があります。">
         <div class="glossary-item-head">
           <span class="glossary-term">日経平均株価</span>
@@ -354,6 +583,30 @@
           <span class="glossary-category">取引の基礎</span>
         </div>
         <p class="glossary-def">1株あたりの株価が高い銘柄のこと。日経平均のように単純平均型の指数では、値がさ株の値動きが指数全体に与える影響が大きくなります。</p>
+      </div>
+      <div class="glossary-item" data-search="配当性向 はいとうせいこう その期の純利益のうち、どれくらいの割合を配当金として株主に還元しているかを示す指標。高すぎると将来の投資余力が乏しいと見られ、低すぎると株主還元に消極的と見られることがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">配当性向</span>
+          <span class="glossary-reading">はいとうせいこう</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">その期の純利益のうち、どれくらいの割合を配当金として株主に還元しているかを示す指標。高すぎると将来の投資余力が乏しいと見られ、低すぎると株主還元に消極的と見られることがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="配当利回り はいとうりまわり 株価に対して年間の配当金がどれくらいの割合かを示す指標（年間配当÷株価）。株価が下がると配当利回りは自動的に上がるため、下落局面で「利回りが魅力的」という見方が出てくることがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">配当利回り</span>
+          <span class="glossary-reading">はいとうりまわり</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">株価に対して年間の配当金がどれくらいの割合かを示す指標（年間配当÷株価）。株価が下がると配当利回りは自動的に上がるため、下落局面で「利回りが魅力的」という見方が出てくることがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="pbr（株価純資産倍率） ぴーびーあーる 株価が1株あたりの純資産（会社を清算した場合の取り分の目安）の何倍まで買われているかを示す指標。1倍を割ると「解散価値より株価が安い」と見なされ、割安の目安として使われることがあります。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">PBR（株価純資産倍率）</span>
+          <span class="glossary-reading">ぴーびーあーる</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">株価が1株あたりの純資産（会社を清算した場合の取り分の目安）の何倍まで買われているかを示す指標。1倍を割ると「解散価値より株価が安い」と見なされ、割安の目安として使われることがあります。</p>
       </div>
       <div class="glossary-item" data-search="vix指数（恐怖指数） ぶいあいえっくすしすう 投資家が今後1カ月の株価変動をどれくらい大きく予想しているかを示す指数。数字が高いほど「先行き不安が強い」ことを表し、相場が急落する場面で跳ね上がる傾向があります。">
         <div class="glossary-item-head">
@@ -371,6 +624,22 @@
         </div>
         <p class="glossary-def">半導体製造装置業界で使われる指標で、その月の新規受注額を出荷額で割ったもの。1を上回れば「注文が出荷より多い＝需要が強い」ことを意味し、業界の先行きを見る手がかりになります。</p>
       </div>
+      <div class="glossary-item" data-search="ボラティリティ ぼらてぃりてぃ 価格変動の大きさ（振れ幅）のこと。ボラティリティが高いほど短期間で大きく値が動きやすく、リスクもリターンの機会も大きくなります。vix指数はこのボラティリティを数値化したものです。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">ボラティリティ</span>
+          <span class="glossary-reading">ぼらてぃりてぃ</span>
+          <span class="glossary-category">指標</span>
+        </div>
+        <p class="glossary-def">価格変動の大きさ（振れ幅）のこと。ボラティリティが高いほど短期間で大きく値が動きやすく、リスクもリターンの機会も大きくなります。VIX指数はこのボラティリティを数値化したものです。</p>
+      </div>
+      <div class="glossary-item" data-search="有事の円買い ゆうじのえんがい 世界的な危機や不安が高まったとき、比較的安全な資産とみなされる円が買われやすくなる現象。実際には局面によってドルが買われることもあり、常にこの通りになるとは限りません。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">有事の円買い</span>
+          <span class="glossary-reading">ゆうじのえんがい</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">世界的な危機や不安が高まったとき、比較的安全な資産とみなされる円が買われやすくなる現象。実際には局面によってドルが買われることもあり、常にこの通りになるとは限りません。</p>
+      </div>
       <div class="glossary-item" data-search="利益確定売り りえきかくていうり 含み益（買値より値上がりした分の利益）が出ている株を売って、利益を実際に確定させること。業績が悪くなくても、上がりすぎた株はこの売りで値下がりすることがあります。">
         <div class="glossary-item-head">
           <span class="glossary-term">利益確定売り</span>
@@ -378,6 +647,22 @@
           <span class="glossary-category">取引の基礎</span>
         </div>
         <p class="glossary-def">含み益（買値より値上がりした分の利益）が出ている株を売って、利益を実際に確定させること。業績が悪くなくても、上がりすぎた株はこの売りで値下がりすることがあります。</p>
+      </div>
+      <div class="glossary-item" data-search="リスクオン・リスクオフ りすくおん・りすくおふ 投資家全体がリスクを取って積極的に株などを買う地合いを「リスクオン」、逆にリスクを避けて債券や金などの安全資産に資金を移す地合いを「リスクオフ」と呼びます。相場全体のムードを表す言葉です。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">リスクオン・リスクオフ</span>
+          <span class="glossary-reading">りすくおん・りすくおふ</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">投資家全体がリスクを取って積極的に株などを買う地合いを「リスクオン」、逆にリスクを避けて債券や金などの安全資産に資金を移す地合いを「リスクオフ」と呼びます。相場全体のムードを表す言葉です。</p>
+      </div>
+      <div class="glossary-item" data-search="量的緩和・量的引き締め（qe・qt） りょうてきかんわ・りょうてきひきしめ 中央銀行が国債などを買って市場にお金を大量に流すのが量的緩和（qe）、逆に保有資産を減らしてお金を吸収するのが量的引き締め（qt）。株式市場にとって、qeは追い風、qtは向かい風になりやすいとされます。">
+        <div class="glossary-item-head">
+          <span class="glossary-term">量的緩和・量的引き締め（QE・QT）</span>
+          <span class="glossary-reading">りょうてきかんわ・りょうてきひきしめ</span>
+          <span class="glossary-category">経済</span>
+        </div>
+        <p class="glossary-def">中央銀行が国債などを買って市場にお金を大量に流すのが量的緩和（QE）、逆に保有資産を減らしてお金を吸収するのが量的引き締め（QT）。株式市場にとって、QEは追い風、QTは向かい風になりやすいとされます。</p>
       </div>
       <div class="glossary-item" data-search="割引率と現在価値 わりびきりつとげんざいかち 「将来もらえるお金は、今もらえるお金より価値が低い」という考え方にもとづき、将来の利益を今の価値に計算し直すときに使う割合。金利が上がるとこの割引率も上がり、将来の利益への期待で買われている株ほど理論上の株価が下がりやすくなります。">
         <div class="glossary-item-head">
@@ -391,7 +676,7 @@
   </section>
 
   <footer class="footer">
-    <p>なぜなぞ相場は、AI（Claude）が公開データと報道をもとに毎営業日自動作成している市場概況です。用語辞典は日々の記事をきっかけに少しずつ追加しています。</p>
+    <p>なぜなぞ相場は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。用語辞典は日々の記事をきっかけに少しずつ追加しています。</p>
   </footer>
 
   <script>
