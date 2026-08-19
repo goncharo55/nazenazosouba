@@ -24,6 +24,7 @@ DOCS = BASE / "docs"
 def main():
     DOCS.mkdir(exist_ok=True)
     (DOCS / "editions").mkdir(exist_ok=True)
+    (DOCS / ".nojekyll").touch()  # GitHub PagesにJekyll処理をスキップさせる(素のHTMLをそのまま配信)
 
     editions_meta = db.list_editions()
     if not editions_meta:
