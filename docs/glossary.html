@@ -104,7 +104,8 @@
     font-size: clamp(26px,4.2vw,38px); line-height:1.35; margin:0 0 18px; text-wrap: balance; color: var(--ink); }
   .tags { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
   .tag { font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--ink-soft); background: var(--surface-2);
-    border:1px solid var(--line); border-radius:999px; padding:4px 11px; }
+    border:1px solid var(--line); border-radius:999px; padding:4px 11px; text-decoration:none; transition:border-color .15s,color .15s; }
+  .tag:hover { color: var(--brand); border-color: var(--brand); }
   .summary-box { background: var(--surface); border:1px solid var(--line); border-left:3px solid var(--brand);
     border-radius:6px; padding:18px 22px; box-shadow: var(--shadow); }
   .summary-box h2 { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
@@ -116,10 +117,10 @@
   .ticker-section { margin: 40px 0; }
   .section-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--ink-faint); margin:0 0 12px; }
-  .ticker-strip { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; scrollbar-width: thin; }
-  .ticker-card { flex:0 0 auto; min-width:148px; background: var(--surface); border:1px solid var(--line);
+  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); gap:10px; }
+  .ticker-card { background: var(--surface); border:1px solid var(--line);
     border-radius:8px; padding:12px 14px; }
-  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; white-space:nowrap; }
+  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; }
   .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:18px;
     font-weight:500; color: var(--ink); margin-bottom:4px; }
   .ticker-card .t-change { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:12.5px;
@@ -191,6 +192,10 @@
   .archive-title a { color: var(--ink); text-decoration:none; }
   .archive-title a:hover { color: var(--brand); text-decoration:underline; }
   .archive-empty { color: var(--ink-soft); padding: 24px 0; }
+  .archive-filter-banner { background: var(--brand-soft); border:1px solid var(--line); border-radius:8px;
+    padding:12px 16px; margin: 0 0 8px; font-size:14px; color: var(--ink); }
+  .archive-filter-banner p { margin:0; }
+  .archive-filter-banner a { margin-left:10px; }
 
   /* Glossary page */
   .glossary-search-wrap { position: sticky; top: 0; background: var(--paper); padding: 6px 0 16px; z-index: 5; }
@@ -226,7 +231,7 @@
   <header class="masthead">
     <div class="masthead-row">
       <div>
-        <p class="nameplate"><a href="/nazenazosouba/archive.html">なぜなぞ<span>相場</span></a></p>
+        <p class="nameplate"><a href="/nazenazosouba/">なぜなぞ<span>相場</span></a></p>
         <p class="tagline">むずかしい値動きを、やさしい言葉で。</p>
       </div>
       <div class="masthead-meta">

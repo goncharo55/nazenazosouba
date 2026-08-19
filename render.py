@@ -12,6 +12,7 @@ db.get_edition() や自分で組み立てた dict を渡す。
 import html as htmlmod
 import json
 from pathlib import Path
+from urllib.parse import quote
 
 BASE = Path(__file__).parent
 FONTS = BASE / "fonts"
@@ -39,6 +40,11 @@ def glossary_url() -> str:
 
 def edition_url(edition_date: str) -> str:
     return f"{SITE_ROOT}/editions/{edition_date}.html"
+
+
+def tag_archive_url(tag: str) -> str:
+    """ハッシュタグ(例: "#AI相場")をクリックした先。バックナンバーを ?tag= で絞り込んだ状態で開く。"""
+    return f"{archive_url()}?tag={quote(tag.lstrip('#'))}"
 
 
 def _b64(name):
@@ -134,7 +140,8 @@ BASE_CSS = """
     font-size: clamp(26px,4.2vw,38px); line-height:1.35; margin:0 0 18px; text-wrap: balance; color: var(--ink); }
   .tags { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
   .tag { font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--ink-soft); background: var(--surface-2);
-    border:1px solid var(--line); border-radius:999px; padding:4px 11px; }
+    border:1px solid var(--line); border-radius:999px; padding:4px 11px; text-decoration:none; transition:border-color .15s,color .15s; }
+  .tag:hover { color: var(--brand); border-color: var(--brand); }
   .summary-box { background: var(--surface); border:1px solid var(--line); border-left:3px solid var(--brand);
     border-radius:6px; padding:18px 22px; box-shadow: var(--shadow); }
   .summary-box h2 { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
@@ -146,10 +153,10 @@ BASE_CSS = """
   .ticker-section { margin: 40px 0; }
   .section-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--ink-faint); margin:0 0 12px; }
-  .ticker-strip { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; scrollbar-width: thin; }
-  .ticker-card { flex:0 0 auto; min-width:148px; background: var(--surface); border:1px solid var(--line);
+  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); gap:10px; }
+  .ticker-card { background: var(--surface); border:1px solid var(--line);
     border-radius:8px; padding:12px 14px; }
-  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; white-space:nowrap; }
+  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; }
   .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:18px;
     font-weight:500; color: var(--ink); margin-bottom:4px; }
   .ticker-card .t-change { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:12.5px;
@@ -221,6 +228,10 @@ BASE_CSS = """
   .archive-title a { color: var(--ink); text-decoration:none; }
   .archive-title a:hover { color: var(--brand); text-decoration:underline; }
   .archive-empty { color: var(--ink-soft); padding: 24px 0; }
+  .archive-filter-banner { background: var(--brand-soft); border:1px solid var(--line); border-radius:8px;
+    padding:12px 16px; margin: 0 0 8px; font-size:14px; color: var(--ink); }
+  .archive-filter-banner p { margin:0; }
+  .archive-filter-banner a { margin-left:10px; }
 
   /* Glossary page */
   .glossary-search-wrap { position: sticky; top: 0; background: var(--paper); padding: 6px 0 16px; z-index: 5; }
@@ -322,8 +333,9 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
 
 def masthead(date_label: str, archive_url: str | None = None, glossary_url: str | None = None,
              page: str = "edition") -> str:
-    """page: 'edition' | 'archive' | 'glossary' — 現在表示中のページ種別(自分自身へのリンクは出さない)"""
-    home = f'<a href="{esc(archive_url)}">{SITE_NAME_A}<span>{SITE_NAME_B}</span></a>' if (archive_url and page != "archive") else f'{SITE_NAME_A}<span>{SITE_NAME_B}</span>'
+    """page: 'edition' | 'archive' | 'glossary' — 現在表示中のページ種別(archive/glossaryへの自分自身へのリンクは出さない)。
+    サイト名(なぜなぞ相場)自体は常に home_url()、つまり最新記事にリンクする。"""
+    home = f'<a href="{esc(home_url())}">{SITE_NAME_A}<span>{SITE_NAME_B}</span></a>'
     nav_links = []
     if archive_url and page != "archive":
         nav_links.append(f'<a href="{esc(archive_url)}">過去の記事一覧</a>')
@@ -424,17 +436,24 @@ def render_movers_panel(panel: dict) -> str:
 
 
 def render_quiz(quiz: dict | None) -> str:
-    """quiz: {"question": str, "choices": list[str], "answer_index": int, "explanation": str}
+    """quiz: {"question": str, "choices": list[str|{"text","explanation"}], "answer_index": int}
     未設定(None)なら空文字を返し、記事にクイズコーナー自体を出さない。
-    クリックした選択肢を正解/不正解の色で示し、正解と解説を表示するだけのシンプルなJS。"""
+    選択肢は文字列でもよいが、{"text","explanation"}形式にすると
+    「不正解の選択肢が実際は何の説明か」もその場で表示できる(誤答も学びになる設計)。"""
     if not quiz or not quiz.get("question") or not quiz.get("choices"):
         return ""
     question = esc(quiz["question"])
     answer_index = quiz.get("answer_index", 0)
-    explanation = esc(quiz.get("explanation", ""))
+    norm_choices = []
+    for c in quiz["choices"]:
+        if isinstance(c, dict):
+            norm_choices.append({"text": c.get("text", ""), "explanation": c.get("explanation", "")})
+        else:
+            norm_choices.append({"text": c, "explanation": ""})
     choices_html = "\n        ".join(
-        f'<li><button type="button" class="quiz-choice" data-index="{i}">{esc(c)}</button></li>'
-        for i, c in enumerate(quiz["choices"])
+        f'<li><button type="button" class="quiz-choice" data-index="{i}" '
+        f'data-explanation="{esc(c["explanation"])}">{esc(c["text"])}</button></li>'
+        for i, c in enumerate(norm_choices)
     )
     return f"""
   <section class="quiz" id="quiz">
@@ -445,7 +464,8 @@ def render_quiz(quiz: dict | None) -> str:
     </ul>
     <div class="quiz-result" id="quizResult">
       <p class="quiz-verdict" id="quizVerdict"></p>
-      <p>{explanation}</p>
+      <p id="quizPickedExplain"></p>
+      <p id="quizCorrectExplain"></p>
     </div>
   </section>
   <script>
@@ -454,6 +474,8 @@ def render_quiz(quiz: dict | None) -> str:
       var buttons = Array.prototype.slice.call(document.querySelectorAll('#quizChoices .quiz-choice'));
       var result = document.getElementById('quizResult');
       var verdict = document.getElementById('quizVerdict');
+      var pickedExplain = document.getElementById('quizPickedExplain');
+      var correctExplain = document.getElementById('quizCorrectExplain');
       buttons.forEach(function(btn) {{
         btn.addEventListener('click', function() {{
           var picked = parseInt(btn.getAttribute('data-index'), 10);
@@ -462,7 +484,17 @@ def render_quiz(quiz: dict | None) -> str:
             if (i === answerIndex) b.classList.add('is-correct');
             else if (i === picked) b.classList.add('is-wrong');
           }});
-          verdict.textContent = picked === answerIndex ? '正解！' : '不正解…正解は「' + buttons[answerIndex].textContent + '」でした。';
+          var isCorrect = picked === answerIndex;
+          verdict.textContent = isCorrect ? '正解！' : '不正解…';
+          var pickedExp = btn.getAttribute('data-explanation') || '';
+          pickedExplain.textContent = pickedExp ? ('選んだ「' + btn.textContent + '」：' + pickedExp) : '';
+          if (!isCorrect) {{
+            var correctBtn = buttons[answerIndex];
+            var correctExp = correctBtn.getAttribute('data-explanation') || '';
+            correctExplain.textContent = '正解「' + correctBtn.textContent + '」：' + correctExp;
+          }} else {{
+            correctExplain.textContent = '';
+          }}
           result.style.display = 'block';
         }});
       }});
@@ -474,7 +506,9 @@ def render_quiz(quiz: dict | None) -> str:
 def build_edition_html(edition: dict, standalone: bool = True) -> str:
     a_url, g_url = archive_url(), glossary_url()
     date_label = edition["edition_date"] + "分"
-    tags_html = "\n      ".join(f'<span class="tag">{esc(t)}</span>' for t in edition.get("tags", []))
+    tags_html = "\n      ".join(
+        f'<a class="tag" href="{esc(tag_archive_url(t))}">{esc(t)}</a>' for t in edition.get("tags", [])
+    )
     summary_html = "\n        ".join(f'<li>{esc(s)}</li>' for s in edition.get("summary", []))
     ticker_html = render_ticker_cards(edition.get("indices", []))
     narrative_html = render_narrative(edition.get("narrative", []))
@@ -545,7 +579,8 @@ def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
         d = e["edition_date"]
         headline = e["headline"]
         url = edition_url(d)
-        items.append(f"""<div class="archive-item">
+        data_tags = esc(",".join(t.lstrip("#") for t in e.get("tags", [])))
+        items.append(f"""<div class="archive-item" data-tags="{data_tags}">
         <span class="archive-date">{esc(d)}</span>
         <span class="archive-title"><a href="{esc(url)}">{esc(headline)}</a></span>
       </div>""")
@@ -560,9 +595,33 @@ def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
     <p style="color:var(--ink-soft); max-width:66ch;">これまでに配信した「{SITE_NAME_A}{SITE_NAME_B}」の一覧です。日々の値動きを振り返って、金融の勉強に役立ててください。</p>
   </section>
 
-  <section class="archive-list">
+  <div class="archive-filter-banner" id="archiveFilterBanner" style="display:none;">
+    <p><span id="archiveFilterLabel"></span><a href="{esc(archive_url())}">すべて表示に戻す</a></p>
+  </div>
+
+  <section class="archive-list" id="archiveList">
     {list_html}
+    <p class="archive-empty" id="archiveFilterEmpty" style="display:none;">このタグの記事はまだありません。</p>
   </section>
+
+  <script>
+    (function() {{
+      var params = new URLSearchParams(window.location.search);
+      var tag = params.get('tag');
+      if (!tag) return;
+      var items = Array.prototype.slice.call(document.querySelectorAll('#archiveList .archive-item'));
+      var visible = 0;
+      items.forEach(function(el) {{
+        var tags = (el.getAttribute('data-tags') || '').split(',');
+        var match = tags.indexOf(tag) !== -1;
+        el.style.display = match ? '' : 'none';
+        if (match) visible++;
+      }});
+      document.getElementById('archiveFilterLabel').textContent = '「#' + tag + '」の関連記事（' + visible + '件）　';
+      document.getElementById('archiveFilterBanner').style.display = 'block';
+      document.getElementById('archiveFilterEmpty').style.display = visible === 0 ? 'block' : 'none';
+    }})();
+  </script>
 
   <footer class="footer">
     <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。特定の銘柄の売買を推奨するものではありません。

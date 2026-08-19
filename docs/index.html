@@ -105,7 +105,8 @@
     font-size: clamp(26px,4.2vw,38px); line-height:1.35; margin:0 0 18px; text-wrap: balance; color: var(--ink); }
   .tags { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
   .tag { font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--ink-soft); background: var(--surface-2);
-    border:1px solid var(--line); border-radius:999px; padding:4px 11px; }
+    border:1px solid var(--line); border-radius:999px; padding:4px 11px; text-decoration:none; transition:border-color .15s,color .15s; }
+  .tag:hover { color: var(--brand); border-color: var(--brand); }
   .summary-box { background: var(--surface); border:1px solid var(--line); border-left:3px solid var(--brand);
     border-radius:6px; padding:18px 22px; box-shadow: var(--shadow); }
   .summary-box h2 { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
@@ -117,10 +118,10 @@
   .ticker-section { margin: 40px 0; }
   .section-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     color: var(--ink-faint); margin:0 0 12px; }
-  .ticker-strip { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; scrollbar-width: thin; }
-  .ticker-card { flex:0 0 auto; min-width:148px; background: var(--surface); border:1px solid var(--line);
+  .ticker-strip { display:grid; grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); gap:10px; }
+  .ticker-card { background: var(--surface); border:1px solid var(--line);
     border-radius:8px; padding:12px 14px; }
-  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; white-space:nowrap; }
+  .ticker-card .t-name { font-size:12.5px; color: var(--ink-soft); margin-bottom:6px; }
   .ticker-card .t-value { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:18px;
     font-weight:500; color: var(--ink); margin-bottom:4px; }
   .ticker-card .t-change { font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; font-size:12.5px;
@@ -192,6 +193,10 @@
   .archive-title a { color: var(--ink); text-decoration:none; }
   .archive-title a:hover { color: var(--brand); text-decoration:underline; }
   .archive-empty { color: var(--ink-soft); padding: 24px 0; }
+  .archive-filter-banner { background: var(--brand-soft); border:1px solid var(--line); border-radius:8px;
+    padding:12px 16px; margin: 0 0 8px; font-size:14px; color: var(--ink); }
+  .archive-filter-banner p { margin:0; }
+  .archive-filter-banner a { margin-left:10px; }
 
   /* Glossary page */
   .glossary-search-wrap { position: sticky; top: 0; background: var(--paper); padding: 6px 0 16px; z-index: 5; }
@@ -227,7 +232,7 @@
   <header class="masthead">
     <div class="masthead-row">
       <div>
-        <p class="nameplate"><a href="/nazenazosouba/archive.html">なぜなぞ<span>相場</span></a></p>
+        <p class="nameplate"><a href="/nazenazosouba/">なぜなぞ<span>相場</span></a></p>
         <p class="tagline">むずかしい値動きを、やさしい言葉で。</p>
       </div>
       <div class="masthead-meta">
@@ -241,11 +246,11 @@
     <p class="eyebrow">Today's Market</p>
     <h1 class="headline">日経平均が3.3%安、AI関連の「電線御三家」とソフトバンクGに強い売り</h1>
     <div class="tags">
-      <span class="tag">#AI相場</span>
-      <span class="tag">#電線株</span>
-      <span class="tag">#ソフトバンクG</span>
-      <span class="tag">#利益確定売り</span>
-      <span class="tag">#日経平均</span>
+      <a class="tag" href="/nazenazosouba/archive.html?tag=AI%E7%9B%B8%E5%A0%B4">#AI相場</a>
+      <a class="tag" href="/nazenazosouba/archive.html?tag=%E9%9B%BB%E7%B7%9A%E6%A0%AA">#電線株</a>
+      <a class="tag" href="/nazenazosouba/archive.html?tag=%E3%82%BD%E3%83%95%E3%83%88%E3%83%90%E3%83%B3%E3%82%AFG">#ソフトバンクG</a>
+      <a class="tag" href="/nazenazosouba/archive.html?tag=%E5%88%A9%E7%9B%8A%E7%A2%BA%E5%AE%9A%E5%A3%B2%E3%82%8A">#利益確定売り</a>
+      <a class="tag" href="/nazenazosouba/archive.html?tag=%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87">#日経平均</a>
     </div>
     <div class="summary-box">
       <h2>3行まとめ</h2>
@@ -468,14 +473,15 @@
     <p class="quiz-label">きょうのなぞなぞクイズ</p>
     <h3>きょうの用語解説に出てきた「テーマ株」について、正しい説明はどれ？</h3>
     <ul class="quiz-choices" id="quizChoices">
-        <li><button type="button" class="quiz-choice" data-index="0">同じ業種やテーマへの期待でまとめて値動きしやすい銘柄群のこと</button></li>
-        <li><button type="button" class="quiz-choice" data-index="1">上場したばかりの新興企業の株のこと</button></li>
-        <li><button type="button" class="quiz-choice" data-index="2">配当利回りが特に高い株のこと</button></li>
-        <li><button type="button" class="quiz-choice" data-index="3">国が発行している債券の一種</button></li>
+        <li><button type="button" class="quiz-choice" data-index="0" data-explanation="「テーマ株」そのものの説明です。業績よりも共通の期待(物語)でまとめて買われたり売られたりしやすい銘柄群を指します。">同じ業種やテーマへの期待でまとめて値動きしやすい銘柄群のこと</button></li>
+        <li><button type="button" class="quiz-choice" data-index="1" data-explanation="これは「新興株」の説明です。上場して間もない企業の株を指す言葉で、テーマ株とは別の概念です(新興株がテーマ株になることもあります)。">上場したばかりの新興企業の株のこと</button></li>
+        <li><button type="button" class="quiz-choice" data-index="2" data-explanation="これは「高配当株」の説明です。株価に対する配当金の割合が高い銘柄を指し、テーマ株とは別の切り口の分類です。">配当利回りが特に高い株のこと</button></li>
+        <li><button type="button" class="quiz-choice" data-index="3" data-explanation="これは「国債」の説明です。株ではなく、国が資金を借り入れるために発行する債券のことなので、テーマ株とは別物です。">国が発行している債券の一種</button></li>
     </ul>
     <div class="quiz-result" id="quizResult">
       <p class="quiz-verdict" id="quizVerdict"></p>
-      <p>「テーマ株」は業績そのものよりも、同じ期待(テーマ)でまとめて買われたり売られたりしやすい銘柄群を指す言葉です。個別のニュースが薄い日でも、テーマ全体の地合いにつられて動くことがあります。</p>
+      <p id="quizPickedExplain"></p>
+      <p id="quizCorrectExplain"></p>
     </div>
   </section>
   <script>
@@ -484,6 +490,8 @@
       var buttons = Array.prototype.slice.call(document.querySelectorAll('#quizChoices .quiz-choice'));
       var result = document.getElementById('quizResult');
       var verdict = document.getElementById('quizVerdict');
+      var pickedExplain = document.getElementById('quizPickedExplain');
+      var correctExplain = document.getElementById('quizCorrectExplain');
       buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
           var picked = parseInt(btn.getAttribute('data-index'), 10);
@@ -492,7 +500,17 @@
             if (i === answerIndex) b.classList.add('is-correct');
             else if (i === picked) b.classList.add('is-wrong');
           });
-          verdict.textContent = picked === answerIndex ? '正解！' : '不正解…正解は「' + buttons[answerIndex].textContent + '」でした。';
+          var isCorrect = picked === answerIndex;
+          verdict.textContent = isCorrect ? '正解！' : '不正解…';
+          var pickedExp = btn.getAttribute('data-explanation') || '';
+          pickedExplain.textContent = pickedExp ? ('選んだ「' + btn.textContent + '」：' + pickedExp) : '';
+          if (!isCorrect) {
+            var correctBtn = buttons[answerIndex];
+            var correctExp = correctBtn.getAttribute('data-explanation') || '';
+            correctExplain.textContent = '正解「' + correctBtn.textContent + '」：' + correctExp;
+          } else {
+            correctExplain.textContent = '';
+          }
           result.style.display = 'block';
         });
       });

@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS editions (
     lesson_body TEXT,        -- 未使用(過去の互換用)。本文は lesson_body_json に入る
     lesson_body_json TEXT,   -- 段落のリスト(JSON配列)。edition["lesson_body_paragraphs"]の実体
     quiz_question TEXT,      -- きょうのクイズコーナー(一問一答)。未設定ならNULLで、記事にセクション自体を出さない
-    quiz_choices_json TEXT,  -- 選択肢のリスト(JSON配列、2〜4件)
+    quiz_choices_json TEXT,  -- 選択肢のリスト(JSON配列、2〜4件)。各要素は{"text","explanation"}
     quiz_answer_index INTEGER, -- 正解のインデックス(0始まり)
-    quiz_explanation TEXT,   -- 正解発表時に出す解説
+    quiz_explanation TEXT,   -- 未使用(過去の互換用)。解説は quiz_choices_json の各選択肢に持たせる。列名は歴史的経緯で旧名のまま
     sources_note TEXT,
     artifact_url TEXT,  -- 実体は公開URL(GitHub Pages: render.edition_url()の値)。列名は歴史的経緯で旧名のまま
     generated_at TEXT
@@ -120,11 +120,19 @@ def save_edition(edition: dict):
     lesson_paragraphs = lesson_paragraphs or []
 
     # quiz は任意(未設定なら記事にクイズコーナーを出さない)。
+    # choices は文字列のリストでも {"text","explanation"} のリストでも受け付け、後者に正規化して保存する。
+    # 選択肢ごとの explanation を持たせることで、誤答を選んでも「その選択肢が実際は何の説明か」を出せる。
     quiz = edition.get("quiz") or {}
     quiz_question = quiz.get("question") or None
-    quiz_choices_json = json.dumps(quiz["choices"], ensure_ascii=False) if quiz.get("choices") else None
-    quiz_answer_index = quiz.get("answer_index") if quiz.get("choices") else None
-    quiz_explanation = quiz.get("explanation") or None
+    raw_choices = quiz.get("choices") or []
+    norm_choices = [
+        {"text": c.get("text", ""), "explanation": c.get("explanation", "")} if isinstance(c, dict)
+        else {"text": c, "explanation": ""}
+        for c in raw_choices
+    ]
+    quiz_choices_json = json.dumps(norm_choices, ensure_ascii=False) if norm_choices else None
+    quiz_answer_index = quiz.get("answer_index") if norm_choices else None
+    quiz_explanation = None  # 廃止(列は歴史的経緯で残すが、解説は quiz_choices_json 内の各選択肢に持たせる)
 
     conn.execute(
         """INSERT INTO editions
@@ -164,11 +172,16 @@ def save_edition(edition: dict):
 def list_editions(limit=365):
     conn = get_conn()
     rows = conn.execute(
-        "SELECT edition_date, headline, artifact_url, generated_at FROM editions "
+        "SELECT edition_date, headline, artifact_url, generated_at, tags_json FROM editions "
         "ORDER BY edition_date DESC LIMIT ?", (limit,)
     ).fetchall()
     conn.close()
-    return [dict(r) for r in rows]
+    out = []
+    for r in rows:
+        d = dict(r)
+        d["tags"] = json.loads(d.pop("tags_json") or "[]")
+        out.append(d)
+    return out
 
 
 def get_edition(edition_date: str):
@@ -185,13 +198,12 @@ def get_edition(edition_date: str):
     quiz_question = e.pop("quiz_question", None)
     quiz_choices_json = e.pop("quiz_choices_json", None)
     quiz_answer_index = e.pop("quiz_answer_index", None)
-    quiz_explanation = e.pop("quiz_explanation", None)
+    e.pop("quiz_explanation", None)  # 未使用の旧列
     if quiz_question and quiz_choices_json:
         e["quiz"] = {
             "question": quiz_question,
             "choices": json.loads(quiz_choices_json),
             "answer_index": quiz_answer_index,
-            "explanation": quiz_explanation or "",
         }
     else:
         e["quiz"] = None
