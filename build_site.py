@@ -59,6 +59,10 @@ def main():
     (DOCS / "glossary.html").write_text(glossary_html, encoding="utf-8")
     print("wrote", DOCS / "glossary.html")
 
+    privacy_html = render.build_privacy_html()
+    (DOCS / "privacy.html").write_text(privacy_html, encoding="utf-8")
+    print("wrote", DOCS / "privacy.html")
+
     # editions/ の永続URLもDBに記録しておく(将来の参照・整合性チェック用)
     for meta in editions_meta:
         d = meta["edition_date"]
@@ -74,6 +78,7 @@ def build_sitemap(editions_meta, latest_date):
         (f"{SITE}/", today, "daily", "1.0"),
         (f"{SITE}/archive.html", today, "daily", "0.6"),
         (f"{SITE}/glossary.html", today, "weekly", "0.5"),
+        (f"{SITE}/privacy.html", today, "yearly", "0.2"),
     ]
     for meta in editions_meta:
         d = meta["edition_date"]

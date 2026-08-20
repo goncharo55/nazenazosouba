@@ -211,9 +211,16 @@
   Pages自体の設定（Settings → Pages → Source: main branch, /docs）は初回のみ人間側で行う必要がある。
 - **SEO用のメタデータは実装済み**（2026-08-19〜）：canonical URL、OGP/Twitter Card、
   記事ページにはNewsArticle構造化データ(JSON-LD)、`docs/sitemap.xml`、`docs/robots.txt`を
-  `build_site.py`が自動生成する。ただし**Google Search Consoleへの登録・サイトマップ送信は
-  まだ人間側の作業として残っている**（自動化していない）。これをやらないと実際にインデックスされるまで
-  数週間〜数ヶ月と長くかかることがある。
+  `build_site.py`が自動生成する。
+- **Google Search Console登録・Googleタグ(GA4)設置は完了済み**（2026-08-19〜）。
+  サイト所有権確認ファイル（`docs/google*.html`）とGA4スクリプト（`render.py`の
+  `GA_MEASUREMENT_ID`、`page_shell()`が`<head>`直後に埋め込む）は設置済み。サイトマップも送信済み。
+- **プライバシーポリシー実装済み**（2026-08-20〜、`render.py`の`build_privacy_html()` →
+  `docs/privacy.html`）。Google AdSense審査を見据えて、Cookie/アクセス解析(GA4)/広告(将来の
+  AdSense利用を想定)/AIによるコンテンツ作成方法の開示/投資に関する免責事項/著作権/お問い合わせ
+  を含む。**お問い合わせ用メールアドレスは未設定**（`render.py`の`CONTACT_EMAIL`が空文字のまま）。
+  個人のGmailを直接載せたくないとのことなので、Googleグループ等の専用アドレスを作成したら
+  `CONTACT_EMAIL`に設定して`python build_site.py`で再生成すること。
 - `scan_movers.py` / `sp500_list.csv` / `nikkei225_list.csv` / `requirements.txt` は、
   ネットワーク制限のないローカル環境（このリポジトリを手元にcloneしたインタラクティブなClaude Code
   セッションなど）で使うための、より精密なオプションのツール一式。クラウド自動実行では使われない

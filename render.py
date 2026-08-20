@@ -41,6 +41,10 @@ def glossary_url() -> str:
     return f"{SITE_ROOT}/glossary.html"
 
 
+def privacy_url() -> str:
+    return f"{SITE_ROOT}/privacy.html"
+
+
 def edition_url(edition_date: str) -> str:
     return f"{SITE_ROOT}/editions/{edition_date}.html"
 
@@ -597,7 +601,8 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
     <p>本ページは公開データと報道をもとに自動でまとめた市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>
     <p>{SITE_NAME_A}{SITE_NAME_B} ／ 生成日時: {esc(edition.get('generated_at',''))}
       ／ <a href="{esc(a_url)}">過去の記事一覧</a>
-      ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
+      ／ <a href="{esc(g_url)}">金融用語辞典</a>
+      ／ <a href="{esc(privacy_url())}">プライバシーポリシー</a></p>
   </footer>
 """
     description = edition.get("summary", [""])[0] if edition.get("summary") else edition.get("headline", "")
@@ -660,7 +665,8 @@ def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
 
   <footer class="footer">
     <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。特定の銘柄の売買を推奨するものではありません。
-      ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
+      ／ <a href="{esc(g_url)}">金融用語辞典</a>
+      ／ <a href="{esc(privacy_url())}">プライバシーポリシー</a></p>
   </footer>
 """
     return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — バックナンバー", body,
@@ -708,7 +714,8 @@ def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
   </section>
 
   <footer class="footer">
-    <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。用語辞典は日々の記事をきっかけに少しずつ追加しています。</p>
+    <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。用語辞典は日々の記事をきっかけに少しずつ追加しています。
+      ／ <a href="{esc(privacy_url())}">プライバシーポリシー</a></p>
   </footer>
 
   <script>
@@ -734,3 +741,69 @@ def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
     return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — 金融用語辞典", body,
                        description=f"{SITE_NAME_A}{SITE_NAME_B}の記事に出てくる金融用語や投資の基礎知識をまとめた検索可能な用語辞典。",
                        standalone=standalone, canonical_path=glossary_url())
+
+
+# お問い合わせ用アドレス。個人のGmailを直接載せたくないとのことなので、
+# 専用のGoogleグループ等を作成したら実際のアドレスに差し替える。未設定の間はこの説明文のまま表示する。
+CONTACT_EMAIL = ""  # 例: "nazenazosouba-info@googlegroups.com"
+
+
+def build_privacy_html(standalone: bool = True) -> str:
+    a_url, g_url = archive_url(), glossary_url()
+    contact_line = (
+        f'<a href="mailto:{esc(CONTACT_EMAIL)}">{esc(CONTACT_EMAIL)}</a>' if CONTACT_EMAIL
+        else "（お問い合わせ用アドレスを準備中です。近日中にこちらに掲載します。）"
+    )
+    body = f"""
+  {masthead("プライバシーポリシー", a_url, g_url, page="privacy")}
+
+  <section class="hero">
+    <p class="eyebrow">Privacy Policy</p>
+    <h1 class="headline">プライバシーポリシー</h1>
+    <p style="color:var(--ink-soft); max-width:66ch;">制定日：2026年8月20日</p>
+  </section>
+
+  <section class="article">
+    <p>「{SITE_NAME_A}{SITE_NAME_B}」（以下「当サイト」といいます）は、本ページにおいて、当サイトが取得する情報の取り扱いについて説明します。当サイトをご利用いただくことで、本ポリシーの内容に同意いただいたものとみなします。</p>
+
+    <h3>運営者について</h3>
+    <p>当サイトは個人が運営する非商用の情報発信サイトです。会社等の組織ではなく、個人運営のためお問い合わせ先はメールのみとしています（下記「お問い合わせ」参照）。</p>
+
+    <h3>コンテンツの作成方法について</h3>
+    <p>当サイトの記事は、公開されている株価データや報道をもとに、AI（人工知能）による自動処理を活用して作成・編集しています。データの解釈や文章化の過程でAIを利用していますが、内容の正確性や品質については可能な範囲で配慮しています。とはいえ誤りを含む可能性があるため、記載内容の正確性・完全性を保証するものではありません。重要な判断をされる際は、必ず一次情報（各社の公式発表・証券会社の情報など）をご確認ください。</p>
+
+    <h3>投資に関する免責事項</h3>
+    <p>当サイトの記事は、金融・経済に関する知識を深めていただくための情報提供を目的としており、特定の銘柄・金融商品の売買を推奨するものではありません。投資は必ずご自身の判断と責任において行ってください。当サイトの情報を利用したことにより生じたいかなる損害についても、運営者は責任を負いかねます。</p>
+
+    <h3>アクセス解析ツール（Cookie）について</h3>
+    <p>当サイトは、サイトの利用状況を把握するためにGoogleアナリティクス（Google Analytics）を利用しています。Googleアナリティクスは、Cookieを使用してユーザーの利用状況を収集しますが、氏名・住所・メールアドレスなど個人を特定する情報は含まれません。この機能はCookieを無効にすることで収集を拒否することが可能ですので、お使いのブラウザの設定をご確認ください。収集されたデータはGoogleのプライバシーポリシーに基づいて管理されます。詳細は
+      <a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener">Googleのプライバシーポリシー</a>
+      をご確認ください。</p>
+
+    <h3>広告について</h3>
+    <p>当サイトは、将来的にGoogleアドセンスをはじめとする第三者配信の広告サービスを利用する場合があります。これらの広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookie（氏名・住所・メールアドレス・電話番号は含まれません）を使用することがあります。Googleが広告Cookieを使用することにより、当サイトや他のサイトへのアクセス情報に基づいて、Googleやそのパートナーが適切な広告を表示できるようになります。ユーザーは
+      <a href="https://adssettings.google.com/" target="_blank" rel="noopener">広告設定</a>
+      にアクセスすることで、パーソナライズ広告を無効にできます。</p>
+
+    <h3>著作権について</h3>
+    <p>当サイトの記事は、公開されている複数のデータ・報道を参照しつつ、独自の切り口でまとめたオリジナルコンテンツです。他サイトの文章や画像を許可なく転載することはありません。当サイトの文章・構成を許可なく転載することもご遠慮ください。引用を行う場合は、出典として当サイトへのリンクを明記してください。</p>
+
+    <h3>個人情報の取り扱いについて</h3>
+    <p>当サイトでは、お問い合わせいただいた際にメールアドレス等の情報をご提供いただく場合がありますが、これはお問い合わせへの対応以外の目的では使用しません。取得した情報を、ご本人の同意なく第三者に提供することはありません。</p>
+
+    <h3>お問い合わせ</h3>
+    <p>当サイトの内容やプライバシーポリシーに関するお問い合わせは、下記のメールアドレスまでお願いいたします。</p>
+    <p>{contact_line}</p>
+
+    <h3>プライバシーポリシーの変更について</h3>
+    <p>当サイトは、法令の変更や運営方針の見直しに応じて、本ポリシーの内容を予告なく変更することがあります。変更後のプライバシーポリシーは、本ページに掲載した時点から効力を生じるものとします。</p>
+  </section>
+
+  <footer class="footer">
+    <p>{SITE_NAME_A}{SITE_NAME_B}は、公開データと報道をもとに毎営業日自動でまとめている市場概況です。特定の銘柄の売買を推奨するものではありません。
+      ／ <a href="{esc(g_url)}">金融用語辞典</a></p>
+  </footer>
+"""
+    return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — プライバシーポリシー", body,
+                       description=f"{SITE_NAME_A}{SITE_NAME_B}のプライバシーポリシー。Cookie・アクセス解析・広告・免責事項について説明しています。",
+                       standalone=standalone, canonical_path=privacy_url())
