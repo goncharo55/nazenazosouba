@@ -218,7 +218,6 @@ BASE_CSS = """
   .quiz-choice:hover { border-color: var(--brand); }
   .quiz-choice.is-correct { border-color: var(--up); background: color-mix(in srgb, var(--up) 12%, var(--surface)); font-weight:600; }
   .quiz-choice.is-wrong { border-color: var(--down); background: color-mix(in srgb, var(--down) 10%, var(--surface)); }
-  .quiz-choice:disabled { cursor:default; }
   .quiz-result { display:none; font-size:14px; color: var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:4px; }
   .quiz-result p { margin:0 0 6px; max-width:66ch; }
   .quiz-result .quiz-verdict { font-weight:600; color: var(--ink); }
@@ -265,6 +264,17 @@ BASE_CSS = """
     .wrap { padding:0 16px 48px; }
     .masthead-meta { text-align:left; }
     .archive-item { flex-direction: column; gap: 4px; }
+
+    /* Market Snapshotはスマホだと1カラム=12段積みで縦に長すぎるので、
+       カードを小型化して3カラムに詰める(スクロール量を大きく減らす)。 */
+    .ticker-strip { grid-template-columns: repeat(3, 1fr); gap:6px; }
+    .ticker-card { padding:8px 8px; }
+    .ticker-card .t-name { font-size:10.5px; margin-bottom:1px; }
+    .ticker-card .t-asof { font-size:8.5px; margin-bottom:3px; }
+    .ticker-card .t-value { font-size:14px; margin-bottom:2px; }
+    .ticker-card .t-value .t-unit { font-size:9px; margin-left:1px; }
+    .ticker-card .t-change { font-size:9.5px; gap:2px; }
+    .ticker-card .t-change-label { font-size:8.5px; }
   }
 """
 
@@ -505,7 +515,7 @@ def render_quiz(quiz: dict | None) -> str:
         btn.addEventListener('click', function() {{
           var picked = parseInt(btn.getAttribute('data-index'), 10);
           buttons.forEach(function(b, i) {{
-            b.disabled = true;
+            b.classList.remove('is-correct', 'is-wrong');
             if (i === answerIndex) b.classList.add('is-correct');
             else if (i === picked) b.classList.add('is-wrong');
           }});
