@@ -11,6 +11,7 @@ db.get_edition() や自分で組み立てた dict を渡す。
 """
 import html as htmlmod
 import json
+import random
 from pathlib import Path
 from urllib.parse import quote
 
@@ -474,11 +475,14 @@ def render_movers_panel(panel: dict) -> str:
       </div>"""
 
 
-def render_quiz(quiz: dict | None) -> str:
+def render_quiz(quiz: dict | None, shuffle_seed: str | None = None) -> str:
     """quiz: {"question": str, "choices": list[str|{"text","explanation"}], "answer_index": int}
     未設定(None)なら空文字を返し、記事にクイズコーナー自体を出さない。
     選択肢は文字列でもよいが、{"text","explanation"}形式にすると
-    「不正解の選択肢が実際は何の説明か」もその場で表示できる(誤答も学びになる設計)。"""
+    「不正解の選択肢が実際は何の説明か」もその場で表示できる(誤答も学びになる設計)。
+    shuffle_seed（通常はedition_date）を渡すと、その値で決定的にシャッフルした順番で選択肢を表示する。
+    記事を書く側（人間でもAIでも）が「正解を先頭に置く」癖に頼らず、正解位置が記事ごとに散らばるようにするため。
+    同じseedなら常に同じ並びになるので、再ビルドしても表示がぶれることはない。"""
     if not quiz or not quiz.get("question") or not quiz.get("choices"):
         return ""
     question = esc(quiz["question"])
@@ -489,6 +493,11 @@ def render_quiz(quiz: dict | None) -> str:
             norm_choices.append({"text": c.get("text", ""), "explanation": c.get("explanation", "")})
         else:
             norm_choices.append({"text": c, "explanation": ""})
+    if shuffle_seed is not None:
+        order = list(range(len(norm_choices)))
+        random.Random(shuffle_seed).shuffle(order)
+        norm_choices = [norm_choices[i] for i in order]
+        answer_index = order.index(answer_index)
     choices_html = "\n        ".join(
         f'<li><button type="button" class="quiz-choice" data-index="{i}" '
         f'data-explanation="{esc(c["explanation"])}">{esc(c["text"])}</button></li>'
@@ -553,7 +562,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
     narrative_html = render_narrative(edition.get("narrative", []))
     movers_panels = group_movers(edition.get("movers", []))
     movers_html = "\n      ".join(render_movers_panel(p) for p in movers_panels.values())
-    quiz_html = render_quiz(edition.get("quiz"))
+    quiz_html = render_quiz(edition.get("quiz"), shuffle_seed=edition["edition_date"])
 
     body = f"""
   {masthead(date_label, a_url, g_url, page="edition")}

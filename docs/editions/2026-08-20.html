@@ -436,9 +436,9 @@
     <p class="quiz-label">きょうのなぞなぞクイズ</p>
     <h3>きょうの用語解説に出てきた「国債バイバック」について、正しい説明はどれ？</h3>
     <ul class="quiz-choices" id="quizChoices">
-        <li><button type="button" class="quiz-choice" data-index="0" data-explanation="「国債バイバック」そのものの説明です。財務省が国債を買い戻すことで市場に出回る量が減り、価格上昇（＝利回り低下）につながります。">財務省が発行済みの国債を市場から買い戻し、長期金利が下がりやすくなる仕組み</button></li>
-        <li><button type="button" class="quiz-choice" data-index="1" data-explanation="これは「量的緩和」の説明です。行う主体は中央銀行であり、財務省が行う国債バイバックとは別の政策です。">中央銀行が金融緩和のために国債を買い入れること</button></li>
-        <li><button type="button" class="quiz-choice" data-index="2" data-explanation="これは通常の「国債発行」の説明です。バイバックはその逆で、発行済みの国債を買い戻す操作を指します。">政府が新しく国債を追加発行して資金を調達すること</button></li>
+        <li><button type="button" class="quiz-choice" data-index="0" data-explanation="これは「量的緩和」の説明です。行う主体は中央銀行であり、財務省が行う国債バイバックとは別の政策です。">中央銀行が金融緩和のために国債を買い入れること</button></li>
+        <li><button type="button" class="quiz-choice" data-index="1" data-explanation="これは通常の「国債発行」の説明です。バイバックはその逆で、発行済みの国債を買い戻す操作を指します。">政府が新しく国債を追加発行して資金を調達すること</button></li>
+        <li><button type="button" class="quiz-choice" data-index="2" data-explanation="「国債バイバック」そのものの説明です。財務省が国債を買い戻すことで市場に出回る量が減り、価格上昇（＝利回り低下）につながります。">財務省が発行済みの国債を市場から買い戻し、長期金利が下がりやすくなる仕組み</button></li>
         <li><button type="button" class="quiz-choice" data-index="3" data-explanation="これは「社債の買い入れ消却」の説明です。国ではなく企業が行う点で似ていますが、対象が国債か社債かが異なります。">企業が自社の発行した社債を買い戻すこと</button></li>
     </ul>
     <div class="quiz-result" id="quizResult">
@@ -449,7 +449,7 @@
   </section>
   <script>
     (function() {
-      var answerIndex = 0;
+      var answerIndex = 2;
       var buttons = Array.prototype.slice.call(document.querySelectorAll('#quizChoices .quiz-choice'));
       var result = document.getElementById('quizResult');
       var verdict = document.getElementById('quizVerdict');
