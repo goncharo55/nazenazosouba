@@ -7,7 +7,8 @@
 出力:
   docs/index.html            … 最新記事のミラー(トップページ)
   docs/archive.html          … バックナンバー一覧
-  docs/glossary.html         … 用語辞典
+  docs/glossary.html         … 用語辞典(一覧・検索)
+  docs/glossary/<用語>.html  … 用語1件ごとの独立ページ(SEO用)
   docs/editions/YYYY-MM-DD.html … 各日の記事の固定リンク
   docs/sitemap.xml           … 検索エンジン向けサイトマップ
   docs/robots.txt            … クロール許可 + サイトマップの場所
@@ -37,9 +38,11 @@ def main():
 
     latest_date = editions_meta[0]["edition_date"]  # list_editions は新しい順
 
+    all_editions = []
     for meta in editions_meta:
         d = meta["edition_date"]
         edition = db.get_edition(d)
+        all_editions.append(edition)
         html = render.build_edition_html(edition)
         out = DOCS / "editions" / f"{d}.html"
         out.write_text(html, encoding="utf-8")
@@ -59,6 +62,8 @@ def main():
     (DOCS / "glossary.html").write_text(glossary_html, encoding="utf-8")
     print("wrote", DOCS / "glossary.html")
 
+    build_term_pages(terms, all_editions)
+
     privacy_html = render.build_privacy_html()
     (DOCS / "privacy.html").write_text(privacy_html, encoding="utf-8")
     print("wrote", DOCS / "privacy.html")
@@ -68,11 +73,30 @@ def main():
         d = meta["edition_date"]
         db.update_artifact_url(d, render.edition_url(d))
 
-    build_sitemap(editions_meta, latest_date)
+    build_sitemap(editions_meta, latest_date, terms)
     build_robots()
 
 
-def build_sitemap(editions_meta, latest_date):
+def build_term_pages(terms, all_editions):
+    """用語1件=1ページ(docs/glossary/<用語>.html)。「<用語>とは」の検索の入口にする。
+    DBから消えた用語の古いページは削除する(孤児ページが残らないように)。"""
+    out_dir = DOCS / "glossary"
+    out_dir.mkdir(exist_ok=True)
+    keep = set()
+    for t in terms:
+        name = render.term_slug(t["term"]) + ".html"
+        if name in keep:
+            print("WARNING: slug collision, skipped:", t["term"])
+            continue
+        keep.add(name)
+        (out_dir / name).write_text(render.build_term_html(t, terms, all_editions), encoding="utf-8")
+    for f in out_dir.glob("*.html"):
+        if f.name not in keep:
+            f.unlink()
+    print("wrote", len(keep), "term pages in", out_dir)
+
+
+def build_sitemap(editions_meta, latest_date, terms=()):
     today = _date.today().isoformat()
     urls = [
         (f"{SITE}/", today, "daily", "1.0"),
@@ -83,6 +107,9 @@ def build_sitemap(editions_meta, latest_date):
     for meta in editions_meta:
         d = meta["edition_date"]
         urls.append((render.SITE_PUBLIC_URL + render.edition_url(d), d, "monthly", "0.8"))
+    for t in terms:
+        urls.append((render.SITE_PUBLIC_URL + render.term_url(t["term"]),
+                     t.get("added_date") or today, "monthly", "0.5"))
 
     entries = "\n".join(
         f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod>"

@@ -244,6 +244,7 @@
   を含む。**お問い合わせ用メールアドレスは未設定**（`render.py`の`CONTACT_EMAIL`が空文字のまま）。
   個人のGmailを直接載せたくないとのことなので、Googleグループ等の専用アドレスを作成したら
   `CONTACT_EMAIL`に設定して`python build_site.py`で再生成すること。
+- **用語辞典は1語1ページ**（2026-10-27〜）：`build_site.py`が`docs/glossary/<用語>.html`を用語の数だけ自動生成し、`sitemap.xml`にも載せる。「<用語>とは」で検索されたときの入口にするため（以前は全用語が`glossary.html`1ページに詰まっていて個別の用語では検索に出なかった）。各ページには定義・その用語が出てきた記事・同カテゴリの用語へのリンクが付く。日次ルーティンで`add-glossary`した新語は、次の`build_site.py`実行で自動的にページ化される（追加作業は不要）。
 - `scan_movers.py` / `sp500_list.csv` / `nikkei225_list.csv` / `requirements.txt` は、
   ネットワーク制限のないローカル環境（このリポジトリを手元にcloneしたインタラクティブなClaude Code
   セッションなど）で使うための、より精密なオプションのツール一式。クラウド自動実行では使われない

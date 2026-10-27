@@ -12,6 +12,7 @@ db.get_edition() や自分で組み立てた dict を渡す。
 import html as htmlmod
 import json
 import random
+import re
 from pathlib import Path
 from urllib.parse import quote
 
@@ -44,6 +45,15 @@ def glossary_url() -> str:
 
 def privacy_url() -> str:
     return f"{SITE_ROOT}/privacy.html"
+
+
+def term_slug(term: str) -> str:
+    """用語を、ファイル名・URLにそのまま使える形にする(日本語はそのまま残し、危険な記号だけ潰す)。"""
+    return re.sub(r'[\\/:*?"<>|#%\s]+', "-", term).strip("-")
+
+
+def term_url(term: str) -> str:
+    return f"{SITE_ROOT}/glossary/{quote(term_slug(term))}.html"
 
 
 def edition_url(edition_date: str) -> str:
@@ -263,6 +273,17 @@ BASE_CSS = """
   .glossary-category { font-family:'IBM Plex Mono',monospace; font-size: 11px; color: var(--brand); background: var(--brand-soft);
     border-radius: 999px; padding: 2px 10px; }
   .glossary-def { font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; max-width: 66ch; margin: 0; }
+  a.glossary-term { text-decoration: none; }
+  a.glossary-term:hover { color: var(--brand); text-decoration: underline; }
+  .term-crumb { font-size: 13px; color: var(--ink-faint); margin: 0 0 14px; }
+  .term-meta { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 0 0 18px; }
+  .term-def { font-size: 17px; line-height: 1.95; max-width: 66ch; margin: 0 0 8px; }
+  .term-section { margin: 40px 0 0; }
+  .term-section h2 { font-family:'Newsreader','Yu Mincho','Hiragino Mincho ProN',serif; font-size: 19px; margin: 0 0 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .term-section ul { margin: 0; padding-left: 1.2em; }
+  .term-section li { margin: 0 0 8px; font-size: 15px; }
+  .term-section .term-date { font-family:'IBM Plex Mono',monospace; font-size: 12.5px; color: var(--ink-faint); margin-right: 8px; }
   .glossary-empty { display: none; color: var(--ink-soft); padding: 40px 0; text-align: center; }
 
   @media (max-width:560px) {
@@ -299,7 +320,7 @@ SITE_PUBLIC_URL = "https://goncharo55.github.io"  # SITE_ROOT("/nazenazosouba")�
 
 def page_shell(title: str, body: str, description: str = "", standalone: bool = False,
                 canonical_path: str | None = None, page_type: str = "website",
-                published_date: str | None = None) -> str:
+                published_date: str | None = None, extra_head: str = "") -> str:
     """standalone=True で完全なHTMLドキュメント(<!doctype html>から)を出力する。
     GitHub Pagesなど、Artifactラッパーを経由しない配信先ではこちらを使う。
     canonical_path はSITE_ROOTからの絶対パス(例: "/", "/archive.html", "/editions/2026-08-19.html")。
@@ -340,6 +361,7 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
                 '"publisher":{"@type":"Organization","name":' + json.dumps(SITE_NAME_A + SITE_NAME_B, ensure_ascii=False) + '}}'
             )
             seo_tags += f'  <script type="application/ld+json">{json_ld}</script>\n'
+    seo_tags += extra_head
     ga_tag = f"""<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -695,7 +717,7 @@ def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
         haystack = esc(f"{t['term']} {t.get('reading','')} {t['definition']}".lower())
         items.append(f"""<div class="glossary-item" data-search="{haystack}">
         <div class="glossary-item-head">
-          <span class="glossary-term">{term}</span>
+          <a class="glossary-term" href="{esc(term_url(t["term"]))}">{term}</a>
           {f'<span class="glossary-reading">{reading}</span>' if reading else ''}
           {f'<span class="glossary-category">{category}</span>' if category else ''}
         </div>
@@ -750,6 +772,105 @@ def build_glossary_html(terms: list[dict], standalone: bool = True) -> str:
     return page_shell(f"{SITE_NAME_A}{SITE_NAME_B} — 金融用語辞典", body,
                        description=f"{SITE_NAME_A}{SITE_NAME_B}の記事に出てくる金融用語や投資の基礎知識をまとめた検索可能な用語辞典。",
                        standalone=standalone, canonical_path=glossary_url())
+
+
+def _term_base(term: str) -> str:
+    """"PER（株価収益率）" -> "PER"。記事本文中でこの用語が出てくるかの検索キーに使う。"""
+    return re.split(r"[（(]", term, maxsplit=1)[0].strip()
+
+
+def find_related_editions(term: str, editions: list[dict], limit: int = 5) -> list[dict]:
+    """用語が本文に出てくる記事(新しい順)。editionsは db.get_edition() の辞書のリスト。"""
+    base = _term_base(term)
+    if len(base) < 2:
+        return []
+    hits = []
+    for e in sorted(editions, key=lambda x: x["edition_date"], reverse=True):
+        parts = [e.get("headline", ""), e.get("lesson_title", "")]
+        parts += e.get("summary", []) or []
+        parts += e.get("lesson_body_paragraphs", []) or []
+        for sec in e.get("narrative", []) or []:
+            parts += sec.get("paragraphs", []) or []
+        if base in "".join(parts):
+            hits.append(e)
+        if len(hits) >= limit:
+            break
+    return hits
+
+
+def build_term_html(term_row: dict, all_terms: list[dict], editions: list[dict],
+                    standalone: bool = True) -> str:
+    """用語1件ぶんの独立ページ。「<用語>とは」で検索されたときの入口にする。"""
+    term = term_row["term"]
+    reading = term_row.get("reading", "") or ""
+    category = term_row.get("category", "") or ""
+    definition = term_row["definition"]
+    a_url, g_url = archive_url(), glossary_url()
+
+    related_eds = find_related_editions(term, editions)
+    if related_eds:
+        li = "\n      ".join(
+            f'<li><span class="term-date">{esc(e["edition_date"])}</span>'
+            f'<a href="{esc(edition_url(e["edition_date"]))}">{esc(e["headline"])}</a></li>'
+            for e in related_eds
+        )
+        related_ed_html = f"""<section class="term-section">
+    <h2>この言葉が出てきた記事</h2>
+    <ul>
+      {li}
+    </ul>
+  </section>"""
+    else:
+        related_ed_html = ""
+
+    same_cat = [t for t in all_terms if t["term"] != term and category and t.get("category") == category][:8]
+    if same_cat:
+        li = "\n      ".join(f'<li><a href="{esc(term_url(t["term"]))}">{esc(t["term"])}</a></li>' for t in same_cat)
+        related_term_html = f"""<section class="term-section">
+    <h2>あわせて読みたい用語（{esc(category)}）</h2>
+    <ul>
+      {li}
+    </ul>
+  </section>"""
+    else:
+        related_term_html = ""
+
+    body = f"""
+  {masthead("金融用語辞典", a_url, g_url, page="term")}
+
+  <p class="term-crumb"><a href="{esc(g_url)}">金融用語辞典</a> ／ {esc(term)}</p>
+
+  <section class="hero">
+    <p class="eyebrow">Glossary</p>
+    <h1 class="headline">{esc(term)}とは？</h1>
+    <div class="term-meta">
+      {f'<span class="glossary-reading">{esc(reading)}</span>' if reading else ''}
+      {f'<span class="glossary-category">{esc(category)}</span>' if category else ''}
+    </div>
+    <p class="term-def">{esc(definition)}</p>
+  </section>
+
+  {related_ed_html}
+  {related_term_html}
+
+  <footer class="footer">
+    <p>{SITE_NAME_A}{SITE_NAME_B}の用語解説は、一般的な金融知識の紹介であり、特定の銘柄・金融商品の売買を推奨するものではありません。
+      ／ <a href="{esc(g_url)}">用語辞典トップ</a>
+      ／ <a href="{esc(privacy_url())}">プライバシーポリシー</a></p>
+  </footer>
+"""
+    desc = definition if len(definition) <= 110 else definition[:108] + "…"
+    json_ld = json.dumps({
+        "@context": "https://schema.org", "@type": "DefinedTerm",
+        "name": term, "description": definition,
+        "url": SITE_PUBLIC_URL + term_url(term),
+        "inDefinedTermSet": {"@type": "DefinedTermSet",
+                              "name": f"{SITE_NAME_A}{SITE_NAME_B} 金融用語辞典",
+                              "url": SITE_PUBLIC_URL + g_url},
+    }, ensure_ascii=False)
+    return page_shell(f"{term}とは？意味をやさしく解説 — {SITE_NAME_A}{SITE_NAME_B}", body,
+                       description=desc, standalone=standalone, canonical_path=term_url(term),
+                       extra_head=f'  <script type="application/ld+json">{json_ld}</script>\n')
 
 
 # お問い合わせ用アドレス。個人のGmailを直接載せたくないとのことなので、

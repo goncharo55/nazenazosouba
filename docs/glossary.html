@@ -226,6 +226,17 @@
   .glossary-category { font-family:'IBM Plex Mono',monospace; font-size: 11px; color: var(--brand); background: var(--brand-soft);
     border-radius: 999px; padding: 2px 10px; }
   .glossary-def { font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; max-width: 66ch; margin: 0; }
+  a.glossary-term { text-decoration: none; }
+  a.glossary-term:hover { color: var(--brand); text-decoration: underline; }
+  .term-crumb { font-size: 13px; color: var(--ink-faint); margin: 0 0 14px; }
+  .term-meta { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 0 0 18px; }
+  .term-def { font-size: 17px; line-height: 1.95; max-width: 66ch; margin: 0 0 8px; }
+  .term-section { margin: 40px 0 0; }
+  .term-section h2 { font-family:'Newsreader','Yu Mincho','Hiragino Mincho ProN',serif; font-size: 19px; margin: 0 0 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .term-section ul { margin: 0; padding-left: 1.2em; }
+  .term-section li { margin: 0 0 8px; font-size: 15px; }
+  .term-section .term-date { font-family:'IBM Plex Mono',monospace; font-size: 12.5px; color: var(--ink-faint); margin-right: 8px; }
   .glossary-empty { display: none; color: var(--ink-soft); padding: 40px 0; text-align: center; }
 
   @media (max-width:560px) {
@@ -277,7 +288,7 @@
   <section class="glossary-list" id="glist">
     <div class="glossary-item" data-search="コンフィデンシャル・ファイリング（非公開のipo申請）  未上場の大型企業が、sec(米証券取引委員会)にipo(新規株式公開)の登録書類を提出しても、その内容を一般には公開せず、投資家向け説明会(ロードショー)の開始直前になって初めて公開する手続き。市場環境の悪化時に目立たずipoを延期・撤回できる柔軟性や、事業計画の詳細を競合に早期に知られずに済む利点があり、評価額の大きい未上場企業がよく利用する。2026年10月にアンソロピックがこの方式でipo申請したと伝わったことが、26日の米ハイテク株高・27日の東京市場での半導体株買いの発端になった。">
         <div class="glossary-item-head">
-          <span class="glossary-term">コンフィデンシャル・ファイリング（非公開のIPO申請）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%83%87%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%BB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%88%E9%9D%9E%E5%85%AC%E9%96%8B%E3%81%AEIPO%E7%94%B3%E8%AB%8B%EF%BC%89.html">コンフィデンシャル・ファイリング（非公開のIPO申請）</a>
           
           
         </div>
@@ -285,7 +296,7 @@
       </div>
       <div class="glossary-item" data-search="アナリスト予想（コンセンサス） あなりすとよそう 証券会社などのアナリストが予想する、その企業の業績や株価目標の平均値。決算が発表されたとき、実際の数字がこのコンセンサスを上回ったか下回ったかで株価の反応が大きく変わります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">アナリスト予想（コンセンサス）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%A2%E3%83%8A%E3%83%AA%E3%82%B9%E3%83%88%E4%BA%88%E6%83%B3%EF%BC%88%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%B5%E3%82%B9%EF%BC%89.html">アナリスト予想（コンセンサス）</a>
           <span class="glossary-reading">あなりすとよそう</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -293,7 +304,7 @@
       </div>
       <div class="glossary-item" data-search="roe（自己資本利益率） あーるおーいー 株主が出したお金（自己資本）に対して、企業がどれだけ効率よく利益を生み出しているかを示す指標。高いほど資本効率がよいとされ、投資家が企業の「稼ぐ力」を比較する際によく使われます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ROE（自己資本利益率）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/ROE%EF%BC%88%E8%87%AA%E5%B7%B1%E8%B3%87%E6%9C%AC%E5%88%A9%E7%9B%8A%E7%8E%87%EF%BC%89.html">ROE（自己資本利益率）</a>
           <span class="glossary-reading">あーるおーいー</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -301,7 +312,7 @@
       </div>
       <div class="glossary-item" data-search="イコールウエイト指数（等金額加重指数） いこーるうえいとしすう 構成銘柄を時価総額の大小に関わらず均等な金額ずつ組み入れて計算する株価指数。値がさの大型株1社の値動きに指数全体が引っ張られにくく、「平均的な1銘柄」の実力に近い動きをする。時価総額加重平均型の指数と比較することで、相場の強さが一部の銘柄に偏っているかどうかを確認できる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">イコールウエイト指数（等金額加重指数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%A4%E3%82%B3%E3%83%BC%E3%83%AB%E3%82%A6%E3%82%A8%E3%82%A4%E3%83%88%E6%8C%87%E6%95%B0%EF%BC%88%E7%AD%89%E9%87%91%E9%A1%8D%E5%8A%A0%E9%87%8D%E6%8C%87%E6%95%B0%EF%BC%89.html">イコールウエイト指数（等金額加重指数）</a>
           <span class="glossary-reading">いこーるうえいとしすう</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -309,7 +320,7 @@
       </div>
       <div class="glossary-item" data-search="行って来い いってこい 株価や指数が一時大きく上昇（または下落）した後、値動きが反転して元の水準近辺まで戻ってしまうこと。「寄り天」と似た場面で使われることもあるが、必ずしも始値がその日の高値・安値だったとは限らない点が異なる、より広い意味の相場用語。">
         <div class="glossary-item-head">
-          <span class="glossary-term">行って来い</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E8%A1%8C%E3%81%A3%E3%81%A6%E6%9D%A5%E3%81%84.html">行って来い</a>
           <span class="glossary-reading">いってこい</span>
           <span class="glossary-category">相場格言・値動き</span>
         </div>
@@ -317,7 +328,7 @@
       </div>
       <div class="glossary-item" data-search="イディオシンクラティックリスク（固有リスク・個別リスク） いでぃおしんくらてぃっくりすく 特定の企業や業界だけに関わる要因から生じるリスクのこと。経営トップの交代、特定企業の業績・契約関係の変化、個別の不祥事などが典型例。システマティックリスクとは異なり、関係のない複数の銘柄・業種に分散して投資することで理論上は打ち消すことができるとされる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">イディオシンクラティックリスク（固有リスク・個別リスク）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%A4%E3%83%87%E3%82%A3%E3%82%AA%E3%82%B7%E3%83%B3%E3%82%AF%E3%83%A9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%AF%EF%BC%88%E5%9B%BA%E6%9C%89%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%BB%E5%80%8B%E5%88%A5%E3%83%AA%E3%82%B9%E3%82%AF%EF%BC%89.html">イディオシンクラティックリスク（固有リスク・個別リスク）</a>
           <span class="glossary-reading">いでぃおしんくらてぃっくりすく</span>
           <span class="glossary-category">リスク</span>
         </div>
@@ -325,7 +336,7 @@
       </div>
       <div class="glossary-item" data-search="移動平均線 いどうへいきんせん 一定期間（5日・25日・75日など）の株価の平均値をつなげて折れ線にしたもの。日々の細かい値動きをならして、相場のおおまかな方向性（トレンド）を見るために使われます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">移動平均線</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87%E7%B7%9A.html">移動平均線</a>
           <span class="glossary-reading">いどうへいきんせん</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -333,7 +344,7 @@
       </div>
       <div class="glossary-item" data-search="インサイダー取引 いんさいだーとりひき 企業の未公表の重要情報を知る立場の人が、その情報をもとに株を売買すること。一般の投資家との公平性を損なうため法律で禁止されています。">
         <div class="glossary-item-head">
-          <span class="glossary-term">インサイダー取引</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%A4%E3%83%B3%E3%82%B5%E3%82%A4%E3%83%80%E3%83%BC%E5%8F%96%E5%BC%95.html">インサイダー取引</a>
           <span class="glossary-reading">いんさいだーとりひき</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -341,7 +352,7 @@
       </div>
       <div class="glossary-item" data-search="インデックス効果（指数採用効果） いんでっくすこうか ある銘柄が主要な株価指数（s&amp;p100やs&amp;p500、日経平均など）に新たに採用・除外されると決まった際、その指数に連動するインデックスファンドやetfが機械的に構成銘柄を入れ替えるために生じる需給変化。業績や新製品といった個別の材料とは関係なく、指数への組み入れ・除外の発表そのものが株価を動かす要因になる。運用資産の多くがインデックス運用に置かれている現在の株式市場では、決算シーズン以外でも頻繁に観測される値動きの理由の一つ。">
         <div class="glossary-item-head">
-          <span class="glossary-term">インデックス効果（指数採用効果）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8A%B9%E6%9E%9C%EF%BC%88%E6%8C%87%E6%95%B0%E6%8E%A1%E7%94%A8%E5%8A%B9%E6%9E%9C%EF%BC%89.html">インデックス効果（指数採用効果）</a>
           <span class="glossary-reading">いんでっくすこうか</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -349,7 +360,7 @@
       </div>
       <div class="glossary-item" data-search="インデックスファンド いんでっくすふぁんど 特定の指数（日経平均やs&amp;p500など）に連動する運用成績を目指す投資信託。個別銘柄を選ぶ手間がなく、コストも比較的低いため、長期の資産形成でよく使われます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">インデックスファンド</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89.html">インデックスファンド</a>
           <span class="glossary-reading">いんでっくすふぁんど</span>
           <span class="glossary-category">投資商品</span>
         </div>
@@ -357,7 +368,7 @@
       </div>
       <div class="glossary-item" data-search="etf（上場投資信託） いーてぃーえふ 日経平均やs&amp;p500のような指数に連動するように作られた、証券取引所で株のように売買できる投資信託。1つ買うだけで多くの銘柄に分散投資したのと同じ効果が得られます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ETF（上場投資信託）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/ETF%EF%BC%88%E4%B8%8A%E5%A0%B4%E6%8A%95%E8%B3%87%E4%BF%A1%E8%A8%97%EF%BC%89.html">ETF（上場投資信託）</a>
           <span class="glossary-reading">いーてぃーえふ</span>
           <span class="glossary-category">投資商品</span>
         </div>
@@ -365,7 +376,7 @@
       </div>
       <div class="glossary-item" data-search="eps（1株当たり利益） いーぴーえす 企業の純利益を発行済株式数で割った数値。perを計算する元になる数字で、決算発表でepsが市場予想を上回ると「好決算」、下回ると「悪材料」と受け止められやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">EPS（1株当たり利益）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/EPS%EF%BC%881%E6%A0%AA%E5%BD%93%E3%81%9F%E3%82%8A%E5%88%A9%E7%9B%8A%EF%BC%89.html">EPS（1株当たり利益）</a>
           <span class="glossary-reading">いーぴーえす</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -373,7 +384,7 @@
       </div>
       <div class="glossary-item" data-search="nav（純資産価値）とnavディスカウント えぬえーぶい 持株会社が保有する株式・資産をすべて時価で評価して合計し、負債を差し引いて算出する企業価値の物差し。ソフトバンクグループのように出資先企業の集まりで成り立つ会社の価値を測る際に、perなどよりよく使われます。非上場企業の持ち分はipo(新規株式公開)のような「市場で実際に値段がつくイベント」が起きるまで評価が推定にとどまるため、株価がnavの推定値を下回って放置される「navディスカウント」が生じやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">NAV（純資産価値）とNAVディスカウント</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/NAV%EF%BC%88%E7%B4%94%E8%B3%87%E7%94%A3%E4%BE%A1%E5%80%A4%EF%BC%89%E3%81%A8NAV%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88.html">NAV（純資産価値）とNAVディスカウント</a>
           <span class="glossary-reading">えぬえーぶい</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -381,7 +392,7 @@
       </div>
       <div class="glossary-item" data-search="fomc（米連邦公開市場委員会） えふおーえむしー アメリカの中央銀行にあたるfrb（連邦準備制度理事会）が金融政策（利上げ・利下げなど）を決定する会合。世界中の市場が結果と発言（議事要旨・記者会見）を注視する、最重要イベントの一つです。">
         <div class="glossary-item-head">
-          <span class="glossary-term">FOMC（米連邦公開市場委員会）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/FOMC%EF%BC%88%E7%B1%B3%E9%80%A3%E9%82%A6%E5%85%AC%E9%96%8B%E5%B8%82%E5%A0%B4%E5%A7%94%E5%93%A1%E4%BC%9A%EF%BC%89.html">FOMC（米連邦公開市場委員会）</a>
           <span class="glossary-reading">えふおーえむしー</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -389,7 +400,7 @@
       </div>
       <div class="glossary-item" data-search="円キャリートレードの巻き戻し えんキャリートレードのまきもどし 低金利の円を借りて売り、より金利の高い外貨や資産で運用して利ざやを稼ぐ取引を「円キャリートレード」と呼びます。日銀の利上げ観測などで日本の低金利という前提が崩れかけると、含み損を避けたい投資家が一斉に円を買い戻し、積み上がっていたポジションの規模が大きいほど円が急激に、かつ一方向に動きやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">円キャリートレードの巻き戻し</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%86%86%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%BC%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89%E3%81%AE%E5%B7%BB%E3%81%8D%E6%88%BB%E3%81%97.html">円キャリートレードの巻き戻し</a>
           <span class="glossary-reading">えんキャリートレードのまきもどし</span>
           <span class="glossary-category">為替</span>
         </div>
@@ -397,7 +408,7 @@
       </div>
       <div class="glossary-item" data-search="織り込み（プライシングイン） おりこみ 将来起こりうる出来事(利上げ・決算・要人発言など)を、実際に起きる前から市場参加者が予想して価格に反映させておくこと。cme fedwatchが算出する「利上げ確率」のように、ff金利先物の価格から市場参加者の予想を逆算できる場合もある。すでに強く織り込まれた内容がそのまま実現しても値動きは限定的になりやすく、逆に織り込みと違う結果が出ると相場が大きく動く(サプライズ)。値動きの理由を考えるときは「何が起きたか」だけでなく「それがどれだけ事前に織り込まれていたか」を合わせて見ると理解が深まる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">織り込み（プライシングイン）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%B9%94%E3%82%8A%E8%BE%BC%E3%81%BF%EF%BC%88%E3%83%97%E3%83%A9%E3%82%A4%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%B3%EF%BC%89.html">織り込み（プライシングイン）</a>
           <span class="glossary-reading">おりこみ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -405,7 +416,7 @@
       </div>
       <div class="glossary-item" data-search="織り込み済み おりこみずみ これから起こると多くの投資家が予想している出来事が、すでに株価に反映されていること。予想通りの結果が出ても株価があまり動かなかったり、逆に下がったりするのは「材料が織り込み済みだったから」と説明されることがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">織り込み済み</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%B9%94%E3%82%8A%E8%BE%BC%E3%81%BF%E6%B8%88%E3%81%BF.html">織り込み済み</a>
           <span class="glossary-reading">おりこみずみ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -413,7 +424,7 @@
       </div>
       <div class="glossary-item" data-search="寡占市場（オリゴポリー） かせんしじょう ある商品・サービスの供給を、少数の企業だけで占めている市場のこと。半導体メモリー（dramやnand型フラッシュメモリー）はその代表例で、世界シェアの大半をわずか数社が握る。企業数が少ないため、1社の増産・減産や大口の買い手の発言ひとつで需給バランスが大きく動きやすく、価格や関連銘柄の株価が短期間で乱高下しやすいという特徴がある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">寡占市場（オリゴポリー）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%AF%A1%E5%8D%A0%E5%B8%82%E5%A0%B4%EF%BC%88%E3%82%AA%E3%83%AA%E3%82%B4%E3%83%9D%E3%83%AA%E3%83%BC%EF%BC%89.html">寡占市場（オリゴポリー）</a>
           <span class="glossary-reading">かせんしじょう</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -421,7 +432,7 @@
       </div>
       <div class="glossary-item" data-search="per（株価収益率） かぶかしゅうえきりつ 株価が1株あたり利益の何倍まで買われているかを示す指標。数字が大きいほど「将来の成長への期待」が強く織り込まれている状態で、金利が上がると割高に見えやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">PER（株価収益率）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/PER%EF%BC%88%E6%A0%AA%E4%BE%A1%E5%8F%8E%E7%9B%8A%E7%8E%87%EF%BC%89.html">PER（株価収益率）</a>
           <span class="glossary-reading">かぶかしゅうえきりつ</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -429,7 +440,7 @@
       </div>
       <div class="glossary-item" data-search="株式分割 かぶしきぶんかつ 1株を複数株に分けること（例：1株を2株に分割）。会社全体の価値は変わりませんが、1株あたりの価格が下がって買いやすくなるため、個人投資家の参加が増えて株価が上昇しやすいと言われることがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">株式分割</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%A0%AA%E5%BC%8F%E5%88%86%E5%89%B2.html">株式分割</a>
           <span class="glossary-reading">かぶしきぶんかつ</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -437,7 +448,7 @@
       </div>
       <div class="glossary-item" data-search="空売り からうり 株を借りて先に売り、値下がりしたところで買い戻して差額を利益にする取引手法。株価が下がると利益が出る、通常の売買とは逆方向のポジションです。">
         <div class="glossary-item-head">
-          <span class="glossary-term">空売り</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%A9%BA%E5%A3%B2%E3%82%8A.html">空売り</a>
           <span class="glossary-reading">からうり</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -445,7 +456,7 @@
       </div>
       <div class="glossary-item" data-search="希薄化（増資） きはくか 企業が新しく株を発行してお金を調達すること（増資）で、1株あたりの利益や価値が薄まってしまう現象。資金調達自体はプラスでも、株数が増える分だけ既存株主の取り分が小さくなるため株価が下がりやすい要因になります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">希薄化（増資）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%B8%8C%E8%96%84%E5%8C%96%EF%BC%88%E5%A2%97%E8%B3%87%EF%BC%89.html">希薄化（増資）</a>
           <span class="glossary-reading">きはくか</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -453,7 +464,7 @@
       </div>
       <div class="glossary-item" data-search="キャリートレード きゃりーとれーど 金利の低い通貨（例：円）でお金を借りて、金利の高い通貨や資産で運用し、その金利差で利益を狙う取引。この取引が急に巻き戻されると、為替や株式市場が大きく動くことがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">キャリートレード</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%BC%E3%83%88%E3%83%AC%E3%83%BC%E3%83%89.html">キャリートレード</a>
           <span class="glossary-reading">きゃりーとれーど</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -461,7 +472,7 @@
       </div>
       <div class="glossary-item" data-search="金融相場・業績相場 きんゆうそうば・ぎょうせきそうば 低金利によるお金の余剰を背景に、企業業績以上に株価が上がる局面を金融相場、企業の実際の業績拡大を背景に株価が上がる局面を業績相場と呼びます。景気循環のサイクルを説明する際によく使われる分類です。">
         <div class="glossary-item-head">
-          <span class="glossary-term">金融相場・業績相場</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%87%91%E8%9E%8D%E7%9B%B8%E5%A0%B4%E3%83%BB%E6%A5%AD%E7%B8%BE%E7%9B%B8%E5%A0%B4.html">金融相場・業績相場</a>
           <span class="glossary-reading">きんゆうそうば・ぎょうせきそうば</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -469,7 +480,7 @@
       </div>
       <div class="glossary-item" data-search="逆イールド ぎゃくいーるど 通常は長期の国債の方が短期より金利が高くなりますが、これが逆転して短期金利の方が高くなる状態。過去、景気後退の前触れとして注目されることが多い現象です。">
         <div class="glossary-item-head">
-          <span class="glossary-term">逆イールド</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%80%86%E3%82%A4%E3%83%BC%E3%83%AB%E3%83%89.html">逆イールド</a>
           <span class="glossary-reading">ぎゃくいーるど</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -477,7 +488,7 @@
       </div>
       <div class="glossary-item" data-search="逆行高 ぎゃっこうだか 市場全体や同じテーマでくくられる銘柄群が値下がりしているにもかかわらず、特定の銘柄や指数だけが反対に値上がりすること。周囲と同じ方向に売られる「連れ安」とは逆の現象で、その銘柄固有の強さや安心材料を投資家が見出しているサインとして注目されやすい。ただし一時的な需給の偏りなど別の要因で起きることもあり、逆行高だからといって常に「正解」の銘柄とは限らない点には注意が必要。2026年9月29日は、openaiのai学習一時停止を受けてアームやクアルコムなどai半導体株が軒並み売られる中、エヌビディアだけが3%超上昇して逆行高となった。">
         <div class="glossary-item-head">
-          <span class="glossary-term">逆行高</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%80%86%E8%A1%8C%E9%AB%98.html">逆行高</a>
           <span class="glossary-reading">ぎゃっこうだか</span>
           <span class="glossary-category">相場格言・値動き</span>
         </div>
@@ -485,7 +496,7 @@
       </div>
       <div class="glossary-item" data-search="ギャップ（価格の飛び） ぎゃっぷ 株式市場が休場をはさんだ際などに、前日の終値と次の取引日の始値(寄り付き)との間に生じる価格の飛びのこと。休場中に流れたニュースや海外市場の動きが、再開後最初の値段に一気に反映されるために起こります。休場期間が長く、その間に動いている他の市場が多いほど大きくなりやすい傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ギャップ（価格の飛び）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%AE%E3%83%A3%E3%83%83%E3%83%97%EF%BC%88%E4%BE%A1%E6%A0%BC%E3%81%AE%E9%A3%9B%E3%81%B3%EF%BC%89.html">ギャップ（価格の飛び）</a>
           <span class="glossary-reading">ぎゃっぷ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -493,7 +504,7 @@
       </div>
       <div class="glossary-item" data-search="業績見通し（ガイダンス） ぎょうせきみとおし 企業が自ら発表する「これから先の業績はこうなりそうだ」という予測。今の決算そのものより、この先の見通しが良いか悪いかの方が株価への影響が大きいことがよくあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">業績見通し（ガイダンス）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%A5%AD%E7%B8%BE%E8%A6%8B%E9%80%9A%E3%81%97%EF%BC%88%E3%82%AC%E3%82%A4%E3%83%80%E3%83%B3%E3%82%B9%EF%BC%89.html">業績見通し（ガイダンス）</a>
           <span class="glossary-reading">ぎょうせきみとおし</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -501,7 +512,7 @@
       </div>
       <div class="glossary-item" data-search="口先介入 くちさきかいにゅう 通貨当局(財務省・中央銀行など)が実際にドルや円を売買する「実弾介入」を行わず、要人による発言だけで「これ以上進めば介入するかもしれない」という思惑を市場に抱かせ、為替相場の変動を抑えようとする手法。実際に資金を投じないためコストがかからない一方、根本的な金利差などの要因が変わらなければ効果が長続きしないことも多い。過去に実弾介入を行った実績のある当局の発言ほど、市場に重く受け止められやすい傾向がある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">口先介入</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%8F%A3%E5%85%88%E4%BB%8B%E5%85%A5.html">口先介入</a>
           <span class="glossary-reading">くちさきかいにゅう</span>
           <span class="glossary-category">為替</span>
         </div>
@@ -509,7 +520,7 @@
       </div>
       <div class="glossary-item" data-search="グロース株 ぐろーすかぶ 今の利益水準よりも将来の成長期待を織り込んで買われる銘柄。配当が少なく株価収益率(per)が高くなりがちなハイテク企業などが典型で、金利が上がると将来利益の割引価値が目減りしやすいため株価が下がりやすい傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">グロース株</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B0%E3%83%AD%E3%83%BC%E3%82%B9%E6%A0%AA.html">グロース株</a>
           <span class="glossary-reading">ぐろーすかぶ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -517,7 +528,7 @@
       </div>
       <div class="glossary-item" data-search="決算 けっさん 企業が一定期間（四半期・通期など）の売上や利益を集計して発表すること。市場の事前予想と比べて良いか悪いかで、株価が大きく動くきっかけになります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">決算</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%B1%BA%E7%AE%97.html">決算</a>
           <span class="glossary-reading">けっさん</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -525,7 +536,7 @@
       </div>
       <div class="glossary-item" data-search="決算発表シーズン けっさんはっぴょうしーずん 多くの上場企業が四半期ごとの決算を発表する時期（日本は主に2・5・8・11月）。この期間は個別銘柄の値動きが決算内容に大きく左右され、相場全体のボラティリティも高まりやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">決算発表シーズン</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%B1%BA%E7%AE%97%E7%99%BA%E8%A1%A8%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3.html">決算発表シーズン</a>
           <span class="glossary-reading">けっさんはっぴょうしーずん</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -533,7 +544,7 @@
       </div>
       <div class="glossary-item" data-search="権利付き最終売買日 けんりつきさいしゅうばいばいび 配当や株主優待を受け取る権利を得るために、株を保有していなければならない最後の売買日のこと。この日の大引けまでに株を買えば、その企業の配当・優待をもらう権利が得られる。日本株の場合、権利確定日の2営業日前にあたる。この日には配当・優待目的の買いが集まりやすく、株価が一時的に押し上げられる傾向がある一方、翌営業日の「配当落ち日」には理論上その分だけ株価が下がった状態で取引が始まる。投資信託・etfの配当再投資や指数リバランスの需要も重なりやすく、企業の実力とは関係のない機械的な売買が増えやすい時期でもある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">権利付き最終売買日</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%A8%A9%E5%88%A9%E4%BB%98%E3%81%8D%E6%9C%80%E7%B5%82%E5%A3%B2%E8%B2%B7%E6%97%A5.html">権利付き最終売買日</a>
           <span class="glossary-reading">けんりつきさいしゅうばいばいび</span>
           <span class="glossary-category">制度</span>
         </div>
@@ -541,7 +552,7 @@
       </div>
       <div class="glossary-item" data-search="コアcpi(コア指数) こあシーピーアイ 米cpi(消費者物価指数)のうち、ガソリンなどのエネルギーと食料品を除いて算出した指標。エネルギー・食品は天候や地政学リスクで短期的に大きく変動しやすいため、これらを除くことで物価上昇がより基調的(一時的でなく根強い)なものかどうかを判断しやすくなる。frb(米連邦準備制度理事会)も金融政策の判断材料として重視する。ヘッドライン(全体)cpiが一時的な要因で跳ね上がっていても、コアcpiが落ち着いていれば警戒は限定的になりやすい一方、両方が予想を上回ると『根強いインフレ』への警戒が強まりやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">コアCPI(コア指数)</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B3%E3%82%A2CPI%28%E3%82%B3%E3%82%A2%E6%8C%87%E6%95%B0%29.html">コアCPI(コア指数)</a>
           <span class="glossary-reading">こあシーピーアイ</span>
           <span class="glossary-category">経済指標</span>
         </div>
@@ -549,7 +560,7 @@
       </div>
       <div class="glossary-item" data-search="hbm（広帯域幅メモリ） こうたいいきはばめもり high bandwidth memoryの略。複数のメモリーチップを垂直に積み重ねて配線を短くすることで、従来のメモリーより桁違いに高速なデータのやり取りを可能にした半導体。aiの学習・推論を担うgpu（画像処理半導体）のすぐそばに置かれ、大量のデータを瞬時に供給する役割を担う。マイクロンやsk hynix、サムスン電子などのメモリーメーカーが手掛け、ai半導体需要の強弱を測る指標としても注目される。">
         <div class="glossary-item-head">
-          <span class="glossary-term">HBM（広帯域幅メモリ）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/HBM%EF%BC%88%E5%BA%83%E5%B8%AF%E5%9F%9F%E5%B9%85%E3%83%A1%E3%83%A2%E3%83%AA%EF%BC%89.html">HBM（広帯域幅メモリ）</a>
           <span class="glossary-reading">こうたいいきはばめもり</span>
           <span class="glossary-category">半導体</span>
         </div>
@@ -557,7 +568,7 @@
       </div>
       <div class="glossary-item" data-search="国債バイバック（買い入れ消却） こくさいばいばっく 国（財務省）がすでに発行した国債を市場から買い戻す仕組み。市場に出回る国債の量が減って需給が引き締まるため、債券価格が上がりやすくなり、価格と逆に動く利回り（長期金利）は下がりやすくなります。中央銀行が金融緩和のために国債を買う「量的緩和」とは行う主体も目的も異なります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">国債バイバック（買い入れ消却）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%9B%BD%E5%82%B5%E3%83%90%E3%82%A4%E3%83%90%E3%83%83%E3%82%AF%EF%BC%88%E8%B2%B7%E3%81%84%E5%85%A5%E3%82%8C%E6%B6%88%E5%8D%B4%EF%BC%89.html">国債バイバック（買い入れ消却）</a>
           <span class="glossary-reading">こくさいばいばっく</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -565,7 +576,7 @@
       </div>
       <div class="glossary-item" data-search="国民の休日 こくみんのきゅうじつ 祝日法(国民の祝日に関する法律)第3条3項に基づく休日の規定。日曜日を除き、前日と翌日の両方が国民の祝日にあたる平日は、それ自体に固有の祝日名がなくても「国民の休日」として休日になる。国民の祝日が日曜日と重なった場合にその翌日以降の平日を休みにする「振替休日」(同条2項)とは適用条件が異なる制度で、こちらは祝日と祝日の間に挟まれた平日が対象になる。2026年は「敬老の日」(9月21日・月曜、ハッピーマンデー制度により第3月曜に設定)と「秋分の日」(9月23日・水曜、国立天文台の観測により毎年確定)に挟まれた9月22日(火)がこれに該当し、前後の土日と合わせて19日から23日まで6日間の連休(秋のシルバーウィーク)が生じた。東京証券取引所はこの規定による休日も他の国民の祝日と同じ扱いで現物株式市場を休場とする。ただし大阪取引所の日経225先物・オプションは「祝日取引」制度により、土日を除く国民の祝日でも通常の平日と同じ時間帯で取引が続けられる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">国民の休日</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%9B%BD%E6%B0%91%E3%81%AE%E4%BC%91%E6%97%A5.html">国民の休日</a>
           <span class="glossary-reading">こくみんのきゅうじつ</span>
           <span class="glossary-category">制度・仕組み</span>
         </div>
@@ -573,7 +584,7 @@
       </div>
       <div class="glossary-item" data-search="コストプッシュ型インフレ こすとぷっしゅがたいんふれ 原油や原材料など供給側のコスト上昇が価格に転嫁されて起きる物価上昇のこと。需要の強さを伴わないのが特徴で、中央銀行が利上げで需要を抑えても供給側の原因そのものは解決しないため、対応が難しいとされます。景気拡大による「ディマンドプル型インフレ」とは原因が逆になります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">コストプッシュ型インフレ</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B3%E3%82%B9%E3%83%88%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E5%9E%8B%E3%82%A4%E3%83%B3%E3%83%95%E3%83%AC.html">コストプッシュ型インフレ</a>
           <span class="glossary-reading">こすとぷっしゅがたいんふれ</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -581,7 +592,7 @@
       </div>
       <div class="glossary-item" data-search="雇用統計（米国雇用統計・非農業部門雇用者数） こようとうけい 米労働省が原則毎月第1金曜日に発表する、その月の米国労働市場の状況を示す統計。なかでも『非農業部門雇用者数』(農業以外の分野で前月から何人分の雇用が増えたか)と『失業率』が最重要視され、frb(米連邦準備制度)が金融政策を決めるうえで最も重視する指標の一つとされる。発表直後に株・為替・金利がまとめて大きく動くことが多い。通常は雇用の弱さ=景気減速のサインとして株価の悪材料になるが、2026年10月2日発表の9月分(非農業部門雇用者数は予想8.4万人増に対し実際は2.9万人増、失業率は4.1%から4.2%に上昇、7〜8月分も合計6万人分下方修正)のように、雇用の弱さがfrbの利下げ路線継続への期待を強め、むしろ株高(とくにハイテク・成長株)につながることもある。ただし雇用の悪化が深刻すぎると『景気後退懸念』から素直に株安に転じるため、どちらに効くかの境目はあいまいである。">
         <div class="glossary-item-head">
-          <span class="glossary-term">雇用統計（米国雇用統計・非農業部門雇用者数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%9B%87%E7%94%A8%E7%B5%B1%E8%A8%88%EF%BC%88%E7%B1%B3%E5%9B%BD%E9%9B%87%E7%94%A8%E7%B5%B1%E8%A8%88%E3%83%BB%E9%9D%9E%E8%BE%B2%E6%A5%AD%E9%83%A8%E9%96%80%E9%9B%87%E7%94%A8%E8%80%85%E6%95%B0%EF%BC%89.html">雇用統計（米国雇用統計・非農業部門雇用者数）</a>
           <span class="glossary-reading">こようとうけい</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -589,7 +600,7 @@
       </div>
       <div class="glossary-item" data-search="ゴールデンクロス・デッドクロス ごーるでんくろす・でっどくろす 短期の移動平均線が長期の移動平均線を下から上に抜けることをゴールデンクロス（上昇のサインとされる）、逆に上から下に抜けることをデッドクロス（下落のサインとされる）と呼びます。あくまで過去の値動きに基づく経験則です。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ゴールデンクロス・デッドクロス</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%87%E3%83%B3%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%BB%E3%83%87%E3%83%83%E3%83%89%E3%82%AF%E3%83%AD%E3%82%B9.html">ゴールデンクロス・デッドクロス</a>
           <span class="glossary-reading">ごーるでんくろす・でっどくろす</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -597,7 +608,7 @@
       </div>
       <div class="glossary-item" data-search="先物（さきもの） さきもの 将来のある時点で、あらかじめ決めた価格で売買することを約束する取引。株式市場が閉まっている時間帯でも取引されているため、翌日の株式市場の値動きを予想する手がかりとしてよく参照されます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">先物（さきもの）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%85%88%E7%89%A9%EF%BC%88%E3%81%95%E3%81%8D%E3%82%82%E3%81%AE%EF%BC%89.html">先物（さきもの）</a>
           <span class="glossary-reading">さきもの</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -605,7 +616,7 @@
       </div>
       <div class="glossary-item" data-search="サプライズ決算 さぷらいずけっさん 市場のコンセンサス予想から大きく外れた決算内容のこと。良い方向のサプライズは株価急騰、悪い方向のサプライズは株価急落につながりやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">サプライズ決算</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%82%BA%E6%B1%BA%E7%AE%97.html">サプライズ決算</a>
           <span class="glossary-reading">さぷらいずけっさん</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -613,7 +624,7 @@
       </div>
       <div class="glossary-item" data-search="サポートライン・レジスタンスライン さぽーとらいん・れじすたんすらいん 過去に何度も株価が反発してきた価格帯を支持線（サポートライン）、何度も跳ね返されてきた価格帯を抵抗線（レジスタンスライン）と呼びます。多くの投資家が意識する価格帯として、実際に値動きの節目になりやすいとされています。">
         <div class="glossary-item-head">
-          <span class="glossary-term">サポートライン・レジスタンスライン</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%BB%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3.html">サポートライン・レジスタンスライン</a>
           <span class="glossary-reading">さぽーとらいん・れじすたんすらいん</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -621,7 +632,7 @@
       </div>
       <div class="glossary-item" data-search="材料出尽くし ざいりょうできつくし あらかじめ市場に予想されていた好材料(利上げ・決算・大型契約など)が実際に発表された時点で、その分の上昇期待がすでに株価に織り込まれ尽くしており、発表後にはむしろ利益確定売りが優勢になって株価が下落する現象。2026年9月18日、日銀が利上げを決定したにもかかわらず三菱ufjなどメガバンク株が下落したのが典型例で、利上げ自体は予想通りでも、反対票の多さから「次の利上げは遠のいた」と受け止められ、将来の追加的な好材料への期待が後退したことが背景にあった。似た言葉に「織り込み済み」があるが、こちらは主に発表『前』の株価形成を指すのに対し、「材料出尽くし」は発表『後』に実際に売りが出る現象そのものを指す点が異なる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">材料出尽くし</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%9D%90%E6%96%99%E5%87%BA%E5%B0%BD%E3%81%8F%E3%81%97.html">材料出尽くし</a>
           <span class="glossary-reading">ざいりょうできつくし</span>
           <span class="glossary-category">相場格言・値動き</span>
         </div>
@@ -629,7 +640,7 @@
       </div>
       <div class="glossary-item" data-search="etfの資金フロー（純流入・純流出） しきんふろー 上場投資信託(etf)にその日・その週に新たに流れ込んだ資金と、解約されて出ていった資金の差し引きのこと。新規購入が解約を上回れば「資金流入」、逆なら「資金流出」と呼ぶ。運用会社は流入時には裏付け資産（現物のビットコインや株式など）を買い増し、流出時には売却する必要があるため、価格そのものより一足早く投資家心理の方向性を映すシグナルとして注目される。価格が横ばいでも資金の向きが変わっていることがあり、両方をあわせて見ることで値動きの裏側にある需給の変化を読み取りやすくなる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ETFの資金フロー（純流入・純流出）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/ETF%E3%81%AE%E8%B3%87%E9%87%91%E3%83%95%E3%83%AD%E3%83%BC%EF%BC%88%E7%B4%94%E6%B5%81%E5%85%A5%E3%83%BB%E7%B4%94%E6%B5%81%E5%87%BA%EF%BC%89.html">ETFの資金フロー（純流入・純流出）</a>
           <span class="glossary-reading">しきんふろー</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -637,7 +648,7 @@
       </div>
       <div class="glossary-item" data-search="システマティックリスク（市場全体リスク） しすてまてぃっくりすく 金利の変化・景気動向・地政学リスクなど、ほぼすべての銘柄に同じ方向で影響する要因から生じるリスクのこと。個別企業の努力では避けられず、分散投資をしても消すことができないため「分散不能リスク」とも呼ばれる。株価指数全体が一方向に大きく動く日は、このリスクが強く表れていることが多い。">
         <div class="glossary-item-head">
-          <span class="glossary-term">システマティックリスク（市場全体リスク）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%9E%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%AF%EF%BC%88%E5%B8%82%E5%A0%B4%E5%85%A8%E4%BD%93%E3%83%AA%E3%82%B9%E3%82%AF%EF%BC%89.html">システマティックリスク（市場全体リスク）</a>
           <span class="glossary-reading">しすてまてぃっくりすく</span>
           <span class="glossary-category">リスク</span>
         </div>
@@ -645,7 +656,7 @@
       </div>
       <div class="glossary-item" data-search="質への逃避（フライト・トゥ・クオリティ） しつへのとうひ 株式相場が急落するなど市場のリスクが高まった局面で、投資家がリスクの高い資産を売り、国債や主要通貨、金といった相対的に安全とされる資産に資金を移す動きのこと。国債が買われれば価格は上がり、価格と逆に動く利回り（長期金利）は下がりやすくなります。ただし常にこの通りになるとは限らず、金利上昇そのものが株安の原因になっている局面では、国債も通貨もそろって売られる「質への逃避が起きない日」もあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">質への逃避（フライト・トゥ・クオリティ）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E8%B3%AA%E3%81%B8%E3%81%AE%E9%80%83%E9%81%BF%EF%BC%88%E3%83%95%E3%83%A9%E3%82%A4%E3%83%88%E3%83%BB%E3%83%88%E3%82%A5%E3%83%BB%E3%82%AF%E3%82%AA%E3%83%AA%E3%83%86%E3%82%A3%EF%BC%89.html">質への逃避（フライト・トゥ・クオリティ）</a>
           <span class="glossary-reading">しつへのとうひ</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -653,7 +664,7 @@
       </div>
       <div class="glossary-item" data-search="資本業務提携 しほんぎょうむていけい 複数の企業が、取引先としての協力関係(業務提携)にとどまらず、互いの株式を持ち合ったり一方が他方に出資したりする(資本提携)ところまで含めて関係を築く枠組み。単なる共同開発や技術協力にとどまる「業務提携」に比べ、資本が絡む分だけ関係の継続性や本気度が高いと受け止められやすく、発表段階から株式市場で思惑買いを誘いやすい。ただし出資比率や既存株主の持ち分の希薄化などの条件次第では、逆に売り材料になることもある。2026年9月30日はtdkと太陽誘電がaiサーバー向け次世代電子部品の共同開発で基本合意し、将来の資本提携についても協議すると発表。資本提携自体はまだ協議段階にすぎなかったが、太陽誘電は一時9%超、tdkも5%前後買われた。">
         <div class="glossary-item-head">
-          <span class="glossary-term">資本業務提携</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E8%B3%87%E6%9C%AC%E6%A5%AD%E5%8B%99%E6%8F%90%E6%90%BA.html">資本業務提携</a>
           <span class="glossary-reading">しほんぎょうむていけい</span>
           <span class="glossary-category">企業活動・提携</span>
         </div>
@@ -661,7 +672,7 @@
       </div>
       <div class="glossary-item" data-search="祝日取引 しゅくじつとりひき 大阪取引所が2011年から導入している制度で、土日を除く国民の祝日であっても、日経225先物・オプションなど一部のデリバティブ取引を通常の平日と同じ時間帯(日中立会8時45分〜15時40分、夜間立会17時〜翌6時)で行うこと。東京証券取引所の現物株式市場は国民の祝日も土日と同様に休場となるが、先物・オプション市場だけは動き続ける。導入の狙いは、日本が祝日で休んでいる間もニューヨークやロンドンなど海外市場は通常どおり取引されており、そこで生まれた材料を現物市場の再開までに段階的に織り込めるようにすること。祝日取引がなければ、休場中にたまった海外発の材料が休み明けの寄り付きに一気に反映され、大きな価格の「窓」が開きやすくなる。2026年9月21日は敬老の日にあたり東証の現物市場は休場だったが、大阪取引所の日経225先物は祝日取引として動き、前日比200円安の6万4900円で夜間取引を終えた。ただし祝日は参加者が少なく板が薄いため、値が振れやすい点には注意が必要。">
         <div class="glossary-item-head">
-          <span class="glossary-term">祝日取引</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%A5%9D%E6%97%A5%E5%8F%96%E5%BC%95.html">祝日取引</a>
           <span class="glossary-reading">しゅくじつとりひき</span>
           <span class="glossary-category">制度・仕組み</span>
         </div>
@@ -669,7 +680,7 @@
       </div>
       <div class="glossary-item" data-search="ショートスクイーズ（踏み上げ） しょーとすくいーず 値下がりを見込んで空売りしていた投資家が、相場が予想に反して急騰したために含み損の拡大を避けようと買い戻しに動き、その買い戻し注文自体が新たな上昇圧力になって価格をさらに押し上げる現象。空売りの「売り方」が防戦のために買い方に回ることから「踏み上げ」とも呼ばれます。急騰の初動が本来の材料によるものでも、途中から踏み上げが重なると上昇幅が実態以上に大きくなりやすく、材料の効力が薄れると反動も出やすい点に注意が必要です。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ショートスクイーズ（踏み上げ）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%B9%E3%82%AF%E3%82%A4%E3%83%BC%E3%82%BA%EF%BC%88%E8%B8%8F%E3%81%BF%E4%B8%8A%E3%81%92%EF%BC%89.html">ショートスクイーズ（踏み上げ）</a>
           <span class="glossary-reading">しょーとすくいーず</span>
           <span class="glossary-category">取引</span>
         </div>
@@ -677,7 +688,7 @@
       </div>
       <div class="glossary-item" data-search="信用取引 しんようとりひき 証券会社からお金や株を借りて行う、自己資金以上の金額の売買。手持ち資金より大きな利益を狙える一方、損失も大きくなりやすく、株価下落時に強制的に決済（追証・ロスカット）される仕組みがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">信用取引</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E4%BF%A1%E7%94%A8%E5%8F%96%E5%BC%95.html">信用取引</a>
           <span class="glossary-reading">しんようとりひき</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -685,7 +696,7 @@
       </div>
       <div class="glossary-item" data-search="信用倍率 しんようばいりつ 信用取引の買い残高（信用買い残）を売り残高（信用売り残）で割った数値。倍率が高いほど「将来売られる予定の株」が積み上がっている状態を示し、決算の良し悪しに関わらず、その巻き戻しだけで株価が急落することがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">信用倍率</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E4%BF%A1%E7%94%A8%E5%80%8D%E7%8E%87.html">信用倍率</a>
           <span class="glossary-reading">しんようばいりつ</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -693,7 +704,7 @@
       </div>
       <div class="glossary-item" data-search="cta(商品投資顧問業者) しーてぃーえー commodity trading advisorの略で、本来は商品先物の運用を顧客から委託される業者を指す言葉。現在はより広く、株価指数・為替・金利などあらゆる先物を対象に、過去の価格データから統計的・機械的にトレンド(方向性)を検知して売買する系統的(システマティック)な運用会社やファンドの総称として使われることが多い。個別企業の業績や割安度を分析するのではなく、価格そのものの動き方を追いかける点が特徴で、相場が一定方向に一定の勢いで動き始めると同じ方向への売買を増やし、損失が一定基準を超えると機械的に手仕舞う。このため、相場急落時には「下がったから売る」という動きが連鎖し、元のきっかけとなったニュース以上に値動きを増幅させる「主犯」として名前が挙がることがある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">CTA(商品投資顧問業者)</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/CTA%28%E5%95%86%E5%93%81%E6%8A%95%E8%B3%87%E9%A1%A7%E5%95%8F%E6%A5%AD%E8%80%85%29.html">CTA(商品投資顧問業者)</a>
           <span class="glossary-reading">しーてぃーえー</span>
           <span class="glossary-category">市場参加者</span>
         </div>
@@ -701,7 +712,7 @@
       </div>
       <div class="glossary-item" data-search="cds(クレジット・デフォルト・スワップ) しーでぃーえす・くれじっと・でふぉると・すわっぷ ある企業や国が債務を履行できなくなる(デフォルトする)リスクに備える、保険に似た金融派生商品。cdsを買う側は、対象企業が返済不能に陥った場合に補償を受け取れる権利と引き換えに、定期的に『保険料』にあたるコストを支払う。このコストは『cdsスプレッド』と呼ばれ、ベーシスポイント(bp、1bp=0.01%)で示されるのが一般的で、スプレッドが上昇するほど市場がその企業の信用リスク(デフォルトの可能性)を高く見ていることを意味する。株価が反応する前に、債券市場やcds市場の参加者が先に資金繰りへの不安を感じ取ることがあり、株式だけでなく債券・cdsの動きも合わせて見ることで、企業への市場の評価をより早く・多面的に読み取れる場合がある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">CDS(クレジット・デフォルト・スワップ)</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/CDS%28%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88%E3%83%BB%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%83%BB%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%29.html">CDS(クレジット・デフォルト・スワップ)</a>
           <span class="glossary-reading">しーでぃーえす・くれじっと・でふぉると・すわっぷ</span>
           <span class="glossary-category">債券・信用市場</span>
         </div>
@@ -709,7 +720,7 @@
       </div>
       <div class="glossary-item" data-search="cpi（消費者物価指数） しーぴーあい モノやサービスの価格がどれだけ上がった・下がったかを示す指標で、いわゆる「インフレ率」の元になる数字。この数字が予想より高いと、中央銀行が利上げに動くとの見方が強まりやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">CPI（消費者物価指数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/CPI%EF%BC%88%E6%B6%88%E8%B2%BB%E8%80%85%E7%89%A9%E4%BE%A1%E6%8C%87%E6%95%B0%EF%BC%89.html">CPI（消費者物価指数）</a>
           <span class="glossary-reading">しーぴーあい</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -717,7 +728,7 @@
       </div>
       <div class="glossary-item" data-search="地合い じあい 個別銘柄の材料とは関係なく、市場全体が買われやすいか売られやすいかという雰囲気・地力のこと。「地合いが悪い」日は良い決算を出した銘柄まで一緒に売られてしまう、ということがよく起こります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">地合い</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%9C%B0%E5%90%88%E3%81%84.html">地合い</a>
           <span class="glossary-reading">じあい</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -725,7 +736,7 @@
       </div>
       <div class="glossary-item" data-search="時価総額 じかそうがく 株価×発行済株式数で計算する、その企業全体の市場価値。株価そのものの高い安いより、時価総額の大きさの方が「企業の規模」を比較するには適しています。">
         <div class="glossary-item-head">
-          <span class="glossary-term">時価総額</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%99%82%E4%BE%A1%E7%B7%8F%E9%A1%8D.html">時価総額</a>
           <span class="glossary-reading">じかそうがく</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -733,7 +744,7 @@
       </div>
       <div class="glossary-item" data-search="時価総額加重平均株価指数 じかそうがくかじゅうへいきんかぶかしすう s&amp;p500など主要な株価指数の多くが採用する算出方式で、企業の時価総額（株価×発行済株式数）が大きいほど指数への影響力が強くなる。時価総額の大きい少数の銘柄が急騰・急落すると、他の多数の銘柄が反対方向に動いていても指数全体はその少数銘柄に引っ張られやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">時価総額加重平均株価指数</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%99%82%E4%BE%A1%E7%B7%8F%E9%A1%8D%E5%8A%A0%E9%87%8D%E5%B9%B3%E5%9D%87%E6%A0%AA%E4%BE%A1%E6%8C%87%E6%95%B0.html">時価総額加重平均株価指数</a>
           <span class="glossary-reading">じかそうがくかじゅうへいきんかぶかしすう</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -741,7 +752,7 @@
       </div>
       <div class="glossary-item" data-search="自社株買い じしゃかぶがい 企業が自社の株を市場で買い戻すこと。市場に出回る株の数が減るため1株あたりの価値が上がりやすく、また「経営陣が自社の株価を割安と考えている」というポジティブなサインとして受け止められることが多いです。">
         <div class="glossary-item-head">
-          <span class="glossary-term">自社株買い</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E8%87%AA%E7%A4%BE%E6%A0%AA%E8%B2%B7%E3%81%84.html">自社株買い</a>
           <span class="glossary-reading">じしゃかぶがい</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -749,7 +760,7 @@
       </div>
       <div class="glossary-item" data-search="実質金利 じっしつきんり ニュースで報じられる長期金利・国債利回りは正確には「名目金利」で、これからその期間に見込まれるインフレ率（インフレ期待）を差し引いたものを「実質金利」と呼ぶ。名目金利が同じ水準でも、インフレ期待が高ければ実質金利は低く（お金の実質的な増え方は小さく）、インフレ期待が低ければ実質金利は高くなる。株式市場、とりわけ将来の成長期待で株価が形成されやすい値がさのハイテク・半導体株にとっては、将来の利益を現在価値に割り引く割引率が実質金利に連動しやすいため、名目金利そのものよりも実質金利の動きの方が理論株価への影響が大きい。一方、銀行株は名目金利の上昇そのものから貸出・調達の利ざや拡大の恩恵を受けやすく、実質金利との連動は相対的に薄い。同じ「金利上昇」というニュースでも業種によって反応が分かれるのはこのためだ。">
         <div class="glossary-item-head">
-          <span class="glossary-term">実質金利</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%AE%9F%E8%B3%AA%E9%87%91%E5%88%A9.html">実質金利</a>
           <span class="glossary-reading">じっしつきんり</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -757,7 +768,7 @@
       </div>
       <div class="glossary-item" data-search="ジャクソンホール会議 じゃくそんほーるかいぎ 米カンザスシティ連銀が毎年8月にワイオミング州ジャクソンホールで開く経済シンポジウム。世界中の中央銀行総裁やエコノミストが集まる非公式な場だが、frb議長の講演が今後の金融政策の方向性を先取りして示すことが多く、過去には利上げ・利下げへの転換を示唆する一言で株価や為替が短時間に大きく動いた例が繰り返されてきた。正式な政策決定の場であるfomcとは異なる点に注意。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ジャクソンホール会議</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B8%E3%83%A3%E3%82%AF%E3%82%BD%E3%83%B3%E3%83%9B%E3%83%BC%E3%83%AB%E4%BC%9A%E8%AD%B0.html">ジャクソンホール会議</a>
           <span class="glossary-reading">じゃくそんほーるかいぎ</span>
           <span class="glossary-category">イベント</span>
         </div>
@@ -765,7 +776,7 @@
       </div>
       <div class="glossary-item" data-search="バックログ（受注残） じゅちゅうざん 企業がすでに受注しているものの、まだ製品として納品・売上計上されていない注文の残高のこと。受注残が積み上がっているほど、将来の売上につながる仕事を多く抱えていることを意味し、企業の先行きの需要の強さを測る指標として決算発表などで注目される。特にaiサーバーのように受注から納品までに時間がかかる製品では、バックログの伸びが株価の材料になりやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">バックログ（受注残）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%90%E3%83%83%E3%82%AF%E3%83%AD%E3%82%B0%EF%BC%88%E5%8F%97%E6%B3%A8%E6%AE%8B%EF%BC%89.html">バックログ（受注残）</a>
           <span class="glossary-reading">じゅちゅうざん</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -773,7 +784,7 @@
       </div>
       <div class="glossary-item" data-search="ストップ高・ストップ安 すとっぷだか・すとっぷやす 1日の値動きには取引所が定めた上限・下限があり、そこに到達すること。買いが殺到して上限に張り付くのがストップ高、売りが殺到して下限に張り付くのがストップ安で、需給の偏りが極端に強いサインです。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ストップ高・ストップ安</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%B9%E3%83%88%E3%83%83%E3%83%97%E9%AB%98%E3%83%BB%E3%82%B9%E3%83%88%E3%83%83%E3%83%97%E5%AE%89.html">ストップ高・ストップ安</a>
           <span class="glossary-reading">すとっぷだか・すとっぷやす</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -781,7 +792,7 @@
       </div>
       <div class="glossary-item" data-search="セクターローテーション せくたーろーてーしょん 市場に向かう資金が、ある業種・テーマから別の業種・テーマへと乗り換えていく動きのこと。相場全体の資金量が急に増減しなくても、資金の向かう先が変われば指数の顔ぶれは大きく変わる。例えば半導体・ai関連株が売られる一方で製薬や鉄道のような内需・ディフェンシブ株に買いが入ると、業種ごとの明暗がくっきり分かれ、指数全体の方向と個別業種の値動きが逆になることもある。決算発表や金利動向をきっかけに起きやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">セクターローテーション</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%BB%E3%82%AF%E3%82%BF%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3.html">セクターローテーション</a>
           <span class="glossary-reading">せくたーろーてーしょん</span>
           <span class="glossary-category">相場の動き</span>
         </div>
@@ -789,7 +800,7 @@
       </div>
       <div class="glossary-item" data-search="sox指数（フィラデルフィア半導体指数） そっくすしすう 米国に上場する主要な半導体関連企業で構成される株価指数。半導体業界全体の勢いを見る代表的な指標として使われます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">SOX指数（フィラデルフィア半導体指数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/SOX%E6%8C%87%E6%95%B0%EF%BC%88%E3%83%95%E3%82%A3%E3%83%A9%E3%83%87%E3%83%AB%E3%83%95%E3%82%A3%E3%82%A2%E5%8D%8A%E5%B0%8E%E4%BD%93%E6%8C%87%E6%95%B0%EF%BC%89.html">SOX指数（フィラデルフィア半導体指数）</a>
           <span class="glossary-reading">そっくすしすう</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -797,7 +808,7 @@
       </div>
       <div class="glossary-item" data-search="ソブリンスプレッド（国債の信用スプレッド） そぶりんすぷれっど ある国の国債利回りと、基準となる別の国(通常はその地域で最も信用力が高いとされる国)の国債利回りとの差のこと。ユーロ圏では財政規律が最も安定しているとされるドイツの国債(bund)が基準になることが多く、他国との差を『〇〇国債-bundスプレッド』と呼ぶ。同じ中央銀行(ユーロ圏であればecb)の傘下で短期的な政策金利が共通でも、各国の財政状況・債務の持続可能性・政治的安定度への評価が異なれば、長期の国債利回りには差が生まれる。財政悪化や政治混乱への懸念が強まるほど、その国の国債は『期日通りに返してもらえるか』というリスクに見合った、より高い利回りを要求されるようになりスプレッドが拡大する。2026年10月には、2027年の大統領選を控えた政治的不透明感と財政再建の道筋が見えない中での追加債務発行観測を背景に、フランス(oat)とドイツ(bund)の10年国債利回り差が一時159ベーシスポイントまで拡大し、2012年の欧州債務危機以来とも言われる水準に達した。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ソブリンスプレッド（国債の信用スプレッド）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%BD%E3%83%96%E3%83%AA%E3%83%B3%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%EF%BC%88%E5%9B%BD%E5%82%B5%E3%81%AE%E4%BF%A1%E7%94%A8%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%EF%BC%89.html">ソブリンスプレッド（国債の信用スプレッド）</a>
           <span class="glossary-reading">そぶりんすぷれっど</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -805,7 +816,7 @@
       </div>
       <div class="glossary-item" data-search="増配・減配 ぞうはい・げんぱい 企業が配当金を増やすことを増配、減らすことを減配と呼びます。増配は「業績に自信がある」というポジティブなサインとして、減配は逆にネガティブなサインとして受け止められやすい傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">増配・減配</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%A2%97%E9%85%8D%E3%83%BB%E6%B8%9B%E9%85%8D.html">増配・減配</a>
           <span class="glossary-reading">ぞうはい・げんぱい</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -813,7 +824,7 @@
       </div>
       <div class="glossary-item" data-search="タカ派・ハト派 たかは・はとは 中央銀行の要人発言のスタンスを表す言葉。インフレ抑制を重視し利上げ・金融引き締めに前向きな立場が「タカ派」、景気や雇用を重視し利下げ・金融緩和に前向きな立場が「ハト派」。どちらか一方に振り切れることは少なく、『今回はややタカ派寄り』のようにグラデーションで語られることが多いです。">
         <div class="glossary-item-head">
-          <span class="glossary-term">タカ派・ハト派</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%BF%E3%82%AB%E6%B4%BE%E3%83%BB%E3%83%8F%E3%83%88%E6%B4%BE.html">タカ派・ハト派</a>
           <span class="glossary-reading">たかは・はとは</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -821,7 +832,7 @@
       </div>
       <div class="glossary-item" data-search="単純平均型(価格平均型) たんじゅんへいきんがた 株価指数の算出方式の一つで、構成銘柄の株価そのものを合計し、一定の除数で割って平均を求める方式のこと。日経平均株価やアメリカのnyダウがこの方式を採用しています。企業の規模(時価総額)とは関係なく、1株あたりの値段が高い「値がさ株」の値動きが指数全体に大きな影響を与えやすいという特徴があります。これに対し、topixやs&amp;p500は株価×発行済み株数(時価総額)で重みづけする「時価総額加重型」を採用しており、算出方式が違う指数同士は同じ市場を見ていても逆方向に動くことがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">単純平均型(価格平均型)</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%8D%98%E7%B4%94%E5%B9%B3%E5%9D%87%E5%9E%8B%28%E4%BE%A1%E6%A0%BC%E5%B9%B3%E5%9D%87%E5%9E%8B%29.html">単純平均型(価格平均型)</a>
           <span class="glossary-reading">たんじゅんへいきんがた</span>
           <span class="glossary-category">指数の基礎</span>
         </div>
@@ -829,7 +840,7 @@
       </div>
       <div class="glossary-item" data-search="タームプレミアム（期間プレミアム） たーむぷれみあむ 長期国債の金利のうち、将来の短期金利予想の積み上げだけでは説明できない『上乗せ分』のこと。長期間お金を固定するリスク（予想外のインフレや財政悪化、国債増発など）を負うことへの対価として、投資家が追加で求める利回りを指す。利上げ観測が後退しても、財政悪化への警戒などでタームプレミアムが上昇すれば、長期金利はむしろ上がることがある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">タームプレミアム（期間プレミアム）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%82%BF%E3%83%BC%E3%83%A0%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%EF%BC%88%E6%9C%9F%E9%96%93%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%EF%BC%89.html">タームプレミアム（期間プレミアム）</a>
           <span class="glossary-reading">たーむぷれみあむ</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -837,7 +848,7 @@
       </div>
       <div class="glossary-item" data-search="大陰線 だいいんせん 始値に比べて終値が大きく下回り、ローソク足チャートで実体（始値と終値の間の帯）が長い陰線（下落を示す色のローソク足）になる値動きのこと。1日のうちの下落幅が大きいほど実体が長くなり、売り圧力の強さを示すサインとして技術的分析（テクニカル分析）で重視される。">
         <div class="glossary-item-head">
-          <span class="glossary-term">大陰線</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%A4%A7%E9%99%B0%E7%B7%9A.html">大陰線</a>
           <span class="glossary-reading">だいいんせん</span>
           <span class="glossary-category">テクニカル分析</span>
         </div>
@@ -845,7 +856,7 @@
       </div>
       <div class="glossary-item" data-search="地政学リスクプレミアム ちせいがくりすくぷれみあむ 戦争や紛争、テロなど地政学的な緊張の高まりによって、実際にはまだ供給停止などが起きていない段階から、商品や資産の価格にあらかじめ上乗せされる「将来の不安」の分を指す。ホルムズ海峡のように世界のエネルギー供給の要衝で緊張が高まると、原油価格はその海峡が実際に封鎖される前から、封鎖されるかもしれないという不安だけで上昇する。このプレミアムは事態がそれ以上悪化しなければ比較的早く縮小することもあり、値上がり・値下がりの両方が急になりやすい特徴がある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">地政学リスクプレミアム</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%9C%B0%E6%94%BF%E5%AD%A6%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0.html">地政学リスクプレミアム</a>
           <span class="glossary-reading">ちせいがくりすくぷれみあむ</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -853,7 +864,7 @@
       </div>
       <div class="glossary-item" data-search="長期金利（10年国債利回り） ちょうききんり 国がお金を10年間借りるときの金利で、住宅ローン金利や企業の資金調達コストの目安になります。この金利が上がると、将来の利益をあてにして買われている成長株ほど株価が下がりやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">長期金利（10年国債利回り）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%95%B7%E6%9C%9F%E9%87%91%E5%88%A9%EF%BC%8810%E5%B9%B4%E5%9B%BD%E5%82%B5%E5%88%A9%E5%9B%9E%E3%82%8A%EF%BC%89.html">長期金利（10年国債利回り）</a>
           <span class="glossary-reading">ちょうききんり</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -861,7 +872,7 @@
       </div>
       <div class="glossary-item" data-search="連れ安・連れ高 つれやす・つれだか ある銘柄や指数が動いたことにつられて、直接の関係が薄い他の銘柄も同じ方向に動くこと。同じ業種・同じテーマの銘柄どうしでよく見られます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">連れ安・連れ高</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%80%A3%E3%82%8C%E5%AE%89%E3%83%BB%E9%80%A3%E3%82%8C%E9%AB%98.html">連れ安・連れ高</a>
           <span class="glossary-reading">つれやす・つれだか</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -869,7 +880,7 @@
       </div>
       <div class="glossary-item" data-search="tob（株式公開買い付け） てぃーおーびー ある企業の株式を、期間・価格・株数をあらかじめ公表したうえで市場外で買い集めること。買収や完全子会社化の手段としてよく使われ、通常は市場価格にプレミアム（上乗せ）をつけた価格で提示されます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">TOB（株式公開買い付け）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/TOB%EF%BC%88%E6%A0%AA%E5%BC%8F%E5%85%AC%E9%96%8B%E8%B2%B7%E3%81%84%E4%BB%98%E3%81%91%EF%BC%89.html">TOB（株式公開買い付け）</a>
           <span class="glossary-reading">てぃーおーびー</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -877,7 +888,7 @@
       </div>
       <div class="glossary-item" data-search="適時開示 てきじかいじ 上場企業が投資判断に影響を与える重要な情報（業績修正や大型契約など）を、証券取引所のルールに従って速やかに公表する制度。株価が急変する前後には、この適時開示が出ていることが多くあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">適時開示</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%81%A9%E6%99%82%E9%96%8B%E7%A4%BA.html">適時開示</a>
           <span class="glossary-reading">てきじかいじ</span>
           <span class="glossary-category">企業行動</span>
         </div>
@@ -885,7 +896,7 @@
       </div>
       <div class="glossary-item" data-search="テーマ株 てーまかぶ 「ai」「半導体」のような共通の物語（テーマ）でくくられて売買される銘柄群。個別の業績よりもテーマへの期待の強弱で株価が動きやすく、上がるときも下がるときもまとめて勢いがつきやすい特徴があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">テーマ株</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%86%E3%83%BC%E3%83%9E%E6%A0%AA.html">テーマ株</a>
           <span class="glossary-reading">てーまかぶ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -893,7 +904,7 @@
       </div>
       <div class="glossary-item" data-search="ディフェンシブ株 でぃふぇんしぶかぶ 食品・医薬品・生活必需品など、景気の良し悪しに関わらず一定の需要が見込める業種の株。相場が不安定なときに資金の避難先として買われやすい傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ディフェンシブ株</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%87%E3%82%A3%E3%83%95%E3%82%A7%E3%83%B3%E3%82%B7%E3%83%96%E6%A0%AA.html">ディフェンシブ株</a>
           <span class="glossary-reading">でぃふぇんしぶかぶ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -901,7 +912,7 @@
       </div>
       <div class="glossary-item" data-search="ディマンドプル型インフレ でぃまんどぷるがたいんふれ 景気拡大や消費・投資の活発化によって需要そのものが強くなり、モノやサービスの値段が押し上げられる物価上昇のこと。利上げで需要を冷ませば物価上昇の原因そのものを抑えやすいとされ、供給側のコスト上昇が原因の「コストプッシュ型インフレ」とは区別されます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ディマンドプル型インフレ</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%87%E3%82%A3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%97%E3%83%AB%E5%9E%8B%E3%82%A4%E3%83%B3%E3%83%95%E3%83%AC.html">ディマンドプル型インフレ</a>
           <span class="glossary-reading">でぃまんどぷるがたいんふれ</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -909,7 +920,7 @@
       </div>
       <div class="glossary-item" data-search="出来高 できだか ある期間内に売買が成立した株数のこと。値動きの大きさに出来高の多さが伴っている場合、その値動きに多くの投資家が納得して参加していると解釈されやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">出来高</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%87%BA%E6%9D%A5%E9%AB%98.html">出来高</a>
           <span class="glossary-reading">できだか</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -917,7 +928,7 @@
       </div>
       <div class="glossary-item" data-search="デット・ファイナンス(負債による資金調達) でっと・ふぁいなんす 企業が事業拡大や設備投資の資金を、株式の追加発行(増資)ではなく、銀行借入や社債発行、資産を担保にした貸付(アセット・バックド・ファイナンス)などの『借金』でまかなう資金調達の方法。aiデータセンターを運営する企業のように、gpu(画像処理半導体)やサーバーへの投資額が急速に膨らんでいる業種ではこの手法への依存度が高まりやすい。借金には利払いという固定費が伴うため、想定どおりの需要・収益が得られれば先行投資による事業拡大を後押しする一方、需要が鈍ったり収益化が遅れたりすると利払い負担がそのまま重荷になり、株価や事業の振れが自己資本中心で資金を調達する企業より大きくなりやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">デット・ファイナンス(負債による資金調達)</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%87%E3%83%83%E3%83%88%E3%83%BB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%B3%E3%82%B9%28%E8%B2%A0%E5%82%B5%E3%81%AB%E3%82%88%E3%82%8B%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94%29.html">デット・ファイナンス(負債による資金調達)</a>
           <span class="glossary-reading">でっと・ふぁいなんす</span>
           <span class="glossary-category">企業金融</span>
         </div>
@@ -925,7 +936,7 @@
       </div>
       <div class="glossary-item" data-search="騰落レシオ とうらくレシオ 一定期間について、値上がりした銘柄数を値下がりした銘柄数で割り、百分率で示した指標。一般に25日移動平均で計算されることが多く、100%を上回れば値上がり銘柄が優勢、下回れば値下がり銘柄が優勢と読む。日経平均やs&amp;p500のような指数は時価総額の大きい少数の銘柄の値動きに強く左右されるため、指数自体は上昇していても、実際には値下がりした銘柄の方が多いということが起こり得る。2026年9月18日は、s&amp;p500が0.17%高となった一方で構成銘柄の過半数は値下がりし、ブロードコムなど半導体株のごく一部が指数を押し上げていたのが典型例。騰落レシオが低下し続ける局面は上昇についていける銘柄が先細りしているサインとして、逆に70%を大きく下回る水準まで落ち込む局面は売られすぎの反動を意識した押し目買いの目安として、それぞれ注目されることがある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">騰落レシオ</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%A8%B0%E8%90%BD%E3%83%AC%E3%82%B7%E3%82%AA.html">騰落レシオ</a>
           <span class="glossary-reading">とうらくレシオ</span>
           <span class="glossary-category">指標・データ</span>
         </div>
@@ -933,7 +944,7 @@
       </div>
       <div class="glossary-item" data-search="特別気配 とくべつけはい ある銘柄に買い注文または売り注文が極端に偏り、直前の値段から大きく離れた価格でしか注文が成立しない状態になったときに、取引所が一時的に提示する暫定的な価格表示のこと。一定時間ごとに値幅を切り上げ(または切り下げ)ながら更新され、買いと売りの注文量がある程度バランスするまで続きます。1日の値動きの上限・下限を定める「ストップ高・ストップ安」とは異なる仕組みで、個別銘柄の値段が決まるまでの「交通整理」のような役割を持ちます。株価情報サイトで株価に「特」の表示が付いているときはこの状態を指します。">
         <div class="glossary-item-head">
-          <span class="glossary-term">特別気配</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%89%B9%E5%88%A5%E6%B0%97%E9%85%8D.html">特別気配</a>
           <span class="glossary-reading">とくべつけはい</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -941,7 +952,7 @@
       </div>
       <div class="glossary-item" data-search="topix（東証株価指数） とぴっくす 東京証券取引所プライム市場に上場する企業全体の値動きを示す指数。日経平均が225銘柄の平均値であるのに対し、topixはより広い銘柄群の時価総額をもとに算出するため、市場全体の実感に近いとされます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">TOPIX（東証株価指数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/TOPIX%EF%BC%88%E6%9D%B1%E8%A8%BC%E6%A0%AA%E4%BE%A1%E6%8C%87%E6%95%B0%EF%BC%89.html">TOPIX（東証株価指数）</a>
           <span class="glossary-reading">とぴっくす</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -949,7 +960,7 @@
       </div>
       <div class="glossary-item" data-search="ドルコスト平均法 どるこすとへいきんほう 値動きのあるものを一度に買わず、一定額を定期的に買い続ける投資手法。価格が高いときは少なく、安いときは多く買うことになるため、平均購入単価をならす効果があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ドルコスト平均法</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%89%E3%83%AB%E3%82%B3%E3%82%B9%E3%83%88%E5%B9%B3%E5%9D%87%E6%B3%95.html">ドルコスト平均法</a>
           <span class="glossary-reading">どるこすとへいきんほう</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -957,7 +968,7 @@
       </div>
       <div class="glossary-item" data-search="内外金利差（金利平価） ないがいきんりさ（きんりへいかせつ） 自国と他国の政策金利の差のこと。金利が高い国の通貨ほど、その通貨建て資産を持つだけで得られる利回りが増えるため買われやすくなる、という考え方を金利平価説と呼びます。2026年9月のfomc利上げでドル円が円安方向に動いたように、内外金利差の拡大(縮小)は為替相場の重要な変動要因の一つです。実際の為替相場は物価動向やリスク許容度など他の要因にも左右されるため、金利差だけで全てが決まるわけではありません。">
         <div class="glossary-item-head">
-          <span class="glossary-term">内外金利差（金利平価）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%86%85%E5%A4%96%E9%87%91%E5%88%A9%E5%B7%AE%EF%BC%88%E9%87%91%E5%88%A9%E5%B9%B3%E4%BE%A1%EF%BC%89.html">内外金利差（金利平価）</a>
           <span class="glossary-reading">ないがいきんりさ（きんりへいかせつ）</span>
           <span class="glossary-category">為替</span>
         </div>
@@ -965,7 +976,7 @@
       </div>
       <div class="glossary-item" data-search="成行注文・指値注文 なりゆきちゅうもん・さしねちゅうもん 成行注文は「今の価格でいくらでもいいから売買する」注文、指値注文は「この価格になったら売買する」と価格を指定する注文。成行は約定しやすい代わりに想定外の価格で売買されるリスクがあり、指値は価格を守れる代わりに約定しない可能性があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">成行注文・指値注文</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%88%90%E8%A1%8C%E6%B3%A8%E6%96%87%E3%83%BB%E6%8C%87%E5%80%A4%E6%B3%A8%E6%96%87.html">成行注文・指値注文</a>
           <span class="glossary-reading">なりゆきちゅうもん・さしねちゅうもん</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -973,7 +984,7 @@
       </div>
       <div class="glossary-item" data-search="日銀短観 にちぎんたんかん 日本銀行が年4回、全国の企業に景況感などを聞いて発表する調査。企業自身の「今の景気をどう感じているか」を数値化したもので、日本経済の実感を測る代表的な指標です。">
         <div class="glossary-item-head">
-          <span class="glossary-term">日銀短観</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%97%A5%E9%8A%80%E7%9F%AD%E8%A6%B3.html">日銀短観</a>
           <span class="glossary-reading">にちぎんたんかん</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -981,7 +992,7 @@
       </div>
       <div class="glossary-item" data-search="日経平均株価 にっけいへいきんかぶか 日本経済新聞社が算出する、東証プライム市場の代表的な225銘柄から計算する株価指数。値がさ株（1株の値段が高い銘柄）の影響を受けやすい特徴があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">日経平均株価</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87%E6%A0%AA%E4%BE%A1.html">日経平均株価</a>
           <span class="glossary-reading">にっけいへいきんかぶか</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -989,7 +1000,7 @@
       </div>
       <div class="glossary-item" data-search="日経平均vi（日経平均ボラティリティー・インデックス） にっけいへいきんぶい・あい 日経平均株価の先行き1カ月間の値動きの大きさ(ボラティリティー)を、日経平均オプションの価格から算出した指数。仕組みは米国の「vix指数(恐怖指数)」と同じで、数値が高いほど「将来、大きく動くだろう」という投資家の警戒感が強いことを意味する。普段は15〜20程度で推移することが多く、相場が大荒れになると30、40台まで跳ね上がることもある。2026年10月2日、前日に日経平均が3.30%高と記録的な上昇をみせた反動で地合いが不安定になったことや、同日夜に発表される米国の9月雇用統計を控えていたことから、日経平均株価自体は下げ幅を縮めて落ち着きを取り戻す一方で、日経平均viは前日比20.86%高の27.70まで上昇するという、値動きの大きさと警戒感の強さが一致しない場面がみられた。">
         <div class="glossary-item-head">
-          <span class="glossary-term">日経平均VI（日経平均ボラティリティー・インデックス）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87VI%EF%BC%88%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87%E3%83%9C%E3%83%A9%E3%83%86%E3%82%A3%E3%83%AA%E3%83%86%E3%82%A3%E3%83%BC%E3%83%BB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%EF%BC%89.html">日経平均VI（日経平均ボラティリティー・インデックス）</a>
           <span class="glossary-reading">にっけいへいきんぶい・あい</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -997,7 +1008,7 @@
       </div>
       <div class="glossary-item" data-search="値がさ株 ねがさかぶ 1株あたりの株価が高い銘柄のこと。日経平均のように単純平均型の指数では、値がさ株の値動きが指数全体に与える影響が大きくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">値がさ株</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%80%A4%E3%81%8C%E3%81%95%E6%A0%AA.html">値がさ株</a>
           <span class="glossary-reading">ねがさかぶ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -1005,7 +1016,7 @@
       </div>
       <div class="glossary-item" data-search="ハイイールド債 はいいーるどさい 信用格付け会社が付ける格付けが投資適格級(目安としてトリプルb相当以上)に届かない企業が発行する債券。デフォルト(債務不履行)リスクが投資適格企業より高いとみなされる分、投資家に提示する利回りも高く設定される。「ジャンク債」と呼ばれることもある。2026年10月1日、ソフトバンクグループが総額111億ドル(アジア太平洋の非金融企業として過去最大級)のハイイールド債発行を正式決定し、202億ドル超の投資家需要が集まったと報じられた。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ハイイールド債</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%8F%E3%82%A4%E3%82%A4%E3%83%BC%E3%83%AB%E3%83%89%E5%82%B5.html">ハイイールド債</a>
           <span class="glossary-reading">はいいーるどさい</span>
           <span class="glossary-category">債券・資金調達</span>
         </div>
@@ -1013,7 +1024,7 @@
       </div>
       <div class="glossary-item" data-search="配当性向 はいとうせいこう その期の純利益のうち、どれくらいの割合を配当金として株主に還元しているかを示す指標。高すぎると将来の投資余力が乏しいと見られ、低すぎると株主還元に消極的と見られることがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">配当性向</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%85%8D%E5%BD%93%E6%80%A7%E5%90%91.html">配当性向</a>
           <span class="glossary-reading">はいとうせいこう</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1021,7 +1032,7 @@
       </div>
       <div class="glossary-item" data-search="配当利回り はいとうりまわり 株価に対して年間の配当金がどれくらいの割合かを示す指標（年間配当÷株価）。株価が下がると配当利回りは自動的に上がるため、下落局面で「利回りが魅力的」という見方が出てくることがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">配当利回り</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%85%8D%E5%BD%93%E5%88%A9%E5%9B%9E%E3%82%8A.html">配当利回り</a>
           <span class="glossary-reading">はいとうりまわり</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1029,7 +1040,7 @@
       </div>
       <div class="glossary-item" data-search="破壊的イノベーション（ディスラプション） はかいてきいのべーしょん 既存の業界秩序を根本から塗り替えてしまうような新しい技術やサービスの登場を指す言葉。経営学者クレイトン・クリステンセンが提唱した概念で、性能や品質で必ずしも既存製品に勝っていなくても、コストの安さや利便性の高さで市場の裾野から侵食し、やがて既存プレーヤーの牙城を崩してしまう現象を説明するのに使われる。株式市場では、業績や決算の中身が悪化していない会社の株が、新技術に将来の商売を奪われるという思惑だけで売られる現象として現れることがある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">破壊的イノベーション（ディスラプション）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E7%A0%B4%E5%A3%8A%E7%9A%84%E3%82%A4%E3%83%8E%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%EF%BC%88%E3%83%87%E3%82%A3%E3%82%B9%E3%83%A9%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%EF%BC%89.html">破壊的イノベーション（ディスラプション）</a>
           <span class="glossary-reading">はかいてきいのべーしょん</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -1037,7 +1048,7 @@
       </div>
       <div class="glossary-item" data-search="バリュー株 ばりゅーかぶ すでに稼いでいる利益や保有資産に対して株価が割安に評価されている銘柄。金融・エネルギー・素材といった業種に多く、利益の多くが「今」に近い分、金利上昇の影響を受けにくい傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">バリュー株</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%90%E3%83%AA%E3%83%A5%E3%83%BC%E6%A0%AA.html">バリュー株</a>
           <span class="glossary-reading">ばりゅーかぶ</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -1045,7 +1056,7 @@
       </div>
       <div class="glossary-item" data-search="pmi（購買担当者景気指数） ぴーえむあい 企業の仕入れ・購買担当者に「新規受注」「生産」「雇用」「価格」などが前月より良くなったか悪くなったかを聞き取り指数化した景気指標。製造業版とサービス業版があり、50を上回れば拡大、下回れば縮小を示す。政府統計より集計が速く、雇用統計やgdpと並んで市場が重視する「今の景気の温度計」。強いpmiは景気拡大とインフレ圧力の両方を示唆するため、中央銀行の利上げ観測を通じて長期金利を押し上げ、金利敏感セクターの株価を下押しする一方、需給要因で動く銘柄には影響が及びにくいなど、セクターによって反応が分かれやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">PMI（購買担当者景気指数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/PMI%EF%BC%88%E8%B3%BC%E8%B2%B7%E6%8B%85%E5%BD%93%E8%80%85%E6%99%AF%E6%B0%97%E6%8C%87%E6%95%B0%EF%BC%89.html">PMI（購買担当者景気指数）</a>
           <span class="glossary-reading">ぴーえむあい</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -1053,7 +1064,7 @@
       </div>
       <div class="glossary-item" data-search="pbr（株価純資産倍率） ぴーびーあーる 株価が1株あたりの純資産（会社を清算した場合の取り分の目安）の何倍まで買われているかを示す指標。1倍を割ると「解散価値より株価が安い」と見なされ、割安の目安として使われることがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">PBR（株価純資産倍率）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/PBR%EF%BC%88%E6%A0%AA%E4%BE%A1%E7%B4%94%E8%B3%87%E7%94%A3%E5%80%8D%E7%8E%87%EF%BC%89.html">PBR（株価純資産倍率）</a>
           <span class="glossary-reading">ぴーびーあーる</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1061,7 +1072,7 @@
       </div>
       <div class="glossary-item" data-search="フォワードガイダンス ふぉわーどがいだんす 中央銀行が「これから利上げ（利下げ）を行うかもしれない」「一定の条件が整うまで金融緩和を続ける」といった将来の金融政策の方針や見通しを、あらかじめ言葉で示す手法。実際に政策金利を変更する『行動』そのものではなく、『これから行うかもしれない』という発言・声明を通じて市場参加者の期待に働きかけ、金利や為替、株価を動かすのが特徴。2026年9月3日、日銀の高田創審議委員が講演で『機動的な利上げの新局面』に言及しただけで、実際の政策決定会合を経ないままドル円が数時間で2円を超えて円高方向に動いたのは、フォワードガイダンスが市場に強く作用した典型例。効果が大きい分、発言の解釈をめぐって市場が過剰に反応したり、後から『言い過ぎだった』と修正が入ったりすることもある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">フォワードガイダンス</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%95%E3%82%A9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%AC%E3%82%A4%E3%83%80%E3%83%B3%E3%82%B9.html">フォワードガイダンス</a>
           <span class="glossary-reading">ふぉわーどがいだんす</span>
           <span class="glossary-category">金融政策</span>
         </div>
@@ -1069,7 +1080,7 @@
       </div>
       <div class="glossary-item" data-search="vix指数（恐怖指数） ぶいあいえっくすしすう 投資家が今後1カ月の株価変動をどれくらい大きく予想しているかを示す指数。数字が高いほど「先行き不安が強い」ことを表し、相場が急落する場面で跳ね上がる傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">VIX指数（恐怖指数）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/VIX%E6%8C%87%E6%95%B0%EF%BC%88%E6%81%90%E6%80%96%E6%8C%87%E6%95%B0%EF%BC%89.html">VIX指数（恐怖指数）</a>
           <span class="glossary-reading">ぶいあいえっくすしすう</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1077,7 +1088,7 @@
       </div>
       <div class="glossary-item" data-search="book-to-bill比率 ぶっくとぅびるひりつ 半導体製造装置業界で使われる指標で、その月の新規受注額を出荷額で割ったもの。1を上回れば「注文が出荷より多い＝需要が強い」ことを意味し、業界の先行きを見る手がかりになります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">book-to-bill比率</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/book-to-bill%E6%AF%94%E7%8E%87.html">book-to-bill比率</a>
           <span class="glossary-reading">ぶっくとぅびるひりつ</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1085,7 +1096,7 @@
       </div>
       <div class="glossary-item" data-search="ブリッジラウンド（つなぎの資金調達ラウンド） ぶりっじらうんど 未上場企業がipo(新規株式公開)などの次の大きな資金調達イベントの前に、事業継続や成長投資のために実施する「つなぎ」の資金調達ラウンドのこと。通常の増資ラウンドと異なり、既存株主の希薄化を抑えた条件や、将来のipo時に転換される設計になっている場合もある。2026年10月、openaiがipo前の資金需要を満たすため1.2兆〜1.4兆ドル規模の評価額での調達を投資家と協議しているとの報道が出たが、これも将来の上場を見据えたブリッジラウンドの典型例とされる。似た言葉の「ブリッジローン(つなぎ融資)」は銀行融資などの負債(デット)による調達を指すのに対し、ブリッジラウンドは株式(エクイティ)による調達を指す点で区別される。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ブリッジラウンド（つなぎの資金調達ラウンド）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%EF%BC%88%E3%81%A4%E3%81%AA%E3%81%8E%E3%81%AE%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%EF%BC%89.html">ブリッジラウンド（つなぎの資金調達ラウンド）</a>
           <span class="glossary-reading">ぶりっじらうんど</span>
           <span class="glossary-category">制度・仕組み</span>
         </div>
@@ -1093,7 +1104,7 @@
       </div>
       <div class="glossary-item" data-search="ブリッジローン（つなぎ融資） ぶりっじろーん 企業が大型のm&amp;aや投資などで急に巨額の資金が必要になったとき、社債発行や長期の協調融資(シンジケートローン)といった本格的な資金調達が整うまでの「橋渡し」として使う短期の借入れ。スピード重視で機動的に実行できる代わりに、通常の長期融資より金利は割高になりやすいのが特徴です。期限までに、より条件の良い資金へ無事に借り換え(リファイナンス)できるかどうかが常に注目され、借り換えに失敗すると財務体質への懸念から株価の下押し材料になることもあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ブリッジローン（つなぎ融資）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8%E3%83%AD%E3%83%BC%E3%83%B3%EF%BC%88%E3%81%A4%E3%81%AA%E3%81%8E%E8%9E%8D%E8%B3%87%EF%BC%89.html">ブリッジローン（つなぎ融資）</a>
           <span class="glossary-reading">ぶりっじろーん</span>
           <span class="glossary-category">資金調達</span>
         </div>
@@ -1101,7 +1112,7 @@
       </div>
       <div class="glossary-item" data-search="ブレント原油とwti原油（原油の国際指標） ぶれんとげんゆとだぶるてぃあいげんゆ 原油価格の代表的な国際指標には、米国産原油の値段を示す「wti」と、北海産を基準に中東産なども含めて国際的に取引される「ブレント」の2種類があります。ブレントはタンカー輸送に頼る中東産原油の値動きを反映しやすいため、ホルムズ海峡周辺の緊張など中東情勢が緊張する場面ではwtiより値上がりしやすい傾向があります。日本の輸入原油の実際のコストもwtiよりブレントに近い動きをすることが多く、両者の価格差（スプレッド）が広がるときは中東リスクの高まりを示すシグナルになります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ブレント原油とWTI原油（原油の国際指標）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%96%E3%83%AC%E3%83%B3%E3%83%88%E5%8E%9F%E6%B2%B9%E3%81%A8WTI%E5%8E%9F%E6%B2%B9%EF%BC%88%E5%8E%9F%E6%B2%B9%E3%81%AE%E5%9B%BD%E9%9A%9B%E6%8C%87%E6%A8%99%EF%BC%89.html">ブレント原油とWTI原油（原油の国際指標）</a>
           <span class="glossary-reading">ぶれんとげんゆとだぶるてぃあいげんゆ</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1109,7 +1120,7 @@
       </div>
       <div class="glossary-item" data-search="ベンダーファイナンス べんだーふぁいなんす 商品やサービスを売る側(ベンダー)が、買う側の資金調達を融資・立て替え・ローン保証などの形で直接支援する取り引きのこと。売り手は自社製品の販売を伸ばせる一方、買い手の信用力がもともと脆い場合、『売り手が資金を出してくれるから注文できる』という不安定な需要に支えられてしまうリスクがある。2000年前後のitバブル崩壊期には、通信機器大手のルーセント・テクノロジーズやノーテルネットワークスが新興の通信会社に巨額の融資・支払い猶予を提供して自社製品を買わせていたが、顧客企業が相次いで経営破綻すると、機器メーカー側も売上と貸付金を同時に失って経営危機に陥った。2026年のaiデータセンター投資ブームでも、半導体大手エヌビディアが顧客企業の資金調達を保証する契約を広げていると報じられており、同じ構図が形を変えて現れていると指摘されている。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ベンダーファイナンス</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%B3%E3%82%B9.html">ベンダーファイナンス</a>
           <span class="glossary-reading">べんだーふぁいなんす</span>
           <span class="glossary-category">資金調達・クレジット</span>
         </div>
@@ -1117,7 +1128,7 @@
       </div>
       <div class="glossary-item" data-search="ベータ(β) べーた ある銘柄や業種の値動きが、市場全体(日経平均やtopixなど)の値動きに対してどれくらい敏感に反応するかを示す指標。市場全体が1%動いたとき、ベータ1.0の銘柄は同じく1%程度、ベータ1.5の銘柄なら1.5%前後、ベータ0.5の銘柄なら0.5%程度しか動かない、という目安になる。半導体株や値がさのハイテク株は一般にベータが高いとされ、相場が強い日には大きく上に振れやすく、不安が広がる日には大きく下に振れやすい。市場全体への警戒(リスクオフ)が強まった日に、業績面で直接の関係が薄い業種まで同じ方向に売られることがあるのは、ベータの高い銘柄・業種ほど大きく振れやすいという一般的な傾向が働いているケースが多いためだと説明される。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ベータ(β)</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%99%E3%83%BC%E3%82%BF%28%CE%B2%29.html">ベータ(β)</a>
           <span class="glossary-reading">べーた</span>
           <span class="glossary-category">株式・指標</span>
         </div>
@@ -1125,7 +1136,7 @@
       </div>
       <div class="glossary-item" data-search="ボラティリティ ぼらてぃりてぃ 価格変動の大きさ（振れ幅）のこと。ボラティリティが高いほど短期間で大きく値が動きやすく、リスクもリターンの機会も大きくなります。vix指数はこのボラティリティを数値化したものです。">
         <div class="glossary-item-head">
-          <span class="glossary-term">ボラティリティ</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%9C%E3%83%A9%E3%83%86%E3%82%A3%E3%83%AA%E3%83%86%E3%82%A3.html">ボラティリティ</a>
           <span class="glossary-reading">ぼらてぃりてぃ</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1133,7 +1144,7 @@
       </div>
       <div class="glossary-item" data-search="マーケットブレッド（市場の厚み） まーけっとぶれっど 指数そのものの上げ下げとは別に、その日に値上がりした銘柄の数と値下がりした銘柄の数を比べて、相場の動きが市場全体に広く行き渡っているか、それともごく一部の銘柄に偏っているかを見る考え方。たとえば2026年10月23日のs&amp;p500は指数としては0.52%安という中程度の下落だったが、実際には値上がり135銘柄に対し値下がりが367銘柄と、下げた銘柄の数が2倍以上あった。市場価値加重型の指数(s&amp;p500・ナスダックなど)はごく一部の巨大企業の値動きが指数全体を左右しやすく、単純平均型の指数(日経平均)では1株あたりの値段が高い「値がさ株」が同じ役割を果たすため、指数の見た目の動きと実際の銘柄の広がりはしばしば一致しない。値上がり銘柄数から値下がり銘柄数を引いて積み上げる「a/dライン」も、この偏りの蓄積を追うテクニカル指標として使われる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">マーケットブレッド（市場の厚み）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%96%E3%83%AC%E3%83%83%E3%83%89%EF%BC%88%E5%B8%82%E5%A0%B4%E3%81%AE%E5%8E%9A%E3%81%BF%EF%BC%89.html">マーケットブレッド（市場の厚み）</a>
           <span class="glossary-reading">まーけっとぶれっど</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1141,7 +1152,7 @@
       </div>
       <div class="glossary-item" data-search="メモリー・グラット（記憶用半導体の供給過剰） めもりーぐらっと dramやnand型フラッシュメモリーのような「記憶用半導体(メモリー)」の供給が需要を上回り、価格や関連企業の業績が下押しされる状態のこと。メモリー半導体は複数メーカーが似た製品を大量生産する構造上、需給バランスが崩れると価格が急落しやすく、業績の振れ幅(景気循環)が大きいのが特徴。データセンター向けなどの旺盛な需要を見込んで各社が増産投資を進めた結果、想定より早く供給が積み上がると懸念されるときに使われる表現で、ai向けの画像処理半導体(gpu)やロジック半導体とは値動きが分かれやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">メモリー・グラット（記憶用半導体の供給過剰）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B0%E3%83%A9%E3%83%83%E3%83%88%EF%BC%88%E8%A8%98%E6%86%B6%E7%94%A8%E5%8D%8A%E5%B0%8E%E4%BD%93%E3%81%AE%E4%BE%9B%E7%B5%A6%E9%81%8E%E5%89%B0%EF%BC%89.html">メモリー・グラット（記憶用半導体の供給過剰）</a>
           <span class="glossary-reading">めもりーぐらっと</span>
           <span class="glossary-category">半導体・産業</span>
         </div>
@@ -1149,7 +1160,7 @@
       </div>
       <div class="glossary-item" data-search="メモリー半導体スーパーサイクル めもりーはんどうたいすーぱーさいくる dramやnand型フラッシュメモリーのような記憶用半導体で、需要が供給を大きく上回り、価格が短期間で数割〜数倍に急騰する局面のこと。2026年はaiデータセンター向け需要の急増が主因とされる。供給過剰で価格が急落する「メモリー・グラット」とは正反対の局面にあたり、メモリー半導体市場は好況と不況を繰り返す値動きの荒さで知られる。">
         <div class="glossary-item-head">
-          <span class="glossary-term">メモリー半導体スーパーサイクル</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%BC%E5%8D%8A%E5%B0%8E%E4%BD%93%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB.html">メモリー半導体スーパーサイクル</a>
           <span class="glossary-reading">めもりーはんどうたいすーぱーさいくる</span>
           <span class="glossary-category">指標</span>
         </div>
@@ -1157,7 +1168,7 @@
       </div>
       <div class="glossary-item" data-search="有事の円買い ゆうじのえんがい 世界的な危機や不安が高まったとき、比較的安全な資産とみなされる円が買われやすくなる現象。実際には局面によってドルが買われることもあり、常にこの通りになるとは限りません。">
         <div class="glossary-item-head">
-          <span class="glossary-term">有事の円買い</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%9C%89%E4%BA%8B%E3%81%AE%E5%86%86%E8%B2%B7%E3%81%84.html">有事の円買い</a>
           <span class="glossary-reading">ゆうじのえんがい</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -1165,7 +1176,7 @@
       </div>
       <div class="glossary-item" data-search="有事のドル買い ゆうじのドルがい 戦争・紛争など地政学リスクが高まった局面で、世界の基軸通貨である米ドルに資金が集まりやすくなる現象。安全資産としてよく知られる「有事の円買い」とは逆に、ドルが最も流動性の高い決済・準備通貨であることや、リスクの震源であるニュース（原油高など）がインフレ再燃・米利上げ観測につながって金利の高いドルの魅力を高めることが背景にある。同じ地政学リスクのニュースでも、市場がそれを『安全への逃避』の材料と捉えれば円や金が買われやすく、『インフレ・金利上昇』の材料と捉えればドルが買われやすい。どちらに転ぶかは、その時々の長期金利や原油価格の動きと合わせて見る必要がある。">
         <div class="glossary-item-head">
-          <span class="glossary-term">有事のドル買い</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E6%9C%89%E4%BA%8B%E3%81%AE%E3%83%89%E3%83%AB%E8%B2%B7%E3%81%84.html">有事のドル買い</a>
           <span class="glossary-reading">ゆうじのドルがい</span>
           <span class="glossary-category">為替</span>
         </div>
@@ -1173,7 +1184,7 @@
       </div>
       <div class="glossary-item" data-search="寄り天 よりてん その日の株価の始値（寄り付き）が、その日のうちで最も高い値段（高値）になってしまい、以降は下げ続けて取引を終える値動きのパターンを指す相場用語。「寄り付きが天井になる」を縮めた言い方。買いのエネルギーが取引開始直後に集中し、その後は新規の買い手が続かず、利益確定売りに押されやすいことを表す。2026年9月28日の日経平均株価は、午前9時24分に67,034円の高値をつけた後、終値にかけてじりじり下げ続け486円安で取引を終え、典型的な「寄り天」の値動きとなった。">
         <div class="glossary-item-head">
-          <span class="glossary-term">寄り天</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%AF%84%E3%82%8A%E5%A4%A9.html">寄り天</a>
           <span class="glossary-reading">よりてん</span>
           <span class="glossary-category">相場格言・値動き</span>
         </div>
@@ -1181,7 +1192,7 @@
       </div>
       <div class="glossary-item" data-search="利上げ確率（市場の政策金利の織り込み） りあげかくりつ ニュースで見かける「市場が織り込む利上げ確率◯割」という数字は、世論調査の結果ではなく、フェデラルファンド(ff)先物のような金利先物の価格から逆算して算出される。将来のある時点の政策金利を取引する先物市場の値段を数式で変換すると、「市場参加者全体が平均してどの程度の確率でその決定を予想しているか」という形に翻訳できる。frb自身が事前に発表する数字ではなく、経済指標や中央銀行関係者の発言ひとつで短期間に大きく変動する点が特徴。この確率が50%に近く割れているほど、会合の結果がどちらに出ても相場は大きく動きやすい。">
         <div class="glossary-item-head">
-          <span class="glossary-term">利上げ確率（市場の政策金利の織り込み）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%88%A9%E4%B8%8A%E3%81%92%E7%A2%BA%E7%8E%87%EF%BC%88%E5%B8%82%E5%A0%B4%E3%81%AE%E6%94%BF%E7%AD%96%E9%87%91%E5%88%A9%E3%81%AE%E7%B9%94%E3%82%8A%E8%BE%BC%E3%81%BF%EF%BC%89.html">利上げ確率（市場の政策金利の織り込み）</a>
           <span class="glossary-reading">りあげかくりつ</span>
           <span class="glossary-category">金融政策</span>
         </div>
@@ -1189,7 +1200,7 @@
       </div>
       <div class="glossary-item" data-search="利益確定売り りえきかくていうり 含み益（買値より値上がりした分の利益）が出ている株を売って、利益を実際に確定させること。業績が悪くなくても、上がりすぎた株はこの売りで値下がりすることがあります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">利益確定売り</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%88%A9%E7%9B%8A%E7%A2%BA%E5%AE%9A%E5%A3%B2%E3%82%8A.html">利益確定売り</a>
           <span class="glossary-reading">りえきかくていうり</span>
           <span class="glossary-category">取引の基礎</span>
         </div>
@@ -1197,7 +1208,7 @@
       </div>
       <div class="glossary-item" data-search="リスクオン・リスクオフ りすくおん・りすくおふ 投資家全体がリスクを取って積極的に株などを買う地合いを「リスクオン」、逆にリスクを避けて債券や金などの安全資産に資金を移す地合いを「リスクオフ」と呼びます。相場全体のムードを表す言葉です。">
         <div class="glossary-item-head">
-          <span class="glossary-term">リスクオン・リスクオフ</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%AA%E3%82%B9%E3%82%AF%E3%82%AA%E3%83%B3%E3%83%BB%E3%83%AA%E3%82%B9%E3%82%AF%E3%82%AA%E3%83%95.html">リスクオン・リスクオフ</a>
           <span class="glossary-reading">りすくおん・りすくおふ</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -1205,7 +1216,7 @@
       </div>
       <div class="glossary-item" data-search="量的緩和・量的引き締め（qe・qt） りょうてきかんわ・りょうてきひきしめ 中央銀行が国債などを買って市場にお金を大量に流すのが量的緩和（qe）、逆に保有資産を減らしてお金を吸収するのが量的引き締め（qt）。株式市場にとって、qeは追い風、qtは向かい風になりやすいとされます。">
         <div class="glossary-item-head">
-          <span class="glossary-term">量的緩和・量的引き締め（QE・QT）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E9%87%8F%E7%9A%84%E7%B7%A9%E5%92%8C%E3%83%BB%E9%87%8F%E7%9A%84%E5%BC%95%E3%81%8D%E7%B7%A0%E3%82%81%EF%BC%88QE%E3%83%BBQT%EF%BC%89.html">量的緩和・量的引き締め（QE・QT）</a>
           <span class="glossary-reading">りょうてきかんわ・りょうてきひきしめ</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -1213,7 +1224,7 @@
       </div>
       <div class="glossary-item" data-search="割引率と現在価値 わりびきりつとげんざいかち 「将来もらえるお金は、今もらえるお金より価値が低い」という考え方にもとづき、将来の利益を今の価値に計算し直すときに使う割合。金利が上がるとこの割引率も上がり、将来の利益への期待で買われている株ほど理論上の株価が下がりやすくなります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">割引率と現在価値</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E5%89%B2%E5%BC%95%E7%8E%87%E3%81%A8%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4.html">割引率と現在価値</a>
           <span class="glossary-reading">わりびきりつとげんざいかち</span>
           <span class="glossary-category">経済</span>
         </div>
@@ -1221,7 +1232,7 @@
       </div>
       <div class="glossary-item" data-search="デュレーション（金利感応度） デュレーション（きんりかんのうど） 満期までの期間が長い債券ほど、金利が変動したときの価格の振れが大きくなる性質のことです。将来受け取る利息・元本を「今の価値」に割り引いて評価する際、割引に使う金利(割引率)が少し動くだけでも、受け取りが遠い将来であるほど現在価値の目減りが大きくなるためです。株式にも同じ考え方が当てはまり、遠い将来の利益を織り込んで買われている「グロース株」は、今まさに利益を出している銘柄に比べて、金利上昇局面で株価が大きく下がりやすい傾向があります。">
         <div class="glossary-item-head">
-          <span class="glossary-term">デュレーション（金利感応度）</span>
+          <a class="glossary-term" href="/nazenazosouba/glossary/%E3%83%87%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%EF%BC%88%E9%87%91%E5%88%A9%E6%84%9F%E5%BF%9C%E5%BA%A6%EF%BC%89.html">デュレーション（金利感応度）</a>
           <span class="glossary-reading">デュレーション（きんりかんのうど）</span>
           <span class="glossary-category">金利・債券</span>
         </div>
