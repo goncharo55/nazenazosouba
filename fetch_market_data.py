@@ -14,7 +14,14 @@
 日付の揃え方（サイトの asof ラベルと同じ規則）:
   - 日本の指標(日経平均・TOPIX ETF) : 対象日以前で最後の東証セッション → 「M/D 東証引け」
   - 米国の指標(S&P500・Nasdaq・ダウ・SOX・VIX・米10年金利) : 対象日より前で最後のNYセッション
-  - 24時間資産(ドル円・金・原油・ビットコイン) : 対象日以前で最後の日足
+  - 24時間資産(ドル円・金・原油・暗号資産) : 対象日以前で最後の日足（取得した時点の値）
+「一度書いたファイルの値は書き換えない」: 後から取り直すと、24時間資産は値が変わり、Yahoo側の欠損で
+株価が消えることもある(例: 2026-11-16の日本株が後日NaNになった)。記録した値がそのまま正になる。
+このファイルが「マスタデータ」で、サイトの記事・週刊動画(market_weekly)・週次データ(build_weekly.py)は
+すべてここの数字だけを使う。
+  - indices : サイトの指標カード12件
+  - extras  : カードには出さないが動画や本文で使う資産(イーサリアム・銀・DAX・上海・ユーロ円・注目個別株)
+  - history : 上記すべての直近90セッションの終値(チャート用)。indices/extras と同じ規則で切ってある
 出力JSONの indices は edition JSON の indices にそのまま貼れる形（value_text/unit/asof/delta/pct）。
 streak（N日続伸/続落/ぶり反発・反落）や1年来高値/安値かどうかも計算済みなので、見出しの
 「続伸」「最高値」などの表現はここの値だけを根拠にすること。
@@ -47,6 +54,20 @@ INDEX_SPEC = [
     ("CL=F", "CL=F", "原油(WTI)", "ドル", "24H"),
     ("BTC-USD", "BTC-USD", "ビットコイン", "ドル", "24H"),
 ]
+
+# 指標カードには出さないが、動画・週次データ・本文で使う資産（区分 EU は米国と同じ扱い、CN は日本と同じ扱い）
+EXTRA_SPEC = [
+    ("ETH-USD", "ETH-USD", "イーサリアム", "ドル", "24H"),
+    ("SI=F", "SI=F", "銀価格(NY銀)", "ドル", "24H"),
+    ("EURJPY=X", "EURJPY=X", "ユーロ円", "円", "24H"),
+    ("^GDAXI", "^GDAXI", "ドイツDAX", "", "EU"),
+    ("000001.SS", "000001.SS", "上海総合", "", "CN"),
+    ("NVDA", "NVDA", "エヌビディア", "ドル", "US"),
+    ("9984.T", "9984.T", "ソフトバンクG", "円", "JP"),
+    ("6857.T", "6857.T", "アドバンテスト", "円", "JP"),
+    ("8035.T", "8035.T", "東京エレクトロン", "円", "JP"),
+]
+HISTORY_N = 90
 
 
 def fetch_history(yf_ticker: str, end: date, days: int = 400, retries: int = 3) -> pd.Series:
@@ -98,7 +119,8 @@ def streak_info(closes: pd.Series) -> dict:
 
 def pick_session(s: pd.Series, target: date, kind: str):
     """区分ごとの規則で、対象日の記事が使うべき最終セッション(date)を返す。"""
-    cand = s[s.index < target] if kind == "US" else s[s.index <= target]
+    # 当日分を含めない: 米欧（日本時間16時はまだ取引前/取引中）。それ以外は当日分まで含める
+    cand = s[s.index < target] if kind in ("US", "EU") else s[s.index <= target]
     return cand
 
 
@@ -106,9 +128,10 @@ def fmt(v: float) -> str:
     return f"{v:,.2f}"
 
 
-def build_indices(target: date, live: bool, hist: dict, now: datetime, errors: list) -> list:
+def build_indices(target: date, live: bool, hist: dict, now: datetime, errors: list,
+                  spec: list = INDEX_SPEC, history_out: dict | None = None) -> list:
     out = []
-    for site_t, yf_t, name, unit, kind in INDEX_SPEC:
+    for site_t, yf_t, name, unit, kind in spec:
         s = hist.get(yf_t)
         if s is None:
             s = hist[yf_t] = fetch_history(yf_t, target)
@@ -123,10 +146,16 @@ def build_indices(target: date, live: bool, hist: dict, now: datetime, errors: l
         md = f"{last_d.month}/{last_d.day}"
         if kind == "JP":
             asof = f"{md} 東証引け"
+        elif kind == "CN":
+            asof = f"{md} 上海引け"
         elif kind == "US":
             asof = f"{md} NY市場引け"
+        elif kind == "EU":
+            asof = f"{md} 欧州引け"
         else:
             asof = f"{md} {now.hour:02d}:00" if (live and last_d == target) else f"{md} 終値"
+        if history_out is not None:
+            history_out[site_t] = [[str(d), round(float(v), 4)] for d, v in cand.iloc[-HISTORY_N:].items()]
         year = cand.iloc[-252:] if len(cand) >= 2 else cand
         out.append({
             "ticker": site_t, "name": name, "value_text": fmt(last), "unit": unit, "asof": asof,
@@ -197,13 +226,29 @@ def build_movers(sessions: dict, top_n: int, errors: list) -> dict:
     return out
 
 
+def dump_json(data: dict) -> str:
+    """indent付きで書くが、history は1資産1行にまとめる（ファイルが膨らまないように）。"""
+    hist = data.get("history")
+    body = dict(data)
+    if hist is not None:
+        body["history"] = "__HISTORY__"
+    text = json.dumps(body, ensure_ascii=False, indent=2)
+    if hist is not None:
+        nl = "\n"
+        lines = ("," + nl).join(f"    {json.dumps(k)}: {json.dumps(v, separators=(',', ':'))}" for k, v in hist.items())
+        text = text.replace('"__HISTORY__"', "{" + nl + lines + nl + "  }")
+    return text
+
+
 def build_market_data(target: date, with_movers: bool = True, hist: dict | None = None,
                       top_n: int = 10) -> dict:
     now = datetime.now(JST)
     live = target == now.date()
     hist = hist if hist is not None else {}
     errors: list[str] = []
-    indices = build_indices(target, live, hist, now, errors)
+    history: dict = {}
+    indices = build_indices(target, live, hist, now, errors, INDEX_SPEC, history)
+    extras = build_indices(target, live, hist, now, errors, EXTRA_SPEC, history)
     by = {i["ticker"]: i for i in indices}
     sessions = {
         "jp": by["^N225"]["session_date"] if "^N225" in by else None,
@@ -211,6 +256,9 @@ def build_market_data(target: date, with_movers: bool = True, hist: dict | None 
     }
     # 休場判定: JPの最終セッションが対象日と違えば、東証は(対象日時点で)休場または未確定
     sessions["jp_open_on_target"] = sessions["jp"] == str(target)
+    if not sessions["jp_open_on_target"] and target.weekday() < 5:
+        # 平日なのに当日の東証データが無い: 祝日か、Yahoo側の未反映/欠損。休場と決めつけない
+        errors.append(f"JP: {target} の東証データが取得できず（祝日でなければ再取得が必要）")
     movers = {"JP": [], "US": []}
     if with_movers:
         # 日本は対象日の当日セッションがあるときだけ。米国は直近セッション(対象日の前日扱い)
@@ -222,7 +270,9 @@ def build_market_data(target: date, with_movers: bool = True, hist: dict | None 
         "live": live,
         "sessions": sessions,
         "indices": indices,
+        "extras": extras,
         "movers": movers,
+        "history": history,
         "fetch_errors": errors,
         "usage_note": ("indices は edition JSON の indices にそのまま使う。値上がり/値下がりの騰落率(pct)も"
                        "この movers の数値をそのまま使う。streak.phrase/1年来高値フラグを見出しの根拠にする。"
@@ -236,21 +286,27 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--no-movers", action="store_true")
     ap.add_argument("--top-n", type=int, default=10)
+    ap.add_argument("--force", action="store_true", help="既存ファイルを上書きする（通常は使わない）")
     args = ap.parse_args()
 
     target = date.fromisoformat(args.date) if args.date else datetime.now(JST).date()
     data = build_market_data(target, with_movers=not args.no_movers, top_n=args.top_n)
     out = Path(args.out) if args.out else BASE / "data" / f"market_{target}.json"
+    # マスタは一度書いたら書き換えない（取り直すと値が変わる/欠けることがあるため）
+    if out.exists() and not args.force:
+        print(f"[market] {out} は既にあるので上書きしません（作り直すなら --force）", file=sys.stderr)
+        return
+    # 指標が1つも取れていなければファイルを書かずに失敗扱い(Actionsで検知してリトライ/通知できるように)
+    if not data["indices"]:
+        print("[market] 指標を1つも取得できませんでした", data["fetch_errors"], file=sys.stderr)
+        sys.exit(2)
     out.parent.mkdir(exist_ok=True)
-    out.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    out.write_text(dump_json(data), encoding="utf-8")
     print(f"[market] wrote {out}  indices={len(data['indices'])}/{len(INDEX_SPEC)} "
           f"movers JP={len(data['movers']['JP'])} US={len(data['movers']['US'])} errors={len(data['fetch_errors'])}",
           file=sys.stderr)
     if data["fetch_errors"]:
         print("[market] fetch_errors:", data["fetch_errors"], file=sys.stderr)
-    # 指標が1つも取れていなければ失敗扱い(Actionsで検知してリトライ/通知できるように)
-    if not data["indices"]:
-        sys.exit(2)
 
 
 if __name__ == "__main__":
