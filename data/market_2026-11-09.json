@@ -1,0 +1,540 @@
+{
+  "edition_date": "2026-11-09",
+  "generated_at_jst": "2026-11-16 22:42 JST",
+  "live": false,
+  "sessions": {
+    "jp": "2026-11-09",
+    "us": "2026-11-06",
+    "jp_open_on_target": true
+  },
+  "indices": [
+    {
+      "ticker": "^N225",
+      "name": "日経平均",
+      "value_text": "58,775.50",
+      "unit": "円",
+      "asof": "11/9 東証引け",
+      "delta": 1340.73,
+      "pct": 2.33,
+      "session_date": "2026-11-09",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 5,
+        "phrase": "6日ぶり反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 72366.34,
+      "low_1y": 48537.7
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "402.10",
+      "unit": "円",
+      "asof": "11/9 東証引け",
+      "delta": 13.5,
+      "pct": 3.47,
+      "session_date": "2026-11-09",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 440.4,
+      "low_1y": 37.14
+    },
+    {
+      "ticker": "^GSPC",
+      "name": "S&P500",
+      "value_text": "7,376.86",
+      "unit": "",
+      "asof": "11/6 NY市場引け",
+      "delta": 23.13,
+      "pct": 0.31,
+      "session_date": "2026-11-06",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 7818.93,
+      "low_1y": 6343.72
+    },
+    {
+      "ticker": "^IXIC",
+      "name": "Nasdaq総合",
+      "value_text": "24,579.43",
+      "unit": "",
+      "asof": "11/6 NY市場引け",
+      "delta": 264.43,
+      "pct": 1.09,
+      "session_date": "2026-11-06",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 27599.79,
+      "low_1y": 20794.64
+    },
+    {
+      "ticker": "^DJI",
+      "name": "NYダウ",
+      "value_text": "51,285.73",
+      "unit": "",
+      "asof": "11/6 NY市場引け",
+      "delta": -237.33,
+      "pct": -0.46,
+      "session_date": "2026-11-06",
+      "streak": {
+        "streak_days": 2,
+        "streak_dir": "down",
+        "prev_run_days": 1,
+        "phrase": "2日続落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 54349.12,
+      "low_1y": 45166.64
+    },
+    {
+      "ticker": "USDJPY=X",
+      "name": "ドル円",
+      "value_text": "158.29",
+      "unit": "円",
+      "asof": "11/9 終値",
+      "delta": 0.79,
+      "pct": 0.5,
+      "session_date": "2026-11-09",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 2,
+        "phrase": "3日ぶり反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 163.86,
+      "low_1y": 152.45
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "25.64",
+      "unit": "",
+      "asof": "11/6 NY市場引け",
+      "delta": -2.54,
+      "pct": -9.01,
+      "session_date": "2026-11-06",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "down",
+        "prev_run_days": 1,
+        "phrase": "反落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 31.05,
+      "low_1y": 13.47
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "4.86",
+      "unit": "%",
+      "asof": "11/6 NY市場引け",
+      "delta": 0.02,
+      "pct": 0.45,
+      "session_date": "2026-11-06",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 2,
+        "phrase": "3日ぶり反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 5.31,
+      "low_1y": 3.96
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "4,114.50",
+      "unit": "ドル",
+      "asof": "11/9 終値",
+      "delta": 39.6,
+      "pct": 0.97,
+      "session_date": "2026-11-09",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 5318.4,
+      "low_1y": 3898.9
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "9,390.25",
+      "unit": "",
+      "asof": "11/6 NY市場引け",
+      "delta": 379.11,
+      "pct": 4.21,
+      "session_date": "2026-11-06",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 2,
+        "phrase": "3日ぶり反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 14634.72,
+      "low_1y": 6352.07
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "86.85",
+      "unit": "ドル",
+      "asof": "11/9 終値",
+      "delta": -3.98,
+      "pct": -4.38,
+      "session_date": "2026-11-09",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "down",
+        "prev_run_days": 2,
+        "phrase": "3日ぶり反落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 112.95,
+      "low_1y": 55.27
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "75,223.15",
+      "unit": "ドル",
+      "asof": "11/9 終値",
+      "delta": 638.5,
+      "pct": 0.86,
+      "session_date": "2026-11-09",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 86602.91,
+      "low_1y": 58558.86
+    }
+  ],
+  "movers": {
+    "JP": [
+      {
+        "ticker": "6532",
+        "name": "ベイカレント",
+        "pct": 8.78,
+        "close": 12765.0,
+        "volume": 1426000.0
+      },
+      {
+        "ticker": "1803",
+        "name": "清水建設",
+        "pct": 7.68,
+        "close": 2111.0,
+        "volume": 5518700.0
+      },
+      {
+        "ticker": "6503",
+        "name": "三菱電機",
+        "pct": 7.27,
+        "close": 4824.0,
+        "volume": 5936400.0
+      },
+      {
+        "ticker": "4661",
+        "name": "オリエンタルランド",
+        "pct": 6.91,
+        "close": 3773.0,
+        "volume": 4000800.0
+      },
+      {
+        "ticker": "3697",
+        "name": "SHIFT",
+        "pct": 6.85,
+        "close": 1130.5,
+        "volume": 2731500.0
+      },
+      {
+        "ticker": "6702",
+        "name": "富士通",
+        "pct": 6.71,
+        "close": 3434.0,
+        "volume": 7108700.0
+      },
+      {
+        "ticker": "4385",
+        "name": "メルカリ",
+        "pct": 6.2,
+        "close": 3805.0,
+        "volume": 4793200.0
+      },
+      {
+        "ticker": "8267",
+        "name": "イオン",
+        "pct": 5.98,
+        "close": 1294.0,
+        "volume": 10679900.0
+      },
+      {
+        "ticker": "7832",
+        "name": "バンダイナムコホールディングス",
+        "pct": 5.96,
+        "close": 6773.0,
+        "volume": 2469900.0
+      },
+      {
+        "ticker": "6302",
+        "name": "住友重機械工業",
+        "pct": 5.84,
+        "close": 4964.0,
+        "volume": 590700.0
+      },
+      {
+        "ticker": "7752",
+        "name": "リコー",
+        "pct": -1.67,
+        "close": 1650.5,
+        "volume": 1400500.0
+      },
+      {
+        "ticker": "6326",
+        "name": "クボタ",
+        "pct": -2.27,
+        "close": 2470.0,
+        "volume": 2525700.0
+      },
+      {
+        "ticker": "8801",
+        "name": "三井不動産",
+        "pct": -2.39,
+        "close": 1573.5,
+        "volume": 6512900.0
+      },
+      {
+        "ticker": "7261",
+        "name": "マツダ",
+        "pct": -2.52,
+        "close": 1103.0,
+        "volume": 5521900.0
+      },
+      {
+        "ticker": "7211",
+        "name": "三菱自動車工業",
+        "pct": -2.71,
+        "close": 337.8,
+        "volume": 10534800.0
+      },
+      {
+        "ticker": "4062",
+        "name": "イビデン",
+        "pct": -3.5,
+        "close": 5932.0,
+        "volume": 22721300.0
+      },
+      {
+        "ticker": "9984",
+        "name": "ソフトバンクグループ",
+        "pct": -4.2,
+        "close": 3400.0,
+        "volume": 67327200.0
+      },
+      {
+        "ticker": "3289",
+        "name": "東急不動産ホールディングス",
+        "pct": -4.45,
+        "close": 1191.5,
+        "volume": 2881000.0
+      },
+      {
+        "ticker": "4183",
+        "name": "三井化学",
+        "pct": -8.48,
+        "close": 1586.0,
+        "volume": 5007500.0
+      },
+      {
+        "ticker": "2914",
+        "name": "日本たばこ産業",
+        "pct": -15.95,
+        "close": 5269.0,
+        "volume": 10939300.0
+      }
+    ],
+    "US": [
+      {
+        "ticker": "COHR",
+        "name": "Coherent Corp.",
+        "pct": 13.58,
+        "close": 192.81,
+        "volume": 9705800.0
+      },
+      {
+        "ticker": "ABNB",
+        "name": "Airbnb",
+        "pct": 11.67,
+        "close": 189.99,
+        "volume": 4972500.0
+      },
+      {
+        "ticker": "AMD",
+        "name": "Advanced Micro Devices",
+        "pct": 11.04,
+        "close": 449.04,
+        "volume": 49163200.0
+      },
+      {
+        "ticker": "VST",
+        "name": "Vistra Corp.",
+        "pct": 10.55,
+        "close": 124.8,
+        "volume": 3208700.0
+      },
+      {
+        "ticker": "APP",
+        "name": "AppLovin",
+        "pct": 9.86,
+        "close": 391.22,
+        "volume": 3429200.0
+      },
+      {
+        "ticker": "NRG",
+        "name": "NRG Energy",
+        "pct": 9.61,
+        "close": 88.29,
+        "volume": 1460100.0
+      },
+      {
+        "ticker": "LRCX",
+        "name": "Lam Research",
+        "pct": 8.23,
+        "close": 200.44,
+        "volume": 11025600.0
+      },
+      {
+        "ticker": "CRL",
+        "name": "Charles River Laboratories",
+        "pct": 7.83,
+        "close": 337.52,
+        "volume": 838300.0
+      },
+      {
+        "ticker": "INTC",
+        "name": "Intel",
+        "pct": 7.71,
+        "close": 56.28,
+        "volume": 102322800.0
+      },
+      {
+        "ticker": "ANET",
+        "name": "Arista Networks",
+        "pct": 7.31,
+        "close": 170.8,
+        "volume": 8608800.0
+      },
+      {
+        "ticker": "BKNG",
+        "name": "Booking Holdings",
+        "pct": -4.77,
+        "close": 160.67,
+        "volume": 4564000.0
+      },
+      {
+        "ticker": "GDDY",
+        "name": "GoDaddy",
+        "pct": -4.78,
+        "close": 114.38,
+        "volume": 878200.0
+      },
+      {
+        "ticker": "EXPE",
+        "name": "Expedia Group",
+        "pct": -4.86,
+        "close": 259.24,
+        "volume": 1122300.0
+      },
+      {
+        "ticker": "DLTR",
+        "name": "Dollar Tree",
+        "pct": -4.93,
+        "close": 131.14,
+        "volume": 1893900.0
+      },
+      {
+        "ticker": "CNC",
+        "name": "Centene Corporation",
+        "pct": -5.97,
+        "close": 69.74,
+        "volume": 4003000.0
+      },
+      {
+        "ticker": "DXCM",
+        "name": "Dexcom",
+        "pct": -5.98,
+        "close": 79.41,
+        "volume": 3013600.0
+      },
+      {
+        "ticker": "PODD",
+        "name": "Insulet Corporation",
+        "pct": -6.16,
+        "close": 146.51,
+        "volume": 1590700.0
+      },
+      {
+        "ticker": "CHTR",
+        "name": "Charter Communications",
+        "pct": -6.19,
+        "close": 118.07,
+        "volume": 2969800.0
+      },
+      {
+        "ticker": "MCHP",
+        "name": "Microchip Technology",
+        "pct": -10.02,
+        "close": 58.35,
+        "volume": 11886100.0
+      },
+      {
+        "ticker": "AXON",
+        "name": "Axon Enterprise",
+        "pct": -18.18,
+        "close": 313.0,
+        "volume": 1273300.0
+      }
+    ]
+  },
+  "fetch_errors": [],
+  "usage_note": "indices は edition JSON の indices にそのまま使う。値上がり/値下がりの騰落率(pct)もこの movers の数値をそのまま使う。streak.phrase/1年来高値フラグを見出しの根拠にする。ここに無い数字を書くときは必ず別ソースで裏取りする。"
+}

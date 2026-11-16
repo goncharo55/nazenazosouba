@@ -1,0 +1,540 @@
+{
+  "edition_date": "2026-11-05",
+  "generated_at_jst": "2026-11-16 22:41 JST",
+  "live": false,
+  "sessions": {
+    "jp": "2026-11-05",
+    "us": "2026-11-04",
+    "jp_open_on_target": true
+  },
+  "indices": [
+    {
+      "ticker": "^N225",
+      "name": "日経平均",
+      "value_text": "61,077.90",
+      "unit": "円",
+      "asof": "11/5 東証引け",
+      "delta": -1110.73,
+      "pct": -1.79,
+      "session_date": "2026-11-05",
+      "streak": {
+        "streak_days": 4,
+        "streak_dir": "down",
+        "prev_run_days": 3,
+        "phrase": "4日続落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 72366.34,
+      "low_1y": 48537.7
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "415.60",
+      "unit": "円",
+      "asof": "11/5 東証引け",
+      "delta": 1.6,
+      "pct": 0.39,
+      "session_date": "2026-11-05",
+      "streak": {
+        "streak_days": 2,
+        "streak_dir": "up",
+        "prev_run_days": 2,
+        "phrase": "2日続伸"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 440.4,
+      "low_1y": 37.14
+    },
+    {
+      "ticker": "^GSPC",
+      "name": "S&P500",
+      "value_text": "7,688.62",
+      "unit": "",
+      "asof": "11/4 NY市場引け",
+      "delta": 119.7,
+      "pct": 1.58,
+      "session_date": "2026-11-04",
+      "streak": {
+        "streak_days": 2,
+        "streak_dir": "up",
+        "prev_run_days": 3,
+        "phrase": "2日続伸"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 7818.93,
+      "low_1y": 6343.72
+    },
+    {
+      "ticker": "^IXIC",
+      "name": "Nasdaq総合",
+      "value_text": "25,736.51",
+      "unit": "",
+      "asof": "11/4 NY市場引け",
+      "delta": 364.5,
+      "pct": 1.44,
+      "session_date": "2026-11-04",
+      "streak": {
+        "streak_days": 2,
+        "streak_dir": "up",
+        "prev_run_days": 3,
+        "phrase": "2日続伸"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 27599.79,
+      "low_1y": 20794.64
+    },
+    {
+      "ticker": "^DJI",
+      "name": "NYダウ",
+      "value_text": "53,356.12",
+      "unit": "",
+      "asof": "11/4 NY市場引け",
+      "delta": 1569.4,
+      "pct": 3.03,
+      "session_date": "2026-11-04",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 54349.12,
+      "low_1y": 45166.64
+    },
+    {
+      "ticker": "USDJPY=X",
+      "name": "ドル円",
+      "value_text": "158.36",
+      "unit": "円",
+      "asof": "11/5 終値",
+      "delta": -0.11,
+      "pct": -0.07,
+      "session_date": "2026-11-05",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "down",
+        "prev_run_days": 2,
+        "phrase": "3日ぶり反落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 163.86,
+      "low_1y": 152.45
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "16.61",
+      "unit": "",
+      "asof": "11/4 NY市場引け",
+      "delta": -4.22,
+      "pct": -20.26,
+      "session_date": "2026-11-04",
+      "streak": {
+        "streak_days": 2,
+        "streak_dir": "down",
+        "prev_run_days": 3,
+        "phrase": "2日続落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 31.05,
+      "low_1y": 13.47
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "4.89",
+      "unit": "%",
+      "asof": "11/4 NY市場引け",
+      "delta": -0.06,
+      "pct": -1.17,
+      "session_date": "2026-11-04",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "down",
+        "prev_run_days": 1,
+        "phrase": "反落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 5.31,
+      "low_1y": 3.96
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "4,113.50",
+      "unit": "ドル",
+      "asof": "11/5 終値",
+      "delta": 40.5,
+      "pct": 0.99,
+      "session_date": "2026-11-05",
+      "streak": {
+        "streak_days": 2,
+        "streak_dir": "up",
+        "prev_run_days": 1,
+        "phrase": "2日続伸"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 5318.4,
+      "low_1y": 3898.9
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "10,268.65",
+      "unit": "",
+      "asof": "11/4 NY市場引け",
+      "delta": -331.75,
+      "pct": -3.13,
+      "session_date": "2026-11-04",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "down",
+        "prev_run_days": 1,
+        "phrase": "反落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 14634.72,
+      "low_1y": 6352.07
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "90.52",
+      "unit": "ドル",
+      "asof": "11/5 終値",
+      "delta": 2.4,
+      "pct": 2.72,
+      "session_date": "2026-11-05",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "up",
+        "prev_run_days": 3,
+        "phrase": "4日ぶり反発"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 112.95,
+      "low_1y": 55.27
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "75,942.12",
+      "unit": "ドル",
+      "asof": "11/5 終値",
+      "delta": -4463.16,
+      "pct": -5.55,
+      "session_date": "2026-11-05",
+      "streak": {
+        "streak_days": 1,
+        "streak_dir": "down",
+        "prev_run_days": 2,
+        "phrase": "3日ぶり反落"
+      },
+      "is_1y_high": false,
+      "is_1y_low": false,
+      "high_1y": 86602.91,
+      "low_1y": 58558.86
+    }
+  ],
+  "movers": {
+    "JP": [
+      {
+        "ticker": "3401",
+        "name": "帝人",
+        "pct": 16.7,
+        "close": 1873.0,
+        "volume": 508900.0
+      },
+      {
+        "ticker": "7203",
+        "name": "トヨタ自動車",
+        "pct": 16.68,
+        "close": 3533.0,
+        "volume": 17700100.0
+      },
+      {
+        "ticker": "7211",
+        "name": "三菱自動車工業",
+        "pct": 13.34,
+        "close": 381.4,
+        "volume": 10534800.0
+      },
+      {
+        "ticker": "5101",
+        "name": "横浜ゴム",
+        "pct": 11.61,
+        "close": 7251.0,
+        "volume": 1793400.0
+      },
+      {
+        "ticker": "9766",
+        "name": "コナミグループ",
+        "pct": 10.95,
+        "close": 28985.0,
+        "volume": 752800.0
+      },
+      {
+        "ticker": "4543",
+        "name": "テルモ",
+        "pct": 10.86,
+        "close": 2627.5,
+        "volume": 6747300.0
+      },
+      {
+        "ticker": "7201",
+        "name": "日産自動車",
+        "pct": 10.49,
+        "close": 292.7,
+        "volume": 27327900.0
+      },
+      {
+        "ticker": "8802",
+        "name": "三菱地所",
+        "pct": 9.92,
+        "close": 4276.0,
+        "volume": 2968000.0
+      },
+      {
+        "ticker": "2501",
+        "name": "サッポロホールディングス",
+        "pct": 9.49,
+        "close": 2330.0,
+        "volume": 1284600.0
+      },
+      {
+        "ticker": "7261",
+        "name": "マツダ",
+        "pct": 9.33,
+        "close": 1189.5,
+        "volume": 5521900.0
+      },
+      {
+        "ticker": "6146",
+        "name": "ディスコ",
+        "pct": -12.5,
+        "close": 41450.0,
+        "volume": 1973400.0
+      },
+      {
+        "ticker": "4004",
+        "name": "レゾナック・ホールディングス",
+        "pct": -13.11,
+        "close": 11335.0,
+        "volume": 4223600.0
+      },
+      {
+        "ticker": "7735",
+        "name": "SCREENホールディングス",
+        "pct": -13.25,
+        "close": 7763.0,
+        "volume": 2459200.0
+      },
+      {
+        "ticker": "6976",
+        "name": "太陽誘電",
+        "pct": -13.53,
+        "close": 6580.0,
+        "volume": 23257000.0
+      },
+      {
+        "ticker": "3436",
+        "name": "SUMCO",
+        "pct": -13.84,
+        "close": 1911.5,
+        "volume": 10179500.0
+      },
+      {
+        "ticker": "6920",
+        "name": "レーザーテック",
+        "pct": -14.21,
+        "close": 33570.0,
+        "volume": 4527200.0
+      },
+      {
+        "ticker": "6857",
+        "name": "アドバンテスト",
+        "pct": -14.71,
+        "close": 29485.0,
+        "volume": 26321100.0
+      },
+      {
+        "ticker": "4062",
+        "name": "イビデン",
+        "pct": -16.31,
+        "close": 6726.0,
+        "volume": 22721300.0
+      },
+      {
+        "ticker": "6981",
+        "name": "村田製作所",
+        "pct": -16.58,
+        "close": 5032.0,
+        "volume": 19605800.0
+      },
+      {
+        "ticker": "5801",
+        "name": "古河電気工業",
+        "pct": -17.06,
+        "close": 2143.5,
+        "volume": 33488300.0
+      }
+    ],
+    "US": [
+      {
+        "ticker": "MOS",
+        "name": "Mosaic Company (The)",
+        "pct": 17.37,
+        "close": 21.62,
+        "volume": 5202200.0
+      },
+      {
+        "ticker": "XYZ",
+        "name": "Block, Inc.",
+        "pct": 15.3,
+        "close": 87.63,
+        "volume": 4456100.0
+      },
+      {
+        "ticker": "ZBH",
+        "name": "Zimmer Biomet",
+        "pct": 13.49,
+        "close": 110.15,
+        "volume": 2518700.0
+      },
+      {
+        "ticker": "MRNA",
+        "name": "Moderna",
+        "pct": 13.11,
+        "close": 258.38,
+        "volume": 8048600.0
+      },
+      {
+        "ticker": "SWK",
+        "name": "Stanley Black & Decker",
+        "pct": 13.1,
+        "close": 118.33,
+        "volume": 1186800.0
+      },
+      {
+        "ticker": "CDW",
+        "name": "CDW Corporation",
+        "pct": 12.67,
+        "close": 168.75,
+        "volume": 1509300.0
+      },
+      {
+        "ticker": "CNC",
+        "name": "Centene Corporation",
+        "pct": 12.64,
+        "close": 76.01,
+        "volume": 4003000.0
+      },
+      {
+        "ticker": "UHS",
+        "name": "Universal Health Services",
+        "pct": 10.91,
+        "close": 196.46,
+        "volume": 448300.0
+      },
+      {
+        "ticker": "JKHY",
+        "name": "Jack Henry & Associates",
+        "pct": 10.83,
+        "close": 179.16,
+        "volume": 755100.0
+      },
+      {
+        "ticker": "APP",
+        "name": "AppLovin",
+        "pct": 10.69,
+        "close": 271.75,
+        "volume": 3429200.0
+      },
+      {
+        "ticker": "FLEX",
+        "name": "Flex Ltd.",
+        "pct": -12.33,
+        "close": 77.24,
+        "volume": 3344500.0
+      },
+      {
+        "ticker": "CVS",
+        "name": "CVS Health",
+        "pct": -12.53,
+        "close": 79.96,
+        "volume": 8019600.0
+      },
+      {
+        "ticker": "VRT",
+        "name": "Vertiv",
+        "pct": -12.89,
+        "close": 205.55,
+        "volume": 5401100.0
+      },
+      {
+        "ticker": "TPL",
+        "name": "Texas Pacific Land Corporation",
+        "pct": -13.36,
+        "close": 287.65,
+        "volume": 427700.0
+      },
+      {
+        "ticker": "NRG",
+        "name": "NRG Energy",
+        "pct": -13.52,
+        "close": 83.25,
+        "volume": 1460100.0
+      },
+      {
+        "ticker": "VST",
+        "name": "Vistra Corp.",
+        "pct": -13.83,
+        "close": 120.29,
+        "volume": 3208700.0
+      },
+      {
+        "ticker": "DDOG",
+        "name": "Datadog",
+        "pct": -14.42,
+        "close": 188.72,
+        "volume": 3347900.0
+      },
+      {
+        "ticker": "FIX",
+        "name": "Comfort Systems USA",
+        "pct": -15.08,
+        "close": 1091.31,
+        "volume": 441400.0
+      },
+      {
+        "ticker": "TRMB",
+        "name": "Trimble Inc.",
+        "pct": -17.31,
+        "close": 54.25,
+        "volume": 2085200.0
+      },
+      {
+        "ticker": "FIS",
+        "name": "Fidelity National Information Services",
+        "pct": -23.67,
+        "close": 29.76,
+        "volume": 7684200.0
+      }
+    ]
+  },
+  "fetch_errors": [],
+  "usage_note": "indices は edition JSON の indices にそのまま使う。値上がり/値下がりの騰落率(pct)もこの movers の数値をそのまま使う。streak.phrase/1年来高値フラグを見出しの根拠にする。ここに無い数字を書くときは必ず別ソースで裏取りする。"
+}
