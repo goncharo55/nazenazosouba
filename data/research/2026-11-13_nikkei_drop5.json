@@ -350,5 +350,9 @@
    "mean": 2.02,
    "win_rate": 60.6
   }
- }
+ },
+ "kind": "event",
+ "headline": "日経平均が1日で5%以上下落した日に買っていたら？",
+ "target": null,
+ "target_name": "日経平均"
 }

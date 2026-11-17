@@ -26,6 +26,14 @@
 - **週次データ**：毎週金曜、Actionsが `build_weekly.py` で `data/weekly_YYYY-MM-DD.json` を作る。
   前週金曜と今週金曜の `market_*.json` の比較（週間騰落）と、その週の記事の見出し・3行まとめ・
   値動きの理由をまとめたもの。週刊動画はこのファイルだけを読む。
+- **データ検証**（週刊動画の「データ検証コーナー」。サイトの記事で使ってもよい）：
+  `research.py` が過去データで検証して `data/research/<id>.json` に保存する。種類は
+  event（急変の後／`--target` で資産をまたぐ）、streak（連騰・連敗の後）、corr（2資産の相関）、
+  season（月ごとの季節性）。`"HG=F/GC=F"` のような比率の指標も使える。
+  **毎週テーマがかぶらないように**、やった検証は `data/research/index.json` に記録され、
+  直近6週に「同じ種類×同じきっかけの資産」があると止まる。テーマ選びは
+  `python research_ideas.py <金曜の日付>` が、その週に動いた資産に関係があって最近やっていない候補を出す。
+  検証の数字は過去の結果であり、売買の推奨として書かないこと。
 - 追加資産や履歴を過去ファイルに足したいときは `python rebuild_market_files.py`
   （記録済みの indices / sessions / movers には触らず、extras と history だけを足す）。
 
