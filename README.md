@@ -2,7 +2,7 @@
 
 公開サイト: **https://goncharo55.github.io/nazenazosouba/** （GitHub Pages）
 
-毎日 16:40 JST に実行する（日本の引け後。16:00 JST にGitHub Actionsが実データを置いたあと）。
+毎日 16:40 JST に実行する（日本の引け後。16:17 JST にGitHub Actionsが実データを置いたあと）。
 米国は前営業日分（まだ確定していないため）、日本は当日分のデータを使う。特定銘柄の売買は推奨しない。
 分からない値動きは「不明」でよい。
 
@@ -61,7 +61,7 @@
    `finance.yahoo.com` / `fred.stlouisfed.org` / `stooq.com` / `google.com` 等はBashからのcurlも
    WebFetchも403でブロックされる。2026-08-19に確認）。だからこのサンドボックスの中では
    `fetch_market_data.py`（yfinance）は動かない。代わりに **GitHub Actions
-   （`.github/workflows/market-data.yml`）が毎日16:00 JSTに実データを取得して
+   （`.github/workflows/market-data.yml`）が毎日16:17 JSTに実データを取得して
    `data/market_YYYY-MM-DD.json` をコミット**してくれている。ルーティンはそれを `git pull` で受け取る。
 
 1. **実データファイルを受け取る**
