@@ -66,8 +66,14 @@
 
 1. **実データファイルを受け取る**
    - `git pull origin main` して、今日（JST）の `data/market_YYYY-MM-DD.json` があるか確認する。
-     まだ無ければ（Actionsの遅延は数十分あり得る）、**1分おきに `git pull` しながら最大15分待つ**。
-   - 15分待っても無い場合のフォールバック：WebSearchで数値を調べて記事を書いてよいが、
+   - **無ければ、待たずに自分で取得を実行する**（GitHubの予約実行は当てにならない。2026-11-17・18は
+     16:17の予約が一度も動かなかった）：
+     ```
+     gh workflow run market-data.yml -f date=YYYY-MM-DD   # 今日（JST）の日付
+     ```
+     実行後は**1分おきに `git pull` しながら最大15分待つ**（取得は通常1〜2分で終わり、コミットされる）。
+     `gh run list --workflow market-data.yml --limit 1` で状態を確認し、失敗していたら1回だけ再実行する。
+   - 手動実行も失敗して、15分待っても無い場合のフォールバック：WebSearchで数値を調べて記事を書いてよいが、
      数字は概数で書き、`sources_note` に「実データ取得に失敗したため速報ベースの概算を含みます」と明記し、
      指標カードの `asof` に「（概算）」を付ける。また `PushNotification` でユーザーに
      「market dataが生成されていないのでActionsを確認してください」と通知する。
