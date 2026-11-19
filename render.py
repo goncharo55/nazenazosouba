@@ -400,6 +400,8 @@ def masthead(date_label: str, archive_url: str | None = None, glossary_url: str 
         nav_links.append(f'<a href="{esc(archive_url)}">過去の記事一覧</a>')
     if glossary_url and page != "glossary":
         nav_links.append(f'<a href="{esc(glossary_url)}">金融用語辞典</a>')
+    if page != "practice" and (Path(__file__).parent / "data" / "practice").exists():
+        nav_links.append(f'<a href="{esc(SITE_ROOT)}/practice/">今週の実践</a>')
     nav_line = f'<div class="archive-link">{" ／ ".join(nav_links)}</div>' if nav_links else ""
     return f"""<header class="masthead">
     <div class="masthead-row">

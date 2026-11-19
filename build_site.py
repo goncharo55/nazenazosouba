@@ -10,6 +10,7 @@
   docs/glossary.html         … 用語辞典(一覧・検索)
   docs/glossary/<用語>.html  … 用語1件ごとの独立ページ(SEO用)
   docs/editions/YYYY-MM-DD.html … 各日の記事の固定リンク
+  docs/practice/             … 今週の実践（実際の売買の記録。data/practice/*.json から）
   docs/sitemap.xml           … 検索エンジン向けサイトマップ
   docs/robots.txt            … クロール許可 + サイトマップの場所
 
@@ -73,7 +74,10 @@ def main():
         d = meta["edition_date"]
         db.update_artifact_url(d, render.edition_url(d))
 
-    build_sitemap(editions_meta, latest_date, terms)
+    import practice
+    practice_urls = practice.build_all(DOCS)
+
+    build_sitemap(editions_meta, latest_date, terms, practice_urls)
     build_robots()
 
 
@@ -96,7 +100,7 @@ def build_term_pages(terms, all_editions):
     print("wrote", len(keep), "term pages in", out_dir)
 
 
-def build_sitemap(editions_meta, latest_date, terms=()):
+def build_sitemap(editions_meta, latest_date, terms=(), practice_urls=()):
     today = _date.today().isoformat()
     urls = [
         (f"{SITE}/", today, "daily", "1.0"),
@@ -107,6 +111,8 @@ def build_sitemap(editions_meta, latest_date, terms=()):
     for meta in editions_meta:
         d = meta["edition_date"]
         urls.append((render.SITE_PUBLIC_URL + render.edition_url(d), d, "monthly", "0.8"))
+    for loc, d in practice_urls:
+        urls.append((loc, d or today, "weekly", "0.7"))
     for t in terms:
         urls.append((render.SITE_PUBLIC_URL + render.term_url(t["term"]),
                      t.get("added_date") or today, "monthly", "0.5"))
