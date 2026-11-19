@@ -49,10 +49,10 @@ jobs:
           if [ "$ok" != "1" ]; then echo "fetch failed after 3 attempts"; exit 1; fi
 
       # 金曜は週次データ(週刊動画用)も作る。前週金曜と今週金曜の market_*.json だけから計算する
-      - name: Build weekly data (Fridays)
+      - name: Build weekly data (Thursdays = 週刊動画の公開日)
         run: |
           DATE="${{ steps.fetch.outputs.date }}"
-          if [ "$(date -d "$DATE" +%u)" = "5" ]; then python build_weekly.py "$DATE"; fi
+          if [ "$(date -d "$DATE" +%u)" = "4" ]; then python build_weekly.py "$DATE"; fi
 
       - name: Commit data file
         run: |

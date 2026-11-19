@@ -1,7 +1,7 @@
 """データ検証のテーマ候補を出す（毎週テーマがかぶらないように）。
 
 使い方:
-    python research_ideas.py 2026-11-20          # その週の金曜の日付
+    python research_ideas.py 2026-11-26          # 動画の公開日（木曜）
   - その週の weekly_*.json で大きく動いた資産に関係するテーマほど上に出す
   - 直近6週に「同じ種類×同じ資産」をやっていれば ×（research.py も止める）
   - 種類（event/streak/corr/season）も、直近でやった種類は少し下げる（同じ形式が続かないように）
@@ -70,7 +70,7 @@ def weekly_moves(friday: str) -> dict:
 
 
 def main(friday: str):
-    until = str(date.fromisoformat(friday) - timedelta(days=1))  # 木曜までのデータで検証（その週の金曜分は含めない）
+    until = friday  # 公開日（木曜）までのデータで検証
     moves = weekly_moves(friday)
     recent_kinds = [e["kind"] for e in load_index()
                     if date.fromisoformat(e["until"]) >= date.fromisoformat(until) - timedelta(weeks=3)]

@@ -1,7 +1,8 @@
-"""週次データを作る: data/weekly_YYYY-MM-DD.json（日付はその週の金曜＝動画の公開日）
+"""週次データを作る: data/weekly_YYYY-MM-DD.json（日付は動画の公開日。2026-11-19から毎週木曜）
 
 使い方:
-    python build_weekly.py 2026-11-13
+    python build_weekly.py 2026-11-26                  # 基準は7日前（前の回の公開日）
+    python build_weekly.py 2026-11-19 --base 2026-11-13  # 基準日を指定（金曜→木曜に切り替えた回）
 
 マスタデータ(data/market_*.json)だけから作る。yfinanceには問い合わせない。
   - 週間騰落 = 前の金曜のファイルの値 → 今週の金曜のファイルの値
@@ -41,9 +42,9 @@ def num(v: str) -> float:
     return float(v.replace(",", ""))
 
 
-def main(friday: str):
+def main(friday: str, base: str | None = None):
     fri = date.fromisoformat(friday)
-    prev = fri - timedelta(days=7)
+    prev = date.fromisoformat(base) if base else fri - timedelta(days=7)
     cur_m, prev_m = load(fri), load(prev)
     cur = {i["ticker"]: i for i in cur_m["indices"] + cur_m.get("extras", [])}
     old = {i["ticker"]: i for i in prev_m["indices"] + prev_m.get("extras", [])}
@@ -94,4 +95,8 @@ def main(friday: str):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("date"); ap.add_argument("--base")
+    a = ap.parse_args()
+    main(a.date, a.base)
