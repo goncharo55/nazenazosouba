@@ -289,13 +289,31 @@ def main():
     ap.add_argument("--force", action="store_true", help="既存ファイルを上書きする（通常は使わない）")
     args = ap.parse_args()
 
-    target = date.fromisoformat(args.date) if args.date else datetime.now(JST).date()
+    now = datetime.now(JST)
+    if args.date:
+        target = date.fromisoformat(args.date)
+    else:
+        # 15:45より前なら、まだ今日の東証は確定していないので「前日分」を対象にする
+        # （GitHubの予約が深夜にずれて動いたとき、まだ始まっていない日のファイルを作ってしまった事故の対策。11/19・11/20）
+        target = now.date() if now.strftime("%H:%M") >= "15:45" else now.date() - timedelta(days=1)
+    if target == now.date() and now.strftime("%H:%M") < "15:45" and not args.force:
+        print(f"[market] {target} の東証はまだ確定していない（{now:%H:%M} JST）ので作りません。15:45以降に実行してください", file=sys.stderr)
+        sys.exit(3)
+    if target > now.date():
+        print(f"[market] {target} は未来の日付です", file=sys.stderr)
+        sys.exit(3)
     data = build_market_data(target, with_movers=not args.no_movers, top_n=args.top_n)
     out = Path(args.out) if args.out else BASE / "data" / f"market_{target}.json"
     # マスタは一度書いたら書き換えない（取り直すと値が変わる/欠けることがあるため）
     if out.exists() and not args.force:
-        print(f"[market] {out} は既にあるので上書きしません（作り直すなら --force）", file=sys.stderr)
-        return
+        # 既存ファイルが欠けている（東証の値が取れていない等）ときだけ、より揃ったデータで上書きする。
+        # 揃っているマスタは書き換えない（取り直すと値が変わる/欠けることがあるため）
+        old = json.loads(out.read_text(encoding="utf-8"))
+        old_err, new_err = len(old.get("fetch_errors") or []), len(data["fetch_errors"])
+        if not old_err or new_err >= old_err or not data["indices"]:
+            print(f"[market] {out} は既にあるので上書きしません（欠け {old_err}件 → 今回 {new_err}件）", file=sys.stderr)
+            return
+        print(f"[market] {out} は欠けがあったので補完します（欠け {old_err}件 → {new_err}件）", file=sys.stderr)
     # 指標が1つも取れていなければファイルを書かずに失敗扱い(Actionsで検知してリトライ/通知できるように)
     if not data["indices"]:
         print("[market] 指標を1つも取得できませんでした", data["fetch_errors"], file=sys.stderr)

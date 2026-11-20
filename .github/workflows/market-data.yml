@@ -1,13 +1,19 @@
 # 毎日の市場データ(指数・為替・商品・暗号資産・値上がり/値下がりランキング)をyfinanceで取得して
 # data/market_YYYY-MM-DD.json としてコミットする。日次記事ルーティン(クラウド)は
 # Yahoo Financeに直接つなげないので、このファイルが記事の数値の「正」になる。
-# 東証の大引け(15:30 JST)のあと、データが確定するのを待って 16:17 JST に実行する。
-# 毎時0分はGitHub全体で予約実行が混み、飛ばされやすいので17分にずらしている（11/17の16:00は実行されなかった）。
+# 東証の大引け(15:30 JST)のあと 16:17 JST から実行する。
+# GitHubの予約実行は数時間遅れたり飛ばされたりするうえ、Yahooに東証の当日分が載るのが遅い日もある
+# （11/19・11/20は16:40ごろでも未反映）。そこで予約を何回か入れ、各回の中でも東証の値が揃うまで取り直す。
+# 揃ったファイルは書き換えない（fetch_market_data.py が欠けているときだけ補完する）。
 name: market-data
 
 on:
   schedule:
-    - cron: "17 7 * * *"  # 07:17 UTC = 16:17 JST
+    - cron: "17 7 * * *"   # 16:17 JST
+    - cron: "47 7 * * *"   # 16:47 JST
+    - cron: "23 8 * * *"   # 17:23 JST
+    - cron: "13 9 * * *"   # 18:13 JST
+    - cron: "43 11 * * *"  # 20:43 JST（予約が遅れた・Yahooの反映が遅い日の保険）
   workflow_dispatch:
     inputs:
       date:
@@ -39,7 +45,10 @@ jobs:
         id: fetch
         run: |
           DATE="${{ github.event.inputs.date }}"
-          if [ -z "$DATE" ]; then DATE=$(TZ=Asia/Tokyo date +%F); fi
+          # 予約が遅れて深夜に動いても、15:45より前なら前日分を対象にする（まだ始まっていない日のファイルを作らない）
+          if [ -z "$DATE" ]; then
+            if [ "$(TZ=Asia/Tokyo date +%H%M)" -ge 1545 ]; then DATE=$(TZ=Asia/Tokyo date +%F); else DATE=$(TZ=Asia/Tokyo date -d yesterday +%F); fi
+          fi
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           ok=0
           for i in 1 2 3; do
@@ -47,6 +56,13 @@ jobs:
             echo "attempt $i failed; retrying in 60s"; sleep 60
           done
           if [ "$ok" != "1" ]; then echo "fetch failed after 3 attempts"; exit 1; fi
+          # 平日なのに東証の値が欠けていたら、5分おきに最大40分取り直す（祝日ならそのまま終わる）
+          F="data/market_$DATE.json"
+          for i in 1 2 3 4 5 6 7 8; do
+            if ! python -c "import json,sys; e=json.load(open('$F',encoding='utf-8')).get('fetch_errors') or []; sys.exit(0 if e else 1)"; then break; fi
+            echo "fetch_errors が残っているので5分後に取り直す ($i/8)"; sleep 300
+            python fetch_market_data.py --date "$DATE" || true
+          done
 
       # 金曜は週次データ(週刊動画用)も作る。前週金曜と今週金曜の market_*.json だけから計算する
       - name: Build weekly data (Thursdays = 週刊動画の公開日)

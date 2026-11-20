@@ -218,7 +218,32 @@ def verify(ed: dict, mk: dict, fix: bool = False, check_unlisted: bool = True):
             for i in mk["indices"]
         ]
         fixed.append("indices を実データで置き換え")
+
+    # 読者に見せる文章に、データ取得の事情（裏側の話）を書かない。
+    # 取れなかった数字は「書かない」だけにして、取れなかったこと自体には触れない
+    for where, s in meta_text_chunks(ed):
+        for w in META_WORDS:
+            if w in s:
+                errors.append(f"[meta] {where} に裏側の話（「{w}」）が入っています。読者向けの文章から消してください: {strip_tags(s)[:60]}…")
+                break
     return errors, warns, fixed
+
+
+META_WORDS = ("yfinance", "WebSearch", "実データ", "取得エラー", "データ取得", "自動取得", "データが取得でき", "値が取得でき",
+              "取得に失敗", "取得失敗", "market_", ".json", "データの欠落", "データ側の欠落", "データ取得側",
+              "推定値も含めて", "数値の正確性を優先", "本サイトの数値", "概算を含み", "編集部推計")
+
+
+def meta_text_chunks(ed: dict):
+    yield from all_text_chunks(ed)
+    for k in ("lesson_title", "lesson_body", "sources_note", "quiz_question", "quiz_explanation"):
+        if ed.get(k):
+            yield k, str(ed[k])
+    for p in ed.get("lesson_body_paragraphs", []) or []:
+        yield "lesson_body", p
+    for m in ed.get("movers", []) or []:
+        if m.get("reason"):
+            yield f"movers {m.get('name', '')}", m["reason"]
 
 
 def main():
