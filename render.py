@@ -23,9 +23,9 @@ SITE_NAME_A = "なぜなぞ"
 SITE_NAME_B = "相場"
 TAGLINE = "むずかしい値動きを、やさしい言葉で。"
 
-# GitHub Pages のプロジェクトサイトのベースパス。
-# https://goncharo55.github.io/nazenazosouba/ で公開する前提。
-SITE_ROOT = "/nazenazosouba"
+# サイトのベースパス。独自ドメイン https://nazenazo-souba.com/ の直下で公開するので空。
+# （旧URL https://goncharo55.github.io/nazenazosouba/ はGitHubが新ドメインへ転送する）
+SITE_ROOT = ""
 
 # Google タグ(GA4)の測定ID。Google Search Console/アナリティクスの管理画面で発行されたもの。
 GA_MEASUREMENT_ID = "G-MW5Y5HWBET"
@@ -315,7 +315,7 @@ def format_jp_date(iso_date: str) -> str:
     return f"{y}年{m}月{d}日"
 
 
-SITE_PUBLIC_URL = "https://goncharo55.github.io"  # SITE_ROOT("/nazenazosouba")と連結してcanonical URLを作る
+SITE_PUBLIC_URL = "https://nazenazo-souba.com"  # SITE_ROOTと連結してcanonical URLを作る
 
 
 def page_shell(title: str, body: str, description: str = "", standalone: bool = False,

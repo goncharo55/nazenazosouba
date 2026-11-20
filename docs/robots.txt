@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://goncharo55.github.io/nazenazosouba/sitemap.xml
+Sitemap: https://nazenazo-souba.com/sitemap.xml

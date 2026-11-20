@@ -1,6 +1,6 @@
 # なぜなぞ相場 — 日次マーケット概況の自動生成パイプライン
 
-公開サイト: **https://goncharo55.github.io/nazenazosouba/** （GitHub Pages）
+公開サイト: **https://nazenazo-souba.com/** （GitHub Pages）
 
 毎日 16:40 JST に実行する（日本の引け後。16:17 JST にGitHub Actionsが実データを置いたあと）。
 米国は前営業日分（まだ確定していないため）、日本は当日分のデータを使う。特定銘柄の売買は推奨しない。
@@ -137,12 +137,12 @@
    - DBの全editionから `docs/` フォルダを丸ごと再生成する（Artifactツールは使わない）
    - `docs/index.html`（最新記事のミラー＝トップページ）、`docs/archive.html`（バックナンバー一覧）、
      `docs/glossary.html`（用語辞典）、`docs/editions/YYYY-MM-DD.html`（各日の固定リンク）を出力
-   - URLの組み立ては `render.py` の `SITE_ROOT`（`/nazenazosouba`）を基準にした関数
+   - URLの組み立ては `render.py` の `SITE_ROOT`（独自ドメインの直下なので空）を基準にした関数
      （`home_url()` / `archive_url()` / `glossary_url()` / `edition_url(date)`）が担当するので、
      手作業でリンクを書く必要はない
    - **公開は「pushするだけ」**：GitHub Pagesがリポジトリの `main` ブランチの `docs/` フォルダを
      配信するよう設定済みなので、以下の手順6でpushが通れば、数十秒〜数分で
-     https://goncharo55.github.io/nazenazosouba/ に反映される。手動でpublishする操作は不要。
+     https://nazenazo-souba.com/ に反映される。手動でpublishする操作は不要。
 
 6. **用語辞典の更新（任意）**：その日の「きょうの用語解説」で新しい用語を扱った場合、
    `data/glossary_add_YYYY-MM-DD.json`（seed_glossary.jsonと同じ形式の配列）を作り、

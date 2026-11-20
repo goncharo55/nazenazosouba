@@ -78,7 +78,7 @@ def main(friday: str, base: str | None = None):
                 "movers": [{k: m.get(k) for k in ("market", "ticker", "name", "pct", "reason")}
                            for m in ed.get("movers", [])],
                 "lesson_title": ed.get("lesson_title"),
-                "url": f"https://goncharo55.github.io/nazenazosouba/editions/{d}.html",
+                "url": f"https://nazenazo-souba.com/editions/{d}.html",
             })
         d += timedelta(days=1)
     out = {
