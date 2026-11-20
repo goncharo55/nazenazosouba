@@ -30,6 +30,9 @@ SITE_ROOT = ""
 # Google タグ(GA4)の測定ID。Google Search Console/アナリティクスの管理画面で発行されたもの。
 GA_MEASUREMENT_ID = "G-MW5Y5HWBET"
 
+# AdSense のサイト運営者ID（所有権の確認用メタタグ。審査に通ったら広告コードもこのIDで入れる）
+ADSENSE_CLIENT = "ca-pub-5921153595051694"
+
 
 def home_url() -> str:
     return f"{SITE_ROOT}/"
@@ -240,6 +243,8 @@ BASE_CSS = """
   .footer { margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color: var(--ink-faint); line-height:1.8; }
   .footer p { margin:0 0 8px; max-width:70ch; }
   .footer .sources { color: var(--ink-soft); }
+  .site-links { margin:18px 0 40px; font-size:12.5px; color: var(--ink-faint); line-height:2; }
+  .site-links a { color: var(--ink-soft); }
 
   /* Archive page */
   .archive-list { margin: 20px 0; display: flex; flex-direction: column; }
@@ -374,6 +379,7 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
 <html lang="ja">
 <head>
   {ga_tag}<meta charset="utf-8">
+  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   {head_extra}{seo_tags}<style>
@@ -384,10 +390,22 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
 <body>
 <div class="wrap">
 {body}
+{site_links()}
 </div>
 </body>
 </html>
 """
+
+
+def site_links() -> str:
+    """全ページの一番下に出す共通リンク（サイトについて・お問い合わせ・プライバシーポリシーなど）。"""
+    links = [("サイトについて", f"{SITE_ROOT}/about.html"), ("お問い合わせ", f"{SITE_ROOT}/contact.html"),
+             ("プライバシーポリシー・免責事項", privacy_url()), ("過去の記事一覧", archive_url()),
+             ("金融用語辞典", glossary_url())]
+    html = " ／ ".join(f'<a href="{esc(u)}">{esc(t)}</a>' for t, u in links)
+    if YOUTUBE_URL:
+        html += f' ／ <a href="{esc(YOUTUBE_URL)}" target="_blank" rel="noopener">YouTube</a>'
+    return f'<nav class="site-links" aria-label="サイト案内">{html}<br>© {SITE_NAME_A}{SITE_NAME_B}</nav>'
 
 
 def masthead(date_label: str, archive_url: str | None = None, glossary_url: str | None = None,
@@ -878,6 +896,8 @@ def build_term_html(term_row: dict, all_terms: list[dict], editions: list[dict],
 # お問い合わせ用アドレス。個人のGmailを直接載せたくないとのことなので、
 # 専用のGoogleグループ等を作成したら実際のアドレスに差し替える。未設定の間はこの説明文のまま表示する。
 CONTACT_EMAIL = ""  # 例: "nazenazosouba-info@googlegroups.com"
+# YouTubeチャンネルのURL（サイトについて・全ページ下のリンクに出す）。空なら出さない
+YOUTUBE_URL = ""
 
 
 def build_privacy_html(standalone: bool = True) -> str:
@@ -892,14 +912,14 @@ def build_privacy_html(standalone: bool = True) -> str:
   <section class="hero">
     <p class="eyebrow">Privacy Policy</p>
     <h1 class="headline">プライバシーポリシー</h1>
-    <p style="color:var(--ink-soft); max-width:66ch;">制定日：2026年8月20日</p>
+    <p style="color:var(--ink-soft); max-width:66ch;">制定日：2026年8月20日 ／ 改定日：2026年11月20日</p>
   </section>
 
   <section class="article">
     <p>「{SITE_NAME_A}{SITE_NAME_B}」（以下「当サイト」といいます）は、本ページにおいて、当サイトが取得する情報の取り扱いについて説明します。当サイトをご利用いただくことで、本ポリシーの内容に同意いただいたものとみなします。</p>
 
     <h3>運営者について</h3>
-    <p>当サイトは個人が運営する非商用の情報発信サイトです。会社等の組織ではなく、個人運営のためお問い合わせ先はメールのみとしています（下記「お問い合わせ」参照）。</p>
+    <p>当サイトは個人が運営する情報発信サイトです。サイトの目的や記事の作り方は<a href="{esc(SITE_ROOT)}/about.html">サイトについて</a>をご覧ください。お問い合わせ先はメールのみとしています（<a href="{esc(SITE_ROOT)}/contact.html">お問い合わせ</a>）。</p>
 
     <h3>コンテンツの作成方法について</h3>
     <p>当サイトの記事は、公開されている株価データや報道をもとに、AI（人工知能）による自動処理を活用して作成・編集しています。データの解釈や文章化の過程でAIを利用していますが、内容の正確性や品質については可能な範囲で配慮しています。とはいえ誤りを含む可能性があるため、記載内容の正確性・完全性を保証するものではありません。重要な判断をされる際は、必ず一次情報（各社の公式発表・証券会社の情報など）をご確認ください。</p>
@@ -913,9 +933,12 @@ def build_privacy_html(standalone: bool = True) -> str:
       をご確認ください。</p>
 
     <h3>広告について</h3>
-    <p>当サイトは、将来的にGoogleアドセンスをはじめとする第三者配信の広告サービスを利用する場合があります。これらの広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookie（氏名・住所・メールアドレス・電話番号は含まれません）を使用することがあります。Googleが広告Cookieを使用することにより、当サイトや他のサイトへのアクセス情報に基づいて、Googleやそのパートナーが適切な広告を表示できるようになります。ユーザーは
+    <p>当サイトは、第三者配信の広告サービス「Googleアドセンス」を利用しています（利用する予定のものを含みます）。Googleなどの第三者配信事業者は、ユーザーの興味に応じた広告を表示するためにCookie（氏名・住所・メールアドレス・電話番号は含まれません）を使用することがあります。Googleが広告Cookieを使用することにより、当サイトや他のサイトへのアクセス情報に基づいて、Googleやそのパートナーが適切な広告を表示できるようになります。ユーザーは
       <a href="https://adssettings.google.com/" target="_blank" rel="noopener">広告設定</a>
-      にアクセスすることで、パーソナライズ広告を無効にできます。</p>
+      にアクセスすることで、パーソナライズ広告を無効にできます。また、<a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">www.aboutads.info</a> にアクセスすれば、第三者配信事業者のCookieを無効にできます。Googleによる広告でのデータの扱いについては、<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener">広告に関するGoogleのポリシー</a>をご覧ください。</p>
+
+    <h3>アフィリエイトについて</h3>
+    <p>当サイトの記事は、特定の商品・サービスの紹介によって報酬を得るアフィリエイトプログラムには参加していません。参加する場合は、その旨を本ページと該当する記事に明記します。</p>
 
     <h3>著作権について</h3>
     <p>当サイトの記事は、公開されている複数のデータ・報道を参照しつつ、独自の切り口でまとめたオリジナルコンテンツです。他サイトの文章や画像を許可なく転載することはありません。当サイトの文章・構成を許可なく転載することもご遠慮ください。引用を行う場合は、出典として当サイトへのリンクを明記してください。</p>
@@ -924,7 +947,7 @@ def build_privacy_html(standalone: bool = True) -> str:
     <p>当サイトでは、お問い合わせいただいた際にメールアドレス等の情報をご提供いただく場合がありますが、これはお問い合わせへの対応以外の目的では使用しません。取得した情報を、ご本人の同意なく第三者に提供することはありません。</p>
 
     <h3>お問い合わせ</h3>
-    <p>当サイトの内容やプライバシーポリシーに関するお問い合わせは、下記のメールアドレスまでお願いいたします。</p>
+    <p>当サイトの内容やプライバシーポリシーに関するお問い合わせは、下記のメールアドレス（<a href="{esc(SITE_ROOT)}/contact.html">お問い合わせページ</a>）までお願いいたします。</p>
     <p>{contact_line}</p>
 
     <h3>プライバシーポリシーの変更について</h3>

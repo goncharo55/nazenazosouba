@@ -77,7 +77,10 @@ def main():
     import practice
     practice_urls = practice.build_all(DOCS)
 
-    build_sitemap(editions_meta, latest_date, terms, practice_urls)
+    import site_pages
+    info_urls = site_pages.build_all(DOCS)
+
+    build_sitemap(editions_meta, latest_date, terms, practice_urls, info_urls)
     build_robots()
 
 
@@ -100,7 +103,7 @@ def build_term_pages(terms, all_editions):
     print("wrote", len(keep), "term pages in", out_dir)
 
 
-def build_sitemap(editions_meta, latest_date, terms=(), practice_urls=()):
+def build_sitemap(editions_meta, latest_date, terms=(), practice_urls=(), info_urls=()):
     today = _date.today().isoformat()
     urls = [
         (f"{SITE}/", today, "daily", "1.0"),
@@ -108,6 +111,7 @@ def build_sitemap(editions_meta, latest_date, terms=(), practice_urls=()):
         (f"{SITE}/glossary.html", today, "weekly", "0.5"),
         (f"{SITE}/privacy.html", today, "yearly", "0.2"),
     ]
+    urls += [(u, today, "yearly", "0.3") for u in info_urls]
     for meta in editions_meta:
         d = meta["edition_date"]
         urls.append((render.SITE_PUBLIC_URL + render.edition_url(d), d, "monthly", "0.8"))
