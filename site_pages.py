@@ -34,8 +34,10 @@ def _footer() -> str:
 
 def build_about_html() -> str:
     a_url, g_url = render.archive_url(), render.glossary_url()
+    yt_link = (f' <a href="{esc(render.YOUTUBE_URL)}" target="_blank" rel="noopener">チャンネルを見る</a>'
+               if render.YOUTUBE_URL else "")
     yt = (f'<li><strong>週刊なぜなぞ相場（YouTube）</strong>：1週間の値動きを、ずんだもんと四国めたんの掛け合いでまとめる動画です。毎週木曜〜金曜に公開しています。'
-          f'{" <a href=\"" + esc(render.YOUTUBE_URL) + "\" target=\"_blank\" rel=\"noopener\">チャンネルを見る</a>" if render.YOUTUBE_URL else ""}</li>')
+          f'{yt_link}</li>')
     body = f"""
   {masthead("サイトについて", a_url, g_url, page="about")}
 
