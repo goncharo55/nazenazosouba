@@ -893,9 +893,8 @@ def build_term_html(term_row: dict, all_terms: list[dict], editions: list[dict],
                        extra_head=f'  <script type="application/ld+json">{json_ld}</script>\n')
 
 
-# お問い合わせ用アドレス。個人のGmailを直接載せたくないとのことなので、
-# 専用のGoogleグループ等を作成したら実際のアドレスに差し替える。未設定の間はこの説明文のまま表示する。
-CONTACT_EMAIL = ""  # 例: "nazenazosouba-info@googlegroups.com"
+# お問い合わせ用アドレス（2026-11-20 ユーザーの指定で、期間限定メニューのサイトと同じGmailを使う）
+CONTACT_EMAIL = "gokimaru.poke@gmail.com"
 # YouTubeチャンネルのURL（サイトについて・全ページ下のリンクに出す）。空なら出さない
 YOUTUBE_URL = ""
 
