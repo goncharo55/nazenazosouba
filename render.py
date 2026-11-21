@@ -351,6 +351,7 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
   <meta property="og:description" content="{esc(description)}">
   <meta property="og:url" content="{esc(canonical_url)}">
   <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="{esc(SITE_PUBLIC_URL)}/icon-512.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{esc(title)}">
   <meta name="twitter:description" content="{esc(description)}">
@@ -381,6 +382,9 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
   {ga_tag}<meta charset="utf-8">
   <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{SITE_ROOT}/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="{SITE_ROOT}/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="{SITE_ROOT}/apple-touch-icon.png">
   <title>{esc(title)}</title>
   {head_extra}{seo_tags}<style>
 {FONT_CSS}

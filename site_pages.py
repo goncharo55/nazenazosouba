@@ -112,7 +112,25 @@ def build_contact_html() -> str:
                       standalone=True, canonical_path=contact_url())
 
 
+def build_icons(docs: Path) -> None:
+    """YouTubeチャンネルと同じアイコン（assets/icon_800.png）から、ブラウザのタブ・スマホのホーム画面用を作る。"""
+    # 作成済みなら何もしない（毎日の記事作成の環境に Pillow が無くても build_site.py が止まらないように）
+    names = ("favicon.ico", "favicon-32.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png")
+    if all((docs / n).exists() for n in names):
+        return
+    try:
+        from PIL import Image
+    except ImportError:
+        print("[icons] Pillow が無いのでアイコンの作成をとばします")
+        return
+    src = Image.open(Path(__file__).parent / "assets" / "icon_800.png").convert("RGBA")
+    src.resize((48, 48), Image.LANCZOS).save(docs / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
+    for name, size in (("favicon-32.png", 32), ("apple-touch-icon.png", 180), ("icon-192.png", 192), ("icon-512.png", 512)):
+        src.resize((size, size), Image.LANCZOS).save(docs / name)
+
+
 def build_all(docs: Path) -> list[str]:
+    build_icons(docs)
     (docs / "about.html").write_text(build_about_html(), encoding="utf-8")
     (docs / "contact.html").write_text(build_contact_html(), encoding="utf-8")
     # AdSense の販売者確認（審査前から置いておいてよい）
