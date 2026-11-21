@@ -381,6 +381,7 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
 <head>
   {ga_tag}<meta charset="utf-8">
   <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="{SITE_ROOT}/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="{SITE_ROOT}/favicon-32.png" sizes="32x32">
