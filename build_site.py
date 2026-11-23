@@ -50,7 +50,7 @@ def main():
         print("wrote", out)
 
     latest_edition = db.get_edition(latest_date)
-    index_html = render.build_edition_html(latest_edition)
+    index_html = render.build_edition_html(latest_edition, as_index=True, recent=all_editions[1:8])
     (DOCS / "index.html").write_text(index_html, encoding="utf-8")
     print("wrote", DOCS / "index.html", f"(mirrors {latest_date})")
 
@@ -80,7 +80,14 @@ def main():
     import site_pages
     info_urls = site_pages.build_all(DOCS)
 
-    build_sitemap(editions_meta, latest_date, terms, practice_urls, info_urls)
+    # フォントは別ファイルで配る（全ページで共有してキャッシュさせる）
+    import shutil
+    (DOCS / "fonts").mkdir(exist_ok=True)
+    for name in render.FONT_FILES:
+        shutil.copyfile(render.FONTS / name, DOCS / "fonts" / name)
+
+    thin = {t["term"] for t in terms if render.is_thin_term(t, render.find_related_editions(t["term"], all_editions))}
+    build_sitemap(editions_meta, latest_date, [t for t in terms if t["term"] not in thin], practice_urls, info_urls)
     build_robots()
 
 

@@ -112,7 +112,25 @@ FONT_CSS = f"""
   }}
 """
 
+# 公開サイト用：フォントは /fonts/*.woff2 の別ファイルにして、ページ間でキャッシュさせる
+# （以前は全ページにbase64で約23万バイト埋め込んでいて、表示が遅くなっていた。2026-11-23に変更）
+FONT_FILES = ["newsreader-var.woff2", "newsreader-italic.woff2", "ibmplexsans-var.woff2",
+              "ibmplexmono-400.woff2", "ibmplexmono-500.woff2"]
+FONT_CSS_EXT = ""
+for _name, _fam, _style, _w in [("newsreader-var", "Newsreader", "normal", "300 700"),
+                                ("newsreader-italic", "Newsreader", "italic", "400 600"),
+                                ("ibmplexsans-var", "IBM Plex Sans", "normal", "100 700"),
+                                ("ibmplexmono-400", "IBM Plex Mono", "normal", "400"),
+                                ("ibmplexmono-500", "IBM Plex Mono", "normal", "500")]:
+    FONT_CSS_EXT += (f"\n  @font-face {{ font-family: '{_fam}'; font-style: {_style}; font-weight: {_w}; "
+                     f"font-display: swap; src: url({SITE_ROOT}/fonts/{_name}.woff2) format('woff2'); }}")
+FONT_CSS_EXT += "\n"
+
 BASE_CSS = """
+  /* スマホで押しやすく：上の案内・下の共通リンク・用語ページのリストは、押せる範囲を縦44px前後にする */
+  .archive-link a, .site-links a { display: inline-block; padding: 10px 2px; }
+  .term-section li a { display: inline-block; padding: 8px 0; }
+  .index-intro { color: var(--ink-soft); font-size: 15px; line-height: 1.8; margin: 4px 0 8px; }
   :root {
     --ink: #14181B; --ink-soft: #4A5560; --ink-faint: #7C8790;
     --paper: #F5F6F2; --surface: #FFFFFF; --surface-2: #EEF0EA; --line: #DADFD9;
@@ -362,8 +380,10 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
   <meta property="og:description" content="{esc(description)}">
   <meta property="og:url" content="{esc(canonical_url)}">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:image" content="{esc(SITE_PUBLIC_URL)}/icon-512.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="{esc(SITE_PUBLIC_URL)}/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{esc(title)}">
   <meta name="twitter:description" content="{esc(description)}">
 """
@@ -398,8 +418,9 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
   <link rel="icon" type="image/png" href="{SITE_ROOT}/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="{SITE_ROOT}/apple-touch-icon.png">
   <title>{esc(title)}</title>
+  <link rel="preload" href="{SITE_ROOT}/fonts/ibmplexsans-var.woff2" as="font" type="font/woff2" crossorigin>
   {head_extra}{seo_tags}<style>
-{FONT_CSS}
+{FONT_CSS_EXT}
 {BASE_CSS}
   </style>
 </head>
@@ -610,9 +631,29 @@ def render_quiz(quiz: dict | None, shuffle_seed: str | None = None) -> str:
 """
 
 
-def build_edition_html(edition: dict, standalone: bool = True) -> str:
+def build_edition_html(edition: dict, standalone: bool = True, as_index: bool = False,
+                       recent: list[dict] | None = None) -> str:
+    """as_index=True でトップページ用（サイト自身のタイトル・説明・canonical "/"、最近の記事の一覧つき）。"""
     a_url, g_url = archive_url(), glossary_url()
     date_label = format_jp_date(edition["edition_date"]) + "号"
+    if as_index:
+        recent_li = "\n      ".join(
+            f'<li><span class="term-date">{esc(e["edition_date"])}</span>'
+            f'<a href="{esc(edition_url(e["edition_date"]))}">{esc(e["headline"])}</a></li>'
+            for e in (recent or [])[:7])
+        intro_html = f"""<p class="index-intro">{SITE_NAME_A}{SITE_NAME_B}は、株・為替・金・原油・暗号資産の値動きの「なぜ？」を、毎営業日やさしい言葉で解説するサイトです。いちばん新しい記事（{esc(date_label)}）を下に載せています。</p>"""
+        recent_html = f"""<section class="term-section">
+    <h2>最近の記事</h2>
+    <ul>
+      {recent_li}
+    </ul>
+    <p><a href="{esc(a_url)}">過去の記事をすべて見る</a></p>
+  </section>""" if recent_li else ""
+        crumb_html = ""
+    else:
+        intro_html = recent_html = ""
+        crumb_html = (f'<p class="term-crumb"><a href="{esc(home_url())}">トップ</a> ／ '
+                      f'<a href="{esc(a_url)}">過去の記事一覧</a> ／ {esc(date_label)}</p>')
     tags_html = "\n      ".join(
         f'<a class="tag" href="{esc(tag_archive_url(t))}">{esc(t)}</a>' for t in edition.get("tags", [])
     )
@@ -625,6 +666,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
 
     body = f"""
   {masthead(date_label, a_url, g_url, page="edition")}
+  {crumb_html}{intro_html}
 
   <section class="hero">
     <p class="eyebrow">{esc(edition.get('eyebrow', "Today's Market"))}</p>
@@ -665,6 +707,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
   </section>
   {quiz_html}
   {affiliate.ad_html(edition)}
+  {recent_html}
   <footer class="footer">
     <p class="sources">{edition.get('sources_note','')}</p>
     <p>本ページは公開データと報道をもとに自動でまとめた市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>
@@ -674,11 +717,28 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
       ／ <a href="{esc(privacy_url())}">プライバシーポリシー</a></p>
   </footer>
 """
-    description = edition.get("summary", [""])[0] if edition.get("summary") else edition.get("headline", "")
+    summary = [x for x in edition.get("summary") or [] if (x or "").strip()]
+    description = summary[0] if summary else edition.get("headline", "")
+    if as_index:
+        name = SITE_NAME_A + SITE_NAME_B
+        json_ld = json.dumps({"@context": "https://schema.org", "@type": "WebSite", "name": name,
+                              "url": SITE_PUBLIC_URL + home_url(),
+                              "description": "株・為替・金・原油・暗号資産の値動きの理由を、毎営業日やさしく解説"},
+                             ensure_ascii=False)
+        return page_shell(f"{name}｜株・為替・金の値動きの「なぜ？」を毎日やさしく解説", body,
+                          description=f"{name}は、株・為替・金・原油・暗号資産の値動きの理由を毎営業日やさしく解説するサイトです。最新：{edition['headline']}",
+                          standalone=standalone, canonical_path=home_url(),
+                          extra_head=f'  <script type="application/ld+json">{json_ld}</script>\n')
+    crumbs = json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "トップ", "item": SITE_PUBLIC_URL + home_url()},
+        {"@type": "ListItem", "position": 2, "name": "過去の記事一覧", "item": SITE_PUBLIC_URL + a_url},
+        {"@type": "ListItem", "position": 3, "name": date_label,
+         "item": SITE_PUBLIC_URL + edition_url(edition["edition_date"])}]}, ensure_ascii=False)
     return page_shell(f"{edition['headline']} — {SITE_NAME_A}{SITE_NAME_B}", body,
                        description=description, standalone=standalone,
                        canonical_path=edition_url(edition["edition_date"]), page_type="article",
-                       published_date=edition.get("generated_at", edition["edition_date"]))
+                       published_date=edition.get("generated_at", edition["edition_date"]),
+                       extra_head=f'  <script type="application/ld+json">{crumbs}</script>\n')
 
 
 def build_archive_html(editions: list[dict], standalone: bool = True) -> str:
@@ -898,6 +958,12 @@ def build_term_html(term_row: dict, all_terms: list[dict], editions: list[dict],
   </footer>
 """
     desc = definition if len(definition) <= 110 else definition[:108] + "…"
+    crumbs = json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "金融用語辞典", "item": SITE_PUBLIC_URL + g_url},
+        {"@type": "ListItem", "position": 2, "name": term, "item": SITE_PUBLIC_URL + term_url(term)}]},
+        ensure_ascii=False)
+    # 説明が短く、どの記事にも出てこない用語は、中身の薄いページとして検索に出さない（サイト内のリンクはたどってもらう）
+    robots = '  <meta name="robots" content="noindex, follow">\n' if is_thin_term(term_row, related_eds) else ""
     json_ld = json.dumps({
         "@context": "https://schema.org", "@type": "DefinedTerm",
         "name": term, "description": definition,
@@ -908,7 +974,13 @@ def build_term_html(term_row: dict, all_terms: list[dict], editions: list[dict],
     }, ensure_ascii=False)
     return page_shell(f"{term}とは？意味をやさしく解説 — {SITE_NAME_A}{SITE_NAME_B}", body,
                        description=desc, standalone=standalone, canonical_path=term_url(term),
-                       extra_head=f'  <script type="application/ld+json">{json_ld}</script>\n')
+                       extra_head=robots + f'  <script type="application/ld+json">{json_ld}</script>\n'
+                                  + f'  <script type="application/ld+json">{crumbs}</script>\n')
+
+
+def is_thin_term(term_row: dict, related_eds: list) -> bool:
+    """説明が短く（120字未満）、どの記事にも出てこない用語ページ。noindex にしてサイトマップからも外す。"""
+    return not related_eds and len(term_row.get("definition") or "") < 120
 
 
 # お問い合わせ用アドレス（2026-11-20 ユーザーの指定で、期間限定メニューのサイトと同じGmailを使う）

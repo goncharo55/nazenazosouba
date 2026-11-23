@@ -102,6 +102,7 @@ def build_contact_html() -> str:
     {_contact_line()}
     <h3>お願い</h3>
     <ul>
+      <li>広告掲載のご相談も、こちらのメールアドレスで受け付けています。</li>
       <li>個別の銘柄の売買や、投資の判断についてのご相談にはお答えできません。</li>
       <li>内容を確認のうえ、必要に応じて返信いたします。返信までお時間をいただく場合や、すべてのお問い合わせにはお答えできない場合があります。</li>
       <li>いただいた個人情報は、お問い合わせへの対応以外には使用しません。詳しくは<a href="{esc(render.privacy_url())}">プライバシーポリシー</a>をご覧ください。</li>
@@ -132,8 +133,65 @@ def build_icons(docs: Path) -> None:
         src.resize((size, size), Image.LANCZOS).save(docs / name)
 
 
+def build_404_html() -> str:
+    """存在しないURLに来た人を、トップ・記事一覧・用語辞典へ案内する（GitHub Pages は docs/404.html を使う）。"""
+    a_url, g_url = render.archive_url(), render.glossary_url()
+    body = f"""
+  {masthead("ページが見つかりません", a_url, g_url, page="about")}
+
+  <section class="hero">
+    <p class="eyebrow">404</p>
+    <h1 class="headline">お探しのページが見つかりませんでした</h1>
+    <p style="color:var(--ink-soft); max-width:66ch;">URLが変わったか、ページが削除された可能性があります。下のページからお探しください。</p>
+  </section>
+
+  <section class="article">
+    <ul>
+      <li><a href="{esc(render.home_url())}">トップページ（いちばん新しい記事）</a></li>
+      <li><a href="{esc(a_url)}">過去の記事一覧</a></li>
+      <li><a href="{esc(g_url)}">金融用語辞典</a></li>
+    </ul>
+  </section>
+"""
+    # canonical は付けない（404ページを検索に載せないため）
+    return page_shell(f"ページが見つかりません — {NAME}", body,
+                      description=f"{NAME}のページが見つかりませんでした。トップページや記事一覧からお探しください。",
+                      standalone=True,
+                      extra_head='  <meta name="robots" content="noindex">\n')
+
+
+def build_og_image(docs: Path) -> None:
+    """XやLINEでシェアされたときの画像（1200x630）。アイコンとサイト名・キャッチコピー。作成済みなら何もしない。"""
+    if (docs / "og.png").exists():
+        return
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        print("[og] Pillow が無いので og.png の作成をとばします")
+        return
+    W, H = 1200, 630
+    im = Image.new("RGB", (W, H), (31, 58, 95))
+    icon = Image.open(Path(__file__).parent / "assets" / "icon_800.png").convert("RGBA").resize((300, 300))
+    im.paste(icon, (70, (H - 300) // 2), icon)
+    d = ImageDraw.Draw(im)
+    try:
+        fb = "C:/Windows/Fonts/YuGothB.ttc"
+        f1, f2, f3 = ImageFont.truetype(fb, 92), ImageFont.truetype(fb, 38), ImageFont.truetype(fb, 30)
+    except OSError:
+        print("[og] 日本語フォントが無いので og.png の作成をとばします")
+        return
+    x = 420
+    d.text((x, 165), NAME, font=f1, fill="white")
+    d.text((x, 300), render.TAGLINE, font=f2, fill=(231, 236, 242))
+    d.text((x, 380), "株・為替・金・原油・暗号資産の", font=f3, fill=(190, 205, 222))
+    d.text((x, 425), "値動きの「なぜ？」を毎日解説", font=f3, fill=(190, 205, 222))
+    im.save(docs / "og.png")
+
+
 def build_all(docs: Path) -> list[str]:
     build_icons(docs)
+    build_og_image(docs)
+    (docs / "404.html").write_text(build_404_html(), encoding="utf-8")
     (docs / "about.html").write_text(build_about_html(), encoding="utf-8")
     (docs / "contact.html").write_text(build_contact_html(), encoding="utf-8")
     # AdSense の販売者確認（審査前から置いておいてよい）
