@@ -16,6 +16,8 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
+import affiliate
+
 BASE = Path(__file__).parent
 FONTS = BASE / "fonts"
 
@@ -245,6 +247,15 @@ BASE_CSS = """
   .footer .sources { color: var(--ink-soft); }
   .site-links { margin:18px 0 40px; font-size:12.5px; color: var(--ink-faint); line-height:2; }
   .site-links a { color: var(--ink-soft); }
+  .pr-notice { margin:10px 0 0; font-size:11.5px; color: var(--ink-faint); }
+  .pr-box { margin:40px 0 0; padding:16px 18px; border:1px solid var(--line); border-radius:10px; background: var(--surface); }
+  .pr-box p { margin:0; }
+  .pr-head { font-size:13px; color: var(--ink-soft); }
+  .pr-box .pr { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.05em; color: var(--surface);
+    background: var(--ink-faint); border-radius:4px; padding:1px 6px; margin-right:8px; vertical-align:1px; }
+  .pr-link { margin-top:8px !important; font-size:15px; font-weight:600; }
+  .pr-link a { color: var(--brand); }
+  .pr-note { margin-top:8px !important; font-size:11.5px; color: var(--ink-faint); line-height:1.6; }
 
   /* Archive page */
   .archive-list { margin: 20px 0; display: flex; flex-direction: column; }
@@ -431,6 +442,7 @@ def masthead(date_label: str, archive_url: str | None = None, glossary_url: str 
       <div>
         <p class="nameplate">{home}</p>
         <p class="tagline">{esc(TAGLINE)}</p>
+        <p class="pr-notice">当サイトはアフィリエイト広告（PR）を利用しています</p>
       </div>
       <div class="masthead-meta">
         {esc(date_label)}
@@ -652,6 +664,7 @@ def build_edition_html(edition: dict, standalone: bool = True) -> str:
     {"".join(f'<p>{p}</p>' for p in edition.get('lesson_body_paragraphs', [edition.get('lesson_body','')]))}
   </section>
   {quiz_html}
+  {affiliate.ad_html(edition)}
   <footer class="footer">
     <p class="sources">{edition.get('sources_note','')}</p>
     <p>本ページは公開データと報道をもとに自動でまとめた市場概況であり、特定の銘柄の売買を推奨するものではありません。内容の正確性には配慮していますが誤りを含む可能性があります。投資判断はご自身の責任で行ってください。</p>
@@ -916,7 +929,7 @@ def build_privacy_html(standalone: bool = True) -> str:
   <section class="hero">
     <p class="eyebrow">Privacy Policy</p>
     <h1 class="headline">プライバシーポリシー</h1>
-    <p style="color:var(--ink-soft); max-width:66ch;">制定日：2026年8月20日 ／ 改定日：2026年11月20日</p>
+    <p style="color:var(--ink-soft); max-width:66ch;">制定日：2026年8月20日 ／ 改定日：2026年11月23日</p>
   </section>
 
   <section class="article">
@@ -942,7 +955,9 @@ def build_privacy_html(standalone: bool = True) -> str:
       にアクセスすることで、パーソナライズ広告を無効にできます。また、<a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">www.aboutads.info</a> にアクセスすれば、第三者配信事業者のCookieを無効にできます。Googleによる広告でのデータの扱いについては、<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener">広告に関するGoogleのポリシー</a>をご覧ください。</p>
 
     <h3>アフィリエイトについて</h3>
-    <p>当サイトの記事は、特定の商品・サービスの紹介によって報酬を得るアフィリエイトプログラムには参加していません。参加する場合は、その旨を本ページと該当する記事に明記します。</p>
+    <p>当サイトは、株式会社ファンコミュニケーションズが運営するアフィリエイトプログラム「A8.net」に参加しています。記事ページの一部に、証券口座・FX口座・クレジットカード・家計相談などの広告を掲載しており、読者の方がリンク先で申し込みなどをされた場合に、当サイトが報酬を受け取ることがあります。</p>
+    <p>アフィリエイト広告には、すべて「PR」と表示しています。広告は記事の内容とは別に掲載しているもので、記事の内容や値動きの解説が広告主の意向によって変わることはありません。当サイトが特定の商品・サービスの申し込みや、金融商品の売買をすすめるものではありません。申し込みの前に、リンク先で内容・手数料・リスクをご自身でご確認ください。</p>
+    <p>A8.netでは、広告の成果を計測するためにCookieなどが使われることがあります。詳しくは<a href="https://www.a8.net/privacy.html" target="_blank" rel="noopener">A8.netのプライバシーポリシー</a>をご覧ください。</p>
 
     <h3>著作権について</h3>
     <p>当サイトの記事は、公開されている複数のデータ・報道を参照しつつ、独自の切り口でまとめたオリジナルコンテンツです。他サイトの文章や画像を許可なく転載することはありません。当サイトの文章・構成を許可なく転載することもご遠慮ください。引用を行う場合は、出典として当サイトへのリンクを明記してください。</p>
