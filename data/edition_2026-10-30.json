@@ -78,8 +78,8 @@
       "ticker": "9984",
       "name": "SoftBankグループ",
       "pct": -6.7,
-      "kind": "equity",
-      "reason": "AI関連の投資負担への警戒。米ハイテク株の決算評価悪化を受けた連れ安とみられる。"
+      "reason": "AI関連の投資負担への警戒。米ハイテク株の決算評価悪化を受けた連れ安とみられる。",
+      "kind": "equity"
     }
   ],
   "lesson_title": "「フリーキャッシュフロー(FCF)」から見るAI投資ブーム",
@@ -110,6 +110,6 @@
     ],
     "answer_index": 0
   },
-  "sources_note": "値動きの背景：米国市場はCNBC、Yahoo Finance、TheStreet、東京市場はロイター配信記事などの報道を参照しました。",
+  "sources_note": "数値：各市場の終値（Yahoo Finance等）。値動きの背景：米国市場はCNBC、Yahoo Finance、TheStreet、東京市場はロイター配信記事などの報道を参照しました。",
   "generated_at": "2026-10-30 16:10 JST"
 }

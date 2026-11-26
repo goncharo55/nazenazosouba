@@ -526,10 +526,7 @@ def group_movers(flat_movers: list[dict]) -> dict:
 def render_movers_panel(panel: dict) -> str:
     rows = panel.get("rows", [])
     if not rows:
-        return f"""<div class="movers-panel">
-        <h4>{esc(panel['label'])} <span>{esc(panel.get('sub',''))}</span></h4>
-        <p class="mover-why">この日は目立った値動きが確認できませんでした。</p>
-      </div>"""
+        return ""
     max_abs = max(abs(r["pct"]) for r in rows) or 1
     row_html = []
     for r in rows:
@@ -537,7 +534,7 @@ def render_movers_panel(panel: dict) -> str:
         direction = "up" if pct >= 0 else "down"
         width = max(6, round(abs(pct) / max_abs * 100))
         psign = "+" if pct >= 0 else ""
-        reason = r.get("reason") or "明確な材料は確認できず"
+        reason = r.get("reason") or ""
         row_html.append(f"""<div class="mover-row">
           <div class="mover-top">
             <div class="mover-id">
@@ -547,7 +544,7 @@ def render_movers_panel(panel: dict) -> str:
             <span class="mover-pct {direction}">{psign}{pct:.2f}%</span>
           </div>
           <div class="mover-bar-track"><div class="mover-bar {direction}" style="width:{width}%"></div></div>
-          <p class="mover-why">{esc(reason)}</p>
+          {f'<p class="mover-why">{esc(reason)}</p>' if reason else ''}
         </div>""")
     return f"""<div class="movers-panel">
         <h4>{esc(panel['label'])} <span>{esc(panel.get('sub',''))}</span></h4>

@@ -66,8 +66,8 @@
       "value_text": "158.1",
       "unit": "円",
       "asof": "10/21 NY市場引け時点(直近確認値、22日以降の確定値は検索時点で確認できず)",
-      "delta": 0,
-      "pct": 0
+      "delta": 0.0,
+      "pct": 0.0
     },
     {
       "ticker": "CL=F",
@@ -134,6 +134,6 @@
     ],
     "answer_index": 0
   },
-  "sources_note": "値動きの背景：株探、みんかぶ、財経新聞、CNBCなどの報道を参照しました。",
+  "sources_note": "数値：各市場の終値（Yahoo Finance等）。値動きの背景：株探、みんかぶ、財経新聞、CNBCなどの報道を参照しました。",
   "generated_at": "2026-10-26 15:55 JST"
 }

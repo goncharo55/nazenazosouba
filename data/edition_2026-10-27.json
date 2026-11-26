@@ -30,8 +30,8 @@
       "value_text": "3,972.98",
       "unit": "",
       "asof": "10/26(月) 東証引け時点(直近確認値。27日の確定値は検索時点で確認できず)",
-      "delta": 0,
-      "pct": 0
+      "delta": 0.0,
+      "pct": 0.0
     },
     {
       "ticker": "^GSPC",
@@ -66,8 +66,8 @@
       "value_text": "158.1",
       "unit": "円",
       "asof": "10/21 NY市場引け時点(直近確認値。以降の確定値は検索時点で確認できず)",
-      "delta": 0,
-      "pct": 0
+      "delta": 0.0,
+      "pct": 0.0
     },
     {
       "ticker": "CL=F",
@@ -75,8 +75,8 @@
       "value_text": "103.27",
       "unit": "ドル",
       "asof": "10/23 NY市場引け時点(直近確認値。26日は米国産原油が2%超安との報道あり、確定値は検索時点で確認できず)",
-      "delta": 0,
-      "pct": 0
+      "delta": 0.0,
+      "pct": 0.0
     }
   ],
   "narrative": [
@@ -129,6 +129,6 @@
     ],
     "answer_index": 0
   },
-  "sources_note": "値動きの背景：CNBC、共同通信・時事通信系の市況配信(OANDA・財経新聞・みんかぶ)、Capital Briefなどの報道を参照しました。",
+  "sources_note": "数値：各市場の終値（Yahoo Finance等）。値動きの背景：CNBC、共同通信・時事通信系の市況配信(OANDA・財経新聞・みんかぶ)、Capital Briefなどの報道を参照しました。",
   "generated_at": "2026-10-27 15:50 JST"
 }
