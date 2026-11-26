@@ -18,20 +18,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "69,373",
+      "value_text": "69,042.11",
       "unit": "円",
-      "asof": "10/8 前引け(午前)",
-      "delta": -662.31,
-      "pct": -0.95
+      "asof": "10/8 東証引け",
+      "delta": -993.6,
+      "pct": -1.42
     },
     {
       "ticker": "1306.T",
-      "name": "TOPIX",
-      "value_text": "4,092.09",
+      "name": "TOPIX(ETF)",
+      "value_text": "429.50",
       "unit": "円",
-      "asof": "10/8 前引け(午前)",
-      "delta": -62.02,
-      "pct": -1.49
+      "asof": "10/8 東証引け",
+      "delta": -7.5,
+      "pct": -1.72
     },
     {
       "ticker": "^GSPC",
@@ -48,7 +48,7 @@
       "value_text": "27,538.69",
       "unit": "",
       "asof": "10/7 NY市場引け",
-      "delta": -61.2,
+      "delta": -61.1,
       "pct": -0.22
     },
     {
@@ -63,65 +63,65 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.20",
+      "value_text": "158.06",
       "unit": "円",
-      "asof": "10/7 午後(直近確認値)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/8 終値",
+      "delta": -0.24,
+      "pct": -0.15
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.0",
+      "value_text": "15.08",
       "unit": "",
       "asof": "10/7 NY市場引け",
-      "delta": -0.5,
-      "pct": -3.3
+      "delta": 0.07,
+      "pct": 0.47
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.29",
+      "value_text": "5.28",
       "unit": "%",
-      "asof": "10/7 NY市場引け(取引中は2002年以来の高水準5.3%台に達した)",
+      "asof": "10/7 NY市場引け",
       "delta": 0.01,
-      "pct": 0.19
+      "pct": 0.15
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,180",
+      "value_text": "4,157.00",
       "unit": "ドル",
-      "asof": "10月上旬 NY市場(直近確認値、概算)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/8 終値",
+      "delta": 16.3,
+      "pct": 0.39
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "13,600",
+      "value_text": "13,066.15",
       "unit": "",
-      "asof": "10/6 NY市場引け(直近確認値、概算)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/7 NY市場引け",
+      "delta": -151.67,
+      "pct": -1.15
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "90.26",
+      "value_text": "91.49",
       "unit": "ドル",
-      "asof": "10/7 NY市場引け",
-      "delta": 0.82,
-      "pct": 0.9
+      "asof": "10/8 終値",
+      "delta": 3.21,
+      "pct": 3.64
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "85,000",
+      "value_text": "81,676.34",
       "unit": "ドル",
-      "asof": "10/7 24時間ベース(直近確認値)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/8 終値",
+      "delta": -1599.59,
+      "pct": -1.92
     }
   ],
   "narrative": [
@@ -157,7 +157,7 @@
       "market": "US",
       "ticker": "FIX",
       "name": "コンフォート・システムズUSA",
-      "pct": -5.9,
+      "pct": -4.21,
       "reason": "アナリストが「強い買い」から「ホールド」に格下げしたことが嫌気され、設備工事・産業関連株への警戒感とも重なって売られた。",
       "kind": "equity"
     },
@@ -165,7 +165,7 @@
       "market": "US",
       "ticker": "ALLE",
       "name": "アレジオン",
-      "pct": -6.0,
+      "pct": -4.7,
       "reason": "長期金利上昇を受けた産業セクター全般のリスクオフの流れの中で売られた。",
       "kind": "equity"
     },
@@ -179,17 +179,9 @@
     },
     {
       "market": "US",
-      "ticker": "CIEN",
-      "name": "シエナ",
-      "pct": 13.9,
-      "reason": "AI向けデータセンター通信機器への投資拡大期待が続き、前日の11.3％高に続いて2営業日連続の大幅高となった。",
-      "kind": "equity"
-    },
-    {
-      "market": "US",
       "ticker": "SWKS",
       "name": "スカイワークス・ソリューションズ",
-      "pct": 3.4,
+      "pct": 0.77,
       "reason": "同業クアルボと進めている約220億ドル規模の合併手続きが完了に近づいているとの観測で買われた。",
       "kind": "equity"
     }

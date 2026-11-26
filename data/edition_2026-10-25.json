@@ -20,9 +20,18 @@
       "name": "日経平均",
       "value_text": "62,693.16",
       "unit": "円",
-      "asof": "10/23(金) 東証引け",
+      "asof": "10/23 東証引け",
       "delta": -214.68,
       "pct": -0.34
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "416.30",
+      "unit": "円",
+      "asof": "10/23 東証引け",
+      "delta": -4.3,
+      "pct": -1.02
     },
     {
       "ticker": "^GSPC",
@@ -30,7 +39,7 @@
       "value_text": "7,623.68",
       "unit": "",
       "asof": "10/23 NY市場引け",
-      "delta": -39.84,
+      "delta": -39.75,
       "pct": -0.52
     },
     {
@@ -39,7 +48,7 @@
       "value_text": "25,955.34",
       "unit": "",
       "asof": "10/23 NY市場引け",
-      "delta": -55.03,
+      "delta": -53.52,
       "pct": -0.21
     },
     {
@@ -52,40 +61,67 @@
       "pct": -1.23
     },
     {
-      "ticker": "USDJPY",
+      "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.1",
+      "value_text": "156.49",
       "unit": "円",
-      "asof": "10/21 NY市場引け時点(直近確認値、23〜25日の確定値は検索時点で確認できず)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/23 終値",
+      "delta": -1.64,
+      "pct": -1.04
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "19.45",
+      "unit": "",
+      "asof": "10/23 NY市場引け",
+      "delta": 0.42,
+      "pct": 2.21
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "4.99",
+      "unit": "%",
+      "asof": "10/23 NY市場引け",
+      "delta": 0.03,
+      "pct": 0.71
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "4,007.90",
+      "unit": "ドル",
+      "asof": "10/23 終値",
+      "delta": -52.5,
+      "pct": -1.29
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "10,779.46",
+      "unit": "",
+      "asof": "10/23 NY市場引け",
+      "delta": 47.48,
+      "pct": 0.44
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
       "value_text": "103.27",
       "unit": "ドル",
-      "asof": "10/23 NY市場引け(中東の供給不安で続伸)",
-      "delta": 3.78,
-      "pct": 3.8
+      "asof": "10/23 終値",
+      "delta": 3.8,
+      "pct": 3.82
     },
     {
-      "ticker": "GOLD",
-      "name": "金(NY金)",
-      "value_text": "4,142.60",
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "80,024.01",
       "unit": "ドル",
-      "asof": "10/20 NY市場引け時点(直近確認値、以降の確定値は検索時点で確認できず)",
-      "delta": -17.5,
-      "pct": -0.42
-    },
-    {
-      "ticker": "US10Y",
-      "name": "米10年金利",
-      "value_text": "5.14",
-      "unit": "%",
-      "asof": "10/21 NY市場終盤時点(直近確認値、以降の確定値は検索時点で確認できず)",
-      "delta": 0.03,
-      "pct": 0.59
+      "asof": "10/25 終値",
+      "delta": -766.83,
+      "pct": -0.95
     }
   ],
   "narrative": [

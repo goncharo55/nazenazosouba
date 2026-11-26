@@ -18,20 +18,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "65,450.00",
+      "value_text": "66,016.36",
       "unit": "円",
-      "asof": "8/21 東証引け（週末休場）",
-      "delta": 0,
-      "pct": 0
+      "asof": "8/21 東証引け",
+      "delta": -200.43,
+      "pct": -0.3
     },
     {
       "ticker": "1306.T",
       "name": "TOPIX(ETF)",
-      "value_text": "419.50",
+      "value_text": "424.10",
       "unit": "円",
-      "asof": "8/21 東証引け（週末休場）",
-      "delta": 0,
-      "pct": 0
+      "asof": "8/21 東証引け",
+      "delta": 1.3,
+      "pct": 0.31
     },
     {
       "ticker": "^GSPC",
@@ -45,10 +45,10 @@
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "26,180.45",
+      "value_text": "26,180.46",
       "unit": "",
       "asof": "8/21 NY市場引け",
-      "delta": 113.28,
+      "delta": 113.29,
       "pct": 0.43
     },
     {
@@ -63,11 +63,11 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.95",
+      "value_text": "158.88",
       "unit": "円",
-      "asof": "8/22 15:00",
-      "delta": 0.05,
-      "pct": 0.03
+      "asof": "8/21 終値",
+      "delta": 0.61,
+      "pct": 0.38
     },
     {
       "ticker": "^VIX",
@@ -81,47 +81,47 @@
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.71",
+      "value_text": "4.74",
       "unit": "%",
       "asof": "8/21 NY市場引け",
-      "delta": 0.02,
-      "pct": 0.43
+      "delta": 0.04,
+      "pct": 0.89
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,540.00",
+      "value_text": "4,680.60",
       "unit": "ドル",
-      "asof": "8/22 15:00",
-      "delta": -34.7,
-      "pct": -0.76
+      "asof": "8/21 終値",
+      "delta": 109.2,
+      "pct": 2.39
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,950.00",
+      "value_text": "11,740.37",
       "unit": "",
-      "asof": "8/21 NY市場引け（概算）",
-      "delta": 151.7,
-      "pct": 1.29
+      "asof": "8/21 NY市場引け",
+      "delta": -59.65,
+      "pct": -0.51
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "86.64",
+      "value_text": "87.06",
       "unit": "ドル",
-      "asof": "8/22 15:00",
-      "delta": -1.19,
-      "pct": -1.35
+      "asof": "8/21 終値",
+      "delta": -0.77,
+      "pct": -0.88
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "77,700.00",
+      "value_text": "77,083.41",
       "unit": "ドル",
-      "asof": "8/22 15:00",
-      "delta": 5233.5,
-      "pct": 7.22
+      "asof": "8/22 終値",
+      "delta": -1251.77,
+      "pct": -1.6
     }
   ],
   "narrative": [
@@ -149,25 +149,25 @@
       "market": "US",
       "ticker": "HOOD",
       "name": "ロビンフッド・マーケッツ",
-      "pct": 12.5,
-      "kind": "equity",
-      "reason": "ビットコイン急伸と、ホワイトハウス発の仮想通貨規制明確化への期待を受けて急伸した。"
+      "pct": 13.7,
+      "reason": "ビットコイン急伸と、ホワイトハウス発の仮想通貨規制明確化への期待を受けて急伸した。",
+      "kind": "equity"
     },
     {
       "market": "US",
       "ticker": "COIN",
       "name": "コインベース・グローバル",
       "pct": 8.0,
-      "kind": "equity",
-      "reason": "ビットコイン高に加え、トークン化や規制面での前進が好感され上昇した。"
+      "reason": "ビットコイン高に加え、トークン化や規制面での前進が好感され上昇した。",
+      "kind": "equity"
     },
     {
       "market": "US",
       "ticker": "TSLA",
       "name": "テスラ",
       "pct": 5.0,
-      "kind": "equity",
-      "reason": "市場全体のリスク選好の高まりの中で買われ、5月以来最大の週間上昇率となった。"
+      "reason": "市場全体のリスク選好の高まりの中で買われ、5月以来最大の週間上昇率となった。",
+      "kind": "equity"
     }
   ],
   "lesson_title": "「ショートスクイーズ（踏み上げ）」― 急騰の裏で起きていること",

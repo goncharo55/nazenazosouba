@@ -19,20 +19,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "66,400",
+      "value_text": "66,131.98",
       "unit": "円",
-      "asof": "8/27 東証引け（概算）",
-      "delta": 138.0,
-      "pct": 0.21
+      "asof": "8/27 東証引け",
+      "delta": -130.18,
+      "pct": -0.2
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,128",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "429.40",
       "unit": "円",
-      "asof": "8/27 東証引け（概算）",
-      "delta": 7.5,
-      "pct": 0.18
+      "asof": "8/27 東証引け",
+      "delta": 1.2,
+      "pct": 0.28
     },
     {
       "ticker": "^GSPC",
@@ -49,7 +49,7 @@
       "value_text": "26,130.20",
       "unit": "",
       "asof": "8/26 NY市場引け",
-      "delta": -20.9,
+      "delta": -21.1,
       "pct": -0.08
     },
     {
@@ -64,65 +64,65 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "159.35",
+      "value_text": "159.26",
       "unit": "円",
-      "asof": "8/27 15時台",
-      "delta": 0.05,
-      "pct": 0.03
+      "asof": "8/27 終値",
+      "delta": 0.03,
+      "pct": 0.02
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.45",
+      "value_text": "15.21",
       "unit": "",
-      "asof": "8/26 NY市場引け（概算）",
-      "delta": -0.05,
-      "pct": -0.32
+      "asof": "8/26 NY市場引け",
+      "delta": -0.24,
+      "pct": -1.55
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.68",
+      "value_text": "4.66",
       "unit": "%",
-      "asof": "8/27 東京時間（米PCE受け・概算）",
-      "delta": 0.02,
-      "pct": 0.43
+      "asof": "8/26 NY市場引け",
+      "delta": 0.03,
+      "pct": 0.54
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,723",
+      "value_text": "4,664.00",
       "unit": "ドル",
-      "asof": "8/27 15時台（概算）",
-      "delta": 83.1,
-      "pct": 1.79
+      "asof": "8/27 終値",
+      "delta": 10.7,
+      "pct": 0.23
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,550",
+      "value_text": "11,611.24",
       "unit": "",
-      "asof": "8/26 NY市場引け（概算）",
-      "delta": -50.0,
-      "pct": -0.43
+      "asof": "8/26 NY市場引け",
+      "delta": 23.2,
+      "pct": 0.2
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "80.20",
+      "value_text": "83.53",
       "unit": "ドル",
-      "asof": "8/27 15時台（概算）",
-      "delta": -0.58,
-      "pct": -0.72
+      "asof": "8/27 終値",
+      "delta": 1.3,
+      "pct": 1.58
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "78,836",
+      "value_text": "80,257.54",
       "unit": "ドル",
-      "asof": "8/27 15時台",
-      "delta": -664.31,
-      "pct": -0.84
+      "asof": "8/27 終値",
+      "delta": 1230.12,
+      "pct": 1.56
     }
   ],
   "narrative": [
@@ -158,16 +158,8 @@
       "market": "JP",
       "ticker": "8035",
       "name": "東京エレクトロン",
-      "pct": 2.2,
+      "pct": 0.9,
       "reason": "朝方はエヌビディア決算後もAI投資の鈍化懸念から売られたが、午後にかけて半導体関連への見直し買いが優勢となり切り返した。",
-      "kind": "equity"
-    },
-    {
-      "market": "JP",
-      "ticker": "6857",
-      "name": "アドバンテスト",
-      "pct": 1.8,
-      "reason": "前日16%超の急伸からは伸び悩んだが、エヌビディアの決算・ガイダンスがAI向け設備投資の強さを裏付けたとして底堅い動き。",
       "kind": "equity"
     },
     {
@@ -176,14 +168,6 @@
       "name": "ソフトバンクグループ",
       "pct": 0.6,
       "reason": "半導体関連への見直し買いの流れに乗ったとみられる。",
-      "kind": "equity"
-    },
-    {
-      "market": "US",
-      "ticker": "NVDA",
-      "name": "エヌビディア（時間外）",
-      "pct": 4.7,
-      "reason": "5〜7月期決算で売上高・1株利益とも市場予想を上回り、8〜10月期見通しも強気だったことを好感し時間外で上昇。ただしメモリー価格上昇への言及も同時に注目された。",
       "kind": "equity"
     }
   ],

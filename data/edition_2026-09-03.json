@@ -20,20 +20,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "64,400",
+      "value_text": "64,214.48",
       "unit": "円",
-      "asof": "9/3 東証引け（速報・概算）",
-      "delta": 74,
-      "pct": 0.12
+      "asof": "9/3 東証引け",
+      "delta": -111.16,
+      "pct": -0.17
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,120",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "427.20",
       "unit": "円",
-      "asof": "9/3 東証引け（速報・概算）",
-      "delta": 6,
-      "pct": 0.15
+      "asof": "9/3 東証引け",
+      "delta": 2.7,
+      "pct": 0.64
     },
     {
       "ticker": "^GSPC",
@@ -65,65 +65,65 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "157.30",
+      "value_text": "158.92",
       "unit": "円",
-      "asof": "9/3 15時頃（東京時間）",
-      "delta": -2.9,
-      "pct": -1.81
+      "asof": "9/3 終値",
+      "delta": -1.27,
+      "pct": -0.79
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.2",
+      "value_text": "15.20",
       "unit": "",
-      "asof": "9/2 NY市場引け（概算）",
+      "asof": "9/2 NY市場引け",
       "delta": -1.14,
       "pct": -6.98
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.79",
+      "value_text": "4.80",
       "unit": "%",
       "asof": "9/2 NY市場引け",
-      "delta": -0.02,
-      "pct": -0.42
+      "delta": 0.0,
+      "pct": 0.0
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,340",
+      "value_text": "4,539.90",
       "unit": "ドル",
-      "asof": "9/2 NY市場引け（概算）",
-      "delta": 37.0,
-      "pct": 0.86
+      "asof": "9/3 終値",
+      "delta": 125.3,
+      "pct": 2.84
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,274",
+      "value_text": "11,339.25",
       "unit": "",
-      "asof": "9/2 NY市場引け（概算）",
-      "delta": -23.0,
-      "pct": -0.2
+      "asof": "9/2 NY市場引け",
+      "delta": 50.64,
+      "pct": 0.45
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "90.72",
+      "value_text": "91.30",
       "unit": "ドル",
-      "asof": "9/2 NY市場引け",
-      "delta": 0.5,
-      "pct": 0.55
+      "asof": "9/3 終値",
+      "delta": 0.29,
+      "pct": 0.32
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "77,038",
+      "value_text": "81,271.74",
       "unit": "ドル",
-      "asof": "9/3 15時頃（アジア時間）",
-      "delta": -912.0,
-      "pct": -1.17
+      "asof": "9/3 終値",
+      "delta": 3971.27,
+      "pct": 5.14
     }
   ],
   "narrative": [
@@ -150,33 +150,25 @@
       "market": "JP",
       "ticker": "7203",
       "name": "トヨタ自動車",
-      "pct": -3.39,
-      "kind": "equity",
-      "reason": "日銀・高田審議委員のタカ派寄り発言を受けてドル円が数時間で2円超の急ピッチな円高となったことを嫌気し、輸出比率の高い自動車株の代表格として利益確定売りが集中した。"
-    },
-    {
-      "market": "JP",
-      "ticker": "8035",
-      "name": "東京エレクトロン",
-      "pct": 6.24,
-      "kind": "equity",
-      "reason": "前日2日の米長期金利上昇一服とNYハイテク株高を受けた押し目買いに加え、前日に記録した3.73%安の反動から半導体製造装置株の中で買いが先行した。"
+      "pct": -0.51,
+      "reason": "日銀・高田審議委員のタカ派寄り発言を受けてドル円が数時間で2円超の急ピッチな円高となったことを嫌気し、輸出比率の高い自動車株の代表格として利益確定売りが集中した。",
+      "kind": "equity"
     },
     {
       "market": "JP",
       "ticker": "285A",
       "name": "キオクシアホールディングス",
       "pct": 1.47,
-      "kind": "equity",
-      "reason": "生成AI向けデータセンター需要の拡大を背景にした大幅増収増益決算への評価が引き続き株価を支えた。"
+      "reason": "生成AI向けデータセンター需要の拡大を背景にした大幅増収増益決算への評価が引き続き株価を支えた。",
+      "kind": "equity"
     },
     {
       "market": "JP",
       "ticker": "9984",
       "name": "ソフトバンクグループ",
-      "pct": 2.94,
-      "kind": "equity",
-      "reason": "出資先である米OpenAIの新規株式公開（IPO）観測が根強く、保有株の含み益拡大期待から資金流入が続いた。"
+      "pct": 1.56,
+      "reason": "出資先である米OpenAIの新規株式公開（IPO）観測が根強く、保有株の含み益拡大期待から資金流入が続いた。",
+      "kind": "equity"
     }
   ],
   "lesson_title": "「フォワードガイダンス」とは？ ― 日銀委員の一言だけで円が2円動いた仕組み",

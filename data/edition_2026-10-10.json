@@ -20,18 +20,18 @@
       "name": "日経平均",
       "value_text": "69,030.92",
       "unit": "円",
-      "asof": "10/9 東証大引け(金曜・週末持ち越し)",
+      "asof": "10/9 東証引け",
       "delta": -11.19,
       "pct": -0.02
     },
     {
       "ticker": "1306.T",
-      "name": "TOPIX",
-      "value_text": "4,104.81",
+      "name": "TOPIX(ETF)",
+      "value_text": "432.50",
       "unit": "円",
-      "asof": "10/9 東証大引け(金曜・週末持ち越し)",
-      "delta": 13.35,
-      "pct": 0.33
+      "asof": "10/9 東証引け",
+      "delta": 3.0,
+      "pct": 0.7
     },
     {
       "ticker": "^GSPC",
@@ -39,7 +39,7 @@
       "value_text": "7,811.54",
       "unit": "",
       "asof": "10/9 NY市場引け",
-      "delta": 45.8,
+      "delta": 46.18,
       "pct": 0.59
     },
     {
@@ -48,7 +48,7 @@
       "value_text": "27,366.17",
       "unit": "",
       "asof": "10/9 NY市場引け",
-      "delta": 173.9,
+      "delta": 172.83,
       "pct": 0.64
     },
     {
@@ -63,65 +63,65 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.3",
+      "value_text": "158.06",
       "unit": "円",
-      "asof": "10/10 週末・24時間ベース(概算、値動きは限定的)",
+      "asof": "10/9 終値",
       "delta": 0.0,
       "pct": 0.0
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.4",
+      "value_text": "14.84",
       "unit": "",
-      "asof": "10/8 NY市場引け(直近確認値、9日分は未確認)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/9 NY市場引け",
+      "delta": -0.57,
+      "pct": -3.7
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.23",
+      "value_text": "5.24",
       "unit": "%",
       "asof": "10/9 NY市場引け",
-      "delta": -0.06,
-      "pct": -1.1
+      "delta": 0.01,
+      "pct": 0.25
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,180",
+      "value_text": "4,216.30",
       "unit": "ドル",
-      "asof": "直近確認値、概算(10月上旬)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/9 終値",
+      "delta": 59.3,
+      "pct": 1.43
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "13,546",
+      "value_text": "12,572.42",
       "unit": "",
-      "asof": "10/9 NY市場引け(一部報道『前日比0.4%安』に基づく概算、確定値未確認)",
-      "delta": -54.0,
-      "pct": -0.4
+      "asof": "10/9 NY市場引け",
+      "delta": -51.29,
+      "pct": -0.41
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "90.26",
+      "value_text": "91.85",
       "unit": "ドル",
-      "asof": "10/7 NY市場引け(直近確認値、概算)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/9 終値",
+      "delta": 0.36,
+      "pct": 0.39
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "84,500",
+      "value_text": "82,912.23",
       "unit": "ドル",
-      "asof": "10月上旬の推移に基づく概算、週末の確定値は未確認",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/10 終値",
+      "delta": 365.91,
+      "pct": 0.44
     }
   ],
   "narrative": [

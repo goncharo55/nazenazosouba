@@ -18,11 +18,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "64,703",
+      "value_text": "64,621.24",
       "unit": "円",
-      "asof": "10/21 15時 東証",
-      "delta": 627,
-      "pct": 0.98
+      "asof": "10/21 東証引け",
+      "delta": 545.82,
+      "pct": 0.85
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "425.60",
+      "unit": "円",
+      "asof": "10/21 東証引け",
+      "delta": 3.8,
+      "pct": 0.9
     },
     {
       "ticker": "^GSPC",
@@ -30,7 +39,7 @@
       "value_text": "7,712.57",
       "unit": "",
       "asof": "10/20 NY市場引け",
-      "delta": 21.6,
+      "delta": 21.84,
       "pct": 0.28
     },
     {
@@ -39,7 +48,7 @@
       "value_text": "26,424.82",
       "unit": "",
       "asof": "10/20 NY市場引け",
-      "delta": -5.3,
+      "delta": -6.07,
       "pct": -0.02
     },
     {
@@ -50,6 +59,69 @@
       "asof": "10/20 NY市場引け",
       "delta": 529.85,
       "pct": 1.02
+    },
+    {
+      "ticker": "USDJPY=X",
+      "name": "ドル円",
+      "value_text": "158.27",
+      "unit": "円",
+      "asof": "10/21 終値",
+      "delta": -0.25,
+      "pct": -0.16
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "17.31",
+      "unit": "",
+      "asof": "10/20 NY市場引け",
+      "delta": -1.13,
+      "pct": -6.13
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "5.12",
+      "unit": "%",
+      "asof": "10/20 NY市場引け",
+      "delta": -0.02,
+      "pct": -0.37
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "4,150.00",
+      "unit": "ドル",
+      "asof": "10/21 終値",
+      "delta": 7.4,
+      "pct": 0.18
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "11,283.81",
+      "unit": "",
+      "asof": "10/20 NY市場引け",
+      "delta": -32.53,
+      "pct": -0.29
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "97.15",
+      "unit": "ドル",
+      "asof": "10/21 終値",
+      "delta": -4.64,
+      "pct": -4.56
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "84,011.97",
+      "unit": "ドル",
+      "asof": "10/21 終値",
+      "delta": 1070.97,
+      "pct": 1.29
     }
   ],
   "narrative": [

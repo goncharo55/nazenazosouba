@@ -20,18 +20,18 @@
       "name": "日経平均",
       "value_text": "66,364.20",
       "unit": "円",
-      "asof": "9/25 東証引け(確定値)",
+      "asof": "9/25 東証引け",
       "delta": 850.21,
       "pct": 1.3
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,128.59",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "430.30",
       "unit": "円",
-      "asof": "9/25 東証引け(確定値)",
-      "delta": 53.29,
-      "pct": 1.31
+      "asof": "9/25 東証引け",
+      "delta": 5.5,
+      "pct": 1.29
     },
     {
       "ticker": "^GSPC",
@@ -39,7 +39,7 @@
       "value_text": "7,743.41",
       "unit": "",
       "asof": "9/25 NY市場引け",
-      "delta": 37.36,
+      "delta": 39.28,
       "pct": 0.51
     },
     {
@@ -48,8 +48,8 @@
       "value_text": "27,068.72",
       "unit": "",
       "asof": "9/25 NY市場引け",
-      "delta": 132.68,
-      "pct": 0.49
+      "delta": 129.35,
+      "pct": 0.48
     },
     {
       "ticker": "^DJI",
@@ -63,56 +63,65 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "156.90",
+      "value_text": "158.81",
       "unit": "円",
-      "asof": "9/26 NY市場(週末)・首脳会談発の「口先介入」で156円台まで続落",
-      "delta": -0.38,
-      "pct": -0.24
+      "asof": "9/25 終値",
+      "delta": 0.55,
+      "pct": 0.34
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.60",
+      "value_text": "14.87",
       "unit": "",
       "asof": "9/25 NY市場引け",
-      "delta": -0.07,
-      "pct": -0.45
+      "delta": -0.8,
+      "pct": -5.11
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.17",
+      "value_text": "5.18",
       "unit": "%",
-      "asof": "9/25 NY市場引け・2007年以来の高水準が続く",
-      "delta": 0.05,
-      "pct": 0.98
+      "asof": "9/25 NY市場引け",
+      "delta": 0.02,
+      "pct": 0.43
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,298.79",
+      "value_text": "4,321.20",
       "unit": "ドル",
+      "asof": "9/25 終値",
+      "delta": 23.2,
+      "pct": 0.54
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "12,668.93",
+      "unit": "",
       "asof": "9/25 NY市場引け",
-      "delta": 0.79,
-      "pct": 0.02
+      "delta": 176.39,
+      "pct": 1.41
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
+      "name": "原油(WTI)",
       "value_text": "92.41",
       "unit": "ドル",
-      "asof": "9/25 NY市場引け・ホルムズ海峡再開観測で下落",
-      "delta": -3.09,
-      "pct": -3.24
+      "asof": "9/25 終値",
+      "delta": -2.2,
+      "pct": -2.33
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "84,000",
+      "value_text": "84,406.45",
       "unit": "ドル",
-      "asof": "9/26 午前(24時間ベース)",
-      "delta": -200.0,
-      "pct": -0.24
+      "asof": "9/26 終値",
+      "delta": 371.53,
+      "pct": 0.44
     }
   ],
   "narrative": [
@@ -147,43 +156,35 @@
   "movers": [
     {
       "market": "US",
-      "ticker": "AKAM",
-      "name": "Akamai Technologies",
-      "pct": 8.0,
-      "kind": "equity",
-      "reason": "Anthropicとの7年110億ドル規模のクラウド契約を発表。自社株の最大5%相当を取得できるワラントも付与し、資本提携への思惑も広がった"
-    },
-    {
-      "market": "US",
       "ticker": "MSFT",
       "name": "マイクロソフト",
       "pct": 3.71,
-      "kind": "equity",
-      "reason": "AI関連の設備投資拡大期待を背景に、この日の上昇率上位に入った"
+      "reason": "AI関連の設備投資拡大期待を背景に、この日の上昇率上位に入った",
+      "kind": "equity"
     },
     {
       "market": "US",
       "ticker": "CRM",
       "name": "セールスフォース",
       "pct": -1.76,
-      "kind": "equity",
-      "reason": "決算自体は市場予想超えだったが、生成AI機能の値付けや収益化ペースへの懸念、好決算後の利益確定売りが重なった"
+      "reason": "決算自体は市場予想超えだったが、生成AI機能の値付けや収益化ペースへの懸念、好決算後の利益確定売りが重なった",
+      "kind": "equity"
     },
     {
       "market": "JP",
       "ticker": "6758",
       "name": "ソニーグループ",
       "pct": 1.28,
-      "kind": "equity",
-      "reason": "前日の下落からの戻りに加え、158円台の円安進行が輸出・エレクトロニクス関連株の追い風になった"
+      "reason": "前日の下落からの戻りに加え、158円台の円安進行が輸出・エレクトロニクス関連株の追い風になった",
+      "kind": "equity"
     },
     {
       "market": "GLOBAL",
       "ticker": "USDJPY=X",
       "name": "ドル円",
       "pct": -1.17,
-      "kind": "fx",
-      "reason": "日米首脳会談でのトランプ大統領の円安懸念発言と、日米財務相間の「強い円が望ましい」との認識共有が伝わり、口先介入の色彩が強まった"
+      "reason": "日米首脳会談でのトランプ大統領の円安懸念発言と、日米財務相間の「強い円が望ましい」との認識共有が伝わり、口先介入の色彩が強まった",
+      "kind": "fx"
     }
   ],
   "lesson_title": "きょうの用語解説：「口先介入」― 実弾を撃たなくても為替は動く",

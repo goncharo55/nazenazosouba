@@ -18,29 +18,29 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "65,450.00",
+      "value_text": "66,016.36",
       "unit": "円",
       "asof": "8/21 東証引け",
-      "delta": -766.79,
-      "pct": -1.16
+      "delta": -200.43,
+      "pct": -0.3
     },
     {
       "ticker": "1306.T",
       "name": "TOPIX(ETF)",
-      "value_text": "419.50",
+      "value_text": "424.10",
       "unit": "円",
       "asof": "8/21 東証引け",
-      "delta": -3.6,
-      "pct": -0.85
+      "delta": 1.3,
+      "pct": 0.31
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,655.00",
+      "value_text": "7,641.16",
       "unit": "",
       "asof": "8/20 NY市場引け",
-      "delta": -52.98,
-      "pct": -0.69
+      "delta": -66.82,
+      "pct": -0.87
     },
     {
       "ticker": "^IXIC",
@@ -63,11 +63,11 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.90",
+      "value_text": "158.88",
       "unit": "円",
-      "asof": "8/21 15:00",
-      "delta": 0.5,
-      "pct": 0.32
+      "asof": "8/21 終値",
+      "delta": 0.61,
+      "pct": 0.38
     },
     {
       "ticker": "^VIX",
@@ -75,53 +75,53 @@
       "value_text": "16.01",
       "unit": "",
       "asof": "8/20 NY市場引け",
-      "delta": 1.11,
-      "pct": 7.45
+      "delta": 1.12,
+      "pct": 7.52
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.69",
+      "value_text": "4.70",
       "unit": "%",
       "asof": "8/20 NY市場引け",
-      "delta": 0.05,
-      "pct": 1.08
+      "delta": 0.04,
+      "pct": 0.92
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,574.70",
+      "value_text": "4,680.60",
       "unit": "ドル",
-      "asof": "8/21 15:00",
-      "delta": 29.4,
-      "pct": 0.65
+      "asof": "8/21 終値",
+      "delta": 109.2,
+      "pct": 2.39
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,798.30",
+      "value_text": "11,800.02",
       "unit": "",
       "asof": "8/20 NY市場引け",
-      "delta": -141.7,
-      "pct": -1.19
+      "delta": 61.79,
+      "pct": 0.53
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "87.83",
+      "value_text": "87.06",
       "unit": "ドル",
-      "asof": "8/21 15:00",
-      "delta": 2.0,
-      "pct": 2.33
+      "asof": "8/21 終値",
+      "delta": -0.77,
+      "pct": -0.88
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "72,466.50",
+      "value_text": "78,335.19",
       "unit": "ドル",
-      "asof": "8/21 15:00",
-      "delta": 3425.6,
-      "pct": 4.96
+      "asof": "8/21 終値",
+      "delta": 5302.43,
+      "pct": 7.26
     }
   ],
   "narrative": [
@@ -161,26 +161,10 @@
       "kind": "equity"
     },
     {
-      "market": "JP",
-      "ticker": "4833",
-      "name": "Def consulting",
-      "pct": 26.9,
-      "reason": "同様に値上がり率ランキング上位に浮上。仮想通貨関連への物色との見方がある。",
-      "kind": "equity"
-    },
-    {
-      "market": "JP",
-      "ticker": "7138",
-      "name": "TORICO",
-      "pct": 20.3,
-      "reason": "値上がり率ランキング上位。仮想通貨関連の思惑買いとの観測がある。",
-      "kind": "equity"
-    },
-    {
       "market": "US",
       "ticker": "WMT",
       "name": "ウォルマート",
-      "pct": -8.01,
+      "pct": -9.15,
       "reason": "5〜7月期の既存店売上高が前年比2.6%増と市場予想（3.8%増）に届かず、消費減速への懸念から急落した。",
       "kind": "equity"
     },
@@ -196,7 +180,7 @@
       "market": "US",
       "ticker": "SHW",
       "name": "シャーウィン・ウィリアムズ",
-      "pct": -2.99,
+      "pct": -1.89,
       "reason": "同様に消費・住宅関連株安の流れの中で下落した。",
       "kind": "equity"
     }

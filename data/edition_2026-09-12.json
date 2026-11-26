@@ -21,54 +21,54 @@
       "name": "日経平均",
       "value_text": "64,011.34",
       "unit": "円",
-      "asof": "9/11 東証引け(週末につき前営業日)",
+      "asof": "9/11 東証引け",
       "delta": -1259.61,
       "pct": -1.93
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,028.30",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "419.70",
       "unit": "円",
-      "asof": "9/11 東証引け(前営業日)",
-      "delta": -26.28,
-      "pct": -0.65
+      "asof": "9/11 東証引け",
+      "delta": -3.0,
+      "pct": -0.71
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,656.85",
+      "value_text": "7,656.98",
       "unit": "",
       "asof": "9/11 NY市場引け",
-      "delta": 65.15,
+      "delta": 65.28,
       "pct": 0.86
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "26,333.03",
+      "value_text": "26,333.04",
       "unit": "",
       "asof": "9/11 NY市場引け",
-      "delta": 251.31,
+      "delta": 251.32,
       "pct": 0.96
     },
     {
       "ticker": "^DJI",
       "name": "NYダウ",
-      "value_text": "52,573.10",
+      "value_text": "52,573.29",
       "unit": "",
       "asof": "9/11 NY市場引け",
-      "delta": 509.0,
+      "delta": 509.19,
       "pct": 0.98
     },
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "153.65",
+      "value_text": "154.48",
       "unit": "円",
-      "asof": "9/12 早朝(24時間ベース)",
-      "delta": -0.65,
-      "pct": -0.42
+      "asof": "9/11 終値",
+      "delta": 0.91,
+      "pct": 0.59
     },
     {
       "ticker": "^VIX",
@@ -82,47 +82,47 @@
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.96",
+      "value_text": "4.97",
       "unit": "%",
       "asof": "9/11 NY市場引け",
-      "delta": -0.01,
-      "pct": -0.2
+      "delta": 0.03,
+      "pct": 0.63
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,362.28",
+      "value_text": "4,408.90",
       "unit": "ドル",
-      "asof": "9/12(24時間ベース)",
-      "delta": -2.17,
-      "pct": -0.05
+      "asof": "9/11 終値",
+      "delta": 1.6,
+      "pct": 0.04
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,931.32",
+      "value_text": "11,824.00",
       "unit": "",
       "asof": "9/11 NY市場引け",
-      "delta": 317.15,
-      "pct": 2.73
+      "delta": 209.83,
+      "pct": 1.81
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
+      "name": "原油(WTI)",
       "value_text": "100.05",
       "unit": "ドル",
-      "asof": "9/11 NY市場引け",
+      "asof": "9/11 終値",
       "delta": -2.43,
-      "pct": -2.4
+      "pct": -2.37
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "77,280",
+      "value_text": "77,270.47",
       "unit": "ドル",
-      "asof": "9/12(24時間ベース)",
-      "delta": -2120.0,
-      "pct": -2.67
+      "asof": "9/12 終値",
+      "delta": 96.67,
+      "pct": 0.13
     }
   ],
   "narrative": [
@@ -173,7 +173,7 @@
       "market": "US",
       "ticker": "ON",
       "name": "オン・セミコンダクター",
-      "pct": 7.0,
+      "pct": 8.51,
       "reason": "AIデータセンター向け電源・パワー半導体需要への期待から連想買いが入った",
       "kind": "equity"
     },

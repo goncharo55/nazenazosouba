@@ -19,20 +19,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "66,307",
+      "value_text": "66,405.56",
       "unit": "円",
-      "asof": "8/28 東証引け（概算）",
-      "delta": 175.64,
-      "pct": 0.27
+      "asof": "8/28 東証引け",
+      "delta": 273.59,
+      "pct": 0.41
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,120",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "432.00",
       "unit": "円",
-      "asof": "8/28 東証引け（概算）",
-      "delta": 1.56,
-      "pct": 0.04
+      "asof": "8/28 東証引け",
+      "delta": 2.6,
+      "pct": 0.61
     },
     {
       "ticker": "^GSPC",
@@ -49,7 +49,7 @@
       "value_text": "26,541.35",
       "unit": "",
       "asof": "8/27 NY市場引け",
-      "delta": 410.69,
+      "delta": 411.15,
       "pct": 1.57
     },
     {
@@ -64,65 +64,65 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "159.40",
+      "value_text": "159.32",
       "unit": "円",
-      "asof": "8/28 午後",
-      "delta": 0.05,
-      "pct": 0.03
+      "asof": "8/28 終値",
+      "delta": 0.07,
+      "pct": 0.04
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.15",
+      "value_text": "14.51",
       "unit": "",
-      "asof": "8/27 NY市場引け（概算）",
-      "delta": -0.3,
-      "pct": -1.94
+      "asof": "8/27 NY市場引け",
+      "delta": -0.7,
+      "pct": -4.6
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
       "value_text": "4.67",
       "unit": "%",
-      "asof": "8/27 NY市場引け（概算）",
-      "delta": -0.01,
-      "pct": -0.21
+      "asof": "8/27 NY市場引け",
+      "delta": 0.01,
+      "pct": 0.17
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,664",
+      "value_text": "4,529.90",
       "unit": "ドル",
-      "asof": "8/27 NY市場引け",
-      "delta": 10.7,
-      "pct": 0.23
+      "asof": "8/28 終値",
+      "delta": -134.1,
+      "pct": -2.88
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,820",
+      "value_text": "11,882.17",
       "unit": "",
-      "asof": "8/27 NY市場引け（概算）",
-      "delta": 270.0,
+      "asof": "8/27 NY市場引け",
+      "delta": 270.93,
       "pct": 2.33
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "83.42",
+      "value_text": "83.40",
       "unit": "ドル",
-      "asof": "8/27 23時台NY（概算）",
-      "delta": 0.6,
-      "pct": 0.72
+      "asof": "8/28 終値",
+      "delta": -0.13,
+      "pct": -0.16
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "79,300",
+      "value_text": "77,830.29",
       "unit": "ドル",
-      "asof": "8/27深夜〜8/28朝（概算）",
-      "delta": 464.0,
-      "pct": 0.59
+      "asof": "8/28 終値",
+      "delta": -2427.25,
+      "pct": -3.02
     }
   ],
   "narrative": [
@@ -154,18 +154,10 @@
   ],
   "movers": [
     {
-      "market": "JP",
-      "ticker": "593A",
-      "name": "ティアフォー",
-      "pct": 21.26,
-      "reason": "トヨタ自動車が2028年に「レベル2++」の自動運転システムを搭載した市販車を投入すると27日に報じられ、自動運転関連への物色が加速。ストップ高となる1,939円まで買われ、上場来高値を更新した。",
-      "kind": "equity"
-    },
-    {
       "market": "US",
       "ticker": "CRM",
       "name": "セールスフォース",
-      "pct": 21.17,
+      "pct": 22.58,
       "reason": "四半期決算が市場予想を上回り、業績見通しも強気だったことを好感。企業向けソフトウエア（SaaS）決算シーズンの主役の一つとなった。",
       "kind": "equity"
     },
@@ -173,7 +165,7 @@
       "market": "US",
       "ticker": "CRWD",
       "name": "クラウドストライク",
-      "pct": 17.6,
+      "pct": 20.5,
       "reason": "サイバーセキュリティー大手の決算が予想を上回る増収増益となり、成長鈍化懸念が後退したとして買われた。",
       "kind": "equity"
     },
@@ -181,7 +173,7 @@
       "market": "US",
       "ticker": "VEEV",
       "name": "ヴィーバ・システムズ",
-      "pct": 17.21,
+      "pct": 15.2,
       "reason": "決算が市場予想を上回り、SaaS株全般への買い戻しの流れに乗った。",
       "kind": "equity"
     },
@@ -189,7 +181,7 @@
       "market": "US",
       "ticker": "PANW",
       "name": "パロアルトネットワークス",
-      "pct": 12.22,
+      "pct": 12.83,
       "reason": "決算が予想を上回り、セキュリティー関連の他のSaaS銘柄と同様に買われた。",
       "kind": "equity"
     },
@@ -197,7 +189,7 @@
       "market": "US",
       "ticker": "SNPS",
       "name": "シノプシス",
-      "pct": 10.89,
+      "pct": 13.39,
       "reason": "半導体設計ソフト大手の決算が好感され、AI向け半導体設計需要の強さを裏付けたとして買われた。",
       "kind": "equity"
     },
@@ -213,7 +205,7 @@
       "market": "US",
       "ticker": "HRL",
       "name": "ホーメルフーズ",
-      "pct": -9.28,
+      "pct": -10.25,
       "reason": "決算が市場予想を下回ったとみられ、食品セクターの弱さの象徴として売られた。",
       "kind": "equity"
     },
@@ -221,7 +213,7 @@
       "market": "US",
       "ticker": "MRNA",
       "name": "モデルナ",
-      "pct": -5.81,
+      "pct": -4.6,
       "reason": "ハイテク一辺倒の資金シフトのなか、バイオ・ヘルスケア株全般が資金流出の対象になったとみられる。",
       "kind": "equity"
     }

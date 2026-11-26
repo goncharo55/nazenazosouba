@@ -20,16 +20,25 @@
       "name": "日経平均",
       "value_text": "63,290.11",
       "unit": "円",
-      "asof": "10/30(金) 東証引け",
+      "asof": "10/30 東証引け",
       "delta": -1369.36,
       "pct": -2.12
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "416.40",
+      "unit": "円",
+      "asof": "10/30 東証引け",
+      "delta": -4.9,
+      "pct": -1.16
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
       "value_text": "7,580.07",
       "unit": "",
-      "asof": "10/30(金) NY市場引け",
+      "asof": "10/30 NY市場引け",
       "delta": -140.32,
       "pct": -1.82
     },
@@ -38,8 +47,8 @@
       "name": "Nasdaq総合",
       "value_text": "25,437.00",
       "unit": "",
-      "asof": "10/30(金) NY市場引け",
-      "delta": -747.73,
+      "asof": "10/30 NY市場引け",
+      "delta": -747.72,
       "pct": -2.86
     },
     {
@@ -47,18 +56,72 @@
       "name": "NYダウ",
       "value_text": "51,770.31",
       "unit": "",
-      "asof": "10/30(金) NY市場引け",
+      "asof": "10/30 NY市場引け",
       "delta": -572.25,
       "pct": -1.09
     },
     {
-      "ticker": "JPY=X",
+      "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "157.8",
+      "value_text": "157.80",
       "unit": "円",
-      "asof": "10/28(水) 17時時点(直近確認値。以降の週末にかけての確定値は検索時点で確認できず)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/30 終値",
+      "delta": -0.03,
+      "pct": -0.02
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "19.42",
+      "unit": "",
+      "asof": "10/30 NY市場引け",
+      "delta": 2.22,
+      "pct": 12.91
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "4.93",
+      "unit": "%",
+      "asof": "10/30 NY市場引け",
+      "delta": -0.06,
+      "pct": -1.2
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "3,898.90",
+      "unit": "ドル",
+      "asof": "10/30 終値",
+      "delta": -132.5,
+      "pct": -3.29
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "10,688.80",
+      "unit": "",
+      "asof": "10/30 NY市場引け",
+      "delta": -829.4,
+      "pct": -7.2
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "104.12",
+      "unit": "ドル",
+      "asof": "10/30 終値",
+      "delta": 2.12,
+      "pct": 2.08
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "78,248.45",
+      "unit": "ドル",
+      "asof": "11/1 終値",
+      "delta": 813.7,
+      "pct": 1.05
     }
   ],
   "narrative": [
@@ -80,14 +143,6 @@
     }
   ],
   "movers": [
-    {
-      "market": "US",
-      "ticker": "AMZN",
-      "name": "アマゾン",
-      "pct": -8.0,
-      "reason": "3Q決算は増収増益だったが、2026年のAI・AWS関連の資本支出(キャペックス)を市場予想の約1,500億ドルから約2,000億ドルへ大幅に引き上げる計画を示し、利益率への懸念から売られた(時間外では一時10%超安の場面も)",
-      "kind": "equity"
-    },
     {
       "market": "US",
       "ticker": "NVDA",

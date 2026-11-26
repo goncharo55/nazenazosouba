@@ -18,20 +18,20 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "63,387.31",
+      "value_text": "63,923.00",
       "unit": "円",
-      "asof": "9/16 午前10:30時点(東証・確定値は未公表)",
-      "delta": -96.79,
-      "pct": -0.15
+      "asof": "9/16 東証引け",
+      "delta": 438.9,
+      "pct": 0.69
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,037.16",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "423.90",
       "unit": "円",
-      "asof": "9/15 東証引け",
-      "delta": -21.05,
-      "pct": -0.52
+      "asof": "9/16 東証引け",
+      "delta": 2.6,
+      "pct": 0.62
     },
     {
       "ticker": "^GSPC",
@@ -39,7 +39,7 @@
       "value_text": "7,585.73",
       "unit": "",
       "asof": "9/15 NY市場引け",
-      "delta": -34.3,
+      "delta": -34.25,
       "pct": -0.45
     },
     {
@@ -48,7 +48,7 @@
       "value_text": "25,981.57",
       "unit": "",
       "asof": "9/15 NY市場引け",
-      "delta": -204.2,
+      "delta": -204.84,
       "pct": -0.78
     },
     {
@@ -63,11 +63,11 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "155.32",
+      "value_text": "155.27",
       "unit": "円",
-      "asof": "9/16 午後(24時間ベース)",
-      "delta": 0.62,
-      "pct": 0.4
+      "asof": "9/16 終値",
+      "delta": 0.88,
+      "pct": 0.57
     },
     {
       "ticker": "^VIX",
@@ -81,47 +81,47 @@
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.02",
+      "value_text": "5.00",
       "unit": "%",
-      "asof": "9/15 NY市場引け(取引時間中に一時5.04%と2007年以来の高水準)",
-      "delta": 0.06,
-      "pct": 1.21
+      "asof": "9/15 NY市場引け",
+      "delta": 0.03,
+      "pct": 0.71
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,338.50",
+      "value_text": "4,387.50",
       "unit": "ドル",
-      "asof": "9/16 午後(24時間ベース)",
-      "delta": -13.4,
-      "pct": -0.31
+      "asof": "9/16 終値",
+      "delta": 54.7,
+      "pct": 1.26
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,225.58",
+      "value_text": "11,175.55",
       "unit": "",
-      "asof": "9/14 NY市場引け(15日以降の確定値は未確認)",
-      "delta": -705.74,
-      "pct": -5.9
+      "asof": "9/15 NY市場引け",
+      "delta": 44.27,
+      "pct": 0.4
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
-      "value_text": "105.75",
+      "name": "原油(WTI)",
+      "value_text": "102.43",
       "unit": "ドル",
-      "asof": "9/16 午後(24時間ベース)",
-      "delta": 4.36,
-      "pct": 4.3
+      "asof": "9/16 終値",
+      "delta": -3.4,
+      "pct": -3.21
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "76,800",
+      "value_text": "76,150.32",
       "unit": "ドル",
-      "asof": "9/16 午後(24時間ベース)",
-      "delta": -1200.0,
-      "pct": -1.54
+      "asof": "9/16 終値",
+      "delta": 537.81,
+      "pct": 0.71
     }
   ],
   "narrative": [
@@ -153,14 +153,6 @@
     }
   ],
   "movers": [
-    {
-      "market": "JP",
-      "ticker": "9984",
-      "name": "ソフトバンクグループ",
-      "pct": 7.0,
-      "reason": "15日、259億ドルのブリッジローンを期限前に完済したと判明。約20行から目標超の118.7億ドルの新規融資枠をすでに確保していたことが好感され、日経平均を単独で約350円押し上げた",
-      "kind": "equity"
-    },
     {
       "market": "US",
       "ticker": "CVX",
@@ -197,7 +189,7 @@
       "market": "US",
       "ticker": "GOOGL",
       "name": "アルファベット",
-      "pct": -2.28,
+      "pct": -1.26,
       "reason": "将来利益の割引価値が目減りしやすい大型グロース株として、長期金利の急伸の影響を受けやすかった",
       "kind": "equity"
     },

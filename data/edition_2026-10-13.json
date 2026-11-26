@@ -18,47 +18,110 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "67,292.39",
+      "value_text": "67,777.52",
       "unit": "円",
-      "asof": "10/13 前引け",
-      "delta": -1738.53,
-      "pct": -2.52
+      "asof": "10/13 東証引け",
+      "delta": -1253.4,
+      "pct": -1.82
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "432.50",
+      "unit": "円",
+      "asof": "10/13 東証引け",
+      "delta": 0.0,
+      "pct": 0.0
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,806.85",
+      "value_text": "7,807.24",
       "unit": "",
-      "asof": "10/12 NY市場引け(速報)",
-      "delta": -4.69,
+      "asof": "10/12 NY市場引け",
+      "delta": -4.3,
       "pct": -0.06
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "27,246.00",
+      "value_text": "27,245.90",
       "unit": "",
-      "asof": "10/12 NY市場引け(速報)",
-      "delta": -120.17,
+      "asof": "10/12 NY市場引け",
+      "delta": -120.27,
       "pct": -0.44
     },
     {
       "ticker": "^DJI",
       "name": "NYダウ",
-      "value_text": "51,850.00",
+      "value_text": "51,850.55",
       "unit": "",
-      "asof": "10/12 NY市場引け(速報)",
-      "delta": 195.05,
+      "asof": "10/12 NY市場引け",
+      "delta": 195.6,
       "pct": 0.38
+    },
+    {
+      "ticker": "USDJPY=X",
+      "name": "ドル円",
+      "value_text": "158.52",
+      "unit": "円",
+      "asof": "10/13 終値",
+      "delta": 0.32,
+      "pct": 0.2
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "15.21",
+      "unit": "",
+      "asof": "10/12 NY市場引け",
+      "delta": 0.37,
+      "pct": 2.49
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "5.24",
+      "unit": "%",
+      "asof": "10/12 NY市場引け",
+      "delta": -0.0,
+      "pct": -0.08
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,178",
+      "value_text": "4,177.30",
       "unit": "ドル",
-      "asof": "10/8 NY市場時点(直近確認値)",
-      "delta": 43.0,
-      "pct": 1.04
+      "asof": "10/13 終値",
+      "delta": -13.3,
+      "pct": -0.32
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "12,236.79",
+      "unit": "",
+      "asof": "10/12 NY市場引け",
+      "delta": -335.63,
+      "pct": -2.67
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "94.14",
+      "unit": "ドル",
+      "asof": "10/13 終値",
+      "delta": 0.4,
+      "pct": 0.43
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "83,095.12",
+      "unit": "ドル",
+      "asof": "10/13 終値",
+      "delta": 1332.56,
+      "pct": 1.63
     }
   ],
   "narrative": [
@@ -87,8 +150,8 @@
       "ticker": "285A",
       "name": "キオクシアホールディングス",
       "pct": -13.51,
-      "kind": "equity",
-      "reason": "AI投資の持続性への懸念と、前日の米国市場での半導体・AI関連株安の波及を受け、朝方から大きく売られた。"
+      "reason": "AI投資の持続性への懸念と、前日の米国市場での半導体・AI関連株安の波及を受け、朝方から大きく売られた。",
+      "kind": "equity"
     }
   ],
   "lesson_title": "株価が大きく動くと出てくる「特別気配」とは",

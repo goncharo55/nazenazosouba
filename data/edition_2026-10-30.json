@@ -18,38 +18,110 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "62,720",
+      "value_text": "63,290.11",
       "unit": "円",
-      "asof": "10/30 東証引け(概算)",
-      "delta": -1939.78,
-      "pct": -3.0
+      "asof": "10/30 東証引け",
+      "delta": -1369.36,
+      "pct": -2.12
+    },
+    {
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "416.40",
+      "unit": "円",
+      "asof": "10/30 東証引け",
+      "delta": -4.9,
+      "pct": -1.16
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,713.00",
+      "value_text": "7,720.39",
       "unit": "",
       "asof": "10/29 NY市場引け",
-      "delta": -30.98,
-      "pct": -0.4
+      "delta": -23.59,
+      "pct": -0.3
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "26,284.35",
+      "value_text": "26,184.72",
       "unit": "",
       "asof": "10/29 NY市場引け",
-      "delta": -265.5,
-      "pct": -1.0
+      "delta": -365.13,
+      "pct": -1.38
     },
     {
       "ticker": "^DJI",
       "name": "NYダウ",
-      "value_text": "52,317.67",
+      "value_text": "52,342.56",
       "unit": "",
       "asof": "10/29 NY市場引け",
-      "delta": -157.43,
-      "pct": -0.3
+      "delta": -132.54,
+      "pct": -0.25
+    },
+    {
+      "ticker": "USDJPY=X",
+      "name": "ドル円",
+      "value_text": "157.80",
+      "unit": "円",
+      "asof": "10/30 終値",
+      "delta": -0.03,
+      "pct": -0.02
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "17.20",
+      "unit": "",
+      "asof": "10/29 NY市場引け",
+      "delta": 0.29,
+      "pct": 1.71
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "4.99",
+      "unit": "%",
+      "asof": "10/29 NY市場引け",
+      "delta": -0.06,
+      "pct": -1.11
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "3,898.90",
+      "unit": "ドル",
+      "asof": "10/30 終値",
+      "delta": -132.5,
+      "pct": -3.29
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "11,518.20",
+      "unit": "",
+      "asof": "10/29 NY市場引け",
+      "delta": -165.8,
+      "pct": -1.42
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "104.12",
+      "unit": "ドル",
+      "asof": "10/30 終値",
+      "delta": 2.12,
+      "pct": 2.08
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "77,198.21",
+      "unit": "ドル",
+      "asof": "10/30 終値",
+      "delta": -576.9,
+      "pct": -0.74
     }
   ],
   "narrative": [
@@ -77,7 +149,7 @@
       "market": "JP",
       "ticker": "9984",
       "name": "SoftBankグループ",
-      "pct": -6.7,
+      "pct": -5.96,
       "reason": "AI関連の投資負担への警戒。米ハイテク株の決算評価悪化を受けた連れ安とみられる。",
       "kind": "equity"
     }

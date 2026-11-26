@@ -25,13 +25,13 @@
       "pct": 1.26
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,103.23",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "427.50",
       "unit": "円",
       "asof": "9/4 東証引け",
-      "delta": 1.19,
-      "pct": 0.03
+      "delta": 0.3,
+      "pct": 0.07
     },
     {
       "ticker": "^GSPC",
@@ -48,7 +48,7 @@
       "value_text": "26,506.99",
       "unit": "",
       "asof": "9/4 NY市場引け",
-      "delta": -76.87,
+      "delta": -77.07,
       "pct": -0.29
     },
     {
@@ -63,20 +63,20 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "156.20",
+      "value_text": "155.66",
       "unit": "円",
-      "asof": "9/6 午前(24時間ベース)",
-      "delta": -0.16,
-      "pct": -0.1
+      "asof": "9/4 終値",
+      "delta": -3.26,
+      "pct": -2.05
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "14.32",
+      "value_text": "14.53",
       "unit": "",
       "asof": "9/4 NY市場引け",
-      "delta": 0.01,
-      "pct": 0.07
+      "delta": 0.21,
+      "pct": 1.47
     },
     {
       "ticker": "^TNX",
@@ -84,35 +84,44 @@
       "value_text": "4.78",
       "unit": "%",
       "asof": "9/4 NY市場引け",
-      "delta": 0.0,
-      "pct": 0.0
-    },
-    {
-      "ticker": "CL=F",
-      "name": "WTI原油",
-      "value_text": "91.22",
-      "unit": "ドル",
-      "asof": "9/4 NY市場",
-      "delta": -0.07,
-      "pct": -0.08
+      "delta": 0.02,
+      "pct": 0.46
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,455",
+      "value_text": "4,476.60",
       "unit": "ドル",
-      "asof": "9/6 午前(24時間ベース)",
-      "delta": 26.0,
-      "pct": 0.59
+      "asof": "9/4 終値",
+      "delta": -63.3,
+      "pct": -1.39
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "11,735.26",
+      "unit": "",
+      "asof": "9/4 NY市場引け",
+      "delta": 383.13,
+      "pct": 3.37
+    },
+    {
+      "ticker": "CL=F",
+      "name": "原油(WTI)",
+      "value_text": "91.48",
+      "unit": "ドル",
+      "asof": "9/4 終値",
+      "delta": 0.18,
+      "pct": 0.2
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "79,900",
+      "value_text": "80,350.05",
       "unit": "ドル",
-      "asof": "9/6 午前(24時間ベース)",
-      "delta": 200.0,
-      "pct": 0.25
+      "asof": "9/6 終値",
+      "delta": 526.18,
+      "pct": 0.66
     }
   ],
   "narrative": [
@@ -136,36 +145,20 @@
   ],
   "movers": [
     {
-      "market": "US",
-      "ticker": "XOM",
-      "name": "エクソンモービル",
-      "pct": 2.7,
-      "kind": "equity",
-      "reason": "8月31日夜のホルムズ海峡でのタンカー攻撃を受けた原油急伸を背景に、週明け9月1日の米国市場で資源メジャーとして真っ先に買われた。"
-    },
-    {
-      "market": "US",
-      "ticker": "CVX",
-      "name": "シェブロン",
-      "pct": 2.1,
-      "kind": "equity",
-      "reason": "エクソンモービルと同様、週明け9月1日に原油高を追い風にした買いが入った。"
-    },
-    {
       "market": "JP",
       "ticker": "1605",
       "name": "INPEX",
       "pct": -2.8,
-      "kind": "equity",
-      "reason": "原油高を背景に週前半まで4営業日続伸し約3カ月半ぶりに株価4000円台を回復していたが、9月4日は利益確定売りが優勢となり反落した。この日の原油相場自体はほぼ横ばいだった。"
+      "reason": "原油高を背景に週前半まで4営業日続伸し約3カ月半ぶりに株価4000円台を回復していたが、9月4日は利益確定売りが優勢となり反落した。この日の原油相場自体はほぼ横ばいだった。",
+      "kind": "equity"
     },
     {
       "market": "JP",
       "ticker": "5020",
       "name": "ENEOSホールディングス",
       "pct": -1.93,
-      "kind": "equity",
-      "reason": "INPEXと同じく週前半の原油高局面で買われていた反動から、9月4日は利益確定売りに押された。"
+      "reason": "INPEXと同じく週前半の原油高局面で買われていた反動から、9月4日は利益確定売りに押された。",
+      "kind": "equity"
     }
   ],
   "lesson_title": "「地政学リスクプレミアム」ってなに？ ― 紛争と原油価格の関係",

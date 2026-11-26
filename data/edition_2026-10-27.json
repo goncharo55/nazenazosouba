@@ -18,27 +18,27 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "63,381.29",
+      "value_text": "63,268.37",
       "unit": "円",
-      "asof": "10/27(火) 前引け(前場終値。大引けの確報は検索時点で確認できず)",
-      "delta": 1191.64,
-      "pct": 1.92
+      "asof": "10/27 東証引け",
+      "delta": 1078.72,
+      "pct": 1.73
     },
     {
-      "ticker": "^TOPX",
-      "name": "TOPIX",
-      "value_text": "3,972.98",
-      "unit": "",
-      "asof": "10/26(月) 東証引け時点(直近確認値。27日の確定値は検索時点で確認できず)",
-      "delta": 0.0,
-      "pct": 0.0
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "420.60",
+      "unit": "円",
+      "asof": "10/27 東証引け",
+      "delta": 2.2,
+      "pct": 0.53
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
       "value_text": "7,676.77",
       "unit": "",
-      "asof": "10/26(月) NY市場引け",
+      "asof": "10/26 NY市場引け",
       "delta": 53.09,
       "pct": 0.7
     },
@@ -47,7 +47,7 @@
       "name": "Nasdaq総合",
       "value_text": "26,169.38",
       "unit": "",
-      "asof": "10/26(月) NY市場引け",
+      "asof": "10/26 NY市場引け",
       "delta": 214.04,
       "pct": 0.82
     },
@@ -56,27 +56,72 @@
       "name": "NYダウ",
       "value_text": "52,361.58",
       "unit": "",
-      "asof": "10/26(月) NY市場引け(終値は情報源によりわずかに差あり)",
+      "asof": "10/26 NY市場引け",
       "delta": 146.42,
       "pct": 0.28
     },
     {
-      "ticker": "USDJPY",
+      "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.1",
+      "value_text": "157.53",
       "unit": "円",
-      "asof": "10/21 NY市場引け時点(直近確認値。以降の確定値は検索時点で確認できず)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/27 終値",
+      "delta": 0.7,
+      "pct": 0.45
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "18.39",
+      "unit": "",
+      "asof": "10/26 NY市場引け",
+      "delta": -1.06,
+      "pct": -5.45
+    },
+    {
+      "ticker": "^TNX",
+      "name": "米10年金利",
+      "value_text": "4.99",
+      "unit": "%",
+      "asof": "10/26 NY市場引け",
+      "delta": -0.0,
+      "pct": -0.04
+    },
+    {
+      "ticker": "GC=F",
+      "name": "金価格(NY金)",
+      "value_text": "4,074.60",
+      "unit": "ドル",
+      "asof": "10/27 終値",
+      "delta": 36.2,
+      "pct": 0.9
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "11,083.47",
+      "unit": "",
+      "asof": "10/26 NY市場引け",
+      "delta": 304.01,
+      "pct": 2.82
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "103.27",
+      "value_text": "99.90",
       "unit": "ドル",
-      "asof": "10/23 NY市場引け時点(直近確認値。26日は米国産原油が2%超安との報道あり、確定値は検索時点で確認できず)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/27 終値",
+      "delta": -1.86,
+      "pct": -1.83
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "ビットコイン",
+      "value_text": "80,805.08",
+      "unit": "ドル",
+      "asof": "10/27 終値",
+      "delta": 798.42,
+      "pct": 1.0
     }
   ],
   "narrative": [

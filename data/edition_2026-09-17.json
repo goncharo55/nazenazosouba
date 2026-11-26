@@ -18,37 +18,37 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "63,966.87",
+      "value_text": "64,136.25",
       "unit": "円",
-      "asof": "9/17 午前(直近の観測値、大引け確定値は執筆時点で確認できず)",
-      "delta": 43.87,
-      "pct": 0.07
+      "asof": "9/17 東証引け",
+      "delta": 213.25,
+      "pct": 0.33
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,083.28",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "427.40",
       "unit": "円",
-      "asof": "9/17 15:17時点(確定値は未確認)",
-      "delta": 21.56,
-      "pct": 0.53
+      "asof": "9/17 東証引け",
+      "delta": 3.5,
+      "pct": 0.83
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
       "value_text": "7,551.81",
       "unit": "",
-      "asof": "9/16 NY市場引け(FOMC後)",
+      "asof": "9/16 NY市場引け",
       "delta": -33.92,
       "pct": -0.45
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "25,978.42",
+      "value_text": "25,978.43",
       "unit": "",
-      "asof": "9/16 NY市場引け(FOMC後)",
-      "delta": -3.15,
+      "asof": "9/16 NY市場引け",
+      "delta": -3.14,
       "pct": -0.01
     },
     {
@@ -56,54 +56,72 @@
       "name": "NYダウ",
       "value_text": "51,461.90",
       "unit": "",
-      "asof": "9/16 NY市場引け(FOMC後)",
+      "asof": "9/16 NY市場引け",
       "delta": -631.21,
       "pct": -1.21
     },
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "156.25",
+      "value_text": "156.01",
       "unit": "円",
-      "asof": "9/17 午前7時時点(24時間ベース)",
-      "delta": 0.93,
-      "pct": 0.6
+      "asof": "9/17 終値",
+      "delta": 0.75,
+      "pct": 0.48
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX恐怖指数",
+      "value_text": "17.71",
+      "unit": "",
+      "asof": "9/16 NY市場引け",
+      "delta": 0.51,
+      "pct": 2.97
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.02",
+      "value_text": "5.01",
       "unit": "%",
-      "asof": "9/16 NY市場引け(FOMC後に一時5%割れも引けにかけ回復)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "9/16 NY市場引け",
+      "delta": 0.01,
+      "pct": 0.2
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,290.00",
+      "value_text": "4,399.70",
       "unit": "ドル",
-      "asof": "9/17 午後(24時間ベース)",
-      "delta": -48.5,
-      "pct": -1.12
+      "asof": "9/17 終値",
+      "delta": 12.2,
+      "pct": 0.28
+    },
+    {
+      "ticker": "^SOX",
+      "name": "SOX半導体指数",
+      "value_text": "11,246.11",
+      "unit": "",
+      "asof": "9/16 NY市場引け",
+      "delta": 70.56,
+      "pct": 0.63
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
-      "value_text": "102.13",
+      "name": "原油(WTI)",
+      "value_text": "101.91",
       "unit": "ドル",
-      "asof": "9/17 午後(24時間ベース)",
-      "delta": -3.62,
-      "pct": -3.42
+      "asof": "9/17 終値",
+      "delta": -0.52,
+      "pct": -0.51
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "75,986",
+      "value_text": "76,403.77",
       "unit": "ドル",
-      "asof": "9/17 午後(24時間ベース)",
-      "delta": -814.0,
-      "pct": -1.06
+      "asof": "9/17 終値",
+      "delta": 253.45,
+      "pct": 0.33
     }
   ],
   "narrative": [
@@ -137,14 +155,6 @@
   "movers": [
     {
       "market": "US",
-      "ticker": "JBHT",
-      "name": "J.B.ハント・トランスポート",
-      "pct": -10.0,
-      "reason": "7〜9月期の利益見通しを下方修正。ドライバー人件費の増加(約2,500万ドル)に加え、1ガロン6.31ドルという記録的な軽油価格の上昇分(約1,000万ドル超)を運賃転嫁しきれていないことが背景",
-      "kind": "equity"
-    },
-    {
-      "market": "US",
       "ticker": "ON",
       "name": "オン・セミコンダクター",
       "pct": -9.0,
@@ -171,7 +181,7 @@
       "market": "JP",
       "ticker": "8848",
       "name": "レオパレス21",
-      "pct": 11.48,
+      "pct": 12.65,
       "reason": "光通信ら投資ファンド連合が1株1,000円(約45%のプレミアム)でのTOBを通じた非公開化を15日に発表、取締役会も応募を推奨したことからTOB価格に近づく形で上昇継続",
       "kind": "equity"
     },

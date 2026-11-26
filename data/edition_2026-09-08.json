@@ -18,27 +18,27 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "66,700.00",
+      "value_text": "65,269.33",
       "unit": "円",
-      "asof": "9/8 東証引け(15:30)ごろ・速報ベース概算",
-      "delta": 300.16,
-      "pct": 0.45
+      "asof": "9/8 東証引け",
+      "delta": -1130.52,
+      "pct": -1.7
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,102.05",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "422.20",
       "unit": "円",
-      "asof": "9/8 東証引け(15:30)ごろ・速報ベース概算",
-      "delta": -23.75,
-      "pct": -0.58
+      "asof": "9/8 東証引け",
+      "delta": -7.9,
+      "pct": -1.84
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
       "value_text": "7,718.60",
       "unit": "",
-      "asof": "9/4 NY市場引け(9/7は労働者の日で休場)",
+      "asof": "9/4 NY市場引け",
       "delta": -29.11,
       "pct": -0.38
     },
@@ -47,8 +47,8 @@
       "name": "Nasdaq総合",
       "value_text": "26,506.99",
       "unit": "",
-      "asof": "9/4 NY市場引け(9/7は労働者の日で休場)",
-      "delta": -76.87,
+      "asof": "9/4 NY市場引け",
+      "delta": -77.07,
       "pct": -0.29
     },
     {
@@ -56,27 +56,27 @@
       "name": "NYダウ",
       "value_text": "53,414.25",
       "unit": "",
-      "asof": "9/4 NY市場引け(9/7は労働者の日で休場)",
+      "asof": "9/4 NY市場引け",
       "delta": -271.86,
       "pct": -0.51
     },
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "152.90",
+      "value_text": "153.85",
       "unit": "円",
-      "asof": "9/8 15時台(東京市場)",
-      "delta": -3.2,
-      "pct": -2.05
+      "asof": "9/8 終値",
+      "delta": -2.34,
+      "pct": -1.5
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "14.32",
+      "value_text": "15.30",
       "unit": "",
-      "asof": "9/4 NY市場引け",
-      "delta": 0.01,
-      "pct": 0.07
+      "asof": "9/7 NY市場引け",
+      "delta": 0.77,
+      "pct": 5.3
     },
     {
       "ticker": "^TNX",
@@ -84,44 +84,44 @@
       "value_text": "4.78",
       "unit": "%",
       "asof": "9/4 NY市場引け",
-      "delta": 0.0,
-      "pct": 0.0
+      "delta": 0.02,
+      "pct": 0.46
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,434",
+      "value_text": "4,439.00",
       "unit": "ドル",
-      "asof": "9/8 午前(24時間ベース)",
-      "delta": -26.0,
-      "pct": -0.58
+      "asof": "9/8 終値",
+      "delta": -37.6,
+      "pct": -0.84
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "11,735.00",
+      "value_text": "11,735.26",
       "unit": "",
-      "asof": "9/4 NY市場引け(9/7は休場)",
-      "delta": 383.0,
+      "asof": "9/4 NY市場引け",
+      "delta": 383.13,
       "pct": 3.37
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
-      "value_text": "92.37",
+      "name": "原油(WTI)",
+      "value_text": "93.03",
       "unit": "ドル",
-      "asof": "9/8(24時間ベース)",
-      "delta": 1.15,
-      "pct": 1.26
+      "asof": "9/8 終値",
+      "delta": 1.55,
+      "pct": 1.69
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "78,980",
+      "value_text": "78,438.58",
       "unit": "ドル",
-      "asof": "9/8 午前(24時間ベース)",
-      "delta": -1120.0,
-      "pct": -1.4
+      "asof": "9/8 終値",
+      "delta": -677.27,
+      "pct": -0.86
     }
   ],
   "narrative": [
@@ -154,7 +154,7 @@
       "market": "JP",
       "ticker": "9984",
       "name": "ソフトバンクグループ",
-      "pct": 7.01,
+      "pct": 5.45,
       "reason": "韓国株高を受けたAI・半導体関連への物色で一時前日比7%超まで買われ、約2カ月ぶりの高値をつけた。値がさ株として日経平均を大きく押し上げた一方、TOPIXへの寄与は限定的だった。",
       "kind": "equity"
     },
@@ -162,24 +162,8 @@
       "market": "JP",
       "ticker": "7203",
       "name": "トヨタ自動車",
-      "pct": -2.9,
+      "pct": -4.12,
       "reason": "対ドルで円が半年ぶり水準まで急伸したことを受け、想定為替レートを超える円高による採算悪化を懸念した売りが優勢となった。ホンダなど他の自動車株にも同様の売りが波及。",
-      "kind": "equity"
-    },
-    {
-      "market": "JP",
-      "ticker": "5803",
-      "name": "フジクラ",
-      "pct": 2.25,
-      "reason": "AI・データセンター向け需要を材料に電線株の一角として買われた。古河電気工業とともに値がさ半導体株の物色の流れに連動した面がある。",
-      "kind": "equity"
-    },
-    {
-      "market": "JP",
-      "ticker": "5801",
-      "name": "古河電気工業",
-      "pct": 0.83,
-      "reason": "フジクラなど電線株の物色に連れて小幅高。セクター全体の物色の流れに沿った動き。",
       "kind": "equity"
     }
   ],

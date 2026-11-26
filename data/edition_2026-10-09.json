@@ -20,108 +20,108 @@
       "name": "日経平均",
       "value_text": "69,030.92",
       "unit": "円",
-      "asof": "10/9 東証大引け",
+      "asof": "10/9 東証引け",
       "delta": -11.19,
       "pct": -0.02
     },
     {
       "ticker": "1306.T",
-      "name": "TOPIX",
-      "value_text": "4,104.81",
+      "name": "TOPIX(ETF)",
+      "value_text": "432.50",
       "unit": "円",
-      "asof": "10/9 東証大引け",
-      "delta": 13.35,
-      "pct": 0.33
+      "asof": "10/9 東証引け",
+      "delta": 3.0,
+      "pct": 0.7
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,801.77",
+      "value_text": "7,765.36",
       "unit": "",
-      "asof": "10/7 NY市場引け(8日の確定値は未確認)",
-      "delta": -17.16,
-      "pct": -0.22
+      "asof": "10/8 NY市場引け",
+      "delta": -36.41,
+      "pct": -0.47
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "27,194.46",
+      "value_text": "27,193.34",
       "unit": "",
-      "asof": "10/8 NY市場引け(概算、前日比1.25％安の報道を基に算出)",
-      "delta": -344.23,
+      "asof": "10/8 NY市場引け",
+      "delta": -345.35,
       "pct": -1.25
     },
     {
       "ticker": "^DJI",
       "name": "NYダウ",
-      "value_text": "51,179.87",
+      "value_text": "51,231.64",
       "unit": "",
-      "asof": "10/7 NY市場引け(8日は小幅高との報道、確定値未確認)",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/8 NY市場引け",
+      "delta": 51.77,
+      "pct": 0.1
     },
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.0",
+      "value_text": "158.06",
       "unit": "円",
-      "asof": "10/9 正午 東京市場(米長期金利低下で円高方向)",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/9 終値",
+      "delta": 0.0,
+      "pct": 0.0
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.0",
+      "value_text": "15.41",
       "unit": "",
-      "asof": "10/7 NY市場引け(直近確認値)",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/8 NY市場引け",
+      "delta": 0.33,
+      "pct": 2.19
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.29",
+      "value_text": "5.23",
       "unit": "%",
-      "asof": "10/7 NY市場引け(直近確認値、9日は低下との報道あり)",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/8 NY市場引け",
+      "delta": -0.05,
+      "pct": -0.87
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,180",
+      "value_text": "4,216.30",
       "unit": "ドル",
-      "asof": "直近確認値、概算",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/9 終値",
+      "delta": 59.3,
+      "pct": 1.43
     },
     {
       "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "13,600",
+      "value_text": "12,623.71",
       "unit": "",
-      "asof": "10/6 NY市場引け(直近確認値、概算)",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/8 NY市場引け",
+      "delta": -442.44,
+      "pct": -3.39
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "90.26",
+      "value_text": "91.85",
       "unit": "ドル",
-      "asof": "10/7 NY市場引け(直近確認値)",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/9 終値",
+      "delta": 0.36,
+      "pct": 0.39
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "85,000",
+      "value_text": "82,546.32",
       "unit": "ドル",
-      "asof": "直近確認値、概算",
-      "delta": 0,
-      "pct": 0
+      "asof": "10/9 終値",
+      "delta": 869.98,
+      "pct": 1.07
     }
   ],
   "narrative": [

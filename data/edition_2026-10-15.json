@@ -18,110 +18,110 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "67,777.52",
+      "value_text": "64,425.95",
       "unit": "円",
-      "asof": "10/13 東証大引け(14・15日分は検索時点で確定値を確認できず)",
-      "delta": -1253.4,
-      "pct": -1.82
+      "asof": "10/15 東証引け",
+      "delta": -3318.34,
+      "pct": -4.9
     },
     {
-      "ticker": "^TPX",
-      "name": "TOPIX",
-      "value_text": "4,110.67",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "421.00",
       "unit": "円",
-      "asof": "10/13 東証大引け(14・15日分は検索時点で確定値を確認できず)",
-      "delta": 5.86,
-      "pct": 0.14
+      "asof": "10/15 東証引け",
+      "delta": -10.3,
+      "pct": -2.39
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,805.45",
+      "value_text": "7,718.94",
       "unit": "",
-      "asof": "10/13 NY市場引け(14日分は検索時点で確定値を確認できず)",
-      "delta": -1.6,
-      "pct": -0.02
+      "asof": "10/14 NY市場引け",
+      "delta": -86.51,
+      "pct": -1.11
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "27,204.38",
+      "value_text": "26,692.87",
       "unit": "",
-      "asof": "10/13 NY市場引け(14日分は検索時点で確定値を確認できず)",
-      "delta": -40.8,
-      "pct": -0.15
+      "asof": "10/14 NY市場引け",
+      "delta": -511.51,
+      "pct": -1.88
     },
     {
       "ticker": "^DJI",
       "name": "NYダウ",
-      "value_text": "51,670.10",
+      "value_text": "51,621.48",
       "unit": "",
-      "asof": "10/13 NY市場引け(14日分は検索時点で確定値を確認できず)",
-      "delta": -180.45,
-      "pct": -0.35
+      "asof": "10/14 NY市場引け",
+      "delta": -48.62,
+      "pct": -0.09
     },
     {
-      "ticker": "USDJPY",
+      "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "158.3",
+      "value_text": "157.96",
       "unit": "円",
-      "asof": "直近確認値(10月上旬)、15日時点の確定値は検索時点で確認できず",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/15 終値",
+      "delta": -0.37,
+      "pct": -0.23
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "15.4",
+      "value_text": "16.87",
       "unit": "",
-      "asof": "10/8 NY市場引け(直近確認値、以降の確定値は未確認)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/14 NY市場引け",
+      "delta": 1.6,
+      "pct": 10.48
     },
     {
-      "ticker": "US10Y",
+      "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "5.2",
+      "value_text": "5.19",
       "unit": "%",
-      "asof": "10/13 米市場(報道ベースの概算)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/14 NY市場引け",
+      "delta": -0.03,
+      "pct": -0.52
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,178",
+      "value_text": "4,170.10",
       "unit": "ドル",
-      "asof": "10/8 NY市場時点(直近確認値)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/15 終値",
+      "delta": 62.2,
+      "pct": 1.51
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
-      "value_text": "13,546",
+      "value_text": "11,684.38",
       "unit": "",
-      "asof": "10/9 NY市場引け(直近確認値、以降の確定値は未確認)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/14 NY市場引け",
+      "delta": -524.41,
+      "pct": -4.3
     },
     {
       "ticker": "CL=F",
       "name": "原油(WTI)",
-      "value_text": "90.26",
+      "value_text": "97.97",
       "unit": "ドル",
-      "asof": "10/7 NY市場引け(直近確認値、13日以降は中東情勢を受け上昇との報道あり)",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/15 終値",
+      "delta": 2.88,
+      "pct": 3.03
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "85,000",
+      "value_text": "82,141.46",
       "unit": "ドル",
-      "asof": "直近確認値、概算",
-      "delta": 0.0,
-      "pct": 0.0
+      "asof": "10/15 終値",
+      "delta": 578.97,
+      "pct": 0.71
     }
   ],
   "narrative": [
@@ -154,17 +154,9 @@
     },
     {
       "market": "JP",
-      "ticker": "6523",
-      "name": "PHCホールディングス",
-      "pct": -14.4,
-      "reason": "半導体とは無関係。東邦HDが10月9日に買収検討の終了を発表したことで、TOB(株式公開買い付け)によるプレミアム期待が剥落した。値下がり率ランキングでは2位につけた。",
-      "kind": "equity"
-    },
-    {
-      "market": "JP",
       "ticker": "6871",
       "name": "日本マイクロニクス",
-      "pct": -11.0,
+      "pct": -12.31,
       "reason": "半導体製造装置関連として、キオクシアなどメモリー株の下落に連れ安した。",
       "kind": "equity"
     },
@@ -172,23 +164,15 @@
       "market": "JP",
       "ticker": "6963",
       "name": "ローム",
-      "pct": -9.6,
+      "pct": -11.29,
       "reason": "半導体関連株全般への警戒が広がる中での連れ安。",
-      "kind": "equity"
-    },
-    {
-      "market": "JP",
-      "ticker": "3436",
-      "name": "SUMCO",
-      "pct": -8.6,
-      "reason": "半導体用シリコンウエハー大手として、業界全体の警戒感に連れ安した。",
       "kind": "equity"
     },
     {
       "market": "JP",
       "ticker": "9984",
       "name": "ソフトバンクグループ",
-      "pct": -8.0,
+      "pct": -9.33,
       "reason": "AI・半導体関連の代表的な値がさ株として、指数全体の下げを主導する一角になった。",
       "kind": "equity"
     }

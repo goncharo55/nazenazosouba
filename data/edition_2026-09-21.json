@@ -20,35 +20,35 @@
       "name": "日経平均",
       "value_text": "65,018.95",
       "unit": "円",
-      "asof": "9/18 東証引け(確定値)・祝日で休場中、大阪取引所の夜間先物は200円安の64,900円",
+      "asof": "9/18 東証引け",
       "delta": 882.7,
       "pct": 1.38
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,091.14",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "426.30",
       "unit": "円",
-      "asof": "9/18 東証引け(確定値)・祝日で休場中",
-      "delta": -3.05,
-      "pct": -0.07
+      "asof": "9/18 東証引け",
+      "delta": -1.1,
+      "pct": -0.26
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
       "value_text": "7,650.50",
       "unit": "",
-      "asof": "9/18 NY市場引け・21日から通常どおり取引再開",
-      "delta": 13.02,
+      "asof": "9/18 NY市場引け",
+      "delta": 12.74,
       "pct": 0.17
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "26,522.55",
+      "value_text": "26,522.54",
       "unit": "",
       "asof": "9/18 NY市場引け",
-      "delta": 102.19,
+      "delta": 104.24,
       "pct": 0.39
     },
     {
@@ -65,9 +65,9 @@
       "name": "ドル円",
       "value_text": "157.05",
       "unit": "円",
-      "asof": "9/21 15:00頃(24時間ベース)・日銀利上げ後3営業日連続の円安",
-      "delta": 0.35,
-      "pct": 0.22
+      "asof": "9/21 終値",
+      "delta": 0.92,
+      "pct": 0.59
     },
     {
       "ticker": "^VIX",
@@ -81,23 +81,23 @@
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.94",
+      "value_text": "5.00",
       "unit": "%",
       "asof": "9/18 NY市場引け",
-      "delta": -0.01,
-      "pct": -0.2
+      "delta": 0.05,
+      "pct": 1.03
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,377.00",
+      "value_text": "4,383.90",
       "unit": "ドル",
-      "asof": "9/20 24時間ベース(米東部朝)・ドル高地合いで週末に反落",
-      "delta": -47.9,
-      "pct": -1.08
+      "asof": "9/21 終値",
+      "delta": -41.0,
+      "pct": -0.93
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
       "value_text": "11,921.69",
       "unit": "",
@@ -107,21 +107,21 @@
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
-      "value_text": "99.53",
+      "name": "原油(WTI)",
+      "value_text": "95.78",
       "unit": "ドル",
-      "asof": "9/18 NY市場引け・サウジが代替輸送ルート確保で供給不安が後退",
-      "delta": -2.38,
-      "pct": -2.33
+      "asof": "9/21 終値",
+      "delta": -4.52,
+      "pct": -4.51
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "81,650",
+      "value_text": "86,602.91",
       "unit": "ドル",
-      "asof": "9/21 午前(24時間ベース)・週末を挟みほぼ横ばいで8万1000ドル台を維持",
-      "delta": 319.0,
-      "pct": 0.39
+      "asof": "9/21 終値",
+      "delta": 5460.3,
+      "pct": 6.73
     }
   ],
   "narrative": [

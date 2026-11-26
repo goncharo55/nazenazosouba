@@ -20,18 +20,18 @@
       "name": "日経平均",
       "value_text": "65,018.95",
       "unit": "円",
-      "asof": "9/18 東証引け(確定値)・3営業日続伸で9/10以来の6万5000円台回復",
+      "asof": "9/18 東証引け",
       "delta": 882.7,
       "pct": 1.38
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,091.14",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "426.30",
       "unit": "円",
-      "asof": "9/18 東証引け(確定値)・3営業日ぶり反落",
-      "delta": -3.05,
-      "pct": -0.07
+      "asof": "9/18 東証引け",
+      "delta": -1.1,
+      "pct": -0.26
     },
     {
       "ticker": "^GSPC",
@@ -39,16 +39,16 @@
       "value_text": "7,650.50",
       "unit": "",
       "asof": "9/18 NY市場引け",
-      "delta": 13.02,
+      "delta": 12.74,
       "pct": 0.17
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "26,522.55",
+      "value_text": "26,522.54",
       "unit": "",
       "asof": "9/18 NY市場引け",
-      "delta": 102.19,
+      "delta": 104.24,
       "pct": 0.39
     },
     {
@@ -63,11 +63,11 @@
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "156.70",
+      "value_text": "156.13",
       "unit": "円",
-      "asof": "9/19 未明(24時間ベース)・日銀利上げ後も円安基調続く",
-      "delta": 0.78,
-      "pct": 0.5
+      "asof": "9/18 終値",
+      "delta": 0.11,
+      "pct": 0.07
     },
     {
       "ticker": "^VIX",
@@ -81,23 +81,23 @@
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.94",
+      "value_text": "5.00",
       "unit": "%",
-      "asof": "9/18 NY市場引け・週初の5%超からは低下も高止まり",
-      "delta": -0.01,
-      "pct": -0.2
+      "asof": "9/18 NY市場引け",
+      "delta": 0.05,
+      "pct": 1.03
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
       "value_text": "4,424.90",
       "unit": "ドル",
-      "asof": "9/18 NY市場引け",
+      "asof": "9/18 終値",
       "delta": 25.2,
       "pct": 0.57
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
       "value_text": "11,921.69",
       "unit": "",
@@ -107,21 +107,21 @@
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
+      "name": "原油(WTI)",
       "value_text": "100.30",
       "unit": "ドル",
-      "asof": "9/19 未明(24時間ベース、NY原油18日分)",
+      "asof": "9/18 終値",
       "delta": -1.61,
       "pct": -1.58
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "81,331",
+      "value_text": "81,233.68",
       "unit": "ドル",
-      "asof": "9/19 午前(24時間ベース)・現物ETFへの資金流入で8万ドル台回復",
-      "delta": 4343.0,
-      "pct": 5.65
+      "asof": "9/19 終値",
+      "delta": 332.22,
+      "pct": 0.41
     }
   ],
   "narrative": [
@@ -165,7 +165,7 @@
       "market": "US",
       "ticker": "AVGO",
       "name": "ブロードコム",
-      "pct": 4.16,
+      "pct": 2.97,
       "reason": "好決算にもかかわらず一時売られていた反動の押し目買いが入り、AI向け半導体売上の伸びを改めて評価する声が広がった",
       "kind": "equity"
     },
@@ -173,7 +173,7 @@
       "market": "US",
       "ticker": "MU",
       "name": "マイクロン・テクノロジー",
-      "pct": 1.44,
+      "pct": 3.92,
       "reason": "AI需要への期待を背景にした半導体セクター全体の堅調な地合いに連れ高した面が大きい。",
       "kind": "equity"
     },

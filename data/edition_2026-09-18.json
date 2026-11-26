@@ -18,110 +18,110 @@
     {
       "ticker": "^N225",
       "name": "日経平均",
-      "value_text": "65,351.73",
+      "value_text": "65,018.95",
       "unit": "円",
-      "asof": "9/18 13:00時点(日銀の利上げ決定後に上げ幅拡大、大引け確定値は執筆時点で確認できず)",
-      "delta": 1215.48,
-      "pct": 1.9
+      "asof": "9/18 東証引け",
+      "delta": 882.7,
+      "pct": 1.38
     },
     {
-      "ticker": "TOPIX",
-      "name": "TOPIX",
-      "value_text": "4,094.90",
+      "ticker": "1306.T",
+      "name": "TOPIX(ETF)",
+      "value_text": "426.30",
       "unit": "円",
-      "asof": "9/18 15:17時点(確定値は未確認)",
-      "delta": 0.71,
-      "pct": 0.02
+      "asof": "9/18 東証引け",
+      "delta": -1.1,
+      "pct": -0.26
     },
     {
       "ticker": "^GSPC",
       "name": "S&P500",
-      "value_text": "7,640.82",
+      "value_text": "7,637.76",
       "unit": "",
       "asof": "9/17 NY市場引け",
-      "delta": 89.01,
-      "pct": 1.18
+      "delta": 85.95,
+      "pct": 1.14
     },
     {
       "ticker": "^IXIC",
       "name": "Nasdaq総合",
-      "value_text": "26,396.67",
+      "value_text": "26,418.30",
       "unit": "",
       "asof": "9/17 NY市場引け",
-      "delta": 418.25,
-      "pct": 1.61
+      "delta": 439.87,
+      "pct": 1.69
     },
     {
       "ticker": "^DJI",
       "name": "NYダウ",
-      "value_text": "51,780.96",
+      "value_text": "51,778.04",
       "unit": "",
       "asof": "9/17 NY市場引け",
-      "delta": 319.06,
-      "pct": 0.62
+      "delta": 316.14,
+      "pct": 0.61
     },
     {
       "ticker": "USDJPY=X",
       "name": "ドル円",
-      "value_text": "157.00",
+      "value_text": "156.13",
       "unit": "円",
-      "asof": "9/18 日銀決定後(一時157円台まで円安、決定前は156円台前半)",
-      "delta": 0.75,
-      "pct": 0.48
+      "asof": "9/18 終値",
+      "delta": 0.11,
+      "pct": 0.07
     },
     {
       "ticker": "^VIX",
       "name": "VIX恐怖指数",
-      "value_text": "17.72",
+      "value_text": "15.44",
       "unit": "",
       "asof": "9/17 NY市場引け",
-      "delta": -0.39,
-      "pct": -2.2
+      "delta": -2.27,
+      "pct": -12.82
     },
     {
       "ticker": "^TNX",
       "name": "米10年金利",
-      "value_text": "4.94",
+      "value_text": "4.95",
       "unit": "%",
-      "asof": "9/17 NY市場引け(FOMC後の低下basis続く)",
-      "delta": -0.08,
-      "pct": -1.6
+      "asof": "9/17 NY市場引け",
+      "delta": -0.06,
+      "pct": -1.18
     },
     {
       "ticker": "GC=F",
       "name": "金価格(NY金)",
-      "value_text": "4,310.00",
+      "value_text": "4,424.90",
       "unit": "ドル",
-      "asof": "9/18 午後(24時間ベース)",
-      "delta": 20.0,
-      "pct": 0.47
+      "asof": "9/18 終値",
+      "delta": 25.2,
+      "pct": 0.57
     },
     {
-      "ticker": "SOX",
+      "ticker": "^SOX",
       "name": "SOX半導体指数",
       "value_text": "11,599.49",
       "unit": "",
-      "asof": "9/17 NY市場引け・3日続伸",
-      "delta": 337.91,
-      "pct": 3.0
+      "asof": "9/17 NY市場引け",
+      "delta": 353.38,
+      "pct": 3.14
     },
     {
       "ticker": "CL=F",
-      "name": "WTI原油",
-      "value_text": "101.09",
+      "name": "原油(WTI)",
+      "value_text": "100.30",
       "unit": "ドル",
-      "asof": "9/18 午後(24時間ベース)・トランプ氏のイラン戦争終結示唆で2日続落",
-      "delta": -0.89,
-      "pct": -0.87
+      "asof": "9/18 終値",
+      "delta": -1.61,
+      "pct": -1.58
     },
     {
       "ticker": "BTC-USD",
       "name": "ビットコイン",
-      "value_text": "76,670",
+      "value_text": "80,901.46",
       "unit": "ドル",
-      "asof": "9/18 午後(24時間ベース)",
-      "delta": 684.0,
-      "pct": 0.9
+      "asof": "9/18 終値",
+      "delta": 4497.69,
+      "pct": 5.89
     }
   ],
   "narrative": [
@@ -166,7 +166,7 @@
       "market": "JP",
       "ticker": "8306",
       "name": "三菱UFJフィナンシャル・グループ",
-      "pct": -1.8,
+      "pct": -0.88,
       "reason": "日銀の利上げ決定自体は織り込み済みだったところに、反対票2票の多さから追加利上げペースの鈍化が意識され、金利上昇による収益改善期待が後退。典型的な材料出尽くしの利益確定売りが出た",
       "kind": "equity"
     },
@@ -190,7 +190,7 @@
       "market": "US",
       "ticker": "AMD",
       "name": "AMD",
-      "pct": 7.0,
+      "pct": 6.36,
       "reason": "半導体セクター全体の3営業日続伸をけん引。前週にかけての急落の反動に加え、長期金利の低下と値ごろ感からの押し目買いが重なった",
       "kind": "equity"
     },
@@ -198,7 +198,7 @@
       "market": "US",
       "ticker": "INTC",
       "name": "インテル",
-      "pct": 9.0,
+      "pct": 7.67,
       "reason": "半導体セクター全体の反発基調に連れ高した面が大きい。",
       "kind": "equity"
     },
