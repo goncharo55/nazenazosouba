@@ -26,5 +26,15 @@
   ],
   "headline": "金とS&P500、いま連動している？",
   "until": "2026-11-19"
+ },
+ {
+  "id": "2026-11-26_event_VIX_GSPC_p40",
+  "kind": "event",
+  "tickers": [
+   "^VIX",
+   "^GSPC"
+  ],
+  "headline": "VIX恐怖指数が1日で40%以上上昇した日に、S&P500を買っていたら？",
+  "until": "2026-11-26"
  }
 ]
