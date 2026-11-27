@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# バナー候補(大きいPNG)は採用分だけ assets/banners/ に置く
+assets/banners_candidates/

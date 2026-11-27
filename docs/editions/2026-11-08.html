@@ -252,6 +252,79 @@
     .ticker-card .t-change-label { font-size:8.5px; }
   }
 
+  /* ---- きょうのひとこと（キャラの掛け合い） ---- */
+  .talk { margin: 0 0 28px; background: var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding: 16px 18px 12px; box-shadow: var(--shadow); }
+  .talk-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color: var(--brand); margin:0 0 6px; }
+  .talk-row { display:flex; align-items:flex-end; gap:12px; margin: 6px 0; }
+  .talk-right { flex-direction: row-reverse; }
+  .av { position:relative; flex:0 0 118px; width:118px; }
+  .av img { display:block; width:118px; height:auto; }
+  .av .av-open { position:absolute; left:0; top:0; opacity:0; animation: mouth .46s steps(1) 4; }
+  @keyframes mouth { 0% { opacity:1; } 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) { .av .av-open { animation:none; } }
+  .bubble { position:relative; flex:1; min-width:0; background: var(--surface-2); border:1px solid var(--line);
+    border-radius:14px; padding:10px 14px; font-size:15.5px; line-height:1.7; }
+  .bubble p { margin:0; }
+  .bubble .who { display:block; font-size:11.5px; font-weight:600; margin-bottom:1px; }
+  .talk-zunda .who { color:#3E8E2F; } .talk-metan .who { color:#C0407E; }
+  .talk-left .bubble::before, .talk-right .bubble::before { content:""; position:absolute; bottom:18px; width:10px; height:10px;
+    background: var(--surface-2); border:1px solid var(--line); transform: rotate(45deg); }
+  .talk-left .bubble::before { left:-6px; border-right:none; border-top:none; }
+  .talk-right .bubble::before { right:-6px; border-left:none; border-bottom:none; }
+  .talk-credit { font-size:10.5px; color: var(--ink-faint); margin:8px 0 0; text-align:right; }
+  @media (max-width: 560px) {
+    .talk { padding: 12px 12px 10px; }
+    .av { flex-basis:64px; width:64px; } .av img { width:64px; }
+    .bubble { font-size:14.5px; padding:8px 11px; }
+  }
+
+  /* ---- 相場の天気 ---- */
+  .wx-row { display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 22px; }
+  .wx { display:flex; align-items:center; gap:8px; background: var(--surface); border:1px solid var(--line);
+    border-radius:12px; padding:8px 14px 8px 10px; min-width: 0; }
+  .wx-txt { display:flex; flex-direction:column; line-height:1.25; }
+  .wx-label { font-size:11px; color: var(--ink-faint); }
+  .wx-name { font-size:16px; font-weight:600; color: var(--ink); white-space:nowrap; }
+  .wx-pct { font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--ink-soft); }
+  .wx-sun { border-color:#F3DDA8; } .wx-rain { border-color:#C6D8EA; }
+  @media (max-width: 560px) { .wx-row { gap:6px; } .wx { padding:6px 9px 6px 6px; gap:5px; flex:1 1 30%; }
+    .wx svg { width:30px; height:30px; flex:0 0 30px; } .wx-name { font-size:13.5px; } .wx-pct { font-size:11px; } }
+
+  /* ---- 指標カードのミニ折れ線 ---- */
+  .ticker-card .t-spark { margin-top:8px; line-height:0; }
+  .spark { width:100%; height:30px; display:block; }
+  .spark-line { stroke-width:1.5; vector-effect: non-scaling-stroke; stroke-linejoin:round; stroke-linecap:round; }
+  .spark-line { stroke: var(--ink-faint); }
+  .spark-area { fill: var(--ink-faint); opacity:.12; }
+  .spark.up .spark-dot { fill: var(--up); } .spark.down .spark-dot { fill: var(--down); }
+  @media (max-width: 560px) { .spark { height:22px; } .ticker-card .t-spark { margin-top:5px; } }
+
+  /* ---- YouTube案内カード ---- */
+  .video-cta { display:flex; align-items:center; gap:18px; margin:36px 0; background: var(--brand-soft);
+    border:1px solid var(--line); border-radius:14px; padding:16px 20px; }
+  .vc-av { display:flex; flex:0 0 auto; } .vc-av img { width:84px; height:auto; } .vc-av img + img { margin-left:-14px; }
+  .vc-title { font-weight:600; font-size:17px; margin:0 0 4px; color: var(--ink); }
+  .vc-text { font-size:14px; color: var(--ink-soft); margin:0 0 10px; line-height:1.65; }
+  .vc-btn { display:inline-block; background: var(--brand); color:#fff; text-decoration:none; font-weight:600;
+    font-size:14px; padding:9px 18px; border-radius:999px; }
+  @media (max-width: 560px) { .video-cta { flex-direction:column; text-align:center; padding:16px 14px; gap:10px; }
+    .vc-av img { width:76px; } }
+
+  /* ---- テーマ別バナー ---- */
+  .banner { margin: 0 0 18px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background: var(--surface-2); line-height:0; }
+  .banner img { width:100%; height:180px; object-fit:cover; object-position:center; display:block; }
+  @media (max-width: 560px) { .banner img { height:110px; } }
+
+  /* ---- クイズのキャラ ---- */
+  .quiz-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .quiz-ava { width:84px; height:auto; flex:0 0 84px; }
+  .quiz-by { margin:2px 0 0; font-size:13.5px; color: var(--ink-soft); }
+  .quiz-react { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .quiz-react img { width:68px; height:auto; flex:0 0 68px; }
+  .quiz-react .quiz-verdict { margin:0; font-size:16px; }
+  @media (max-width: 560px) { .quiz-ava { width:68px; flex-basis:68px; } }
+
   </style>
 </head>
 <body>
@@ -273,6 +346,7 @@
   <p class="term-crumb"><a href="/">トップ</a> ／ <a href="/archive.html">過去の記事一覧</a> ／ 2026年11月8日号</p>
 
   <section class="hero">
+    <div class="banner"><img src="/img/banners/semiconductor_1.webp" width="1000" height="430" alt="半導体のイラスト" decoding="async" fetchpriority="high"></div>
     <p class="eyebrow">Today's Market</p>
     <h1 class="headline">半導体株は1日で+4.21%、でもNYダウは-0.46%――11月6日に見えた『上げても下げても蚊帳の外』の構図</h1>
     <div class="tags">
@@ -281,6 +355,8 @@
       <a class="tag" href="/archive.html?tag=%E3%83%99%E3%83%BC%E3%82%BF">#ベータ</a>
       <a class="tag" href="/archive.html?tag=NY%E3%83%80%E3%82%A6">#NYダウ</a>
     </div>
+    <div class="wx-row" aria-label="きょうの相場の天気"><div class="wx wx-rain"><svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><path d="M14 34a8 8 0 0 1-.9-15.9A10.5 10.5 0 0 1 33.4 15 9 9 0 0 1 34 34z" fill="#8E9CAA"/><path d="M26 30l-6 9h5l-2 7 8-11h-5z" fill="#F6B73C"/></svg><div class="wx-txt"><span class="wx-label">日本株</span><span class="wx-name">雷雨</span><span class="wx-pct">-5.96%</span></div></div><div class="wx wx-sun"><svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><g transform="translate(-4,-5) scale(.95)"><circle cx="24" cy="24" r="9" fill="#F6B73C"/><g stroke="#F6B73C" stroke-width="3" stroke-linecap="round"><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.6 10.6l3.5 3.5M33.9 33.9l3.5 3.5M10.6 37.4l3.5-3.5M33.9 14.1l3.5-3.5"/></g></g><g transform="translate(6,4) scale(.78)"><path d="M14 36a8 8 0 0 1-.9-15.9A10.5 10.5 0 0 1 33.4 17 9 9 0 0 1 34 36z" fill="#B7C3CF"/></g></svg><div class="wx-txt"><span class="wx-label">米国株</span><span class="wx-name">うす晴れ</span><span class="wx-pct">+0.31%</span></div></div><div class="wx wx-sun"><svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><circle cx="24" cy="24" r="9" fill="#F6B73C"/><g stroke="#F6B73C" stroke-width="3" stroke-linecap="round"><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.6 10.6l3.5 3.5M33.9 33.9l3.5 3.5M10.6 37.4l3.5-3.5M33.9 14.1l3.5-3.5"/></g></svg><div class="wx-txt"><span class="wx-label">半導体</span><span class="wx-name">晴れ</span><span class="wx-pct">+4.21%</span></div></div></div>
+    <section class="talk" aria-label="きょうのひとこと"><p class="talk-label">きょうのひとこと</p><div class="talk-row talk-left talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_surprise_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_surprise_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>日経平均が5.96%も下がって<span class="num">57,434円</span>になったのだ！びっくりなのだ！</p></div></div><div class="talk-row talk-right talk-metan"><div class="av av-metan"><img class="av-closed" src="/img/chara/metan_trouble_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/metan_trouble_open.webp" alt="" aria-hidden="true" width="150" height="115" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">めたん</span><p>アメリカのS&amp;P500は前の日に<span class="num">0.31%</span>上がったわ。 ドル円は<span class="num">157.50円</span>で、前日より円高方向よ。</p></div></div><div class="talk-row talk-left talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_normal_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_normal_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>「AI株相場」・「半導体株反発」が話題になったのだ。なぜなのかは、このあとの記事で説明するのだ！</p></div></div><div class="talk-row talk-right talk-metan"><div class="av av-metan"><img class="av-closed" src="/img/chara/metan_happy_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/metan_happy_open.webp" alt="" aria-hidden="true" width="150" height="115" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">めたん</span><p>記事のあとには<a href="#quiz">なぞなぞクイズ</a>もあるわ。ぜひ挑戦してね。</p></div></div><p class="talk-credit">キャラクター：VOICEVOX:ずんだもん／VOICEVOX:四国めたん（立ち絵：坂本アヒル様）</p></section>
     <div class="summary-box">
       <h2>3行まとめ</h2>
       <ul>
@@ -299,72 +375,84 @@
         <div class="t-asof">11/6 東証引け時点</div>
         <div class="t-value">57,434.77<span class="t-unit">円</span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -3,643.13円 (-5.96%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,12.4 6.9,10.8 10.9,11.7 14.8,12.4 18.7,10.1 22.7,6.1 26.6,7.3 30.5,4.3 34.4,3.0 38.4,4.2 42.3,6.0 46.2,6.0 50.2,8.3 54.1,8.3 58.0,14.3 62.0,12.7 65.9,13.4 69.8,15.0 73.8,14.0 77.7,17.1 81.6,17.5 85.6,18.4 89.5,16.4 93.4,15.2 97.3,13.9 101.3,16.4 105.2,16.8 109.1,18.4 113.1,20.4 117.0,27.0 117.0,30"/><polyline class="spark-line" points="3.0,12.4 6.9,10.8 10.9,11.7 14.8,12.4 18.7,10.1 22.7,6.1 26.6,7.3 30.5,4.3 34.4,3.0 38.4,4.2 42.3,6.0 46.2,6.0 50.2,8.3 54.1,8.3 58.0,14.3 62.0,12.7 65.9,13.4 69.8,15.0 73.8,14.0 77.7,17.1 81.6,17.5 85.6,18.4 89.5,16.4 93.4,15.2 97.3,13.9 101.3,16.4 105.2,16.8 109.1,18.4 113.1,20.4 117.0,27.0" fill="none"/><circle class="spark-dot" cx="117.0" cy="27.0" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">TOPIX(ETF)</div>
         <div class="t-asof">11/6 東証引け時点</div>
         <div class="t-value">388.60<span class="t-unit">円</span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -27.00円 (-6.50%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,10.2 6.9,7.7 10.9,8.7 14.8,9.9 18.7,7.1 22.7,5.8 26.6,7.7 30.5,4.9 34.4,3.0 38.4,4.6 42.3,8.1 46.2,6.7 50.2,6.7 54.1,7.2 58.0,12.0 62.0,8.6 65.9,9.2 69.8,11.6 73.8,9.9 77.7,12.2 81.6,14.2 85.6,13.2 89.5,12.2 93.4,12.5 97.3,11.8 101.3,14.1 105.2,15.7 109.1,15.2 113.1,14.5 117.0,27.0 117.0,30"/><polyline class="spark-line" points="3.0,10.2 6.9,7.7 10.9,8.7 14.8,9.9 18.7,7.1 22.7,5.8 26.6,7.7 30.5,4.9 34.4,3.0 38.4,4.6 42.3,8.1 46.2,6.7 50.2,6.7 54.1,7.2 58.0,12.0 62.0,8.6 65.9,9.2 69.8,11.6 73.8,9.9 77.7,12.2 81.6,14.2 85.6,13.2 89.5,12.2 93.4,12.5 97.3,11.8 101.3,14.1 105.2,15.7 109.1,15.2 113.1,14.5 117.0,27.0" fill="none"/><circle class="spark-dot" cx="117.0" cy="27.0" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">S&amp;P500</div>
         <div class="t-asof">11/6 NY市場引け時点</div>
         <div class="t-value">7,376.86<span class="t-unit"></span></div>
         <div class="t-change up"><span class="t-change-label">前日比</span>▲ +23.13 (+0.31%)</div>
+        <div class="t-spark"><svg class="spark up" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,10.0 6.9,10.6 10.9,11.6 14.8,10.9 18.7,8.0 22.7,5.3 26.6,3.0 30.5,3.9 34.4,5.8 38.4,3.4 42.3,3.6 46.2,3.7 50.2,8.2 54.1,6.9 58.0,11.2 62.0,9.6 65.9,8.5 69.8,6.2 73.8,11.0 77.7,13.1 81.6,10.3 85.6,8.0 89.5,6.9 93.4,8.1 97.3,15.3 101.3,17.3 105.2,15.9 109.1,9.7 113.1,27.0 117.0,25.8 117.0,30"/><polyline class="spark-line" points="3.0,10.0 6.9,10.6 10.9,11.6 14.8,10.9 18.7,8.0 22.7,5.3 26.6,3.0 30.5,3.9 34.4,5.8 38.4,3.4 42.3,3.6 46.2,3.7 50.2,8.2 54.1,6.9 58.0,11.2 62.0,9.6 65.9,8.5 69.8,6.2 73.8,11.0 77.7,13.1 81.6,10.3 85.6,8.0 89.5,6.9 93.4,8.1 97.3,15.3 101.3,17.3 105.2,15.9 109.1,9.7 113.1,27.0 117.0,25.8" fill="none"/><circle class="spark-dot" cx="117.0" cy="25.8" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">Nasdaq総合</div>
         <div class="t-asof">11/6 NY市場引け時点</div>
         <div class="t-value">24,579.43<span class="t-unit"></span></div>
         <div class="t-change up"><span class="t-change-label">前日比</span>▲ +264.43 (+1.09%)</div>
+        <div class="t-spark"><svg class="spark up" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,8.7 6.9,8.9 10.9,8.4 14.8,8.3 18.7,6.0 22.7,3.9 26.6,3.0 30.5,3.4 34.4,6.0 38.4,4.7 42.3,5.6 46.2,5.9 50.2,9.6 54.1,9.5 58.0,13.7 62.0,11.5 65.9,11.6 69.8,9.6 73.8,14.6 77.7,15.0 81.6,13.5 85.6,11.2 89.5,10.7 93.4,13.3 97.3,18.8 101.3,20.8 105.2,19.3 109.1,16.6 113.1,27.0 117.0,25.1 117.0,30"/><polyline class="spark-line" points="3.0,8.7 6.9,8.9 10.9,8.4 14.8,8.3 18.7,6.0 22.7,3.9 26.6,3.0 30.5,3.4 34.4,6.0 38.4,4.7 42.3,5.6 46.2,5.9 50.2,9.6 54.1,9.5 58.0,13.7 62.0,11.5 65.9,11.6 69.8,9.6 73.8,14.6 77.7,15.0 81.6,13.5 85.6,11.2 89.5,10.7 93.4,13.3 97.3,18.8 101.3,20.8 105.2,19.3 109.1,16.6 113.1,27.0 117.0,25.1" fill="none"/><circle class="spark-dot" cx="117.0" cy="25.1" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">NYダウ</div>
         <div class="t-asof">11/6 NY市場引け時点</div>
         <div class="t-value">51,285.73<span class="t-unit"></span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -237.33 (-0.46%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,21.4 6.9,22.7 10.9,27.0 14.8,26.8 18.7,24.3 22.7,23.5 26.6,21.0 30.5,24.3 34.4,23.8 38.4,19.7 42.3,17.7 46.2,19.5 50.2,20.0 54.1,14.5 58.0,16.3 62.0,16.6 65.9,11.4 69.8,7.9 73.8,7.8 77.7,14.2 81.6,12.7 85.6,12.6 89.5,11.6 93.4,12.9 97.3,18.5 101.3,16.4 105.2,18.4 109.1,3.0 113.1,21.0 117.0,23.3 117.0,30"/><polyline class="spark-line" points="3.0,21.4 6.9,22.7 10.9,27.0 14.8,26.8 18.7,24.3 22.7,23.5 26.6,21.0 30.5,24.3 34.4,23.8 38.4,19.7 42.3,17.7 46.2,19.5 50.2,20.0 54.1,14.5 58.0,16.3 62.0,16.6 65.9,11.4 69.8,7.9 73.8,7.8 77.7,14.2 81.6,12.7 85.6,12.6 89.5,11.6 93.4,12.9 97.3,18.5 101.3,16.4 105.2,18.4 109.1,3.0 113.1,21.0 117.0,23.3" fill="none"/><circle class="spark-dot" cx="117.0" cy="23.3" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">ドル円</div>
         <div class="t-asof">11/6 終値時点</div>
         <div class="t-value">157.50<span class="t-unit">円</span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -0.86円 (-0.54%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,15.5 6.9,16.7 10.9,16.2 14.8,14.4 18.7,10.0 22.7,12.3 26.6,9.6 30.5,5.7 34.4,8.5 38.4,8.4 42.3,6.8 46.2,3.0 50.2,5.4 54.1,9.7 58.0,7.5 62.0,11.5 65.9,3.0 69.8,6.0 73.8,7.6 77.7,27.0 81.6,23.0 85.6,14.8 89.5,9.3 93.4,11.2 97.3,11.5 101.3,13.0 105.2,10.2 109.1,3.6 113.1,5.0 117.0,15.1 117.0,30"/><polyline class="spark-line" points="3.0,15.5 6.9,16.7 10.9,16.2 14.8,14.4 18.7,10.0 22.7,12.3 26.6,9.6 30.5,5.7 34.4,8.5 38.4,8.4 42.3,6.8 46.2,3.0 50.2,5.4 54.1,9.7 58.0,7.5 62.0,11.5 65.9,3.0 69.8,6.0 73.8,7.6 77.7,27.0 81.6,23.0 85.6,14.8 89.5,9.3 93.4,11.2 97.3,11.5 101.3,13.0 105.2,10.2 109.1,3.6 113.1,5.0 117.0,15.1" fill="none"/><circle class="spark-dot" cx="117.0" cy="15.1" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">VIX恐怖指数</div>
         <div class="t-asof">11/6 NY市場引け時点</div>
         <div class="t-value">25.64<span class="t-unit"></span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -2.54 (-9.01%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,24.8 6.9,24.8 10.9,24.3 14.8,24.2 18.7,26.2 22.7,25.8 26.6,26.7 30.5,26.6 34.4,26.0 38.4,27.0 42.3,26.3 46.2,26.2 50.2,23.3 54.1,24.1 58.0,17.7 62.0,20.5 65.9,22.6 69.8,23.7 73.8,19.5 77.7,18.7 81.6,20.6 85.6,22.2 89.5,23.3 93.4,22.8 97.3,18.8 101.3,15.6 105.2,16.2 109.1,23.8 113.1,3.0 117.0,7.6 117.0,30"/><polyline class="spark-line" points="3.0,24.8 6.9,24.8 10.9,24.3 14.8,24.2 18.7,26.2 22.7,25.8 26.6,26.7 30.5,26.6 34.4,26.0 38.4,27.0 42.3,26.3 46.2,26.2 50.2,23.3 54.1,24.1 58.0,17.7 62.0,20.5 65.9,22.6 69.8,23.7 73.8,19.5 77.7,18.7 81.6,20.6 85.6,22.2 89.5,23.3 93.4,22.8 97.3,18.8 101.3,15.6 105.2,16.2 109.1,23.8 113.1,3.0 117.0,7.6" fill="none"/><circle class="spark-dot" cx="117.0" cy="7.6" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">米10年金利</div>
         <div class="t-asof">11/6 NY市場引け時点</div>
         <div class="t-value">4.86<span class="t-unit">%</span></div>
         <div class="t-change up"><span class="t-change-label">前日比</span>▲ +0.02% (+0.45%)</div>
+        <div class="t-spark"><svg class="spark up" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,6.6 6.9,5.8 10.9,3.9 14.8,6.7 18.7,4.7 22.7,3.0 26.6,5.1 30.5,4.7 34.4,7.1 38.4,6.4 42.3,6.6 46.2,7.8 50.2,9.1 54.1,14.2 58.0,13.8 62.0,11.9 65.9,12.8 69.8,11.4 73.8,21.1 77.7,19.4 81.6,19.5 85.6,19.1 89.5,16.5 93.4,19.3 97.3,22.3 101.3,24.1 105.2,21.2 109.1,24.1 113.1,27.0 117.0,25.9 117.0,30"/><polyline class="spark-line" points="3.0,6.6 6.9,5.8 10.9,3.9 14.8,6.7 18.7,4.7 22.7,3.0 26.6,5.1 30.5,4.7 34.4,7.1 38.4,6.4 42.3,6.6 46.2,7.8 50.2,9.1 54.1,14.2 58.0,13.8 62.0,11.9 65.9,12.8 69.8,11.4 73.8,21.1 77.7,19.4 81.6,19.5 85.6,19.1 89.5,16.5 93.4,19.3 97.3,22.3 101.3,24.1 105.2,21.2 109.1,24.1 113.1,27.0 117.0,25.9" fill="none"/><circle class="spark-dot" cx="117.0" cy="25.9" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">金価格(NY金)</div>
         <div class="t-asof">11/6 終値時点</div>
         <div class="t-value">4,074.90<span class="t-unit">ドル</span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -38.60ドル (-0.94%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,6.6 6.9,5.8 10.9,5.2 14.8,4.1 18.7,7.1 22.7,7.5 26.6,5.2 30.5,8.7 34.4,7.5 38.4,3.0 42.3,4.9 46.2,5.9 50.2,11.2 54.1,6.5 58.0,5.7 62.0,7.2 65.9,8.6 69.8,8.0 73.8,14.8 77.7,18.8 81.6,16.5 85.6,13.7 89.5,15.5 93.4,17.0 97.3,27.0 101.3,21.7 105.2,23.9 109.1,13.8 113.1,10.8 117.0,13.7 117.0,30"/><polyline class="spark-line" points="3.0,6.6 6.9,5.8 10.9,5.2 14.8,4.1 18.7,7.1 22.7,7.5 26.6,5.2 30.5,8.7 34.4,7.5 38.4,3.0 42.3,4.9 46.2,5.9 50.2,11.2 54.1,6.5 58.0,5.7 62.0,7.2 65.9,8.6 69.8,8.0 73.8,14.8 77.7,18.8 81.6,16.5 85.6,13.7 89.5,15.5 93.4,17.0 97.3,27.0 101.3,21.7 105.2,23.9 109.1,13.8 113.1,10.8 117.0,13.7" fill="none"/><circle class="spark-dot" cx="117.0" cy="13.7" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">SOX半導体指数</div>
         <div class="t-asof">11/6 NY市場引け時点</div>
         <div class="t-value">9,390.25<span class="t-unit"></span></div>
         <div class="t-change up"><span class="t-change-label">前日比</span>▲ +379.11 (+4.21%)</div>
+        <div class="t-spark"><svg class="spark up" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,7.3 6.9,6.4 10.9,6.4 14.8,5.2 18.7,3.5 22.7,3.3 26.6,3.0 30.5,3.9 34.4,6.4 38.4,6.7 42.3,8.6 46.2,8.8 50.2,11.7 54.1,12.3 58.0,14.9 62.0,13.8 65.9,14.0 69.8,12.8 73.8,17.2 77.7,16.9 81.6,15.2 85.6,12.9 89.5,11.8 93.4,12.7 97.3,17.4 101.3,19.5 105.2,17.9 109.1,19.8 113.1,27.0 117.0,24.8 117.0,30"/><polyline class="spark-line" points="3.0,7.3 6.9,6.4 10.9,6.4 14.8,5.2 18.7,3.5 22.7,3.3 26.6,3.0 30.5,3.9 34.4,6.4 38.4,6.7 42.3,8.6 46.2,8.8 50.2,11.7 54.1,12.3 58.0,14.9 62.0,13.8 65.9,14.0 69.8,12.8 73.8,17.2 77.7,16.9 81.6,15.2 85.6,12.9 89.5,11.8 93.4,12.7 97.3,17.4 101.3,19.5 105.2,17.9 109.1,19.8 113.1,27.0 117.0,24.8" fill="none"/><circle class="spark-dot" cx="117.0" cy="24.8" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">原油(WTI)</div>
         <div class="t-asof">11/6 終値時点</div>
         <div class="t-value">90.83<span class="t-unit">ドル</span></div>
         <div class="t-change up"><span class="t-change-label">前日比</span>▲ +0.31ドル (+0.34%)</div>
+        <div class="t-spark"><svg class="spark up" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,20.3 6.9,25.1 10.9,23.6 14.8,19.9 18.7,22.5 22.7,25.0 26.6,25.0 30.5,26.8 34.4,21.9 38.4,21.4 42.3,18.6 46.2,18.0 50.2,16.5 54.1,12.2 58.0,7.1 62.0,3.7 65.9,6.5 69.8,13.5 73.8,10.0 77.7,4.3 81.6,6.5 85.6,9.3 89.5,5.0 93.4,6.2 97.3,3.0 101.3,14.5 105.2,15.0 109.1,27.0 113.1,23.4 117.0,22.9 117.0,30"/><polyline class="spark-line" points="3.0,20.3 6.9,25.1 10.9,23.6 14.8,19.9 18.7,22.5 22.7,25.0 26.6,25.0 30.5,26.8 34.4,21.9 38.4,21.4 42.3,18.6 46.2,18.0 50.2,16.5 54.1,12.2 58.0,7.1 62.0,3.7 65.9,6.5 69.8,13.5 73.8,10.0 77.7,4.3 81.6,6.5 85.6,9.3 89.5,5.0 93.4,6.2 97.3,3.0 101.3,14.5 105.2,15.0 109.1,27.0 113.1,23.4 117.0,22.9" fill="none"/><circle class="spark-dot" cx="117.0" cy="22.9" r="2.4"/></svg></div>
       </div>
       <div class="ticker-card">
         <div class="t-name">ビットコイン</div>
         <div class="t-asof">11/8 終値時点</div>
         <div class="t-value">74,584.65<span class="t-unit">ドル</span></div>
         <div class="t-change down"><span class="t-change-label">前日比</span>▼ -1,162.93ドル (-1.54%)</div>
+        <div class="t-spark"><svg class="spark down" viewBox="0 0 120 30" width="120" height="30" role="img" aria-label="直近約1か月の推移" preserveAspectRatio="none"><polygon class="spark-area" points="3.0,30 3.0,5.8 6.9,3.8 10.9,8.7 14.8,5.3 18.7,9.2 22.7,7.8 26.6,9.4 30.5,9.7 34.4,8.1 38.4,8.5 42.3,5.7 46.2,3.0 50.2,9.9 54.1,10.5 58.0,11.2 62.0,13.2 65.9,13.2 69.8,11.2 73.8,10.0 77.7,18.9 81.6,20.3 85.6,19.7 89.5,17.7 93.4,21.7 97.3,20.0 101.3,12.2 105.2,23.5 109.1,24.0 113.1,24.0 117.0,27.0 117.0,30"/><polyline class="spark-line" points="3.0,5.8 6.9,3.8 10.9,8.7 14.8,5.3 18.7,9.2 22.7,7.8 26.6,9.4 30.5,9.7 34.4,8.1 38.4,8.5 42.3,5.7 46.2,3.0 50.2,9.9 54.1,10.5 58.0,11.2 62.0,13.2 65.9,13.2 69.8,11.2 73.8,10.0 77.7,18.9 81.6,20.3 85.6,19.7 89.5,17.7 93.4,21.7 97.3,20.0 101.3,12.2 105.2,23.5 109.1,24.0 113.1,24.0 117.0,27.0" fill="none"/><circle class="spark-dot" cx="117.0" cy="27.0" r="2.4"/></svg></div>
       </div>
     </div>
   </section>
@@ -416,7 +504,8 @@
   </section>
   
   <section class="quiz" id="quiz">
-    <p class="quiz-label">きょうのなぞなぞクイズ</p>
+    <div class="quiz-head"><img class="quiz-ava" src="/img/chara/metan_think_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async">
+      <div><p class="quiz-label">きょうのなぞなぞクイズ</p><p class="quiz-by">めたんからの問題よ。ぜひ挑戦してね。</p></div></div>
     <h3>「ベータ(β)」の説明として最も適切なものは?</h3>
     <ul class="quiz-choices" id="quizChoices">
         <li><button type="button" class="quiz-choice" data-index="0" data-explanation="正解。今週のSOX・ナスダック(ベータが高め)とNYダウ(ベータが低め)の値動きの違いが、まさにこの指標の考え方を表している。">ある銘柄・指数が市場全体の動きに対してどれくらい大きく(または小さく)反応するかを示す指標。値が1より大きいほど振れが大きい</button></li>
@@ -425,7 +514,8 @@
         <li><button type="button" class="quiz-choice" data-index="3" data-explanation="これは「材料出尽くし」に近い説明。ベータとは直接関係がない。">好決算や好材料が出たにもかかわらず、期待のハードルが上がり過ぎていたために株価がむしろ下落する現象</button></li>
     </ul>
     <div class="quiz-result" id="quizResult">
-      <p class="quiz-verdict" id="quizVerdict"></p>
+      <div class="quiz-react"><img id="quizReact" src="/img/chara/zunda_normal_closed.webp" alt="ずんだもん" width="150" height="125" decoding="async">
+        <p class="quiz-verdict" id="quizVerdict"></p></div>
       <p id="quizPickedExplain"></p>
       <p id="quizCorrectExplain"></p>
     </div>
@@ -447,7 +537,8 @@
             else if (i === picked) b.classList.add('is-wrong');
           });
           var isCorrect = picked === answerIndex;
-          verdict.textContent = isCorrect ? '正解！' : '不正解…';
+          verdict.textContent = isCorrect ? '正解なのだ！すごいのだ！' : '不正解…でも、これで1つ覚えたのだ！';
+          document.getElementById('quizReact').src = '/img/chara/zunda_' + (isCorrect ? 'happy' : 'trouble') + '_closed.webp';
           var pickedExp = btn.getAttribute('data-explanation') || '';
           pickedExplain.textContent = pickedExp ? ('選んだ「' + btn.textContent + '」：' + pickedExp) : '';
           if (!isCorrect) {
@@ -463,6 +554,7 @@
     })();
   </script>
 
+  <section class="video-cta"><div class="vc-av"><img src="/img/chara/zunda_happy_closed.webp" alt="" width="150" height="125" loading="lazy" decoding="async"><img src="/img/chara/metan_happy_closed.webp" alt="" width="150" height="115" loading="lazy" decoding="async"></div><div class="vc-body"><p class="vc-title">毎週木曜は、動画でも解説しています</p><p class="vc-text">ずんだもんと四国めたんが、1週間の株・為替・金・ビットコインの値動きを、数字といっしょにやさしく話します。</p><a class="vc-btn" href="https://www.youtube.com/@nazenazosouba" target="_blank" rel="noopener">YouTubeで見る</a></div></section>
   
   
   <footer class="footer">

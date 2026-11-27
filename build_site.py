@@ -86,6 +86,17 @@ def main():
     for name in render.FONT_FILES:
         shutil.copyfile(render.FONTS / name, DOCS / "fonts" / name)
 
+    # キャラ画像(顔〜肩のwebp。export_chara_web.py で作る)と、記事バナーなどの画像
+    for src_dir, dst in ((BASE / "assets" / "chara_web", DOCS / "img" / "chara"),
+                         (BASE / "assets" / "banners", DOCS / "img" / "banners")):
+        if src_dir.exists():
+            dst.mkdir(parents=True, exist_ok=True)
+            for old in dst.glob("*.webp"):  # 元から無くなった画像は消す
+                if not (src_dir / old.name).exists():
+                    old.unlink()
+            for f in src_dir.glob("*.webp"):
+                shutil.copyfile(f, dst / f.name)
+
     thin = {t["term"] for t in terms if render.is_thin_term(t, render.find_related_editions(t["term"], all_editions))}
     build_sitemap(editions_meta, latest_date, [t for t in terms if t["term"] not in thin], practice_urls, info_urls)
     build_robots()

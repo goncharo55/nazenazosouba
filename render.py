@@ -17,6 +17,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 import affiliate
+import visuals
 
 BASE = Path(__file__).parent
 FONTS = BASE / "fonts"
@@ -364,7 +365,7 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
         return f"""<title>{esc(title)}</title>
 <style>
 {FONT_CSS}
-{BASE_CSS}
+{BASE_CSS}{visuals.CSS}
 </style>
 <div class="wrap">
 {body}
@@ -421,7 +422,7 @@ def page_shell(title: str, body: str, description: str = "", standalone: bool = 
   <link rel="preload" href="{SITE_ROOT}/fonts/ibmplexsans-var.woff2" as="font" type="font/woff2" crossorigin>
   {head_extra}{seo_tags}<style>
 {FONT_CSS_EXT}
-{BASE_CSS}
+{BASE_CSS}{visuals.CSS}
   </style>
 </head>
 <body>
@@ -473,7 +474,7 @@ def masthead(date_label: str, archive_url: str | None = None, glossary_url: str 
   </header>"""
 
 
-def render_ticker_cards(indices: list[dict]) -> str:
+def render_ticker_cards(indices: list[dict], edition_date: str | None = None) -> str:
     cards = []
     for r in indices:
         delta = r.get("delta") or 0
@@ -484,11 +485,17 @@ def render_ticker_cards(indices: list[dict]) -> str:
         psign = "+" if pct >= 0 else ""
         unit = r.get("unit", "")
         asof = r.get("asof", "")
+        spark = ""
+        if edition_date:
+            vals = visuals.series_for(r.get("ticker", ""), edition_date, r.get("value_text", ""), live=":" in asof)
+            if vals:
+                spark = f'<div class="t-spark">{visuals.sparkline(vals, delta >= 0)}</div>'
         cards.append(f"""<div class="ticker-card">
         <div class="t-name">{esc(r['name'])}</div>
         {f'<div class="t-asof">{esc(asof)}時点</div>' if asof else ''}
         <div class="t-value">{esc(r['value_text'])}<span class="t-unit">{esc(unit)}</span></div>
         <div class="t-change {direction}"><span class="t-change-label">前日比</span>{arrow} {sign}{delta:,.2f}{esc(unit)} ({psign}{pct:.2f}%)</div>
+        {spark}
       </div>""")
     return "\n      ".join(cards)
 
@@ -582,13 +589,15 @@ def render_quiz(quiz: dict | None, shuffle_seed: str | None = None) -> str:
     )
     return f"""
   <section class="quiz" id="quiz">
-    <p class="quiz-label">きょうのなぞなぞクイズ</p>
+    <div class="quiz-head"><img class="quiz-ava" src="/img/chara/metan_think_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async">
+      <div><p class="quiz-label">きょうのなぞなぞクイズ</p><p class="quiz-by">めたんからの問題よ。ぜひ挑戦してね。</p></div></div>
     <h3>{question}</h3>
     <ul class="quiz-choices" id="quizChoices">
         {choices_html}
     </ul>
     <div class="quiz-result" id="quizResult">
-      <p class="quiz-verdict" id="quizVerdict"></p>
+      <div class="quiz-react"><img id="quizReact" src="/img/chara/zunda_normal_closed.webp" alt="ずんだもん" width="150" height="125" decoding="async">
+        <p class="quiz-verdict" id="quizVerdict"></p></div>
       <p id="quizPickedExplain"></p>
       <p id="quizCorrectExplain"></p>
     </div>
@@ -610,7 +619,8 @@ def render_quiz(quiz: dict | None, shuffle_seed: str | None = None) -> str:
             else if (i === picked) b.classList.add('is-wrong');
           }});
           var isCorrect = picked === answerIndex;
-          verdict.textContent = isCorrect ? '正解！' : '不正解…';
+          verdict.textContent = isCorrect ? '正解なのだ！すごいのだ！' : '不正解…でも、これで1つ覚えたのだ！';
+          document.getElementById('quizReact').src = '/img/chara/zunda_' + (isCorrect ? 'happy' : 'trouble') + '_closed.webp';
           var pickedExp = btn.getAttribute('data-explanation') || '';
           pickedExplain.textContent = pickedExp ? ('選んだ「' + btn.textContent + '」：' + pickedExp) : '';
           if (!isCorrect) {{
@@ -655,7 +665,7 @@ def build_edition_html(edition: dict, standalone: bool = True, as_index: bool = 
         f'<a class="tag" href="{esc(tag_archive_url(t))}">{esc(t)}</a>' for t in edition.get("tags", [])
     )
     summary_html = "\n        ".join(f'<li>{esc(s)}</li>' for s in edition.get("summary", []))
-    ticker_html = render_ticker_cards(edition.get("indices", []))
+    ticker_html = render_ticker_cards(edition.get("indices", []), edition["edition_date"])
     narrative_html = render_narrative(edition.get("narrative", []))
     movers_panels = group_movers(edition.get("movers", []))
     movers_html = "\n      ".join(render_movers_panel(p) for p in movers_panels.values())
@@ -666,11 +676,14 @@ def build_edition_html(edition: dict, standalone: bool = True, as_index: bool = 
   {crumb_html}{intro_html}
 
   <section class="hero">
+    {visuals.banner_html(edition)}
     <p class="eyebrow">{esc(edition.get('eyebrow', "Today's Market"))}</p>
     <h1 class="headline">{esc(edition['headline'])}</h1>
     <div class="tags">
       {tags_html}
     </div>
+    {visuals.weather_html(edition)}
+    {visuals.talk_html(edition)}
     <div class="summary-box">
       <h2>3行まとめ</h2>
       <ul>
@@ -703,6 +716,7 @@ def build_edition_html(edition: dict, standalone: bool = True, as_index: bool = 
     {"".join(f'<p>{p}</p>' for p in edition.get('lesson_body_paragraphs', [edition.get('lesson_body','')]))}
   </section>
   {quiz_html}
+  {visuals.video_cta_html(YOUTUBE_URL)}
   {affiliate.ad_html(edition)}
   {recent_html}
   <footer class="footer">

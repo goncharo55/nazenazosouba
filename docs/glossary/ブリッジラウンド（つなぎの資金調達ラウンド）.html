@@ -252,6 +252,79 @@
     .ticker-card .t-change-label { font-size:8.5px; }
   }
 
+  /* ---- きょうのひとこと（キャラの掛け合い） ---- */
+  .talk { margin: 0 0 28px; background: var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding: 16px 18px 12px; box-shadow: var(--shadow); }
+  .talk-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color: var(--brand); margin:0 0 6px; }
+  .talk-row { display:flex; align-items:flex-end; gap:12px; margin: 6px 0; }
+  .talk-right { flex-direction: row-reverse; }
+  .av { position:relative; flex:0 0 118px; width:118px; }
+  .av img { display:block; width:118px; height:auto; }
+  .av .av-open { position:absolute; left:0; top:0; opacity:0; animation: mouth .46s steps(1) 4; }
+  @keyframes mouth { 0% { opacity:1; } 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) { .av .av-open { animation:none; } }
+  .bubble { position:relative; flex:1; min-width:0; background: var(--surface-2); border:1px solid var(--line);
+    border-radius:14px; padding:10px 14px; font-size:15.5px; line-height:1.7; }
+  .bubble p { margin:0; }
+  .bubble .who { display:block; font-size:11.5px; font-weight:600; margin-bottom:1px; }
+  .talk-zunda .who { color:#3E8E2F; } .talk-metan .who { color:#C0407E; }
+  .talk-left .bubble::before, .talk-right .bubble::before { content:""; position:absolute; bottom:18px; width:10px; height:10px;
+    background: var(--surface-2); border:1px solid var(--line); transform: rotate(45deg); }
+  .talk-left .bubble::before { left:-6px; border-right:none; border-top:none; }
+  .talk-right .bubble::before { right:-6px; border-left:none; border-bottom:none; }
+  .talk-credit { font-size:10.5px; color: var(--ink-faint); margin:8px 0 0; text-align:right; }
+  @media (max-width: 560px) {
+    .talk { padding: 12px 12px 10px; }
+    .av { flex-basis:64px; width:64px; } .av img { width:64px; }
+    .bubble { font-size:14.5px; padding:8px 11px; }
+  }
+
+  /* ---- 相場の天気 ---- */
+  .wx-row { display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 22px; }
+  .wx { display:flex; align-items:center; gap:8px; background: var(--surface); border:1px solid var(--line);
+    border-radius:12px; padding:8px 14px 8px 10px; min-width: 0; }
+  .wx-txt { display:flex; flex-direction:column; line-height:1.25; }
+  .wx-label { font-size:11px; color: var(--ink-faint); }
+  .wx-name { font-size:16px; font-weight:600; color: var(--ink); white-space:nowrap; }
+  .wx-pct { font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--ink-soft); }
+  .wx-sun { border-color:#F3DDA8; } .wx-rain { border-color:#C6D8EA; }
+  @media (max-width: 560px) { .wx-row { gap:6px; } .wx { padding:6px 9px 6px 6px; gap:5px; flex:1 1 30%; }
+    .wx svg { width:30px; height:30px; flex:0 0 30px; } .wx-name { font-size:13.5px; } .wx-pct { font-size:11px; } }
+
+  /* ---- 指標カードのミニ折れ線 ---- */
+  .ticker-card .t-spark { margin-top:8px; line-height:0; }
+  .spark { width:100%; height:30px; display:block; }
+  .spark-line { stroke-width:1.5; vector-effect: non-scaling-stroke; stroke-linejoin:round; stroke-linecap:round; }
+  .spark-line { stroke: var(--ink-faint); }
+  .spark-area { fill: var(--ink-faint); opacity:.12; }
+  .spark.up .spark-dot { fill: var(--up); } .spark.down .spark-dot { fill: var(--down); }
+  @media (max-width: 560px) { .spark { height:22px; } .ticker-card .t-spark { margin-top:5px; } }
+
+  /* ---- YouTube案内カード ---- */
+  .video-cta { display:flex; align-items:center; gap:18px; margin:36px 0; background: var(--brand-soft);
+    border:1px solid var(--line); border-radius:14px; padding:16px 20px; }
+  .vc-av { display:flex; flex:0 0 auto; } .vc-av img { width:84px; height:auto; } .vc-av img + img { margin-left:-14px; }
+  .vc-title { font-weight:600; font-size:17px; margin:0 0 4px; color: var(--ink); }
+  .vc-text { font-size:14px; color: var(--ink-soft); margin:0 0 10px; line-height:1.65; }
+  .vc-btn { display:inline-block; background: var(--brand); color:#fff; text-decoration:none; font-weight:600;
+    font-size:14px; padding:9px 18px; border-radius:999px; }
+  @media (max-width: 560px) { .video-cta { flex-direction:column; text-align:center; padding:16px 14px; gap:10px; }
+    .vc-av img { width:76px; } }
+
+  /* ---- テーマ別バナー ---- */
+  .banner { margin: 0 0 18px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background: var(--surface-2); line-height:0; }
+  .banner img { width:100%; height:180px; object-fit:cover; object-position:center; display:block; }
+  @media (max-width: 560px) { .banner img { height:110px; } }
+
+  /* ---- クイズのキャラ ---- */
+  .quiz-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .quiz-ava { width:84px; height:auto; flex:0 0 84px; }
+  .quiz-by { margin:2px 0 0; font-size:13.5px; color: var(--ink-soft); }
+  .quiz-react { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .quiz-react img { width:68px; height:auto; flex:0 0 68px; }
+  .quiz-react .quiz-verdict { margin:0; font-size:16px; }
+  @media (max-width: 560px) { .quiz-ava { width:68px; flex-basis:68px; } }
+
   </style>
 </head>
 <body>
