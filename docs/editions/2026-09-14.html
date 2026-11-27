@@ -256,27 +256,27 @@
   .talk { margin: 0 0 28px; background: var(--surface); border:1px solid var(--line); border-radius:14px;
     padding: 16px 18px 12px; box-shadow: var(--shadow); }
   .talk-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color: var(--brand); margin:0 0 6px; }
-  .talk-row { display:flex; align-items:flex-end; gap:12px; margin: 6px 0; }
-  .talk-right { flex-direction: row-reverse; }
-  .av { position:relative; flex:0 0 118px; width:118px; }
+  .talk-row { display:grid; grid-template-columns: 118px minmax(0, 1fr); column-gap:16px; align-items:start; margin: 10px 0; }
+  .av { position:relative; width:118px; }
   .av img { display:block; width:118px; height:auto; }
   .av .av-open { position:absolute; left:0; top:0; opacity:0; animation: mouth .46s steps(1) 4; }
   @keyframes mouth { 0% { opacity:1; } 50% { opacity:0; } }
   @media (prefers-reduced-motion: reduce) { .av .av-open { animation:none; } }
-  .bubble { position:relative; flex:1; min-width:0; background: var(--surface-2); border:1px solid var(--line);
-    border-radius:14px; padding:10px 14px; font-size:15.5px; line-height:1.7; }
+  .bubble { position:relative; min-width:0; border:1px solid var(--line); border-radius:14px; padding:10px 16px;
+    font-size:15.5px; line-height:1.75; background: var(--surface-2); }
+  .talk-zunda .bubble { background: color-mix(in srgb, #7BC96F 13%, var(--surface)); }
+  .talk-metan .bubble { background: color-mix(in srgb, #E86AA6 11%, var(--surface)); }
   .bubble p { margin:0; }
   .bubble .who { display:block; font-size:11.5px; font-weight:600; margin-bottom:1px; }
   .talk-zunda .who { color:#3E8E2F; } .talk-metan .who { color:#C0407E; }
-  .talk-left .bubble::before, .talk-right .bubble::before { content:""; position:absolute; bottom:18px; width:10px; height:10px;
-    background: var(--surface-2); border:1px solid var(--line); transform: rotate(45deg); }
-  .talk-left .bubble::before { left:-6px; border-right:none; border-top:none; }
-  .talk-right .bubble::before { right:-6px; border-left:none; border-bottom:none; }
+  .bubble::before { content:""; position:absolute; top:22px; left:-7px; width:12px; height:12px; transform: rotate(45deg);
+    border-left:1px solid var(--line); border-bottom:1px solid var(--line); background: inherit; }
   .talk-credit { font-size:10.5px; color: var(--ink-faint); margin:8px 0 0; text-align:right; }
   @media (max-width: 560px) {
     .talk { padding: 12px 12px 10px; }
-    .av { flex-basis:64px; width:64px; } .av img { width:64px; }
-    .bubble { font-size:14.5px; padding:8px 11px; }
+    .talk-row { grid-template-columns: 62px minmax(0, 1fr); column-gap:12px; }
+    .av { width:62px; } .av img { width:62px; }
+    .bubble { font-size:14.5px; padding:8px 12px; }
   }
 
   /* ---- 相場の天気 ---- */
@@ -357,7 +357,7 @@
       <a class="tag" href="/archive.html?tag=OpenAI">#OpenAI</a>
     </div>
     <div class="wx-row" aria-label="きょうの相場の天気"><div class="wx wx-rain"><svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><path d="M14 34a8 8 0 0 1-.9-15.9A10.5 10.5 0 0 1 33.4 15 9 9 0 0 1 34 34z" fill="#8E9CAA"/><g stroke="#4A8AC4" stroke-width="3" stroke-linecap="round"><path d="M16 38l-2 5M24 38l-2 5M32 38l-2 5"/></g></svg><div class="wx-txt"><span class="wx-label">日本株</span><span class="wx-name">小雨</span><span class="wx-pct">-0.81%</span></div></div><div class="wx wx-sun"><svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><g transform="translate(-4,-5) scale(.95)"><circle cx="24" cy="24" r="9" fill="#F6B73C"/><g stroke="#F6B73C" stroke-width="3" stroke-linecap="round"><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.6 10.6l3.5 3.5M33.9 33.9l3.5 3.5M10.6 37.4l3.5-3.5M33.9 14.1l3.5-3.5"/></g></g><g transform="translate(6,4) scale(.78)"><path d="M14 36a8 8 0 0 1-.9-15.9A10.5 10.5 0 0 1 33.4 17 9 9 0 0 1 34 36z" fill="#B7C3CF"/></g></svg><div class="wx-txt"><span class="wx-label">米国株</span><span class="wx-name">うす晴れ</span><span class="wx-pct">+0.86%</span></div></div><div class="wx wx-sun"><svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><circle cx="24" cy="24" r="9" fill="#F6B73C"/><g stroke="#F6B73C" stroke-width="3" stroke-linecap="round"><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.6 10.6l3.5 3.5M33.9 33.9l3.5 3.5M10.6 37.4l3.5-3.5M33.9 14.1l3.5-3.5"/></g></svg><div class="wx-txt"><span class="wx-label">半導体</span><span class="wx-name">晴れ</span><span class="wx-pct">+1.81%</span></div></div></div>
-    <section class="talk" aria-label="きょうのひとこと"><p class="talk-label">きょうのひとこと</p><div class="talk-row talk-left talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_trouble_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_trouble_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>日経平均は0.81%下がって<span class="num">63,492円</span>なのだ…</p></div></div><div class="talk-row talk-right talk-metan"><div class="av av-metan"><img class="av-closed" src="/img/chara/metan_think_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/metan_think_open.webp" alt="" aria-hidden="true" width="150" height="115" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">めたん</span><p>アメリカのS&amp;P500は前の日に<span class="num">0.86%</span>上がったわ。 ドル円は<span class="num">153.42円</span>で、前日より円高方向よ。</p></div></div><div class="talk-row talk-left talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_think_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_think_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>「日経平均」・「TOPIX」が話題になったのだ。なぜなのかは、このあとの記事で説明するのだ！</p></div></div><div class="talk-row talk-right talk-metan"><div class="av av-metan"><img class="av-closed" src="/img/chara/metan_happy_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/metan_happy_open.webp" alt="" aria-hidden="true" width="150" height="115" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">めたん</span><p>最後に<a href="#quiz">きょうのクイズ</a>を用意したわ。解けるかしら？</p></div></div><p class="talk-credit">キャラクター：VOICEVOX:ずんだもん／VOICEVOX:四国めたん（立ち絵：坂本アヒル様）</p></section>
+    <section class="talk" aria-label="きょうのひとこと"><p class="talk-label">きょうのひとこと</p><div class="talk-row talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_trouble_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_trouble_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>日経平均は0.81%下がって<span class="num">63,492円</span>なのだ…</p></div></div><div class="talk-row talk-metan"><div class="av av-metan"><img class="av-closed" src="/img/chara/metan_think_closed.webp" alt="四国めたん" width="150" height="115" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/metan_think_open.webp" alt="" aria-hidden="true" width="150" height="115" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">めたん</span><p>指標でいちばん大きく動いたのはSOX半導体指数で、<span class="num">1.81%</span>上がったわ。 アメリカのS&amp;P500は前の日に<span class="num">0.86%</span>上がったわ。</p></div></div><div class="talk-row talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_surprise_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_surprise_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>個別ではソフトバンクグループが<span class="num">11.00%</span>下がったのだ。OpenAIのアルトマンCEOが「2026年内のIPOはしない」と表明したことで、出資先の価値を市場価格で確認する機会が遠のいたと受け止められ急落。</p></div></div><div class="talk-row talk-zunda"><div class="av av-zunda"><img class="av-closed" src="/img/chara/zunda_happy_closed.webp" alt="ずんだもん" width="150" height="125" loading="lazy" decoding="async"><img class="av-open" src="/img/chara/zunda_happy_open.webp" alt="" aria-hidden="true" width="150" height="125" loading="lazy" decoding="async"></div><div class="bubble"><span class="who">ずんだもん</span><p>最後に<a href="#quiz">なぞなぞクイズ</a>があるのだ。めたんが問題を出すのだ！</p></div></div><p class="talk-credit">キャラクター：VOICEVOX:ずんだもん／VOICEVOX:四国めたん（立ち絵：坂本アヒル様）</p></section>
     <div class="summary-box">
       <h2>3行まとめ</h2>
       <ul>

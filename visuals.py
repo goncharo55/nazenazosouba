@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 BASE = Path(__file__).parent
@@ -168,8 +169,84 @@ def _dir(pct: float, up: str, down: str, flat: str) -> str:
     return flat
 
 
+def _plain(t) -> str:
+    return re.sub(r"<[^>]+>", "", str(t or ""))
+
+
+def _first_sentence(text: str, maxlen: int = 80) -> tuple[str, bool]:
+    """最初の1文。長すぎるときは読点の位置で切って末尾に…を付ける。(文, 切ったか)"""
+    t = _plain(text).strip()
+    s = t.split("。")[0] + "。" if "。" in t else t
+    if len(s) <= maxlen:
+        return s, False
+    cut = s[:maxlen]
+    k = cut.rfind("、")
+    return (cut[:k] if k >= 24 else cut) + "…", True
+
+
+def _tone(s: str, who: str) -> str:
+    """記事の文(です・ます調/常体)を、キャラの口調に近づける。意味は変えず文末だけ。"""
+    s = s.rstrip()
+    if who == "zunda":
+        if s.endswith("です。"):
+            return s[:-3] + "なのだ。"
+        if s.endswith(("た。", "る。", "う。", "く。", "す。", "ぐ。", "む。", "ぶ。", "つ。")):
+            return s[:-1] + "のだ。"
+    else:
+        if s.endswith("です。"):
+            return s[:-3] + "よ。"
+        if s.endswith("ます。"):
+            return s[:-1] + "わ。"
+        if s.endswith(("た。", "る。", "う。", "く。", "す。", "ぐ。", "む。", "ぶ。", "つ。")):
+            return s[:-1] + "のよ。"
+        if s.endswith("だ。"):
+            return s[:-2] + "なのよ。"
+    return s
+
+
+def _lesson_term(title: str) -> str | None:
+    t = _plain(title).strip()
+    t = re.sub(r"^きょうの用語解説[：:]\s*", "", t).split("―")[0].strip()
+    t = re.sub(r"とは[？?]?$", "", t).strip()
+    if not t or len(t) > 32:
+        return None
+    return t.strip("「」 ") if t.startswith("「") and t.count("「") == 1 else t
+
+
+def _top_mover(ed: dict):
+    """理由つきの個別銘柄のうち、騰落率の絶対値がいちばん大きいもの。"""
+    best = None
+    for m in ed.get("movers") or []:
+        if m.get("market") not in ("JP", "US") or len(_first_sentence(m.get("reason"), 200)[0]) < 18:
+            continue  # 理由が空、または「○○大手。」のような説明だけの銘柄は使わない
+        try:
+            p = float(m["pct"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if best is None or abs(p) > abs(best[0]):
+            best = (p, m)
+    return best
+
+
+# 「いちばん動いた指標」の候補（VIX・米10年金利は変化率が大きく出やすいので除く）
+_BIG_MOVE_SKIP = {"^N225", "1306.T", "^VIX", "^TNX", "^GSPC"}
+
+
+def _biggest_index(ed: dict):
+    best = None
+    for c in ed.get("indices") or []:
+        if c.get("ticker") in _BIG_MOVE_SKIP or c.get("pct") is None:
+            continue
+        if best is None or abs(float(c["pct"])) > abs(float(best["pct"])):
+            best = c
+    return best
+
+
 def talk_lines(ed: dict) -> list[tuple[str, str, str]]:
-    """[(話者 'zunda'|'metan', 表情, セリフHTML)]。数字は指標カードの値だけ。"""
+    """[(話者 'zunda'|'metan', 表情, セリフHTML)]。
+
+    その日の記事にしかない内容(いちばん動いた銘柄とその理由・用語解説・いちばん動いた指標)を入れて、毎日同じ掛け合いにならないようにする。
+    数字は指標カードと movers の値だけ(どちらも検証済み)。"""
     seed = ed.get("edition_date", "")
     n = _card(ed, "^N225")
     if not n:
@@ -188,34 +265,60 @@ def talk_lines(ed: dict) -> list[tuple[str, str, str]]:
     }[m]
     lines = [("zunda", zf, _pick(seed, "z1", z1))]
 
-    # アメリカと為替（めたん）
+    # めたん：いちばん大きく動いた指標＋アメリカ株
     parts = []
+    big = _biggest_index(ed)
+    if big:
+        p = float(big["pct"])
+        a = f'<span class="num">{abs(p):.2f}%</span>'
+        if big.get("ticker") == "USDJPY=X":
+            what = f'ドル円で、{"円安" if p > 0 else "円高"}方向に{a}動いたわ。'
+        else:
+            what = f'{_esc(big["name"])}で、{a}{"上がった" if p > 0 else "下がった"}わ。'
+        parts.append("指標でいちばん大きく動いたのは" + what)
     sp = _card(ed, "^GSPC")
     if sp and sp.get("pct") is not None:
         p = float(sp["pct"])
         mv = _dir(p, f'<span class="num">{abs(p):.2f}%</span>上がったわ。', f'<span class="num">{abs(p):.2f}%</span>下がったわ。',
                   "ほとんど動かなかったわ。")
         parts.append(f"アメリカのS&amp;P500は前の日に{mv}")
-    fx = _card(ed, "USDJPY=X")
-    if fx and fx.get("pct") is not None:
-        p = float(fx["pct"])
-        trend = _dir(p, "前日より円安方向", "前日より円高方向", "前日とほぼ同じ水準")
-        parts.append(f'ドル円は<span class="num">{fx["value_text"]}円</span>で、{trend}よ。')
     if parts:
         lines.append(("metan", mf, " ".join(parts)))
 
-    # 注目のキーワード（ずんだもん）
-    tags = [t.lstrip("#") for t in (ed.get("tags") or [])][:3]
-    if tags:
-        kw = "・".join(f"「{_esc(t)}」" for t in tags[:2])
-        lines.append(("zunda", "think" if m in ("flat", "down") else "normal",
-                      _pick(seed, "z2", [f"きょうのキーワードは{kw}なのだ。くわしい理由は下の記事で読めるのだ！",
-                                         f"{kw}が話題になったのだ。なぜなのかは、このあとの記事で説明するのだ！"])))
-    # クイズへの誘い（めたん）
+    # ずんだもん：理由つきでいちばん動いた銘柄。なければキーワード
+    tm = _top_mover(ed)
+    if tm:
+        p, mv = tm
+        reason, cut = _first_sentence(mv["reason"], 80)
+        lead = _pick(seed, "z2", ["銘柄だと", "個別では", "注目は"])
+        head = f'{lead}{_esc(mv["name"])}が<span class="num">{abs(p):.2f}%</span>{"上がった" if p > 0 else "下がった"}のだ。'
+        tail = "くわしくは下の記事で読めるのだ！" if cut else ""
+        lines.append(("zunda", "surprise" if abs(p) >= 8 else ("happy" if p > 0 else "trouble"),
+                      f"{head}{_esc(_tone(reason, 'zunda'))}{tail}"))
+    else:
+        tags = [t.lstrip("#") for t in (ed.get("tags") or [])][:2]
+        if tags:
+            kw = "・".join(f"「{_esc(t)}」" for t in tags)
+            lines.append(("zunda", "normal", f"きょうのキーワードは{kw}なのだ。くわしい理由は下の記事で読めるのだ！"))
+
+    # めたん：きょうの用語解説
+    term = _lesson_term(ed.get("lesson_title", ""))
+    if term:
+        body = (ed.get("lesson_body_paragraphs") or [ed.get("lesson_body", "")] or [""])[0]
+        sent, _ = _first_sentence(body, 100)
+        txt = (f"きょうの用語解説では、{_esc(term)}という疑問を取り上げているわ。" if "？" in term or "?" in term
+               else f"きょうの用語は「{_esc(term)}」よ。")
+        if "とは、" in sent:
+            txt += "ひとことで言うと、" + _esc(_tone(sent.split("とは、", 1)[1], "metan"))
+        elif sent:
+            txt += _esc(_tone(sent, "metan"))
+        lines.append(("metan", "think", txt))
+
+    # ずんだもん：クイズへの誘い
     if ed.get("quiz"):
-        lines.append(("metan", "happy", _pick(seed, "m2", [
-            '記事のあとには<a href="#quiz">なぞなぞクイズ</a>もあるわ。ぜひ挑戦してね。',
-            '最後に<a href="#quiz">きょうのクイズ</a>を用意したわ。解けるかしら？'])))
+        lines.append(("zunda", "happy", _pick(seed, "z3", [
+            '最後に<a href="#quiz">なぞなぞクイズ</a>があるのだ。めたんが問題を出すのだ！',
+            '記事のあとの<a href="#quiz">きょうのクイズ</a>に挑戦してほしいのだ！'])))
     return lines
 
 
@@ -234,10 +337,9 @@ def talk_html(ed: dict) -> str:
     if not lines:
         return ""
     rows = []
-    for k, (who, expr, text) in enumerate(lines):
-        side = "left" if k % 2 == 0 else "right"
+    for who, expr, text in lines:
         name = "ずんだもん" if who == "zunda" else "めたん"
-        rows.append(f'<div class="talk-row talk-{side} talk-{who}">{_avatar(who, expr)}'
+        rows.append(f'<div class="talk-row talk-{who}">{_avatar(who, expr)}'
                     f'<div class="bubble"><span class="who">{name}</span><p>{text}</p></div></div>')
     return (f'<section class="talk" aria-label="きょうのひとこと"><p class="talk-label">きょうのひとこと</p>'
             f'{"".join(rows)}'
@@ -305,27 +407,27 @@ CSS = """
   .talk { margin: 0 0 28px; background: var(--surface); border:1px solid var(--line); border-radius:14px;
     padding: 16px 18px 12px; box-shadow: var(--shadow); }
   .talk-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color: var(--brand); margin:0 0 6px; }
-  .talk-row { display:flex; align-items:flex-end; gap:12px; margin: 6px 0; }
-  .talk-right { flex-direction: row-reverse; }
-  .av { position:relative; flex:0 0 118px; width:118px; }
+  .talk-row { display:grid; grid-template-columns: 118px minmax(0, 1fr); column-gap:16px; align-items:start; margin: 10px 0; }
+  .av { position:relative; width:118px; }
   .av img { display:block; width:118px; height:auto; }
   .av .av-open { position:absolute; left:0; top:0; opacity:0; animation: mouth .46s steps(1) 4; }
   @keyframes mouth { 0% { opacity:1; } 50% { opacity:0; } }
   @media (prefers-reduced-motion: reduce) { .av .av-open { animation:none; } }
-  .bubble { position:relative; flex:1; min-width:0; background: var(--surface-2); border:1px solid var(--line);
-    border-radius:14px; padding:10px 14px; font-size:15.5px; line-height:1.7; }
+  .bubble { position:relative; min-width:0; border:1px solid var(--line); border-radius:14px; padding:10px 16px;
+    font-size:15.5px; line-height:1.75; background: var(--surface-2); }
+  .talk-zunda .bubble { background: color-mix(in srgb, #7BC96F 13%, var(--surface)); }
+  .talk-metan .bubble { background: color-mix(in srgb, #E86AA6 11%, var(--surface)); }
   .bubble p { margin:0; }
   .bubble .who { display:block; font-size:11.5px; font-weight:600; margin-bottom:1px; }
   .talk-zunda .who { color:#3E8E2F; } .talk-metan .who { color:#C0407E; }
-  .talk-left .bubble::before, .talk-right .bubble::before { content:""; position:absolute; bottom:18px; width:10px; height:10px;
-    background: var(--surface-2); border:1px solid var(--line); transform: rotate(45deg); }
-  .talk-left .bubble::before { left:-6px; border-right:none; border-top:none; }
-  .talk-right .bubble::before { right:-6px; border-left:none; border-bottom:none; }
+  .bubble::before { content:""; position:absolute; top:22px; left:-7px; width:12px; height:12px; transform: rotate(45deg);
+    border-left:1px solid var(--line); border-bottom:1px solid var(--line); background: inherit; }
   .talk-credit { font-size:10.5px; color: var(--ink-faint); margin:8px 0 0; text-align:right; }
   @media (max-width: 560px) {
     .talk { padding: 12px 12px 10px; }
-    .av { flex-basis:64px; width:64px; } .av img { width:64px; }
-    .bubble { font-size:14.5px; padding:8px 11px; }
+    .talk-row { grid-template-columns: 62px minmax(0, 1fr); column-gap:12px; }
+    .av { width:62px; } .av img { width:62px; }
+    .bubble { font-size:14.5px; padding:8px 12px; }
   }
 
   /* ---- 相場の天気 ---- */

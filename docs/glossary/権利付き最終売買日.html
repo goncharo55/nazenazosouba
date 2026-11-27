@@ -256,27 +256,27 @@
   .talk { margin: 0 0 28px; background: var(--surface); border:1px solid var(--line); border-radius:14px;
     padding: 16px 18px 12px; box-shadow: var(--shadow); }
   .talk-label { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color: var(--brand); margin:0 0 6px; }
-  .talk-row { display:flex; align-items:flex-end; gap:12px; margin: 6px 0; }
-  .talk-right { flex-direction: row-reverse; }
-  .av { position:relative; flex:0 0 118px; width:118px; }
+  .talk-row { display:grid; grid-template-columns: 118px minmax(0, 1fr); column-gap:16px; align-items:start; margin: 10px 0; }
+  .av { position:relative; width:118px; }
   .av img { display:block; width:118px; height:auto; }
   .av .av-open { position:absolute; left:0; top:0; opacity:0; animation: mouth .46s steps(1) 4; }
   @keyframes mouth { 0% { opacity:1; } 50% { opacity:0; } }
   @media (prefers-reduced-motion: reduce) { .av .av-open { animation:none; } }
-  .bubble { position:relative; flex:1; min-width:0; background: var(--surface-2); border:1px solid var(--line);
-    border-radius:14px; padding:10px 14px; font-size:15.5px; line-height:1.7; }
+  .bubble { position:relative; min-width:0; border:1px solid var(--line); border-radius:14px; padding:10px 16px;
+    font-size:15.5px; line-height:1.75; background: var(--surface-2); }
+  .talk-zunda .bubble { background: color-mix(in srgb, #7BC96F 13%, var(--surface)); }
+  .talk-metan .bubble { background: color-mix(in srgb, #E86AA6 11%, var(--surface)); }
   .bubble p { margin:0; }
   .bubble .who { display:block; font-size:11.5px; font-weight:600; margin-bottom:1px; }
   .talk-zunda .who { color:#3E8E2F; } .talk-metan .who { color:#C0407E; }
-  .talk-left .bubble::before, .talk-right .bubble::before { content:""; position:absolute; bottom:18px; width:10px; height:10px;
-    background: var(--surface-2); border:1px solid var(--line); transform: rotate(45deg); }
-  .talk-left .bubble::before { left:-6px; border-right:none; border-top:none; }
-  .talk-right .bubble::before { right:-6px; border-left:none; border-bottom:none; }
+  .bubble::before { content:""; position:absolute; top:22px; left:-7px; width:12px; height:12px; transform: rotate(45deg);
+    border-left:1px solid var(--line); border-bottom:1px solid var(--line); background: inherit; }
   .talk-credit { font-size:10.5px; color: var(--ink-faint); margin:8px 0 0; text-align:right; }
   @media (max-width: 560px) {
     .talk { padding: 12px 12px 10px; }
-    .av { flex-basis:64px; width:64px; } .av img { width:64px; }
-    .bubble { font-size:14.5px; padding:8px 11px; }
+    .talk-row { grid-template-columns: 62px minmax(0, 1fr); column-gap:12px; }
+    .av { width:62px; } .av img { width:62px; }
+    .bubble { font-size:14.5px; padding:8px 12px; }
   }
 
   /* ---- 相場の天気 ---- */
